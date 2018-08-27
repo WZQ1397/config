@@ -1,0 +1,15 @@
+cluster.name: openlaw-elastic
+
+node.name: esbak
+node.data: false
+node.master: false
+
+network.host: 0.0.0.0
+
+bootstrap.memory_lock: true
+
+# this value is required because we set "network.host"
+# be sure to modify it appropriately for a production cluster deployment
+discovery.zen.minimum_master_nodes: 4
+
+discovery.zen.ping.unicast.hosts: ["10.10.12.32:9300", "10.10.13.32:9300", "10.10.14.32:9300", "10.10.8.32:9300", "10.10.12.33:9300", "10.10.13.33:9300", "10.10.14.33:9300"]

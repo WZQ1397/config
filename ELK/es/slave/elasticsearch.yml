@@ -1,0 +1,7 @@
+cluster.name: elksit
+node.name: es2
+path.data: /data/es_data
+path.logs: /var/log/elasticsearch
+network.host: 0.0.0.0
+discovery.zen.ping.unicast.hosts: ["172.16.48.31:9300", "172.16.48.32:9300", "172.16.48.34:9300", "172.16.48.35:9300"]
+discovery.zen.minimum_master_nodes: 2
