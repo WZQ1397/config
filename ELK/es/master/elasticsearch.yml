@@ -67,6 +67,7 @@ network.host: 0.0.0.0
 #
 discovery.zen.ping.unicast.hosts: ["172.16.48.31:9300", "172.16.48.32:9300", "172.16.48.34:9300", "172.16.48.35:9300"]
 #
+
 # Prevent the "split brain" by configuring the majority of nodes (total number of master-eligible nodes / 2 + 1):
 #
 # --> NUM = ALL_NODE_NUMS / 2 + 1 <--
