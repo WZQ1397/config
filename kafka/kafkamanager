@@ -1,0 +1,56 @@
+#!/bin/sh
+#
+# /etc/init.d/kafkamanager -- startup script for the Kafka manager
+#
+#
+### BEGIN INIT INFO
+# Provides:          kafkamanager
+# Required-Start:    $local_fs $remote_fs $network
+# Required-Stop:     $local_fs $remote_fs $network
+# Should-Start:      $named
+# Should-Stop:       $named
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Start Spare Tomcat.
+# Description:       Start the Spare Tomcat servlet engine.
+### END INIT INFO
+set -e
+
+if [ `id -u` -ne 0 ]; then
+    echo "You need root privileges to run this script"
+    exit 1
+fi
+
+# Make sure tomcat is started with system locale
+if [ -r /etc/default/locale ]; then
+    . /etc/default/locale
+    export LANG
+fi
+
+. /lib/lsb/init-functions
+
+if [ -r /etc/default/rcS ]; then
+    . /etc/default/rcS
+fi
+
+if [ ! -d /var/run/kafka-manager ]; then
+        mkdir /var/run/kafka-manager
+        chown tomcat:tomcat /var/run/kafka-manager
+fi
+
+case "$1" in
+start)
+    echo "Starting Kafka Manager"
+    cd /usr/share/kafka-manager
+    /bin/su kafka-manager bin/kafka-manager
+    ;;
+stop)
+    echo "Please kill the kafka manager process"
+    ;;
+restart)
+    $0 stop
+    $0 start
+    ;;
+*)
+    echo "usage: $0 (start|stop|restart|help)"
+esac
