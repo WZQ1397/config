@@ -1,0 +1,28 @@
+description: username.
+context:
+  project: '.*'
+for:
+  resource:
+    - allow: read
+  job:
+    - match:
+        group: '.*'
+        name: '.*'
+      allow: [run,read]
+by:
+  username: username
+
+---
+
+description: username.
+context:
+  application: 'rundeck'
+for:
+  resource:
+    - allow: read
+  project:
+    - allow: read
+  storage:
+    - allow: read
+by:
+  username: username
