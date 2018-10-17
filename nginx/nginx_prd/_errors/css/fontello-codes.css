@@ -1,0 +1,4 @@
+
+.icon-clock:before { content: '\e800'; } /* '' */
+.icon-exclamation:before { content: '\e801'; } /* '' */
+.icon-flash:before { content: '\e802'; } /* '' */
