@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--[if lt IE 9]>
+  <script language="javascript" type="text/javascript" src="/_errors/js/html5shiv.min.js"></script>
+  <script language="javascript" type="text/javascript" src="/_errors/js/respond.min.js"></script>
+  <![endif]-->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="502 Bad Gateway">
+  <meta name="author" content="">
+  <title>502 Bad Gateway</title>
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/_errors/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/_errors/css/fontello.css">
+  <style>
+    /* Error Page Inline Styles */
+    body {
+      padding-top: 20px;
+    }
+    /* Layout */
+    .jumbotron {
+      font-size: 21px;
+      font-weight: 200;
+      line-height: 2.1428571435;
+      color: inherit;
+      padding: 10px 0px;
+    }
+    /* Everything but the jumbotron gets side spacing for mobile-first views */
+    .masthead, .body-content, {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+    /* Main marketing message and sign up button */
+    .jumbotron {
+      text-align: center;
+      background-color: transparent;
+    }
+    .jumbotron .btn {
+      font-size: 21px;
+      padding: 14px 24px;
+    }
+    /* Colors */
+    .green {color:#5cb85c;}
+    .orange {color:#f0ad4e;}
+    .red {color:#d9534f;}
+  </style>
+  <!--[if IE 7]>
+  <link rel="stylesheet" href="/_errors/css/fontello-ie7.css">
+  <![endif]-->
+  <script type="text/javascript">
+    function loadDomain() {
+      var display = document.getElementById("display-domain");
+      display.innerHTML = document.domain;
+      var address = "tsc" + "@" + "homolo" + ".com";
+      document.getElementById("email-span").innerHTML = '<a href="mailto:' + address + '">' + address + '</a>';
+    }
+  </script>
+</head>
+<body onload="javascript:loadDomain();">
+  <!-- Error Page Content -->
+  <div class="container">
+    <!-- Jumbotron -->
+    <div class="jumbotron">
+      <h1>
+        <i class="icon-flash red"></i> 502 Bad Gateway
+      </h1>
+      <p class="lead">
+        Web服务器返回意外的网络错误。 <em><span id="display-domain"></span></em>
+      </p>
+      <p>
+        <a href="javascript:document.location.reload(true);" class="btn btn-default btn-lg"><span class="green">请稍后重试</span></a>
+      </p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="body-content">
+      <div class="row">
+        <div class="col-md-6">
+          <h2>发生了什么？</h2>
+          <p class="lead">502错误状态表示Web服务器尝试执行请求时，从上游服务器接收到无效的响应。</p>
+          <p>
+            <b class="green">可能是我们正在维护服务器，或者系统正在升级。请耐心等待。</b>
+          </p>
+        </div>
+        <div class="col-md-6">
+          <h2>我能做什么？</h2>
+          <p class="lead">如果您是网站访问者</p>
+          <p><a href="javascript:document.location.reload(true);">请稍点击此处重试.</a>
+            如果问题仍然存在, 您需要立即帮助，请联系我们。</p>
+          <p>联系电话：021-51697170</p>
+          <p>E-mail：<span id="email-span"></span></p>
+          <p class="lead">如果您是网站所有者</p>
+          <p>如果重试后问题仍然存在，您需要立即帮助，请与您的网站提供商联系。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Error Page Content -->
+</body>
+</html>
