@@ -1,0 +1,7 @@
+set fencs=utf-8,usc-bom,euc-jp,gb18030,gbk,gb2312,cp936
+syntax on
+set paste
+set nu
+set tabstop=4
+set list
+set listchars=eol:¶,tab:»\ ,trail:~,nbsp:·
