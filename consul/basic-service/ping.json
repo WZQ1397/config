@@ -1,0 +1,7 @@
+{
+  "check": {
+    "interval": "30s",
+    "script": "ping -c1 www.baidu.com 2>&1 >/dev/null",
+    "name": "ping"
+  }
+}
