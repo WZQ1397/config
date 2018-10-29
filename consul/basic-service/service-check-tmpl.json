@@ -1,0 +1,19 @@
+{
+    "services": [
+        {
+            "name": "{{srv_name}}",
+            "tags": [
+                "writes",
+                "reads"
+            ],
+            "port": {{chk_port}},
+            "checks": [
+
+                {
+                    "script": "/etc/consul.d/scripts/check_{{srv_name}}.sh",
+                    "interval": "5s"
+                }
+            ]
+        }
+    ]
+}
