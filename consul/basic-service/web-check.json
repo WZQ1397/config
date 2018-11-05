@@ -1,0 +1,13 @@
+{
+  "service": {
+    "check": {
+      "interval": "10s",
+      "script": "curl localhost:8081 >/dev/null 2>&1"
+    },
+    "port": 8081,
+    "tags": [
+      "FirstVert"
+    ],
+    "name": "web"
+  }
+}
