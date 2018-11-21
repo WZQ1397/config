@@ -1,0 +1,49 @@
+{
+  "services": [
+    {
+      "id": "redisnode1",
+      "name": "redis",
+      "tags": [
+        "master"
+      ],
+      "address": "192.168.1.241",
+      "port": 6379,
+      "checks": [
+        {
+          "script": "/usr/local/sbin/redis-cli -h 192.168.1.241 -p 6379 info | grep role:master || exit 2",
+          "interval": "5s"
+        }
+      ]
+    },
+    {
+      "id": "redisnode2",
+      "name": "redis",
+      "tags": [
+        "master"
+      ],
+      "address": "192.168.1.242",
+      "port": 6379,
+      "checks": [
+        {
+          "script": "/usr/local/sbin/redis-cli -h 192.168.1.242 -p 6379 info | grep role:master || exit 2",
+          "interval": "5s"
+        }
+      ]
+    },
+    {
+      "id": "redisnode3",
+      "name": "redis",
+      "tags": [
+        "master"
+      ],
+      "address": "192.168.1.243",
+      "port": 6379,
+      "checks": [
+        {
+          "script": "/usr/local/sbin/redis-cli -h 192.168.1.243 -p 6379 info | grep role:master || exit 2",
+          "interval": "5s"
+        }
+      ]
+    }
+  ]
+}
