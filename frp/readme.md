@@ -1,5 +1,10 @@
 # frp
 
+## onekey frps
+wget --no-check-certificate https://raw.githubusercontent.com/clangcn/onekey-install-shell/master/frps/install-frps.sh -O ./install-frps.sh
+chmod 700 ./install-frps.sh
+./install-frps.sh install
+
 ## What is frp?
 
 frp is a fast reverse proxy to help you expose a local server behind a NAT or firewall to the internet. Now, it supports tcp, udp, http and https protocol when requests can be forwarded by domains to backward web services.
