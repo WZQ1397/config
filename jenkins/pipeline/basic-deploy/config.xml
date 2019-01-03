@@ -1,0 +1,72 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<flow-definition plugin="workflow-job@2.31">
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>subject</name>
+          <description></description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>web</string>
+              <string>api-proxy</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>tag</name>
+          <description></description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>sit</string>
+              <string>uat</string>
+              <string>prd</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>branch</name>
+          <description></description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>ABtest</string>
+              <string>Canary</string>
+              <string>master</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+  </properties>
+  <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps@2.61">
+    <script>node {
+   def MVN_HOME
+   def EXEC_DIR
+   def JENKINS_ADDRESS
+   stage(&apos;getcode&apos;) {
+      git branch: &apos;$branch&apos;, credentialsId: &apos;cbcf6d01-eacf-4d52-9132-96685e423d4d&apos;, url: &apos;ssh://jenkins@54.223.183.130:29418/wx/wx-parent.git&apos;
+   }
+  stage(&apos;Build&apos;) {
+      MVN_HOME = tool &apos;mvn&apos;
+      sh &quot;cd /var/lib/jenkins/workspace/$JOB_NAME &amp;&amp; $MVN_HOME/bin/mvn  -U -e clean install -Dmaven.test.skip=true -P sit&quot;
+  } 
+   stage(&apos;code-check&apos;) {
+      sh &quot;echo $JOB_NAME-$subject-$tag in $branch&quot;
+   }
+   stage(&apos;deploy&apos;) {
+       EXEC_DIR = /data/deploy/bin/
+       JENKINS_ADDRESS=172.16.49.97:8080
+       def TARGET_NAME= $JOB_NAME-$subject
+       withCredentials([file(credentialsId: &apos;dde9d890-6900-4d7a-b63d-b6cf40716911&apos;, variable: &apos;deploy-server-login&apos;)]) {
+        ssh web@$SERVER  $EXEC_DIR/deploy-$TARGET_NAME-10081-$tag.sh http://$JENKINS_ADDRESS/job/wx/$BUILD_NUMBER/execution/node/3/ws/$TARGET_NAME/target/$TARGET_NAME-1.0-SNAPSHOT.jar
+       }
+   }
+}</script>
+    <sandbox>true</sandbox>
+  </definition>
+  <triggers/>
+  <disabled>false</disabled>
+</flow-definition>
