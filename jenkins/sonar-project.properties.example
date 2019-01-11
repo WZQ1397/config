@@ -5,3 +5,4 @@ sonar.sources=.
 sonar.binaries=bin
 sonar.language=java
 sonar.sourceEncoding=UTF-8
+# https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner+for+Jenkins
