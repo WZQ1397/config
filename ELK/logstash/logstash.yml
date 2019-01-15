@@ -11,7 +11,14 @@
 #
 #   pipeline.batch.size: 125
 #   pipeline.batch.delay: 5
-#
+
+# -------------------------- to do ------
+# workers == CPU CORES 
+# pipeline.workers: 4
+# pipeline.output.workers: 4
+# pipeline.batch.size: 10000
+# pipeline.batch.delay: 10
+
 # ------------  Node identity ------------
 #
 # Use a descriptive name for the node:
