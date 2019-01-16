@@ -1,0 +1,38 @@
+- hosts: port
+  vars:
+    service: node_exporter
+    version: 0.17.0       
+    filedir: "{{ service }}-{{ version }}.linux-amd64"
+    subfix: ".tar.gz"                                 
+    filename: "{{ filedir }}{{ subfix }}"             
+    path: /tmp/
+    binpath: /zach_data                  
+    fileserver: 172.10.101.10            
+    svc_url: "http://{{ fileserver }}/{{ filename }}"
+    user: root                                       
+  tasks:                                             
+#     - name: wget "{{ service }}"                   
+#       shell: wget -P {{ path }} {{ svc_url }}      
+     - name: decompress "{{ service }}"              
+       unarchive:                                    
+        #src: "{{ path }}{{ filename }}"             
+        src: "{{ svc_url }}"                   
+        remote_src: yes                        
+        dest: "{{ path }}"                     
+        owner: root                            
+        group: root                     
+        mode: 755                       
+     - name: mkdir                      
+       file:                
+         path: "{{ binpath }}"
+         state: directory     
+     - name: copy             
+       command: cp "{{ path }}{{ filedir }}/{{ service }}" "{{ binpath }}"
+     - name: attr                                                         
+       file:                                                              
+         path: "{{ binpath }}/{{ service }}"                              
+         mode: 0755                                                       
+     - name: execute                                                      
+       shell: "nohup {{ binpath }}/{{ service }} &"                     
+     - name: check                                                        
+       shell: ps aux | grep "{{ service }}" | grep -v "grep" | wc -l
