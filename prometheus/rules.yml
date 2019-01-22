@@ -1,0 +1,44 @@
+groups:
+- name: node
+  rules:
+  - alert: Server_Load
+    expr: max(node_load5) by (instance) - 1.5 * (count by (instance) (node_cpu_seconds_total) / 8) > 0
+    for: 15s
+    annotations:
+      summary: " {{ $labels.instance }} Load is too high!"
+  - alert: CPU_Usage
+    expr: sum by (instance)(rate(node_cpu_seconds_total{instance="$instance", mode != "idle", mode != "iowait"}[1m])) / (count by (instance) (node_cpu_seconds_total) / 8) > 80
+    for: 15s
+    annotations:
+      summary: " {{ $labels.instance }} CPU Usage is too high!"
+  - alert: IO_wait
+    expr: sum by (instance)(rate(node_cpu_seconds_total{instance="$instance", mode != "idle", mode != "iowait"}[1m])) / (count by (instance) (node_cpu_seconds_total) / 8) > 80
+    for: 15s
+    annotations:
+      summary: " {{ $labels.instance }} IO Read/Write is too busy!"
+  - alert: Server_Status
+    expr: node_uname_info == 0
+    for: 15s
+    annotations:
+      summary: " {{ $labels.instance }} is DOWN!"
+  - alert: DiskSpace
+    expr: (100 - (node_filesystem_free_bytes{fstype!='rootfs',mountpoint!~'/(run|var).*',mountpoint!=''} / node_filesystem_size_bytes) * 100)*1.06 > 85
+    for: 15s
+    annotations:
+      summary: " {{ $labels.instance }} Less than 10% space Free!"
+  - alert: DeviceTemparature
+    expr: avg(node_hwmon_temp_celsius) by (instance) > 55
+    for: 15s
+    annotations:
+      summary: " {{ $labels.instance }} DeviceTemparature is Too High"
+  - alert: RedisCommandsTooMany
+    expr: rate(redis_commands_processed_total{addr=~"$addr"}[5m]) > 5000
+    for: 15s
+    annotations:
+      summary: " {{ $labels.instance }} has Too Many command to execuate!"
+  - alert: RedisMemoryUsage
+    expr: redis_memory_used_bytes - redis_config_maxmemory  < 10000000 
+    for: 15s
+    annotations:
+      summary: " {{ $labels.instance }} has archieve the max of Memory set!"
+
