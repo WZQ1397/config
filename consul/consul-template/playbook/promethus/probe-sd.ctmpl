@@ -1,0 +1,8 @@
+[{{range services}} {{$name := .Name}} {{$service := service .Name}}{{range $service}}{{if .Tags | contains "tsjr"}}{{$tag := .ID | split "#"}} {
+    "targets": ["{{.Address}}:{{.Port}}"],
+    "labels": {"{{.Name}}","{{ index $tag 1 }}","{{ index $tag 2 }}"}
+  },{{end}}{{end}}{{end}}{
+    "targets": ["http://zach-cmdb.tsjinrong.cn"],
+    "labels": {"zach-cmdb","local","zach"}
+  }
+]

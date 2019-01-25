@@ -1,0 +1,10 @@
+{
+      "id": "approval-admin-d",
+      "name": "approval-admin",
+      "tags": [
+        "master","approval-admin"
+      ],
+      "address": "120.0.0.1",
+      "port": 8080
+}
+

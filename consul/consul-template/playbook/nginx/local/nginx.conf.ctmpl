@@ -1,0 +1,26 @@
+{{range services}} {{$name := .Name}} {{$service := service .Name}}
+{{if .Tags | contains "master"}} 
+upstream {{$name}} {
+  zone upstream-{{$name}} 64k;
+  {{range $service}}server {{.Address}}:{{.Port}} max_fails=3 fail_timeout=60 weight=1;
+  {{end}}
+}
+server {
+	listen 80;
+	server_name {{ $name }}.tsjinrong.top;
+        access_log  /var/log/nginx/cn.tsjinrong.{{ $name }}.access.log;
+	error_log   /var/log/nginx/cn.tsjinrong.{{ $name }}.err;
+
+	location ^~ / {
+		proxy_pass http://{{$name}};
+		proxy_redirect          off;
+                include proxy_para.conf;
+                #proxy_set_header Host $host;
+		#proxy_set_header X-Real-IP $remote_addr;
+		#proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+	}
+
+}
+{{end}}
+{{end}}
+

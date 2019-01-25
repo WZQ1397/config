@@ -1,0 +1,221 @@
+
+#user  nobody;
+worker_processes  8;
+
+#pid        logs/nginx.pid;
+
+
+events {
+    worker_connections  1024;
+}
+
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    log_format main '$remote_addr	 $remote_user	[$time_local]	"$request"	'
+                      '$status	$body_bytes_sent	"$http_referer"	'
+                      '"$http_user_agent"	$http_x_forwarded_for	$upstream_response_time	$content_type';
+
+    log_format miliapi     '[$time_iso8601] $remote_addr "$request" '
+                       '$request_time $status $body_bytes_sent '
+                       '"$http_user_agent" "$http_x_forwarded_for"';
+
+
+    sendfile        on;
+    #tcp_nopush     on;
+    client_max_body_size 10M;
+
+    keepalive_timeout  65;
+    server_tokens off;
+    gzip on;
+    gzip_disable "msie6";
+    gzip_vary on;
+    gzip_proxied any;
+    gzip_comp_level 6;
+    gzip_buffers 16 8k;
+    gzip_http_version 1.1;
+    gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript application/javascript;
+
+    #limit_req_zone $binary_remote_addr zone=anti_spider:10m rate=30r/s;
+    limit_req_zone $http_x_forwarded_for zone=forwarded_ip:10m rate=200r/s;
+
+    upstream  snowflake-frontend {
+        server 172.10.2.52:8081;
+    }
+    upstream approval-admin {
+         server 172.10.2.9:10080;
+         server 172.10.3.6:10080;
+    }
+
+    {{range services}} {{$name := .Name}} {{$service := service .Name}}
+    {{if .Tags | contains "PRD-web"}}
+        upstream {{$name}} {
+        {{range $service}}server {{.Address}}:{{.Port}} max_fails=3 fail_timeout=60 weight=1;
+        {{end}}
+        }
+    {{end}}
+    {{end}}
+
+
+  server {
+        listen       80;
+        server_name  d1.tsjinrong.cn;
+
+        #charset koi8-r;
+
+        access_log  logs/d1.access.log  main;
+
+        if ($http_user_agent ~* "Baiduspider|baiduspider|Spider|spider"){
+        return 444;
+        }
+
+        }
+
+#snowflake-admin web
+
+  server {
+        listen       80;
+        server_name  m.tsjinrong.cn;
+
+        #charset koi8-r;
+
+        access_log  logs/m.access.log  main;
+
+        if ($http_user_agent ~* "Baiduspider|baiduspider|Spider|spider"){
+        return 444;
+        }
+         location  ^~ / {
+                proxy_pass http://snowflake-frontend;
+                proxy_redirect          off;
+                include proxy.conf;
+        }
+
+        {{range services}} {{$name := .Name}} {{$service := service .Name}}
+        {{if .Tags | contains "snowflake"}}
+        location ^~ /{{ $name }}/ {
+                proxy_pass http://{{ $name }};
+                proxy_redirect          off;
+                include proxy.conf;
+        }
+        {{end}}
+        {{end}}
+
+        }
+
+
+#inside
+
+    server {
+        listen       80 default;
+        server_name  inside.tsjinrong.cn;
+
+        #charset koi8-r;
+
+        access_log  logs/inside.access.log  main;
+
+        if ($http_user_agent ~* "Baiduspider|baiduspider|Spider|spider"){
+        return 444;
+        }
+
+        if ($http_host != "inside.tsjinrong.cn") {
+             return 444;
+        }
+        if ( $http_x_forwarded_for !~* ^(103)\.(25)\.(65)\.(205)|(116)\.(236)\.(226)\.(10)$){
+            return 444;
+            break;
+          }
+        location  / {
+                proxy_pass http://approval-admin/approval-admin/;
+                proxy_redirect          off;
+                include proxy.conf;
+        }
+
+        {{range services}} {{$name := .Name}} {{$service := service .Name}}
+        {{if .Tags | contains "PRD-web"}}
+        location ^~ /{{ $name }}/ {
+                proxy_pass http://{{ $name }};
+                proxy_redirect          off;
+                include proxy.conf;
+        }
+        {{end}}
+        {{end}}
+
+
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+
+    }
+
+     upstream sso-server {
+         ip_hash;
+         server 172.10.129.11:10443;
+         server 172.10.130.14:10443;
+    }
+
+server {
+    listen       443;
+    server_name  inside.tsjinrong.cn;
+
+    #ssl_certificate      /usr/local/nginx/sslkey/enqb/tsjinrong.cn.pem;
+    ssl_certificate      {{ key "nginx/ssl/path" }}.pem;
+    ssl_certificate_key  {{ key "nginx/ssl/path" }}.key;
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+    ssl_session_cache    shared:SSL:1m;
+    ssl_session_timeout  5m;
+
+    ssl_ciphers  HIGH:!aNULL:!MD5;
+    ssl_prefer_server_ciphers  on;
+    ssl on; 
+   
+      location ^~ / {
+        proxy_pass https://sso-server;
+        proxy_redirect          off;
+        include proxy.conf;
+    }
+    
+       location ^~ /uts/ {
+        proxy_pass https://sso-server;
+        proxy_redirect          off;
+        include proxy.conf;
+    }
+    
+      access_log  logs/sso_access.log  main;
+    }
+
+server {
+    listen       443;
+    server_name  m.tsjinrong.cn;
+
+    ssl_certificate      {{ key "nginx/ssl/path" }}.pem;
+    ssl_certificate_key  {{ key "nginx/ssl/path" }}.key;
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+    ssl_session_cache    shared:SSL:1m;
+    ssl_session_timeout  5m;
+
+    ssl_ciphers  HIGH:!aNULL:!MD5;
+    ssl_prefer_server_ciphers  on;
+    ssl on; 
+         location  ^~ / {
+                proxy_pass http://snowflake-frontend;
+                proxy_redirect          off;
+                include proxy.conf;
+        } 
+        {{range services}} {{$name := .Name}} {{$service := service .Name}}
+        {{if .Tags | contains "PRD-web"}}
+        location ^~ /{{ $name }}/ {
+                proxy_pass http://{{ $name }};
+                proxy_redirect          off;
+                include proxy.conf;
+        }
+        {{end}}
+        {{end}}
+
+      access_log  logs/account-web-https-access.log  main;
+    }
+include vhost/*.conf;
+
+}

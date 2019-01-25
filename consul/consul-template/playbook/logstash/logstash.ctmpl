@@ -1,0 +1,52 @@
+input {
+{{range tree "logstash/dev/svc" }}
+   file  {
+           type => "{{.Key}}-dev"
+            path => [ "{{key "logstash/workpath"}}{{.Key}}/{{.Key}}.log" ]
+            tags => [ "{{.Key}}-dev", "{{.Value}}" ]
+         codec => multiline {
+              pattern => "^%{TIMESTAMP_ISO8601}"
+              negate => true
+              what => "previous"
+          }
+{{end}}
+}
+
+filter {
+       grok {
+           if [type] == "logback" {
+            match => { "message" =>
+                "%{TIMESTAMP_ISO8601:date}\s+\[(?<thread_name>.+)\]\s+(?<log_level>\w+)\s+(?<codeline>[^ \f\n\r\t\v\.]+(\.[^ \f\n\r\t\v\.]+)+\s\[\S+\])\s+-\s*(?<content>.+)"
+            }
+        }
+           if [type] == "log4j" {
+            match => { "message" =>
+                "%{TIMESTAMP_ISO8601:date} \[(?<thread_name>.+?)\] (?<log_level>\w+)\s*(?<content>.*)"
+            }
+        }
+     }
+        if [log_level] == "ERROR" and "Invalid password for user" not in [content] {
+            throttle {
+                after_count => 2
+                key => "%{content}"
+                add_tag => "throttled"
+            }
+        }
+                date{
+                        match=>["date","yyyy-MM-dd HH:mm:ss,SSS"]
+                        target=>"@timestamp"
+                        remove_field=>"date"
+                }
+                mutate{
+                        remove_field => "message"
+                }
+}
+
+output {
+         redis {
+         host => "{{ key "logstash/dev/redis/address" }}"
+         port => "{{ key "logstash/dev/redis/port" }}"
+         data_type =>"{{key "logstash/dev/redis/data_type" }}"
+         key => "{{ key "logstash/dev/redis/key" }}"
+     }
+}

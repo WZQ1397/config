@@ -1,0 +1,18 @@
+[
+  {{ range tree "prometheus/auto" }}
+  {
+    "targets": ["{{ .Value }}:9100"],
+    "labels": {
+      "instance": "{{ .Key }}",
+      "env": "zach"
+    }
+  },
+  {{ end }}
+  {
+    "targets": ["172.16.48.104:9100"],
+    "labels": {
+      "instance": "prometheus",
+      "env": "zach"
+     }
+  }
+]
