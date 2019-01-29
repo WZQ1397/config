@@ -1,0 +1,18 @@
+---
+- name: install | Check if es remote soft link is already configured.
+  shell: echo {{ PV_TYPE }}
+  register: check
+
+- name: config run {{ PV_TYPE }} PV yml.
+  template:
+    src: k8s-pv-nfs.yml.j2
+    dest: "/data/{{ PROJECT_NAME }}-pv.yml"
+    mode: 0755
+  when: check.stdout  == "NFS"
+
+- name: config run {{ PV_TYPE }} PV yml.
+  template:
+    src: k8s-pv-cephfs.yml.j2
+    dest: "/data/{{ PROJECT_NAME }}-pv.yml"
+    mode: 0755
+  when: check.stdout  == "CEPHFS"
