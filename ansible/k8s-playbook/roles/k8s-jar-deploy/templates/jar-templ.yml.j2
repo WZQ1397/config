@@ -1,0 +1,65 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: {{ TITLE_PREFIX }}-{{ PROJECT_NAME }}
+spec:
+  selector:
+    matchLabels:
+      stage: {{ STAGE }}
+      type: {{ TYPE }}
+      service: {{ PROJECT_NAME }}
+      vendor: {{ VENDER }}
+  template:
+    metadata:
+      labels:
+        stage: {{ STAGE }}
+        type: {{ TYPE }}
+        service: {{ PROJECT_NAME }}
+        vendor: {{ VENDER }}
+    spec:
+      containers:
+      - name: {{ PROJECT_NAME }}-{{ PORT }}-{{ STAGE }}
+        image: {{ HARBOR_URL }}/k8s-{{ VENDER }}/java:{{ JDK_VERSION }}-jdk-alpine
+        imagePullPolicy: IfNotPresent
+        {% if DUBBO_PORT -%}
+        command: ["java","{{ VENDER }}_JAVA_OPTS","-jar","{{ DATA_DIR }}/{{ PROJECT_NAME }}-{{ PORT }}-{{ STAGE }}.jar","--server.port={{ PORT }}","--dubbo.port={{ DUBBO_PORT }}"]
+        {% else -%}
+        command: ["java","{{ VENDER }}_JAVA_OPTS","-jar","{{ DATA_DIR }}/{{ PROJECT_NAME }}-{{ PORT }}-{{ STAGE }}.jar","--server.port={{ PORT }} "]
+        {% endif -%}
+        env:
+        - name: {{ VENDER }}_JAVA_OPTS
+          value: "-server -Xms512m -Xmx512m -Xss256k -XX:MetaspaceSize=64m -XX:MaxMetaspaceSize=128m"
+        - name: DUBBO_PORTS
+          value: {{ DUBBO_PORT }}
+        volumeMounts:
+        - mountPath: {{ DATA_DIR }}
+          name: {{ TYPE }}app
+        - mountPath: {{ LOG_DIR }}
+          name: {{ TITLE_PREFIX }}logs
+      volumes:
+      - name: {{ TYPE }}app
+        hostPath:
+          path: /data/{{ TYPE }}
+          type: Directory
+      - name: {{ TITLE_PREFIX }}logs
+        hostPath:
+          path: {{ LOG_DIR }}
+          type: Directory
+      nodeSelector:
+        kubernetes.io/hostname: 172.16.50.12
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ PROJECT_NAME }}-{{ PORT }}-{{ STAGE }}
+spec:
+  type: NodePort
+  ports:
+  - port: {{ PORT }}
+    nodePort: {{ EXT_PORT }}
+    protocol: TCP
+  selector:
+    stage: {{ STAGE }}
+    type: {{ TYPE }}
+    service: {{ PROJECT_NAME }}
+    vendor: {{ VENDER }}
