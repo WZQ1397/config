@@ -1,0 +1,6 @@
+TYPE: "web"
+VENDER: "zach"
+TITLE_PREFIX: "tsjr"
+HARBOR_URL: "harbor.tsjinrong.cn"
+DATA_DIR: "/usr/src/myapp"
+LOG_DIR: "/data/tsjinrong/logs"

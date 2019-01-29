@@ -1,0 +1,6 @@
+---
+- name: config run deployment yml.
+  template:
+    src: jar-templ.yml.j2
+    dest: "/data/{{ PROJECT_NAME }}.yml"
+    mode: 0755

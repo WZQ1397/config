@@ -1,0 +1,7 @@
+PROJECT_NAME: "rabbitmq"
+VOL_SIZE: "5Gi"
+TITLE_SUBFIX: "storage-class"
+# COUNT: "3" define in template
+DATA_DIR: "/data/k8s/{{ PROJECT_NAME }}"
+# NFS_SERVER: "172.16.50.20"
+# CEPH_MON: "172.16.50.20:6789"
