@@ -1,0 +1,57 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: tsjr-snowflake-web
+spec:
+  selector:
+    matchLabels:
+      stage: prd
+      type: warapp
+      vendor: tsjr
+      service: snowflake
+  template:
+    metadata:
+      labels:
+        stage: prd
+        type: warapp
+        vendor: tsjr
+        service: snowflake
+    spec:
+      containers:
+      - name: snowflake-web
+        image: harbor.tsjinrong.cn/k8s-zach/tomcat:7-slim
+        imagePullPolicy: IfNotPresent
+        command: ["catalina.sh", "run"]
+        volumeMounts:
+        - mountPath: /usr/local/tomcat/webapps/snowflake-web.war
+          name: webapp
+        - mountPath: /data/tsjinrong/logs
+          name: weblog
+      volumes:
+      - name: webapp
+        hostPath:
+          path: /data/web/snowflake-web.war
+          type: File
+	  - name: weblog
+        hostPath:
+          path: /data/tsjinrong/logs
+          type: Directory
+      nodeSelector:
+        kubernetes.io/hostname: 172.16.50.15
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: snowflake-web
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+    nodePort: 28080
+    protocol: TCP
+  selector:
+    stage: prd
+    type: warapp
+    service: snowflake
+    vendor: tsjr
+
