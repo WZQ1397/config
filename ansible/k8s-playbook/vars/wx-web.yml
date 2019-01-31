@@ -1,0 +1,8 @@
+PROJECT_NAME: "wx-web"
+STAGE: "sit"
+PORT: "10088"
+# external port must between 20000-40000
+EXT_PORT: "20088"
+JDK_VERSION: "8"
+DUBBO_PORT: ""
+

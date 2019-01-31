@@ -1,0 +1,8 @@
+PROJECT_NAME: "swagger-ui"
+STAGE: "sit"
+PORT: "10095"
+# external port must between 20000-40000
+EXT_PORT: "20095"
+JDK_VERSION: "8"
+DUBBO_PORT: ""
+
