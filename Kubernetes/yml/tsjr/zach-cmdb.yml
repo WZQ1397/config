@@ -1,0 +1,50 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: tsjr-zach-cmdb
+spec:
+  selector:
+    matchLabels:
+      stage: zach
+      type: web
+      service: cmdb
+      vendor: zach
+  template:
+    metadata:
+      labels:
+        stage: zach
+        type: web
+        service: cmdb
+        vendor: zach
+    spec:
+      containers:
+      - name: zach-cmdb
+        image: harbor.tsjinrong.cn/k8s-zach/flask:2.7.15
+        imagePullPolicy: IfNotPresent
+        command: ["python","/data/view.py"]
+        volumeMounts:
+        - mountPath: /data
+          name: webapp
+      volumes:
+      - name: webapp
+        hostPath:
+          path: /data/web/zach-cmdb
+          type: Directory
+      nodeSelector:
+        kubernetes.io/hostname: 172.16.50.15
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: zach-cmdb
+spec:
+  type: NodePort
+  ports:
+  - port: 9092
+    nodePort: 20092
+    protocol: TCP
+  selector:
+    stage: zach
+    type: web
+    service: cmdb
+    vendor: zach
