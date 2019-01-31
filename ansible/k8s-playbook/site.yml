@@ -1,0 +1,7 @@
+
+- name: apply common configuration to all nodes
+  hosts: 127.0.0.1
+  remote_user: root
+  roles:
+    #- k8s-jar-deploy
+    - k8s-pv-deploy
