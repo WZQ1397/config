@@ -1,0 +1,111 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: tsjr-mongo-cluster
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      stage: local
+      type: db
+      service: mongo
+      version: v4.0
+  template:
+    metadata:
+      labels:
+        belong: backend
+        stage: local
+        type: db
+        service: mongo
+        version: v4.0
+    spec:
+      initContainers:
+      - name: mongo-init
+        image: busybox
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: MONGO_INIT_USER_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mongo-pwd
+              key: mongo-root-pwd
+        command:
+          - sh
+          - "-c"
+          - |
+            set -ex
+            cat > /docker-entrypoint-initdb.d/mongo-init.js <<EOF
+            db = db.getSiblingDB('admin');
+            db.createUser(
+            {
+               user: "zach",
+               pwd: "$MONGO_INIT_USER_PASSWORD",
+               roles: [
+                 { role: "root", db: "admin"}
+               ]
+            });
+            EOF
+        volumeMounts:
+        - name: mongo-data
+          mountPath: /data/db
+        - name: mongo-initdb
+          mountPath: /docker-entrypoint-initdb.d
+      containers:
+      - name: mongo-cluster
+        image: harbor.tsjinrong.cn/k8s-zach/mongo:4.0
+        imagePullPolicy: IfNotPresent
+        command: ['mongod','--bind_ip_all','--auth']
+        ports:
+        - containerPort: 27017
+          protocol: TCP
+        env:
+        - name: MONGO_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mongo-pwd
+              key: mongo-root-pwd
+        - name: MONGO_USER
+          valueFrom:
+            secretKeyRef:
+              name: mongo-pwd
+              key: mongo-root-user
+        volumeMounts:
+        - name: mongo-initdb
+          mountPath: /docker-entrypoint-initdb.d
+        - name: mongo-data
+          mountPath: /data/db
+      volumes:
+      - name: mongo-data
+        hostPath:
+          # path: /data/mongo-cluster/local/data
+          path: /mnt
+          type: Directory
+      - name: mongo-initdb
+        emptyDir: {}
+      nodeSelector:
+        kubernetes.io/hostname: 172.16.50.11
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    belong: backend
+    stage: local
+    type: db
+    service: mongo
+    version: v4.0
+  name: mongo-cluster
+spec:
+  type: NodePort
+  ports:
+  - port: 27017
+    nodePort: 27017
+    protocol: TCP
+    targetPort: 27017
+  selector:
+    belong: backend
+    stage: local
+    type: db
+    service: mongo
+    version: v4.0
