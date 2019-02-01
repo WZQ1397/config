@@ -17,12 +17,13 @@
    + username and password in mongo-key.yml
    + dblist in mongodump-job-value.yml
  
- ### you can also create cronjob refer to yml of mysql
+ ### You can also create cronjob refer to yml of mysql
  
 4. Create Cluster refer follow:
 <p align="center"> <img src="images/yml.jpg"></p>
 <p align="center"> <img src="images/cmd.jpg"></p>
- ```
+
+```
  rs.add("172.16.7.3")
  rs.remove("172.16.7.3:27017")
 ```
