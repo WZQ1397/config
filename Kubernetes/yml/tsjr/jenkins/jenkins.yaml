@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: jenkins
+  labels:
+    service: jenkins
+    type: backend
+spec:
+  containers:
+  - name: jenkins
+    image: jenkins
+  nodeName: 172.16.50.12
