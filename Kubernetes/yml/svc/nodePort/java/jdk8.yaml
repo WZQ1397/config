@@ -1,0 +1,31 @@
+apiVersion: apps/v1beta2
+kind: ReplicaSet
+metadata:
+  name: java-jdk-8
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      type: backend
+      service: java-jdk-8-zach
+  template:
+    metadata:
+      labels:
+        type: backend
+        service: java-jdk-8-zach
+    spec:
+      containers:
+      - name: java-jdk-8
+        image: java-jdk-8:5.6
+       # ports:
+        #- containerPort: 8080
+        #  protocol: TCP
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          periodSeconds: 2
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8080
