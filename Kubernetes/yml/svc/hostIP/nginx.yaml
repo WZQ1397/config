@@ -1,0 +1,29 @@
+apiVersion: apps/v1beta2
+kind: ReplicaSet
+metadata:
+  name: nginx
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      type: backend
+      service: nginx
+  template:
+    metadata:
+      labels:
+        type: backend
+        service: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+          protocol: TCP
+          hostIP: 0.0.0.0
+          hostPort: 10080
+        livenessProbe:
+          httpGet:
+            path: /index.html
+            port: 80
