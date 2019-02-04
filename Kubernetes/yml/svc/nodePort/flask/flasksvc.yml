@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: flask:2.7-zach
+spec:
+  type: NodePort
+  ports:
+  - port: 9000
+    nodePort: 30080
+    protocol: TCP
+  selector:
+    type: front
+    service: flask:2.7-zach

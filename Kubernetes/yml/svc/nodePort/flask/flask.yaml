@@ -1,0 +1,19 @@
+apiVersion: apps/v1beta2
+kind: ReplicaSet
+metadata:
+  name: flask-python-2.7
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      type: front
+      service: flask-python-2.7
+  template:
+    metadata:
+      labels:
+        type: front
+        service: flask-python-2.7
+    spec:
+      containers:
+      - name: flask-python-2.7
+        image: flask:2.7-zach
