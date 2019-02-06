@@ -1,0 +1,60 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: tsjr-swagger-ui
+spec:
+  selector:
+    matchLabels:
+      stage: sit
+      type: web
+      service: swagger
+      vendor: zach
+  template:
+    metadata:
+      labels:
+        stage: sit
+        type: web
+        service: swagger
+        vendor: zach
+    spec:
+      containers:
+      - name: swagger-10092-sit
+        image: harbor.tsjinrong.cn/k8s-zach/java:8-jdk-alpine
+        imagePullPolicy: IfNotPresent
+        #command: ["sh","/usr/src/myapp/run.sh","swagger-10092-sit"]
+        command: ["java","-server", "-Xms512m", "-Xmx512m", "-Xss256k", "-XX:MetaspaceSize=64m", "-XX:MaxMetaspaceSize=128m","-jar","/usr/src/myapp/swagger-10092-sit.jar","--server.port=10095"]
+        env:
+        - name: DUBBO_PORTS
+          value: "20888"
+        volumeMounts:
+        - mountPath: /usr/src/myapp
+          name: webapp
+        - mountPath: /data/tsjinrong/logs
+          name: tsjrlogs
+      volumes:
+      - name: webapp
+        hostPath:
+          path: /data/web
+          type: Directory
+      - name: tsjrlogs
+        hostPath:
+          path: /data/tsjinrong/logs
+          type: Directory
+      nodeSelector:
+        kubernetes.io/hostname: 172.16.50.12
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: swagger-10092-sit
+spec:
+  type: NodePort
+  ports:
+  - port: 10095
+    nodePort: 20095
+    protocol: TCP
+  selector:
+    stage: sit
+    type: web
+    service: swagger
+    vendor: zach
