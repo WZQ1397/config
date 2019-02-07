@@ -1,0 +1,14 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: show-uptime-job
+spec:
+  template:
+    spec:
+      containers:
+      - name: show-uptime
+        image: busybox:latest
+        imagePullPolicy: IfNotPresent
+        command:
+        - uptime
+      restartPolicy: OnFailure

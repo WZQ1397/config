@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: show-uptime-job
+spec:
+  completions: 2
+  parallelism: 3
+  activeDeadlineSeconds: 30
+  template:
+    spec:
+      containers:
+      - name: show-uptime
+        image: busybox:latest
+        imagePullPolicy: IfNotPresent
+        command:
+        - uptime
+      restartPolicy: OnFailure
