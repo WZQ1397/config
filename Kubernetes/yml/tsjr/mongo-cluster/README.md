@@ -27,3 +27,4 @@
  rs.add("172.16.7.3")
  rs.remove("172.16.7.3:27017")
 ```
+rs.initiate({"_id":"rs",members:[{"_id":1,"host":"mongo-c-0:27017",priority:3},{"_id":2,"host":"mongo-c-1:27017", priority:9},{"_id":3,"host":"mongo-c-2:27017", arbiterOnly:true}]})
