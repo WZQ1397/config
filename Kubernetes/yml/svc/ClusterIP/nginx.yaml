@@ -1,0 +1,27 @@
+apiVersion: apps/v1beta2
+kind: ReplicaSet
+metadata:
+  name: nginx-clusterip
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      type: backend
+      service: nginx-cip
+  template:
+    metadata:
+      labels:
+        type: backend
+        service: nginx-cip
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        livenessProbe:
+          httpGet:
+            path: /index.html
+            port: 80
