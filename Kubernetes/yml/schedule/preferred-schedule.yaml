@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-node-affinity
+  labels:
+    app: myapp
+    tier: frontend
+spec:
+  containers:
+  - name: myapp
+    image: nginx
+  affinity:
+    nodeAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - preference:
+          matchExpressions:
+          - key: zone
+            operator: In
+            values:
+            - foo
+            - bar
+        weight: 60

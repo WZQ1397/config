@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-demo
+  labels:
+    app: myapp
+    tier: frontend
+spec:
+  containers:
+  - name: myapp
+    image: nginx
+  nodeName: 172.16.50.11

@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-demo
+  labels:
+    app: myapp
+    tier: frontend
+spec:
+  containers:
+  - name: myapp
+    image: nginx
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:   #第一条件
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: beta.kubernetes.io/arch
+            operator: In
+            values:
+            - amd64
+      preferredDuringSchedulingIgnoredDuringExecution:  #第二个条件
+      - weight: 1
+        preference:
+          matchExpressions:
+          - key: disktype
+            operator: In
+            values:
+            - hdd
