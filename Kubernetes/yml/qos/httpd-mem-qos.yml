@@ -1,0 +1,39 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: http-limit
+  labels:
+    type: web
+    service: httpd
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      type: web
+      service: httpd
+  minReadySeconds: 1
+  strategy:
+    type: Recreate 
+  template:
+    metadata:
+      labels:
+        type: web
+        service: httpd
+        ns: zach
+    spec:
+      containers:
+      - name: httpd
+        image: httpd:latest
+        imagePullPolicy: IfNotPresent
+        resources:
+          # The max resource you can get
+          limits:
+          # MEMORY --> 1M=1024K 1Mi=1000K
+            memory: "10Mi"
+          # CPU    --> 500m=500milliCPU
+            cpu: 500m
+          # The min resource you can get
+          requests:
+            memory: "10Mi"
+          # half core of CPU
+            cpu: 0.5
