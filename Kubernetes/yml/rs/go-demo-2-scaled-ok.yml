@@ -1,0 +1,35 @@
+apiVersion: apps/v1beta2
+kind: ReplicaSet
+metadata:
+  name: go-demo-2
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+    # use label to match which the ReplicaSet manage
+      type: backend
+      service: go-demo-2
+  template:
+    metadata:
+      labels:
+        type: backend
+        service: go-demo-2
+        db: mongo
+        language: go
+    spec:
+    # a pod include 2 containers 
+      containers:
+      - name: db
+        image: mongo:latest
+        imagePullPolicy: IfNotPresent
+      - name: api
+        image: aishangwei/go-demo-2
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: DB
+          value: localhost
+        livenessProbe:
+        # Usage:  https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+          httpGet:
+            path: /demo/hello
+            port: 8080
