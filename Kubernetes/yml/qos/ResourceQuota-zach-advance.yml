@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: zach
+
+---
+
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: zach
+  namespace: zach
+spec:
+  hard:
+    requests.cpu: 0.8
+    requests.memory: 500Mi
+    limits.cpu: 1
+    limits.memory: 1Gi
+    pods: 10
+    secrets: 10
+    configmaps: 20
+    services: 5
+    services.nodeports: 10
+    persistentvolumeclaims: 20
+    replicationcontrollers: 20
+  scopes:
+    - NotTerminating
+    - NotBestEffort
