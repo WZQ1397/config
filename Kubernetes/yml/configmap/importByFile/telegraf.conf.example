@@ -1,0 +1,104 @@
+########################################全局配置############################################################
+#全局tag配置，采用key = "values"方式，这样在本机采集到的所有数据将都有这个标签
+[global_tags]
+dc = "docker-test"
+#agent配置
+[agent]
+#默认的数据(input)采集间隔时间
+interval = "10s"
+#采用轮询时间间隔。默认是使用interval里面的值进行轮询，比如interval = "10s",那采集时间将是:00, :10, :20, 等
+round_interval = true
+#每次发送到output的度量大小不能超过metric_batch_size的值
+metric_batch_size = 1000
+#telegraf会为每一个output去缓存一份度量值，metric_buffer_limit为缓存的限制，并且刷新buffer以确定成功写入。如果达到这个限制了，老的数据会被第一时间丢弃
+#当然了，增加这个值能够容忍更多的数据连接，但是这也将会增加telegraf潜在的内存占用。这个值可以大于metric_batch_size但是必须小于它的两倍
+metric_buffer_limit = 10000
+#通过随机度量来对采集时间进行抖动。每个插件在采集数据之前将会有一个随机时间的休眠，但是这个时间应小于collection_jitter
+#这个设置是为了防止多个采集源数据同一时间都在队列
+collection_jitter = "0s"
+#默认所有数据flush到outputs的时间(在数据被flush到output之前，最大能到flush_interval + flush_jitter)。不能低于interval
+flush_interval = "10s"
+# 通过随机数来对flush间隔进行抖动。这个主要是为了避免当运行一个大的telegraf实例的时候有比较大的写入。(jitter=5s,flush_interval=10s意味着每10-15s会发生一次flush操作)
+flush_jitter = "0s"
+#默认这个值被设置相同的时间戳通过采集间隔排序。最大值为1s。这个指标一般不会用在service input(比如logparser和statsd)。单位(ns,us,ms,s)
+precision = ""
+#以debug模式运行
+debug = false
+#以安静模式运行
+quiet = false
+#这个将会覆盖默认的hostname，如果为空的话，将会采用os.Hostname()
+hostname = ""
+#如果设置为true，就不允许在telegraf agent里面设置"host"标签了 
+omit_hostname = false
+##############################################度量值过滤#######################################################
+#过滤可以被配置在每一个输入和输出值
+namepass：一个数组字符串可以被用来过滤由当前input生成的度量值，在数组中的每一个字符串和全局匹配到的测量值名字进行对比，如果匹配了，值被采用
+namedrop:pass的反向含义，如果匹配，则不使用
+fieldpass：在namepass满足的条件下，output的fieldpass不可用
+fielddrop：pass的反向含义，如果field名字匹配，将不被采用。output的fielddrop不可用
+tagpass：tag names和数组中的字符串都被用来过滤当前input的值，数组中的每一个每一个字符串和tag name对比，匹配则则采用
+tagdrop:tagpass的反向含义，如果tag匹配，该度量值不被采用
+tagexclude:被用来从度量值(measurements)中执行一个tag。作为tagdrop的对立面，它将丢弃所有依赖于tag的相关度量值，tagexclude只是单纯的从度量值中给tag一个key
+这个可以被用作input和output中，但是强烈建议用在input中，他会在同一个采集时间点更加有效的过滤out tags
+taginclude:tagexclude的反向含义。在最终的度量值中，也将包含tag keys
+注意：tagpass和tagdrop参数必须等一在plugin函数的底部，不然对应的子plugin配置可能被tagpass/tagdrop映射中的内容截断
+#################################################(OUTPUT)输出配置##############################################
+#输出插件，我们使用的是influxdb，得先进行安装配置
+[[outputs.influxdb]]
+## The full HTTP or UDP endpoint URL for your InfluxDB instance.
+#如果有多个urls，可以指定为相同集群的一部分。意味着urls中的一个将被写到每一个间隔
+# urls = ["udp://localhost:8089"] # UDP endpoint example
+urls = ["http://172.25.46.7:8086"] # required
+#默认需要连接的telegraf库，没有则自己创建
+database = "telegraf" # required
+precision = "s"
+#修改保留策略
+retention_policy = ""
+#持续写入，仅支持集群模式, can be: "any", "one", "quorum", "all"
+write_consistency = "any"
+#作为influxdb客户端，设置写超时时间，如果为空默认为5s超时，0s表示不设置超时时间(不建议)
+timeout = "5s"
+#设置telegraf的库的用户名和密码
+# username = "telegraf"
+# password = "metricsmetricsmetricsmetrics"
+###############################################(INPUT)输入配置###################################################
+inputs插件全局参数:
+#每一个input都可以配置的全局配置项
+#name_override:覆盖默认的度量值名字(默认是input的名字)
+#name_prefix:指定一个前缀并附加到度量值的名字(measuerments name)
+#name_suffix:指定后缀
+#tags：一个标签映射到指定的input度量值
+#interval：多久采集一次数据，默认可用使用全局配置中的参数
+配置示例：
+[[inputs.cpu]]
+#采集每个cpu的指标
+percpu = true
+#采集总的cpu指标
+totalcpu = true
+#会丢弃掉time开头的。如果想要采集原始的cpu相关指标，请注释
+fielddrop = ["time_*"]
+[[inputs.disk]]
+#默认的telegraf将手机所有挂载点的信息
+#下面这个参数可以指定挂载点
+mount_points = ["/"]
+#仅存储磁盘inode相关的度量值
+fieldpass = ["inodes*"]
+#通过文件系统类型来忽略一些挂载点，比如tmpfs
+ignore_fs = ["tmpfs", "devtmpfs"]
+#仅存储tagpass相关的信息
+[inputs.disk.tagpass]
+fstype = [ "ext4", "xfs" ]
+path = [ "/export", "/home*" ]
+#默认telegraf将采集所有存储设备的信息，devices参数可以指定
+# devices = ["sda", "sdb"]
+#如果需要磁盘的串行号可以将下面注释打开
+# skip_serial_number = false
+[[inputs.mem]]
+#采集docker和redis的插件
+[[inputs.docker]]
+#指定docker启动的api接口，并指定需要采集那些容器指标
+endpoint = "tcp://10.0.0.2:5256"
+container_names = []
+[[inputs.redis]]
+#指定redis的相关接口
+servers = ["tcp://10.0.0.1:6379"]
