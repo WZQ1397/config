@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: alpine-env-conf
+spec:
+  containers:
+  - name: alpine
+    image: alpine-ssh-server:latest
+    imagePullPolicy: IfNotPresent
+    command: ["sleep"]
+    args: ["100000"]
+    env:
+    - name: name
+      valueFrom:
+        configMapKeyRef:
+          name: zach-env
+          key: name
+    - name: job
+      valueFrom:
+        configMapKeyRef:
+          name: zach-env
+          key: job
