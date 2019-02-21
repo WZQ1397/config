@@ -1,0 +1,33 @@
+apiVersion: apps/v1beta2
+kind: Deployment 
+metadata:
+  name: nginx-nfs-pv
+  labels:
+    service: nginx
+    type: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      type: backend
+      service: nginx
+  template:
+    metadata:
+      labels:
+        type: backend
+        service: nginx
+    spec:  
+      containers:
+      - name: www
+        image: nginx:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+          - containerPort: 80
+            name: www
+        volumeMounts:
+          - name: www-persistent-storage
+            mountPath: /usr/share/nginx/html
+      volumes:
+        - name: www-persistent-storage
+          persistentVolumeClaim:
+            claimName: nfs-nginx
