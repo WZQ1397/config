@@ -1,0 +1,72 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: prometheus
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /prometheus
+        backend:
+          serviceName: prometheus
+          servicePort: 9090
+
+---
+
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: prometheus
+spec:
+  selector:
+    matchLabels:
+      type: monitor
+      service: prometheus
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        type: monitor
+        service: prometheus
+    spec:
+      nodeSelector:
+        level: A
+      containers:
+      - name: prometheus
+        image: prom/prometheus:v2.0.0
+        imagePullPolicy: IfNotPresent
+        command:
+        - /bin/prometheus
+        args:
+        - "--config.file=/etc/prometheus/prometheus.yml"
+        - "--storage.tsdb.path=/prometheus"
+        - "--web.console.libraries=/usr/share"
+        - "--web.external-url=http://172.16.49.87/prometheus"
+        volumeMounts:
+        - mountPath: /etc/prometheus/prometheus.yml
+          name: prom-conf
+      volumes:
+      - name: prom-conf
+        hostPath:
+          path: /k8syml/pv/hostpathfile/conf/prometheus.yml
+          type: File
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus
+spec:
+  type: NodePort
+  ports:
+  - port: 9090
+    nodePort: 30909
+  selector:
+    type: monitor
+    service: prometheus
