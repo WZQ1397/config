@@ -1,0 +1,65 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: httpd-pv-mount
+  labels:
+    type: web
+    service: httpd
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      type: web
+      service: httpd
+  # when pod ready it willl success
+  minReadySeconds: 1
+  # Deploy max wait 60 seconds. if not success ,it will consider to failed.
+  progressDeadlineSeconds: 60
+  # rollback max version num default 10
+  revisionHistoryLimit: 5
+  strategy:
+  # recreate it will kill all pods present
+  # type: Recreate 
+  # RollingUpdate allow deploy new without downtime
+    type: RollingUpdate
+    rollingUpdate:
+      # When go RollingUpdate ,it will start 1 pod
+      maxSurge: 1
+      # Maximum number of pods allowed for RollingUpdate
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        type: web
+        service: httpd
+        language: c99
+    spec:
+      containers:
+      - name: httpd
+        image: httpd:latest
+        imagePullPolicy: IfNotPresent
+        volumeMounts:
+        - mountPath: /usr/local/apache2/htdocs 
+          name: www
+      volumes:
+      - name: www
+        hostPath:
+          path: /k8syml/pv/hostpath-Dir/www
+          type: Directory
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: apache2
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    nodePort: 30004
+    protocol: TCP
+  selector:
+    type: web
+    service: httpd
