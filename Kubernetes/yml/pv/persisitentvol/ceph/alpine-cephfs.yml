@@ -1,0 +1,34 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: ceph-alpine
+  labels:
+    type: os
+    service: linux
+    vendor: centos
+spec:
+  selector:
+    matchLabels:
+      type: os
+      service: linux
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        type: os
+        service: linux
+        vendor: centos
+    spec:
+      containers:
+      - name: ceph-alpine
+        image: alpine-ssh-server:latest
+        imagePullPolicy: IfNotPresent
+        command: ["/usr/sbin/sshd","-D"]
+        volumeMounts:
+        - name: cephfs
+          mountPath: "/cephfs"
+      volumes:
+      - name: cephfs
+        persistentVolumeClaim:
+          claimName: cephfs
