@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: cephfs
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteMany
+  #fsType: ext4
+  cephfs:
+    monitors:
+    - 172.16.49.96:6789
+    path: /
+    user: admin
+    secretRef:
+      name: ceph-secret
