@@ -1,0 +1,14 @@
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: ceph-pool-blk
+provisioner: kubernetes.io/rbd
+parameters:
+  monitors: 172.16.49.96:6789
+  adminId: admin
+  adminSecretName: ceph-secret
+  adminSecretNamespace: default
+#  pool: ceph_pool_blk
+  userId: admin
+  userSecretName: ceph-secret
+  fsType: ext4
