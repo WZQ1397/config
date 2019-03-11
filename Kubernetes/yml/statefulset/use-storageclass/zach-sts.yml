@@ -1,0 +1,53 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ceph-sts-svc
+  labels:
+    app: ceph-sts-svc
+spec:
+  ports:
+  - port: 22
+    name: sshd
+  clusterIP: None
+  selector:
+    app: ceph-zach
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: zach-ceph-sts
+spec:
+  serviceName: ceph-sts-svc
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ceph-zach
+  template:
+    metadata:
+      labels:
+        app: ceph-zach
+    spec:
+      containers:
+      - name: ceph-zach
+        image: alpine:latest
+        command: ["sleep","1000000000"]
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 22
+          name: sshd
+        volumeMounts:
+        - name: cephfs
+          mountPath: /data
+          subPath: logs
+  volumeClaimTemplates:
+  - metadata:
+      name: cephfs
+      annotations:
+        volume.beta.kubernetes.io/storage-class: "ceph-pool-blk"
+        gcp-auto-backup: "yes"
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      resources:
+        requests:
+          storage: 40Gi
+      #storageClassName: nfs
