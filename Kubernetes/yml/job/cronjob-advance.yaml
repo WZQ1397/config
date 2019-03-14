@@ -1,0 +1,21 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: show-netstat-job
+spec:
+  schedule: "*/1 * * * *"
+  startingDeadlineSeconds: 30
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: show-netstat
+            image: alpine-ssh-server:latest
+            imagePullPolicy: IfNotPresent
+            command: 
+            - /bin/netstat
+            args:
+            - -tlunp
+          restartPolicy: OnFailure
