@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: httpd-traefik
+  annotations:
+    kubernetes.io/ingress.class: traefik
+spec:
+  rules:
+  - host: httpd.tsjinrong.top
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: httpd-deploy-lb
+          servicePort: 80
