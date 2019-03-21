@@ -1,0 +1,27 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: index-web
+  namespace: default
+  annotations:
+# https://docs.traefik.io/configuration/backends/kubernetes/#annotations
+    traefik.ingress.kubernetes.io/frontend-entry-points: "http,https"
+    traefik.ingress.kubernetes.io/priority: "3"
+spec:
+  # TWO APP yml config in svc DIR
+  rules:
+  - host: nginx.tsjinrong.top
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: index-web
+          servicePort: 80
+  - host: jenkins.tsjinrong.top
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: jenkins
+          servicePort: 8080
+

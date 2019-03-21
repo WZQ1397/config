@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: index-web
+  namespace: kube-system
+#  annotations:
+#   kubernetes.io/ingress.class: "nginx"
+#   ingress.kubernetes.io/ssl-redirect: "false"
+#   nginx.ingress.kubernetes.io/ssl-redirect: "false"
+spec:
+  # TWO APP yml config in svc DIR
+  rules:
+  - http:
+      paths:
+      - path: /apache
+        backend:
+          serviceName: apache2
+          servicePort: 30004
+      - path: /nginx
+        backend:
+          serviceName: nginx
+          servicePort: 30003

@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: zach-web-sts-svc
+  labels:
+    app: zach-web-sts-svc
+spec:
+  ports:
+  - port: 80
+    name: web
+  clusterIP: None
+  selector:
+    app: zach-web-pod
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: zach-web-sts
+spec:
+  serviceName: zach-web-sts-svc
+  replicas: 3
+  selector:
+    matchLabels:
+      app: zach-web-pod
+  template:
+    metadata:
+      labels:
+        app: zach-web-pod
+    spec:
+      containers:
+      - name: zach-web
+        image: httpd:2.4-alpine 
+        ports:
+        - containerPort: 80
+          name: web
+        volumeMounts:
+        - name: webdata
+          mountPath: /usr/share/nginx/html
+  volumeClaimTemplates:
+  - metadata:
+      name: webdata
+    spec:
+      accessModes: ["ReadWriteMany"]
+      resources:
+        requests:
+          storage: 500Mi
+      storageClassName: nfs

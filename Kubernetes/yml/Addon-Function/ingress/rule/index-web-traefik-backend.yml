@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: index-web
+  namespace: default
+  annotations:
+    # https://docs.traefik.io/basics/#circuit-breakers
+    traefik.backend.circuitbreaker: NetworkErrorRatio() > 0.5
+    traefik.backend.loadbalancer.method: wrr
+spec:
+  ports:
+  - port: 80
+  selector:
+    service: nginx
+    type: backend

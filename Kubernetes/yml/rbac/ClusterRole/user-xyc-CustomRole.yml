@@ -1,0 +1,27 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: xyc
+rules:
+- resources: ["pods", "pods/attach", "pods/exec", "pods/log", "pods/status"]
+  verbs: ["*"]
+  apiGroups: [""] # space string means core API cluster
+- resources: ["deployments", "replicasets"]
+  verbs: ["create", "get", "list", "update", "watch"]
+  apiGroups: ["", "apps", "extensions"]
+
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: xyc
+  namespace: default
+subjects:
+- kind: User
+  name: xyc
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: xyc
+  apiGroup: rbac.authorization.k8s.io

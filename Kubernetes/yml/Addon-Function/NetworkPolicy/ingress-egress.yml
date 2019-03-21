@@ -1,0 +1,38 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: test-network-policy
+  namespace: default
+spec:
+  podSelector:
+    matchLabels:
+      role: db
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  - from:
+    - ipBlock:
+        cidr: 172.17.0.0/16
+        except:
+        - 172.17.1.0/24
+	# Label project=myproject allowed in Any NS
+    - namespaceSelector:
+        matchLabels:
+          project: myproject
+	# Label role=frontend allowed in default NS
+    - podSelector:
+        matchLabels:
+          role: frontend
+    # Any PODS are Allowed to visit TCP:6379
+    ports:
+    - protocol: TCP
+      port: 6379
+  egress:
+    # Any PODS only allow to visit follow CIDR and TCP:5978
+  - to:
+    - ipBlock:
+        cidr: 10.0.0.0/24
+    ports:
+    - protocol: TCP
+      port: 5978

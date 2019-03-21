@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-myapp-ingress
+spec:
+  podSelector:
+  matchLabels:
+    app: myapp
+  ingress:
+  - from:
+	# allow CIDR is follow
+    - ipBlock:
+        cidr: 10.244.0.0/16
+	# except follow CIDR deny
+        except:
+        - 10.244.1.2/32
+    ports:
+    - protocol: TCP
+      port: 80

@@ -1,0 +1,11 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: deny-all-ingress
+  namespace: dev
+spec:
+  # The follow is empty which means use Default Policy
+  # Deny ALL and it will work for ALL PODS
+  podSelector: {}
+  policyTypes:
+  - Ingress
