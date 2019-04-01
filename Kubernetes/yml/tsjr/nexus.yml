@@ -1,0 +1,52 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: nexus3
+  name: nexus3
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nexus3
+      environment: dev
+  template:
+    metadata:
+      labels:
+        app: nexus3
+        environment: dev
+    spec:
+      containers:
+        - name: nexus3
+          image: sonatype/nexus3:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+          - containerPort: 8081
+            protocol: TCP
+          volumeMounts:
+          - name: nexus-data
+            mountPath: /nexus-data
+      nodeSelector:
+        kubernetes.io/hostname: 172.20.1.139
+      volumes:
+      - name: nexus-data
+        hostPath:
+          path: /data/jk_repo
+          type: Directory
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: nexus3
+spec:
+  type: NodePort
+  ports:
+  - port: 8081
+    nodePort: 20009
+    protocol: TCP
+  selector:
+    app: nexus3
+    environment: dev
