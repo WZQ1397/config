@@ -8,10 +8,11 @@ spec:
         metadata:
             labels:
                 app: jenkins
+                environment: dev
         spec:
             containers:
             - name: jenkins
-              image: jenkins/jenkins
+              image: jenkins:2.60.3
               ports:
               - name: http-port
                 containerPort: 8080
@@ -20,6 +21,9 @@ spec:
               volumeMounts:
               - name: jenkins-home
                 mountPath: /var/jenkins_home
+            nodeName: 172.20.1.140
             volumes:
             - name: jenkins-home
-              emptyDir: {}
+              hostPath:
+                path: /data/jk_home
+                type: Directory
