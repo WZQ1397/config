@@ -1,0 +1,60 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: tsjr-$service-$svcport-$stage
+spec:
+  selector:
+    matchLabels:
+      stage: $stage
+      type: web
+      service: $service
+      vendor: zach
+  template:
+    metadata:
+      labels:
+        stage: $stage
+        type: web
+        service: $service
+        vendor: zach
+    spec:
+      containers:
+      - name: $service-$svcport-$stage
+        image: java:11-jdk-alpine
+        imagePullPolicy: IfNotPresent
+        #command: ["sh","/usr/src/myapp/run.sh","$service-$svcport-$stage"]
+        command: ["java","-server", "-Xms512m", "-Xmx512m", "-Xss256k", "-XX:MetaspaceSize=64m", "-XX:MaxMetaspaceSize=128m","-jar","/usr/src/myapp/$jar_name.jar","--server.port=$svcport"]
+        #env:
+        #- name: DUBBO_PORTS
+        #  value: "20888"
+        volumeMounts:
+        - mountPath: /usr/src/myapp
+          name: webapp
+        - mountPath: /data/tsjinrong/logs
+          name: tsjrlogs
+      volumes:
+      - name: webapp
+        hostPath:
+          path: /tsjr-data/deploy-java
+          type: Directory
+      - name: tsjrlogs
+        hostPath:
+          path: /data/tsjinrong/logs
+          type: Directory
+      nodeSelector:
+        level: B
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: $service-$svcport-$stage
+spec:
+  type: NodePort
+  ports:
+  - port: $svcport
+    nodePort: 20095
+    protocol: TCP
+  selector:
+    stage: $stage
+    type: web
+    service: $service
+    vendor: zach
