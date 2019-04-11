@@ -1,0 +1,97 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    environment: dev
+    stage: dev
+    type: message
+    service: rabbitmq
+    vendor: tsjr
+    app: rabbitmq
+  name: tsjr-rabbitmq-dev-sg-1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rabbitmq
+      stage: dev
+      type: message
+      service: rabbitmq
+      vendor: tsjr
+      environment: dev
+  template:
+    metadata:
+      labels:
+        app: rabbitmq
+        stage: dev
+        type: message
+        service: rabbitmq
+        vendor: tsjr
+        environment: dev
+    spec:
+      containers:
+        - name: rabbitmq-dev-sg-1
+          image: rabbitmq:3-alpine
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: PODIP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP 
+          ports:
+            - containerPort: 5672
+              name: server
+            - containerPort: 15672
+              name: erlang
+            - containerPort: 25672
+              name: web
+          volumeMounts:
+          - name: rabbitmq-data
+            mountPath: /var/lib/rabbitmq
+          - name: date-config
+            mountPath: /etc/localtime
+      volumes:
+      - name: rabbitmq-data
+        hostPath:
+          path: /data/rabbitmq-data/dev
+          type: Directory
+      - name: date-config
+        hostPath:
+          path: /etc/localtime
+      nodeSelector:
+        level: C
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rabbitmq-server-dev
+spec:
+  type: NodePort
+  ports:
+  - port: 5672
+    nodePort: 21001
+    protocol: TCP
+  selector:
+    stage: dev
+    type: message
+    service: rabbitmq
+    vendor: tsjr
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rabbitmq-management-dev
+spec:
+  type: NodePort
+  ports:
+  - port: 15672
+    nodePort: 21002
+    protocol: TCP
+  selector:
+    stage: dev
+    type: message
+    service: rabbitmq
+    vendor: tsjr
+
