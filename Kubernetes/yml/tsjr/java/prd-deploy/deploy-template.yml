@@ -19,13 +19,29 @@ spec:
     spec:
       containers:
       - name: $service-$svcport-$stage
-        image: java:11-jdk-alpine
+        image: openjdk:11.0.2-jdk-stretch
         imagePullPolicy: IfNotPresent
         #command: ["sh","/usr/src/myapp/run.sh","$service-$svcport-$stage"]
-        command: ["java","-server", "-Xms512m", "-Xmx512m", "-Xss256k", "-XX:MetaspaceSize=64m", "-XX:MaxMetaspaceSize=128m","-jar","/usr/src/myapp/$jar_name.jar","--server.port=$svcport"]
-        #env:
+        command: ["java","-server", "-Xms512m", "-Xmx512m", "-Xss256k", "-XX:MetaspaceSize=64m", "-XX:MaxMetaspaceSize=128m","-jar","/usr/src/myapp/$jar_name.jar","--server.port=$svcport","--spring.cloud.consul.discovery.port=$svcport","--spring.cloud.consul.discovery.hostname=$MY_POD_IP","--spring.cloud.consul.discovery.instance-id=tsjr-$service-$svcport-$stage-$MY_POD_IP","-spring.cloud.consul.host=consul-dev","--spring.cloud.consul.port=8500"]
+        env:
         #- name: DUBBO_PORTS
         #  value: "20888"
+        - name: MY_POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        - name: MY_POD_SERVICE_ACCOUNT
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.serviceAccountName
+        - name: MY_POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
         volumeMounts:
         - mountPath: /usr/src/myapp
           name: webapp
@@ -51,7 +67,7 @@ spec:
   type: NodePort
   ports:
   - port: $svcport
-    nodePort: 20095
+    nodePort: $out_port
     protocol: TCP
   selector:
     stage: $stage
