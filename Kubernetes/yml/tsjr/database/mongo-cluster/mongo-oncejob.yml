@@ -1,0 +1,42 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: mongo-backup
+spec:
+  template:
+    spec:
+      containers:
+      - name: mongo-backup
+        imagePullPolicy: IfNotPresent
+        image: harbor.tsjinrong.cn/k8s-zach/mongo:4.0
+        env:
+        - name: MONGO_BACKUP_USER
+          valueFrom:
+            secretKeyRef:
+              name: mongo-pwd
+              key: mongo-root-user
+        - name: MONGO_BACKUP_USER_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mongo-pwd
+              key: mongo-root-pwd
+        - name: BACKUP_DB_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: mongodump-job
+              key: dblist
+        command:
+        - /bin/sh
+        - -c
+        - |
+          set -ex
+          mongodump -h $MONGO_CLUSTER_SERVICE_HOST -d ${BACKUP_DB_NAME} -o /tmp -u${MONGO_BACKUP_USER} -p ${MONGO_BACKUP_USER_PASSWORD}
+        volumeMounts:
+        - name: mongo-backup
+          mountPath: /tmp
+      restartPolicy: OnFailure
+      volumes:
+      - name: mongo-backup
+        hostPath:
+          path: /data/web
+          type: Directory

@@ -1,0 +1,225 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: tsjr-mongo-cluster-0
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      stage: local
+      type: db
+      service: mongo-c-0
+      version: v4.0
+  template:
+    metadata:
+      labels:
+        belong: backend
+        stage: local
+        type: db
+        service: mongo-c-0
+        version: v4.0
+    spec:
+      containers:
+      - name: mongo-cluster
+        image: harbor.tsjinrong.cn/k8s-zach/mongo:4.0
+        imagePullPolicy: IfNotPresent
+        command: ['mongod','--bind_ip_all',"--replSet","rs","--smallfiles","--noprealloc"]
+        ports:
+        - containerPort: 27017
+          protocol: TCP
+        env:
+        - name: MONGO_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mongo-pwd
+              key: mongo-root-pwd
+        - name: MONGO_USER
+          valueFrom:
+            secretKeyRef:
+              name: mongo-pwd
+              key: mongo-root-user
+        volumeMounts:
+        - name: zach-data
+          mountPath: /data/db
+      volumes:
+        - name: zach-data
+          hostPath:
+            path: /zach-data
+      nodeSelector:
+        kubernetes.io/hostname: 172.16.50.11
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    belong: backend
+    stage: local
+    type: db
+    service: mongo-c-0
+    version: v4.0
+  name: mongo-c-0
+spec:
+  clusterIP: None
+  type: ClusterIP
+  ports:
+  - port: 27017
+    protocol: TCP
+    targetPort: 27017
+  selector:
+    belong: backend
+    stage: local
+    type: db
+    service: mongo-c-0
+    version: v4.0
+
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: tsjr-mongo-cluster-1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      stage: local
+      type: db
+      service: mongo-c-1
+      version: v4.0
+  template:
+    metadata:
+      labels:
+        belong: backend
+        stage: local
+        type: db
+        service: mongo-c-1
+        version: v4.0
+    spec:
+      containers:
+      - name: mongo-cluster
+        image: harbor.tsjinrong.cn/k8s-zach/mongo:4.0
+        imagePullPolicy: IfNotPresent
+        command: ['mongod','--bind_ip_all',"--replSet","rs","--smallfiles","--noprealloc"]
+        ports:
+        - containerPort: 27017
+          protocol: TCP
+        env:
+        - name: MONGO_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mongo-pwd
+              key: mongo-root-pwd
+        - name: MONGO_USER
+          valueFrom:
+            secretKeyRef:
+              name: mongo-pwd
+              key: mongo-root-user
+        volumeMounts:
+        - name: zach-data
+          mountPath: /data/db
+      volumes:
+        - name: zach-data
+          hostPath:
+            path: /zach-data
+      nodeSelector:
+        kubernetes.io/hostname: 172.16.50.12
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    belong: backend
+    stage: local
+    type: db
+    service: mongo-c-1
+    version: v4.0
+  name: mongo-c-1
+spec:
+  clusterIP: None
+  type: ClusterIP
+  ports:
+  - port: 27017
+    protocol: TCP
+    targetPort: 27017
+  selector:
+    belong: backend
+    stage: local
+    type: db
+    service: mongo-c-1
+    version: v4.0
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: tsjr-mongo-cluster-2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      stage: local
+      type: db
+      service: mongo-c-2
+      version: v4.0
+  template:
+    metadata:
+      labels:
+        belong: backend
+        stage: local
+        type: db
+        service: mongo-c-2
+        version: v4.0
+    spec:
+      containers:
+      - name: mongo-cluster
+        image: harbor.tsjinrong.cn/k8s-zach/mongo:4.0
+        imagePullPolicy: IfNotPresent
+        command: ['mongod','--bind_ip_all',"--replSet","rs","--smallfiles","--noprealloc"]
+        ports:
+        - containerPort: 27017
+          protocol: TCP
+        env:
+        - name: MONGO_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mongo-pwd
+              key: mongo-root-pwd
+        - name: MONGO_USER
+          valueFrom:
+            secretKeyRef:
+              name: mongo-pwd
+              key: mongo-root-user
+        volumeMounts:
+        - name: zach-data
+          mountPath: /data/db
+      volumes:
+        - name: zach-data
+          hostPath:
+            path: /zach-data
+      nodeSelector:
+        kubernetes.io/hostname: 172.16.50.15
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    belong: backend
+    stage: local
+    type: db
+    service: mongo-c-2
+    version: v4.0
+  name: mongo-c-2
+spec:
+  clusterIP: None
+  type: ClusterIP
+  ports:
+  - port: 27017
+    protocol: TCP
+    targetPort: 27017
+  selector:
+    belong: backend
+    stage: local
+    type: db
+    service: mongo-c-2
+    version: v4.0
