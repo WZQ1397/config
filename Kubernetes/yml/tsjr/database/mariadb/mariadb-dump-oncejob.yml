@@ -1,0 +1,44 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: mysql-backup
+spec:
+  template:
+    spec:
+      containers:
+      - name: mysql-backup
+        imagePullPolicy: IfNotPresent
+        image: mariadb:10.3
+        env:
+        - name: MYSQL_BACKUP_USER
+          value: root
+        - name: MYSQL_BACKUP_USER_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mariadb-pwd
+              key: mariadb-root-pwd
+        - name: BACKUP_DB_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: mysqldump-job-sit
+              key: dblist
+        command:
+        - /bin/sh
+        - -c
+        - |
+          set -ex
+          mysqldump --host=mariadb-cluster-sit --user=$MYSQL_BACKUP_USER \
+                    --password=$MYSQL_BACKUP_USER_PASSWORD \
+                    --routines --databases $BACKUP_DB_NAME --single-transaction \
+                    > /mysql-backup/mysql-`date +"%Y%m%d"`.sql
+        volumeMounts:
+        - name: mysql-backup
+          mountPath: /mysql-backup
+      restartPolicy: OnFailure
+      volumes:
+      - name: mysql-backup
+        hostPath:
+          path: /tsjr-data/databackup/mariadb-backup/sit
+          type: Directory
+      nodeSelector:
+        kubernetes.io/hostname: 172.20.1.142

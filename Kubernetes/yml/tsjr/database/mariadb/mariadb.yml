@@ -1,0 +1,148 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: tsjr-mariadb-cluster-sit
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      stage: sit
+      type: db
+      service: mariadb
+      version: v10.3 
+  template:
+    metadata:
+      labels:
+        belong: backend
+        stage: sit
+        type: db
+        service: mariadb
+        version: v10.3
+    spec:
+      initContainers:
+      - name: mariadb-init
+        image: busybox
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: MYSQL_INIT_USER_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mariadb-pwd
+              key: mariadb-root-pwd
+        command:  
+          - sh
+          - "-c"
+          - |
+            set -ex
+            cat > /docker-entrypoint-initdb.d/mysql-root-init.sql <<EOF
+            grant all on *.* to 'root'@'%' identified by '$MYSQL_INIT_USER_PASSWORD';
+            flush privileges;
+            EOF
+        volumeMounts:
+        - name: mariadb-data
+          mountPath: /var/lib/mysql
+        - name: mariadb-initdb
+          mountPath: /docker-entrypoint-initdb.d
+        - name: date-config
+          mountPath: /etc/localtime
+      containers:
+      - name: mariadb-cluster-sit
+        image: mariadb:10.3
+        imagePullPolicy: IfNotPresent
+        volumeMounts:
+        - mountPath: /var/lib/mysql
+          name: mariadb-data
+        - name: mariadb-initdb
+          mountPath: /docker-entrypoint-initdb.d
+        - name: date-config
+          mountPath: /etc/localtime
+        - name: mariadb-config
+          mountPath: /etc/mysql
+        ports:
+        - containerPort: 3306
+          protocol: TCP
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mariadb-pwd
+              key: mariadb-root-pwd
+        - name: MYSQL_USER
+          valueFrom:
+            secretKeyRef:
+              name: mariadb-pwd
+              key: mariadb-root-user
+        livenessProbe:
+          exec:
+            command:
+            - /bin/sh
+            - "-c"
+            - MYSQL_PWD="${MYSQL_ROOT_PASSWORD}"
+            - mysql -h 127.0.0.1 -u ${MYSQL_USER} -e "SELECT 1"
+          initialDelaySeconds: 30
+          timeoutSeconds: 5
+          successThreshold: 1
+          failureThreshold: 3
+        readinessProbe:
+          exec:
+            command:
+            - /bin/sh
+            - "-c"
+            - MYSQL_PWD="${MYSQL_ROOT_PASSWORD}"
+            - MYSQL -h 127.0.0.1 -u ${MYSQL_USER} -e "SELECT 1"
+          initialDelaySeconds: 10
+          timeoutSeconds: 1
+          successThreshold: 1
+          failureThreshold: 3
+        resources:
+          requests:
+            cpu: 100m
+            memory: 200Mi
+          limits:
+            cpu: 1000m
+            memory: 2000Mi
+      volumes:
+      - name: mariadb-initdb
+        emptyDir: {}
+      - name: mariadb-data
+        hostPath:
+          path: /data/databases/mariadb-sit
+          type: Directory
+      - name: date-config
+        hostPath:
+          path: /etc/localtime
+      - name: mariadb-config
+        configMap:
+          name: dev-mariadb-config
+          items:
+          - key: my.cnf
+            path: my.cnf
+      nodeSelector:
+        kubernetes.io/hostname: 172.20.1.142
+ 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    belong: backend
+    stage: sit
+    type: db
+    service: mariadb
+    version: v10.3
+  name: mariadb-cluster-sit
+spec:
+  type: NodePort
+  ports:
+  - port: 3306
+    nodePort: 33307
+    protocol: TCP
+    targetPort: 3306
+  selector:
+    belong: backend
+    stage: sit
+    type: db
+    service: mariadb
+    version: v10.3
+
+
