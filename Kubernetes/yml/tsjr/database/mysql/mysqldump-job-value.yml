@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysqldump-job
+data:
+  dblist: zachcmdb,app
+
