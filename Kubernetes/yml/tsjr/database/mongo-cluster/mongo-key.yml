@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mongo-pwd
+data:
+  mongo-root-pwd: dHNqcjEyMyE=
+  mongo-root-user: emFjaA==
+
