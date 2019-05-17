@@ -1,0 +1,64 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  namespace: kube-system
+  labels:
+    environment: dev
+    stage: dev
+    type: proxy
+    service: nginx
+    vendor: tsjr
+    app: nginx
+  name: tsjr-nginx-dev-sg-1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      environment: dev
+      stage: dev
+      type: proxy
+      service: nginx
+      vendor: tsjr
+      app: nginx
+  template:
+    metadata:
+      labels:
+        environment: dev
+        stage: dev
+        type: proxy
+        service: nginx
+        vendor: tsjr
+        app: nginx
+    spec:
+      serviceAccountName: traefik-ingress-controller
+      hostNetwork: true
+      containers:
+      - name: nginx
+        image: nginx:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+          protocol: TCP
+          hostPort: 80
+          hostIP: 0.0.0.0
+        env:
+          - name: PODIP
+            valueFrom:
+              fieldRef:
+                fieldPath: status.podIP 
+        volumeMounts:
+        - name: nginx-data
+          mountPath: /etc/nginx/conf.d
+        - name: date-config
+          mountPath: /etc/localtime
+      volumes:
+      - name: nginx-data
+        hostPath:
+          path: /tsjr-data/nginx-data/dev
+          type: Directory
+      - name: date-config
+        hostPath:
+          path: /etc/localtime
+      nodeSelector:
+        level: C
+
