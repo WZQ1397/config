@@ -8,7 +8,7 @@ metadata:
     service: consul
     vendor: tsjr
     app: consul
-  name: tsjr-consul-dev-sg-1
+  name: tsjr-consul-sg-1
 spec:
   replicas: 1
   selector:
@@ -38,6 +38,7 @@ spec:
              - "-server"
              - "-bootstrap"
              - "-datacenter=zach"
+             - "-config-dir=/consul-conf"
              - "-ui"
              - "-data-dir=/data"
              - "-bind=0.0.0.0"
@@ -72,6 +73,8 @@ spec:
             mountPath: /data
           - name: date-config
             mountPath: /etc/localtime
+          - name: consul-config
+            mountPath: /consul-conf
       volumes:
       - name: consul-data
         hostPath:
@@ -80,7 +83,9 @@ spec:
       - name: date-config
         hostPath:
           path: /etc/localtime
-
+      - name: consul-config
+        hostPath:
+          path: /tsjr-data/deploy-java/generator/deploy/consul/consul-conf
 ---
 apiVersion: v1
 kind: Service
