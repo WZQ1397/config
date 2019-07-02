@@ -1,0 +1,92 @@
+{{range services}} {{$name := .Name}} {{$service := service .Name}}
+{{if .Tags | contains "sit"}}
+upstream {{$name}}-sit {
+  zone upstream-{{$name}} 64k;
+  {{range $service}}server {{.Address}}:{{.Port}} max_fails=3 fail_timeout=60 weight=1; # {{ .Tags }}
+  {{end}}
+}
+server {
+        listen 80;
+        server_name {{ $name }}-sit.suncashlending.com;
+        access_log  /var/log/nginx/sit.suncashlending.com.{{ $name }}.access.log;
+        error_log   /var/log/nginx/sit.suncashlending.com.{{ $name }}.err;
+
+        location ^~ / {
+                proxy_pass http://{{$name}}-sit;
+                proxy_set_header Host $host;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+        }
+
+}
+server {
+        listen 443;
+        server_name {{ $name }}-sit.suncashlending.com;
+        access_log  /var/log/nginx/sit.suncashlending.com.{{ $name }}.access.log;
+        error_log   /var/log/nginx/sit.suncashlending.com.{{ $name }}.err;
+        ssl_certificate      /data/nginx-ssl/suncashlending.com.pem;
+        ssl_certificate_key  /data/nginx-ssl/suncashlending.com.key;
+        ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+        ssl_session_cache    shared:SSL:1m;
+        ssl_session_timeout  5m;
+        
+        ssl_ciphers  HIGH:!aNULL:!MD5;
+        ssl_prefer_server_ciphers  on;
+        ssl on; 
+        location ^~ / {
+                proxy_pass http://{{$name}}-sit;
+                proxy_set_header Host $host;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+        }
+
+}
+{{end}}
+{{if .Tags | contains "online"}}
+upstream {{$name}}-prd {
+  zone upstream-{{$name}} 64k;
+  {{range $service}}server {{.Address}}:{{.Port}} max_fails=3 fail_timeout=60 weight=1;
+  {{end}}
+}
+server {
+        listen 80;
+        server_name {{ $name }}-prd.suncashlending.com;
+        access_log  /var/log/nginx/prd.suncashlending.com.{{ $name }}.access.log;
+        error_log   /var/log/nginx/prd.suncashlending.com.{{ $name }}.err;
+
+        location ^~ / {
+                proxy_pass http://{{$name}}-prd;
+                proxy_set_header Host $host;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+        }
+
+}
+server {
+        listen 443;
+        server_name {{ $name }}-prd.suncashlending.com;
+        access_log  /var/log/nginx/prd.suncashlending.com.{{ $name }}.access.log;
+        error_log   /var/log/nginx/prd.suncashlending.com.{{ $name }}.err;
+        ssl_certificate      /data/nginx-ssl/suncashlending.com.pem;
+        ssl_certificate_key  /data/nginx-ssl/suncashlending.com.key;
+        ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+        ssl_session_cache    shared:SSL:1m;
+        ssl_session_timeout  5m;
+        
+        ssl_ciphers  HIGH:!aNULL:!MD5;
+        ssl_prefer_server_ciphers  on;
+        ssl on; 
+        location ^~ / {
+                proxy_pass http://{{$name}}-prd;
+                proxy_set_header Host $host;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+        }
+
+}
+{{end}}
+{{end}}
