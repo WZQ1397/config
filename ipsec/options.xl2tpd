@@ -1,0 +1,17 @@
+name l2tpd
+require-mschap-v2
+ms-dns 8.8.8.8
+ms-dns 8.8.4.4
+ipcp-accept-local
+ipcp-accept-remote
+noccp
+auth
+crtscts
+idle 1800
+mtu 1410
+mru 1410
+nodefaultroute
+debug
+lock
+proxy arp
+connect-delay 5000
