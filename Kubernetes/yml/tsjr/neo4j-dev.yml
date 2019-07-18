@@ -1,0 +1,51 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+    name: tsjr-suncash-neo4j-sg-a
+spec:
+    replicas: 1
+    template:
+        metadata:
+            labels:
+                app: suncash-neo4j
+                environment: dev
+        spec:
+            containers:
+            - name: suncash-neo4j-dev
+              image: neo4j:3.5.4
+              ports:
+              - name: http-port
+                containerPort: 7474
+              - name: https-port
+                containerPort: 7473
+              - name: connect
+                containerPort: 7687
+              volumeMounts:
+              - name: suncash-neo4j-data
+                mountPath: /data
+            nodeName: 172.20.1.140
+            volumes:
+            - name: suncash-neo4j-data
+              hostPath:
+                path: /data/neo4j/dev
+                type: Directory
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: suncash-neo4j-dev-ui
+spec:
+    type: NodePort
+    selector:
+        app: suncash-neo4j
+        environment: dev
+    ports:
+    - name: https-port
+      port: 7473
+      nodePort: 29073
+    - name: http-port
+      port: 7474
+      nodePort: 29074
+    - name: bolt
+      port: 7687
+      nodePort: 29087
