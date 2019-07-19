@@ -1,0 +1,41 @@
+apiVersion: apps/v1beta2
+kind: StatefulSet
+metadata:
+  name: tsjr-alpine-local
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      stage: local
+      type: os
+      service: alpine
+      version: zach 
+  serviceName: alpine-zach
+  template:
+    metadata:
+      labels:
+        belong: backend
+        stage: local
+        type: os
+        service: alpine
+        version: zach
+    spec:
+      containers:
+      - name: alpine-cluster
+        image: alpine:3.6
+        imagePullPolicy: IfNotPresent
+        command: ["sleep","10000000000"]
+        volumeMounts:
+        - mountPath: /data
+          name:  alpine-nfs
+      nodeSelector:
+        kubernetes.io/hostname: 172.16.50.12
+  volumeClaimTemplates:
+  - metadata:
+      name: alpine-nfs
+    spec:
+      accessModes: [ "ReadWriteMany" ]
+      storageClassName: "zach-nfs-local-1"
+      resources:
+        requests:
+          storage: 200Mi
