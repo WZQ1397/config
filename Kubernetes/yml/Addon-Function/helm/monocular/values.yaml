@@ -1,0 +1,167 @@
+sync:
+  # Image used to perform chart repository syncs
+  image:
+    registry: harbor.tsjinrong.cn
+    repository: k8s-zach/chart-repo
+    tag: v1.8.1
+  repos:
+    # Official repositories
+    - name: stable
+      url: https://kubernetes-charts.storage.googleapis.com
+    - name: incubator
+      url: https://kubernetes-charts-incubator.storage.googleapis.com
+    # Add your own repository
+    #- name: my-repo-name
+    #  url: my-repository-url
+    #  source: my-repository-source
+    #  schedule: "*/5 * * * *"
+    #  successfulJobsHistoryLimit: 1
+  # Uncomment these properties to set HTTP proxy for chart synchronization jobs
+  # httpProxy:
+  # httpsProxy:
+  # noProxy:
+  # TODO: review suggested resource limits/requests
+  resources: {}
+    # limits:
+    #  cpu: 100m
+    #  memory: 128Mi
+    # requests:
+    #  cpu: 100m
+    #  memory: 128Mi
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
+
+# Chartsvc is used to serve chart metadata over a REST API.
+chartsvc:
+  image:
+    registry: harbor.tsjinrong.cn
+    repository: k8s-zach/chartsvc
+    tag: v1.8.1
+  service:
+    port: 8080
+  replicas: 3
+  # TODO: review suggested resource limits/requests
+  resources: {}
+    # limits:
+    #  cpu: 100m
+    #  memory: 128Mi
+    # requests:
+    #  cpu: 100m
+    #  memory: 128Mi
+  livenessProbe:
+    httpGet:
+      path: /live
+      port: 8080
+    initialDelaySeconds: 60
+    timeoutSeconds: 5
+  readinessProbe:
+    httpGet:
+      path: /ready
+      port: 8080
+    initialDelaySeconds: 0
+    timeoutSeconds: 5
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
+
+ui:
+  replicaCount: 2
+  image:
+    registry: harbor.tsjinrong.cn
+    repository: k8s-zach/monocular-ui
+    tag: v1.8.1
+    pullPolicy: IfNotPresent
+  service:
+    name: monocular-ui
+    type: NodePort
+    externalPort: 80
+    internalPort: 8080
+    annotations: {}
+      # foo.io/bar: "true"
+  resources:
+    limits:
+      cpu: 100m
+      memory: 128Mi
+    requests:
+      cpu: 100m
+      memory: 128Mi
+  # ui-config populate
+  googleAnalyticsId: UA-XXXXXX-X
+  appName: Monocular
+  aboutUrl: "https://github.com/helm/monocular/blob/master/docs/about.md"
+  # API served on same-domain at /api path using Nginx Ingress controller
+  backendHostname: /api
+  # e.g. API served on a different domain
+  # backendHostname: http://monocular-api.local
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
+
+prerender:
+  replicaCount: 1
+  image:
+    registry: harbor.tsjinrong.cn
+    repository: k8s-zach/prerender
+    tag: latest
+    pullPolicy: IfNotPresent
+  cacheEnabled: true
+  service:
+    name: prerender
+    type: NodePort
+    externalPort: 80
+    internalPort: 3000
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
+
+ingress:
+  enabled: true
+  hosts:
+  # Wildcard
+  -
+  # - monocular.local
+
+  ## Ingress annotations
+  ##
+  annotations:
+    ## Nginx ingress controller (default)
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: 'true'
+    ## Traefik ingress controller
+    # traefik.frontend.rule.type: PathPrefixStrip
+    # kubernetes.io/ingress.class: traefik
+
+  ## Ingress TLS configuration
+  ## Secrets must be manually created in the namespace
+  ##
+  # tls:
+  #   secretName: monocular.local-tls
+
+mongodb:
+  enabled: true
+  persistence:
+    enabled: false
+
+# External MongoDB connection URL.
+# This must be set if mongodb.enabled is set to false, following the pattern:
+# `mongodb://${MONGODB_USER}:${MONGODB_ROOT_PASSWORD}@${MONGODB_DNS}:${MONGODB_PORT}/${MONGODB_DATABASE}`
+# ref: https://docs.mongodb.com/manual/reference/connection-string/
+global:
+  mongoUrl:
+  
+# This parameter will allow to set  securityContext: { "runAsUser": 1001} by example
+# this is usefull to set a user different to 0 (root) 
+# It allows to be launch in a Kubernetes with PodSecurityPolicy with a policy set runAsNonRoot
+securityContext: {}
+
+# Installs networkPolicy for the services. This will allow communication betweeen the services in
+# environments where the default policy is deny
+networkPolicy:
+  enabled: false
+
