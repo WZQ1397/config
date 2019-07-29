@@ -1,0 +1,19 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kafka-0-nodeport
+  namespace: kafka
+  labels:
+    app: kafka
+    statefulset.kubernetes.io/pod-name: kafka-0
+spec:
+  type: NodePort
+  ports:
+  - port: 39092
+    nodePort: 39092
+    protocol: TCP
+    name: kafka-0-server
+  selector:
+    app: kafka
+    statefulset.kubernetes.io/pod-name: kafka-0
