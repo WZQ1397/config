@@ -1,0 +1,29 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: traefik-ingress
+#  namespace: kube-system
+spec:
+  rules:
+  - host: traefik.k8s-dev-local.tsjinrong.top
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: traefik-ingress-service
+          servicePort: 8080
+  - host: gateway-sit.k8s-dev-local.tsjinrong.top
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: touchstone-gateway-sit-8080
+          servicePort: 8080
+  - host: consul.k8s-dev-local.tsjinrong.top
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: consul-dev
+          servicePort: 8500
+
