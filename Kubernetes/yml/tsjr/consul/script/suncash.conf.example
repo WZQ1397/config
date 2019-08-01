@@ -1,0 +1,378 @@
+  
+ 
+upstream approval {
+  zone upstream-approval 64k;
+  server 172.30.42.49:8080 max_fails=3 fail_timeout=60 weight=1;
+  
+}
+server {
+	listen 80;
+	server_name approval-sit.tsjinrong.top;
+        access_log  /var/log/nginx/cn.tsjinrong.approval.access.log;
+	error_log   /var/log/nginx/cn.tsjinrong.approval.err;
+
+	location ^~ / {
+		proxy_pass http://approval;
+		proxy_redirect          off;
+                include proxy_para.conf;
+                #proxy_set_header Host $host;
+		#proxy_set_header X-Real-IP $remote_addr;
+		#proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+	}
+
+}
+
+
+upstream approval {
+  zone upstream-approval 64k;
+  server 172.30.42.49:8080 max_fails=3 fail_timeout=60 weight=1;
+  
+}
+server {
+        listen 80;
+        server_name approval-sit.tsjinrong.top;
+        access_log  /var/log/nginx/cn.tsjinrong.approval.access.log;
+        error_log   /var/log/nginx/cn.tsjinrong.approval.err;
+
+        location ^~ / {
+                proxy_pass http://approval;
+                proxy_redirect          off;
+                include proxy_para.conf;
+                #proxy_set_header Host $host;
+                #proxy_set_header X-Real-IP $remote_addr;
+                #proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        }
+
+}
+
+  
+ 
+upstream auth-service {
+  zone upstream-auth-service 64k;
+  server 172.30.42.59:8080 max_fails=3 fail_timeout=60 weight=1;
+  
+}
+server {
+	listen 80;
+	server_name auth-service-sit.tsjinrong.top;
+        access_log  /var/log/nginx/cn.tsjinrong.auth-service.access.log;
+	error_log   /var/log/nginx/cn.tsjinrong.auth-service.err;
+
+	location ^~ / {
+		proxy_pass http://auth-service;
+		proxy_redirect          off;
+                include proxy_para.conf;
+                #proxy_set_header Host $host;
+		#proxy_set_header X-Real-IP $remote_addr;
+		#proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+	}
+
+}
+
+
+upstream auth-service {
+  zone upstream-auth-service 64k;
+  server 172.30.42.59:8080 max_fails=3 fail_timeout=60 weight=1;
+  
+}
+server {
+        listen 80;
+        server_name auth-service-sit.tsjinrong.top;
+        access_log  /var/log/nginx/cn.tsjinrong.auth-service.access.log;
+        error_log   /var/log/nginx/cn.tsjinrong.auth-service.err;
+
+        location ^~ / {
+                proxy_pass http://auth-service;
+                proxy_redirect          off;
+                include proxy_para.conf;
+                #proxy_set_header Host $host;
+                #proxy_set_header X-Real-IP $remote_addr;
+                #proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        }
+
+}
+
+  
+
+
+  
+ 
+upstream gateway {
+  zone upstream-gateway 64k;
+  server 172.30.42.18:8080 max_fails=3 fail_timeout=60 weight=1;
+  
+}
+server {
+	listen 80;
+	server_name gateway-sit.tsjinrong.top;
+        access_log  /var/log/nginx/cn.tsjinrong.gateway.access.log;
+	error_log   /var/log/nginx/cn.tsjinrong.gateway.err;
+
+	location ^~ / {
+		proxy_pass http://gateway;
+		proxy_redirect          off;
+                include proxy_para.conf;
+                #proxy_set_header Host $host;
+		#proxy_set_header X-Real-IP $remote_addr;
+		#proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+	}
+
+}
+
+
+upstream gateway {
+  zone upstream-gateway 64k;
+  server 172.30.42.18:8080 max_fails=3 fail_timeout=60 weight=1;
+  
+}
+server {
+        listen 80;
+        server_name gateway-sit.tsjinrong.top;
+        access_log  /var/log/nginx/cn.tsjinrong.gateway.access.log;
+        error_log   /var/log/nginx/cn.tsjinrong.gateway.err;
+
+        location ^~ / {
+                proxy_pass http://gateway;
+                proxy_redirect          off;
+                include proxy_para.conf;
+                #proxy_set_header Host $host;
+                #proxy_set_header X-Real-IP $remote_addr;
+                #proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        }
+
+}
+
+  
+ 
+upstream oauth2 {
+  zone upstream-oauth2 64k;
+  server 172.30.42.16:8080 max_fails=3 fail_timeout=60 weight=1;
+  
+}
+server {
+	listen 80;
+	server_name oauth2-sit.tsjinrong.top;
+        access_log  /var/log/nginx/cn.tsjinrong.oauth2.access.log;
+	error_log   /var/log/nginx/cn.tsjinrong.oauth2.err;
+
+	location ^~ / {
+		proxy_pass http://oauth2;
+		proxy_redirect          off;
+                include proxy_para.conf;
+                #proxy_set_header Host $host;
+		#proxy_set_header X-Real-IP $remote_addr;
+		#proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+	}
+
+}
+
+
+upstream oauth2 {
+  zone upstream-oauth2 64k;
+  server 172.30.42.16:8080 max_fails=3 fail_timeout=60 weight=1;
+  
+}
+server {
+        listen 80;
+        server_name oauth2-sit.tsjinrong.top;
+        access_log  /var/log/nginx/cn.tsjinrong.oauth2.access.log;
+        error_log   /var/log/nginx/cn.tsjinrong.oauth2.err;
+
+        location ^~ / {
+                proxy_pass http://oauth2;
+                proxy_redirect          off;
+                include proxy_para.conf;
+                #proxy_set_header Host $host;
+                #proxy_set_header X-Real-IP $remote_addr;
+                #proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        }
+
+}
+
+  
+ 
+upstream payment {
+  zone upstream-payment 64k;
+  
+}
+server {
+	listen 80;
+	server_name payment-sit.tsjinrong.top;
+        access_log  /var/log/nginx/cn.tsjinrong.payment.access.log;
+	error_log   /var/log/nginx/cn.tsjinrong.payment.err;
+
+	location ^~ / {
+		proxy_pass http://payment;
+		proxy_redirect          off;
+                include proxy_para.conf;
+                #proxy_set_header Host $host;
+		#proxy_set_header X-Real-IP $remote_addr;
+		#proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+	}
+
+}
+
+
+upstream payment {
+  zone upstream-payment 64k;
+  
+}
+server {
+        listen 80;
+        server_name payment-sit.tsjinrong.top;
+        access_log  /var/log/nginx/cn.tsjinrong.payment.access.log;
+        error_log   /var/log/nginx/cn.tsjinrong.payment.err;
+
+        location ^~ / {
+                proxy_pass http://payment;
+                proxy_redirect          off;
+                include proxy_para.conf;
+                #proxy_set_header Host $host;
+                #proxy_set_header X-Real-IP $remote_addr;
+                #proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        }
+
+}
+
+  
+ 
+upstream product {
+  zone upstream-product 64k;
+  server 172.30.42.31:8080 max_fails=3 fail_timeout=60 weight=1;
+  
+}
+server {
+	listen 80;
+	server_name product-sit.tsjinrong.top;
+        access_log  /var/log/nginx/cn.tsjinrong.product.access.log;
+	error_log   /var/log/nginx/cn.tsjinrong.product.err;
+
+	location ^~ / {
+		proxy_pass http://product;
+		proxy_redirect          off;
+                include proxy_para.conf;
+                #proxy_set_header Host $host;
+		#proxy_set_header X-Real-IP $remote_addr;
+		#proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+	}
+
+}
+
+
+upstream product {
+  zone upstream-product 64k;
+  server 172.30.42.31:8080 max_fails=3 fail_timeout=60 weight=1;
+  
+}
+server {
+        listen 80;
+        server_name product-sit.tsjinrong.top;
+        access_log  /var/log/nginx/cn.tsjinrong.product.access.log;
+        error_log   /var/log/nginx/cn.tsjinrong.product.err;
+
+        location ^~ / {
+                proxy_pass http://product;
+                proxy_redirect          off;
+                include proxy_para.conf;
+                #proxy_set_header Host $host;
+                #proxy_set_header X-Real-IP $remote_addr;
+                #proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        }
+
+}
+
+  
+ 
+upstream sms {
+  zone upstream-sms 64k;
+  server 172.30.42.58:8080 max_fails=3 fail_timeout=60 weight=1;
+  
+}
+server {
+	listen 80;
+	server_name sms-sit.tsjinrong.top;
+        access_log  /var/log/nginx/cn.tsjinrong.sms.access.log;
+	error_log   /var/log/nginx/cn.tsjinrong.sms.err;
+
+	location ^~ / {
+		proxy_pass http://sms;
+		proxy_redirect          off;
+                include proxy_para.conf;
+                #proxy_set_header Host $host;
+		#proxy_set_header X-Real-IP $remote_addr;
+		#proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+	}
+
+}
+
+
+upstream sms {
+  zone upstream-sms 64k;
+  server 172.30.42.58:8080 max_fails=3 fail_timeout=60 weight=1;
+  
+}
+server {
+        listen 80;
+        server_name sms-sit.tsjinrong.top;
+        access_log  /var/log/nginx/cn.tsjinrong.sms.access.log;
+        error_log   /var/log/nginx/cn.tsjinrong.sms.err;
+
+        location ^~ / {
+                proxy_pass http://sms;
+                proxy_redirect          off;
+                include proxy_para.conf;
+                #proxy_set_header Host $host;
+                #proxy_set_header X-Real-IP $remote_addr;
+                #proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        }
+
+}
+
+  
+ 
+upstream suncash-lend {
+  zone upstream-suncash-lend 64k;
+  server 172.30.106.153:8080 max_fails=3 fail_timeout=60 weight=1;
+  
+}
+server {
+	listen 80;
+	server_name suncash-lend-sit.tsjinrong.top;
+        access_log  /var/log/nginx/cn.tsjinrong.suncash-lend.access.log;
+	error_log   /var/log/nginx/cn.tsjinrong.suncash-lend.err;
+
+	location ^~ / {
+		proxy_pass http://suncash-lend;
+		proxy_redirect          off;
+                include proxy_para.conf;
+                #proxy_set_header Host $host;
+		#proxy_set_header X-Real-IP $remote_addr;
+		#proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+	}
+
+}
+
+
+upstream suncash-lend {
+  zone upstream-suncash-lend 64k;
+  server 172.30.106.153:8080 max_fails=3 fail_timeout=60 weight=1;
+  
+}
+server {
+        listen 80;
+        server_name suncash-lend-sit.tsjinrong.top;
+        access_log  /var/log/nginx/cn.tsjinrong.suncash-lend.access.log;
+        error_log   /var/log/nginx/cn.tsjinrong.suncash-lend.err;
+
+        location ^~ / {
+                proxy_pass http://suncash-lend;
+                proxy_redirect          off;
+                include proxy_para.conf;
+                #proxy_set_header Host $host;
+                #proxy_set_header X-Real-IP $remote_addr;
+                #proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        }
+
+}
+
+
