@@ -1,0 +1,3 @@
+{{with node}}{{.Node.Node}} ({{.Node.Address}}){{range .Services}}
+  {{.Service}} {{.Port}} ({{.Tags | join ","}}){{end}}
+{{end}}
