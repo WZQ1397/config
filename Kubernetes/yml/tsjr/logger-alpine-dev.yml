@@ -1,0 +1,49 @@
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  labels:
+    environment: dev
+    stage: dev
+    type: log
+    service: syslog
+    vendor: tsjr
+    app: syslog
+  name: tsjr-logger
+  namespace: syslog
+spec:
+  selector:
+    matchLabels:
+      app: syslog
+      stage: dev
+      type: log
+      service: syslog
+      vendor: tsjr
+      environment: dev
+  template:
+    metadata:
+      labels:
+        app: syslog
+        stage: dev
+        type: log
+        service: syslog
+        vendor: tsjr
+        environment: dev
+    spec:
+      containers:
+      - image: alpine
+        imagePullPolicy: IfNotPresent
+        command: ["sleep","100000000"]
+        name: tsjr-logger
+        ports:
+        - name: openssh
+          containerPort: 9622
+          hostPort: 9622
+        volumeMounts:
+        - mountPath: /data
+          name: tsjr-log
+      volumes:
+      - name: tsjr-log
+        hostPath:
+          path: /data/tsjinrong/logs
+          type: Directory
+      restartPolicy: Always
