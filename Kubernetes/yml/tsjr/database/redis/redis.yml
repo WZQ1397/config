@@ -54,7 +54,7 @@ spec:
       - name: redis-data
         hostPath:
           path: /data/redis-data/dev
-          type: Directory
+          type: DirectoryOrCreate
       - name: redis-config
         configMap:
           name: dev-redis-config
