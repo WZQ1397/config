@@ -1,0 +1,108 @@
+
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mysql
+spec:
+  selector:
+    matchLabels:
+      app: mysql
+  serviceName: mysql
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      initContainers:
+      - name: init-mysql
+        image: mysql:5.7
+        imagePullPolicy: IfNotPresent
+        command:
+        - bash
+        - "-c"
+        - |
+          set -ex
+          # Generate mysql server-id from pod ordinal index.
+          [[ `hostname` =~ -([0-9]+)$ ]] || exit 1
+          sed -i "s/!//g" /etc/mysql/my.cnf
+          ordinal=${BASH_REMATCH[1]}
+          echo [mysqld] > /etc/mysql/conf.d/server-id.cnf
+          # Add an offset to avoid reserved server-id=0 value.
+          echo server-id=$((100 + $ordinal)) >> /etc/mysql/mysql.conf.d/mysqld.cnf
+          # Copy appropriate conf.d files from config-map to emptyDir.
+          if [[ $ordinal -eq 0 ]]; then
+            cp /mnt/config-map/master.cnf /etc/mysql/mysql.conf.d/
+          else
+            cp /mnt/config-map/slave.cnf /etc/mysql/mysql.conf.d/
+        volumeMounts:
+        - name: conf
+          mountPath: /mnt/conf.d
+        - name: config-map
+          mountPath: /mnt/config-map
+      containers:
+      - name: mysql
+        image: mysql:5.7
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: MYSQL_ALLOW_EMPTY_PASSWORD
+          value: "1"
+        - name: MYSQL_ROOT_PASSWORD
+          value: "12345678"
+        - name: MYSQL_REPLICATION_USER
+          value: "repl"
+        - name: MYSQL_REPLICAITON_PASSWORD
+          value: "12345678"
+        ports:
+        - name: mysql
+          containerPort: 3306
+        volumeMounts:
+        - name: mysql-cluster-data
+          mountPath: /var/lib/mysql
+          subPath: mysql
+        - name: conf
+          mountPath: /etc/mysql/conf.d
+        resources:
+          requests:
+            cpu: 500m
+            memory: 1Gi
+        livenessProbe:
+          exec:
+            command: ["mysqladmin", "ping"]
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+        readinessProbe:
+          exec:
+            # Check we can execute queries over TCP (skip-networking is off).
+            command: ["mysql", "-h", "127.0.0.1", "-p12345678","-e", "SELECT 1"]
+            # command: ["mysql", "-h", "127.0.0.1", "-e", "SELECT 1"]
+          initialDelaySeconds: 5
+          periodSeconds: 2
+          timeoutSeconds: 1
+        volumeMounts:
+        - name: mysql-cluster-data
+          mountPath: /var/lib/mysql
+          subPath: mysql
+        - name: conf
+          mountPath: /etc/mysql/conf.d
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+      volumes:
+      - name: conf
+        emptyDir: {}
+      - name: config-map
+        configMap:
+          name: mysql
+  volumeClaimTemplates:
+  - metadata:
+      name: mysql-cluster-data
+    spec:
+      accessModes: [ "ReadWriteMany" ]
+      storageClassName: zach-nfs-local-1
+      resources:
+        requests:
+          storage: 1Gi
+
