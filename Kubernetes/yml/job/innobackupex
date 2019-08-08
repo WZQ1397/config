@@ -1,0 +1,5 @@
+docker run -d -e MYSQL_HOST=172.20.1.142 -e MYSQL_PORT=35632 -e MYSQL_USER=root -e MYSQL_PASSWORD=ZACHWANG -e BACKUP_MODE=FULL -e RUN_EVERY=86400 -v /tsjr-data/databackup/mariadb-backup/sit:/target ipunktbs/xtrabackup backup
+
+innobackupex -- host=172.20.1.142 --port=35632 --defaults-file=/tsjr-data/deploy-java/generator/deploy/alisql/my.cnf --no-timestamp --user root --password ZACHWANG --stream=tar /tsjr-data/databackup/mariadb-backup/sit > /tsjr-data/databackup/mariadb-backup/sit/FULL-`date +%Y%m%d`.tar
+
+innobackupex --defaults-file=/tsjr-data/deploy-java/generator/deploy/alisql/my.cnf --host=172.20.1.142 --port=35632 --no-timestamp --user root --passariadb-backup/sit/FULL-`date +%Y%m%d`.tar
