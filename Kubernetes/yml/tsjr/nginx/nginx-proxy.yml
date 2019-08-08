@@ -1,0 +1,79 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    environment: dev
+    stage: dev
+    type: proxy
+    service: nginx
+    vendor: tsjr
+    app: nginx
+ # namespace: kube-system
+  name: tsjr-nginx-dev-sg-1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      environment: dev
+      stage: dev
+      type: proxy
+      service: nginx
+      vendor: tsjr
+      app: nginx
+  template:
+    metadata:
+      labels:
+        environment: dev
+        stage: dev
+        type: proxy
+        service: nginx
+        vendor: tsjr
+        app: nginx
+    spec:
+      #serviceAccountName: traefik-ingress-controller
+      hostNetwork: true
+      containers:
+      - name: nginx
+        image: nginx:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+          protocol: TCP
+          hostPort: 80
+          hostIP: 0.0.0.0
+        - containerPort: 443
+          protocol: TCP
+          hostPort: 443
+          hostIP: 0.0.0.0
+        env:
+          - name: PODIP
+            valueFrom:
+              fieldRef:
+                fieldPath: status.podIP 
+        volumeMounts:
+        - name: nginx-config
+          mountPath: /etc/nginx/conf.d
+        - name: nginx-data
+          mountPath: /web
+        - name: date-config
+          mountPath: /etc/localtime
+        - name: nginx-ssl-config
+          mountPath: /data/nginx-ssl
+      volumes:
+      - name: nginx-config
+        hostPath:
+          path: /tsjr-data/nginx-data/config
+          type: Directory
+      - name: nginx-data
+        hostPath:
+          path: /tsjr-data/nginx-data/web
+          type: Directory
+      - name: date-config
+        hostPath:
+          path: /etc/localtime
+      - name: nginx-ssl-config
+        configMap:
+          name: nginx-ssl-configmap-suncash
+      nodeSelector:
+        level: C
+
