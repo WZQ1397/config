@@ -102,3 +102,15 @@ elasticsearch.url: "http://172.16.48.35:9200"
 # The default locale. This locale can be used in certain circumstances to substitute any missing
 # translations.
 #i18n.defaultLocale: "en"
+
+
+# sentinl:
+  # settings:
+    # email:
+      # active: true
+      # user: XXXXX
+      # password: XXXXXXX
+      # host: smtp.exmail.qq.com
+      # port: 465
+      # ssl: true
+      # timeout: 100000
