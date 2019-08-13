@@ -1,0 +1,30 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: consul-dev-backup-job
+spec:
+  schedule: "10 2 6 * *"
+  startingDeadlineSeconds: 30
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: consul-dev-backup-job
+            image: consul:1.4.4
+            imagePullPolicy: IfNotPresent
+            command: ["consul","snapshot","save","--http-addr=http://consul-dev:8500","/consul-backup/consul-kv-backup"]
+            #command: ["sleep","10000000000"]
+            env:
+            - name: CONSUL_HTTP_TOKEN
+              value: 'pf2e&^T#$vddf0q'
+            volumeMounts:
+            - name: consul-backup
+              mountPath: /consul-backup
+          volumes:
+          - name: consul-backup
+            hostPath:
+              path: /tsjr-data/databackup/consul-backup
+              type: DirectoryOrCreate
+          restartPolicy: OnFailure
