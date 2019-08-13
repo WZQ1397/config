@@ -1,0 +1,31 @@
+acl = "deny"
+agent_prefix "" {
+	policy = "read"
+}
+event_prefix "" {
+	policy = "deny"
+}
+key_prefix "config/" {
+	policy = "write"
+}
+key_prefix "config/sit/" {
+	policy = "write"
+}
+key_prefix "config/online/" {
+	policy = "deny"
+}
+keyring = "write"
+node_prefix "" {
+	policy = "read"
+}
+operator = "write"
+query_prefix "" {
+	policy = "read"
+}
+service_prefix "" {
+	policy = "write"
+	intentions = "deny"
+}
+session_prefix "" {
+	policy = "read"
+}
