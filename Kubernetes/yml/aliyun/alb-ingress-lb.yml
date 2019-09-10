@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    service.beta.kubernetes.io/alicloud-loadbalancer-bandwidth: '-1'
+    service.beta.kubernetes.io/alicloud-loadbalancer-cert-id: 1217252629547491_16cb81efdfb_1173260647_603390819
+    service.beta.kubernetes.io/alicloud-loadbalancer-health-check-connect-port: '-520'
+    service.beta.kubernetes.io/alicloud-loadbalancer-health-check-flag: 'on'
+    service.beta.kubernetes.io/alicloud-loadbalancer-health-check-interval: '5'
+    service.beta.kubernetes.io/alicloud-loadbalancer-health-check-timeout: '5'
+    service.beta.kubernetes.io/alicloud-loadbalancer-health-check-uri: /
+    service.beta.kubernetes.io/alicloud-loadbalancer-healthy-threshold: '3'
+    service.beta.kubernetes.io/alicloud-loadbalancer-protocol-port: 'https:443,http:80'
+    service.beta.kubernetes.io/alicloud-loadbalancer-unhealthy-threshold: '3'
+  creationTimestamp: '2019-08-22T06:58:54Z'
+  name: alb-ingress-lb
+  namespace: default
+  resourceVersion: '1153340333'
+  selfLink: /api/v1/namespaces/default/services/alb-ingress-lb
+  uid: 4e334548-c4aa-11e9-acd5-00163e13308f
+spec:
+  clusterIP: 172.21.11.134
+  externalTrafficPolicy: Cluster
+  ports:
+    - name: http
+      nodePort: 30295
+      port: 80
+      protocol: TCP
+      targetPort: 80
+    - name: https
+      nodePort: 31295
+      port: 443
+      protocol: TCP
+      targetPort: 443
+  sessionAffinity: None
+  type: LoadBalancer
+status:
+  loadBalancer:
+    ingress:
+      - ip: 121.196.131.2
