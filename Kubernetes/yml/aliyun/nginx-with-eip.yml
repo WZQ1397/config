@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  annotations:
+    "k8s.aliyun.com/eci-with-eip": "true"
+	"k8s.aliyun.com/eip-bandwidth": 100
+spec:
+  containers:
+  - image: registry-vpc.cn-hangzhou.aliyuncs.com/jovi/nginx:alpine
+    imagePullPolicy: Always
+    name: nginx
+    ports:
+    - containerPort: 80
+      name: http
+      protocol: TCP
+  restartPolicy: OnFailure

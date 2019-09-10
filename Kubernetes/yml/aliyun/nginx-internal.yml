@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    service.beta.kubernetes.io/alicloud-loadbalancer-address-type: intranet
+  name: nginx-internal
+  namespace: default
+spec:
+  clusterIP: 172.21.3.244
+  externalTrafficPolicy: Local
+  healthCheckNodePort: 32274
+  ports:
+    - name: web
+      nodePort: 30328
+      port: 8080
+      protocol: TCP
+      targetPort: 80
+  selector:
+    app: nginx
+  sessionAffinity: None
+  type: LoadBalancer
+status:
+  loadBalancer:
+    ingress:
+      - ip: 10.0.1.97

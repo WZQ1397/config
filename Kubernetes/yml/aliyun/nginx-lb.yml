@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx
+  namespace: default
+spec:
+  clusterIP: 172.21.14.49
+  externalTrafficPolicy: Cluster
+  ports:
+    - name: web
+      nodePort: 32199
+      port: 80
+      protocol: TCP
+      targetPort: 80
+  selector:
+    app: nginx
+  sessionAffinity: None
+  type: LoadBalancer
