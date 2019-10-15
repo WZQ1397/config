@@ -1,0 +1,62 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: mongodump-sit-dblocal
+spec:
+  schedule: "20 0 * * *"
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          affinity:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                - matchExpressions:
+                  - key: level
+                    operator: In
+                    values:
+                    - C
+          containers:
+          - name: mongodump-sit-dblocal
+            image: mongo:4.0.10-xenial
+            command:
+            - bash
+            - "-cx"
+            - |
+              mongodump -h ${MONGO_HOST} -u ${MONGO_USER} -p ${MONGO_ROOT_PASSWORD} --authenticationDatabase admin  --port ${MONGO_PORT} d local -o /backup
+            env:
+              - name: MONGO_HOST
+                value: "tsjr-mongo-dev-sg-1"
+              - name: MONGO_PORT
+                value: "27017"
+              - name: MONGO_ROOT_PASSWORD
+                valueFrom:
+                  secretKeyRef:
+                    name: mongo-pwd
+                    key: mongo-root-pwd
+              - name: MONGO_USER
+                valueFrom:
+                  secretKeyRef:
+                    name: mongo-pwd
+                    key: mongo-root-user
+            volumeMounts:
+            - name: backup-dir
+              mountPath: /backup
+            - name: mongo-data
+              mountPath: /data/db
+          volumes:
+            - name: backup-dir
+              hostPath:
+                path: /tsjr-data/databackup/mongodb-backup/sit
+                type: Directory
+            - name: mongo-data
+              hostPath:
+                # path: /data/mongo-cluster/sit/data
+                path: /data/tsjinrong/mongo/sit
+                type: DirectoryOrCreate
+          restartPolicy: OnFailure
+

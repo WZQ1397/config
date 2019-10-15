@@ -1,0 +1,62 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: mongodump-prd-full
+spec:
+  schedule: "20 3 * * *"
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          affinity:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                - matchExpressions:
+                  - key: level
+                    operator: In
+                    values:
+                    - C
+          containers:
+          - name: mongodump-prd
+            image: mongo:4.0.10-xenial
+            command:
+            - bash
+            - "-cx"
+            - |
+              mongodump -h ${MONGO_HOST} -u ${MONGO_USER} -p ${MONGO_ROOT_PASSWORD} --authenticationDatabase admin  --port ${MONGO_PORT} -o /backup
+            env:
+              - name: MONGO_HOST
+                value: "tsjr-mongo-prd-sg-1"
+              - name: MONGO_PORT
+                value: "27017"
+              - name: MONGO_ROOT_PASSWORD
+                valueFrom:
+                  secretKeyRef:
+                    name: mongo-pwd
+                    key: mongo-root-pwd
+              - name: MONGO_USER
+                valueFrom:
+                  secretKeyRef:
+                    name: mongo-pwd
+                    key: mongo-root-user
+            volumeMounts:
+            - name: backup-dir
+              mountPath: /backup
+            - name: mongo-data
+              mountPath: /data/db
+          volumes:
+            - name: backup-dir
+              hostPath:
+                path: /tsjr-data/databackup/mongodb-backup/prd
+                type: Directory
+            - name: mongo-data
+              hostPath:
+                # path: /data/mongo-cluster/prd/data
+                path: /data/tsjinrong/mongo/prd
+                type: DirectoryOrCreate
+          restartPolicy: OnFailure
+
