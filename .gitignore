@@ -1,3 +1,4 @@
 
 *.pem
 Kubernetes/yml/tsjr/database/alisql/alisql-key.yml
+Kubernetes/yml/Addon-Function/k8s-rabbitmq-cluster/rabbitmq_exporter-1.0.0-RC5.linux-amd64.tar.gz
