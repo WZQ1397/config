@@ -1,0 +1,157 @@
+# my global config
+global:
+  scrape_interval:     60s 
+  evaluation_interval: 15s
+  scrape_timeout: 60s
+
+# Alertmanager configuration
+alerting:
+  alertmanagers:
+  - static_configs:
+    - targets:
+      # - alertmanager:9093
+
+# Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
+rule_files:
+  # - "first_rules.yml"
+  # - "second_rules.yml"
+
+# A scrape configuration containing exactly one endpoint to scrape:
+# Here it's Prometheus itself.
+scrape_configs:
+  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
+  - job_name: 'prometheus'
+
+    # metrics_path defaults to '/metrics'
+    # scheme defaults to 'http'.
+
+    static_configs:
+    - targets: ['localhost:9090']
+  - job_name: kubernetes-apiservers-sg
+    metrics_path: /metrics
+    scheme: https
+    kubernetes_sd_configs:
+    - api_server: https://47.74.219.229:6443/
+      role: endpoints
+      bearer_token_file: /prometheus/zach_sg_k8s
+      tls_config:
+        insecure_skip_verify: true    
+    bearer_token_file: /prometheus/zach_sg_k8s
+    tls_config:
+      insecure_skip_verify: true 
+    relabel_configs:
+    - source_labels: [__meta_kubernetes_namespace, __meta_kubernetes_service_name, __meta_kubernetes_endpoint_port_name]
+      separator: ;
+      regex: default;kubernetes;https
+      replacement: $1
+      action: keep
+    - source_labels: [__address__]
+      separator: ;
+      regex: (.*)
+      target_label: __address__
+      replacement: 47.74.219.229:6443
+      action: replace
+  - job_name: kubernetes-node-exporter-sg
+    metrics_path: /metrics
+    scheme: https
+    kubernetes_sd_configs:
+    - api_server: https://47.74.219.229:6443/
+      role: node
+      bearer_token_file: /prometheus/zach_sg_k8s
+      tls_config:
+        insecure_skip_verify: true    
+    bearer_token_file: /prometheus/zach_sg_k8s
+    tls_config:
+      insecure_skip_verify: true 
+    relabel_configs:
+    - separator: ;
+      regex: __meta_kubernetes_node_label_(.+)
+      replacement: $1
+      action: labelmap
+    - separator: ;
+      regex: (.*)
+      target_label: __address__
+      replacement: 47.74.219.229:6443
+      action: replace
+    - source_labels: [__meta_kubernetes_node_name]
+      separator: ;
+      regex: (.+)
+      target_label: __metrics_path__
+      replacement: /api/v1/nodes/${1}:9100/proxy/metrics
+      action: replace
+  - job_name: kubernetes-node-kubelet-sg
+    metrics_path: /metrics
+    scheme: https
+    kubernetes_sd_configs:
+    - api_server: https://47.74.219.229:6443/
+      role: node
+      bearer_token_file: /prometheus/zach_sg_k8s
+      tls_config:
+        insecure_skip_verify: true    
+    bearer_token_file: /prometheus/zach_sg_k8s
+    tls_config:
+      insecure_skip_verify: true 
+    relabel_configs:
+    - separator: ;
+      regex: __meta_kubernetes_node_label_(.+)
+      replacement: $1
+      action: labelmap
+    - separator: ;
+      regex: (.*)
+      target_label: __address__
+      replacement: 47.74.219.229:6443
+      action: replace
+    - source_labels: [__meta_kubernetes_node_name]
+      separator: ;
+      regex: (.+)
+      target_label: __metrics_path__
+      replacement: /api/v1/nodes/${1}:10255/proxy/metrics
+      action: replace
+  - job_name: 'kubernetes-pods-sg'
+    scheme: https
+    kubernetes_sd_configs:
+    - api_server: https://47.74.219.229:6443/
+      role: pod
+      bearer_token_file: /prometheus/zach_sg_k8s
+      tls_config:
+        insecure_skip_verify: true
+    tls_config:
+      insecure_skip_verify: true 
+    bearer_token_file: /prometheus/zach_sg_k8s
+    relabel_configs:
+    - source_labels: [__meta_kubernetes_namespace]
+      action: replace
+      target_label: kubernetes_namespace
+    - source_labels: [__meta_kubernetes_pod_name]
+      action: replace
+      target_label: kubernetes_pod_name
+    - action: labelmap
+      regex: __meta_kubernetes_pod_label_(.+)
+    - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_path]
+      action: replace
+      target_label: __metrics_path__
+      regex: (.+)
+    - source_labels: [__address__, __meta_kubernetes_pod_annotation_prometheus_io_port]
+      action: replace
+      regex: ([^:]+)(?::\d+)?;(\d+)
+      replacement: $1:$2
+      target_label: __address__
+    - source_labels: [__address__]
+      separator: ;
+      regex: '.*:(.*)'
+      target_label: __pod_port__
+      replacement: $1
+      action: replace
+    - source_labels: [__meta_kubernetes_namespace,__meta_kubernetes_pod_name, __pod_port__]
+      separator: ;
+      regex: (.*);(.*);(.*)
+      target_label: __metrics_path__
+      replacement: /api/v1/namespaces/$1/pods/$2:$3/proxy/metrics
+      action: replace
+    - source_labels: [__address__]
+      separator: ;
+      regex: (.*)
+      target_label: __address__
+      replacement: 47.74.219.229:6443
+      action: replace
+
