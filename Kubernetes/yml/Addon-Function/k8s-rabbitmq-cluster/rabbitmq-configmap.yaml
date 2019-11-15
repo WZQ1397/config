@@ -1,0 +1,35 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: rmq-cluster-config
+  namespace: monitoring
+  labels:
+    addonmanager.kubernetes.io/mode: Reconcile
+data:
+    enabled_plugins: |
+      [rabbitmq_management,rabbitmq_peer_discovery_k8s].
+    rabbitmq.conf: |
+      loopback_users.guest = false
+
+      ## Clustering
+      cluster_formation.peer_discovery_backend = rabbit_peer_discovery_k8s
+      cluster_formation.k8s.host = kubernetes.default.svc.cluster.zach.
+      cluster_formation.k8s.address_type = hostname
+      
+      #################################################
+      # monitoring is rabbitmq-cluster's namespace#
+      #################################################
+      cluster_formation.k8s.service_name = rmq-cluster
+      cluster_formation.k8s.hostname_suffix = .rmq-cluster.monitoring.svc.cluster.zach.
+      cluster_formation.node_cleanup.interval = 10
+      cluster_formation.node_cleanup.only_log_warning = true
+      cluster_partition_handling = autoheal
+
+      ## queue master locator
+      queue_master_locator=min-masters
+
+      ## resource limit
+      vm_memory_high_watermark.absolute = 1.6GB
+      disk_free_limit.absolute = 2GB
+      cluster_formation.randomized_startup_delay_range.min = 0
+      cluster_formation.randomized_startup_delay_range.max = 2
