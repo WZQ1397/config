@@ -1,4 +1,4 @@
-node {
+node('172.16.48.111') {
   def remote = [:]
   remote.name = 'deploy'
   remote.host = '172.17.xxxx'
