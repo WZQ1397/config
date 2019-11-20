@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: codis-proxy
+  name: codis-proxy
+spec:
+  type: NodePort
+  ports:
+    - port: 11080
+      name: proxy
+      nodePort: 31180
+      protocol: TCP
+    - port: 19000
+      name: admin
+      nodePort: 39000
+      protocol: TCP
+  selector:
+    app: codis-proxy
