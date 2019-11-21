@@ -1,0 +1,46 @@
+# /etc/kubernetes/manifests/kube-apiserver.yaml，
+# ADD + 
+# --runtime-config
+#   |___ settings.k8s.io/v1alpha1=true
+# --admission-control
+#   |___PodPreset
+
+apiVersion: settings.k8s.io/v1alpha1
+kind: PodPreset
+metadata:
+  name: zach-builder-mounts
+spec:
+  selector:
+    matchLabels:
+      role: zach-job
+  volumeMounts:
+  - name: zach-source
+    mountPath: /source
+  - name: zach-target
+    mountPath: /target
+  volumes:
+  - name: zach-source
+    configMap:
+      name: zach-job-source
+  - name: zach-target
+    emptyDir: {}
+#   persistentVolumeClaim:
+#   claimName: zach-images
+# - name: cache # would be an improvement
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: zach-builder
+spec:
+  template:
+    metadata:
+      labels:
+        role: zach-job
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: alpine-zach
+        image: alpine:3.7
+        command: ["sleep","10000000000000"]
+  backoffLimit: 4
