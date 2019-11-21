@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: consul-ingress
+  namespace: monitoring
+spec:
+  rules:
+  - host: consul-cluster.k8s-dev-local.tsjinrong.top
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: consul-cluster
+          servicePort: 8500
+  - host: consul-cluster-ssl.k8s-dev-local.tsjinrong.top
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: consul-cluster
+          servicePort: 8443

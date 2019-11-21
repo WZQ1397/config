@@ -1,0 +1,89 @@
+apiVersion: apps/v1beta1 
+kind: StatefulSet
+metadata:
+  name: consul-cluster
+spec:
+  serviceName: consul-cluster
+  replicas: 3
+  template: 
+    metadata:
+      labels:
+        app: consul-cluster
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: app
+                    operator: In
+                    values:
+                      - consul-cluster
+              topologyKey: kubernetes.io/hostname
+      terminationGracePeriodSeconds: 10
+      containers:
+      - name: consul
+        image: consul:1.4.4
+        args:
+             - "agent"
+             - "-server"
+             - "-bootstrap-expect=3"
+             - "-ui"
+             - "-data-dir=/consul/data"
+             - "-config-dir=/consul-conf"
+             - "-bind=0.0.0.0"
+             - "-client=0.0.0.0"
+             - "-advertise=$(PODIP)"
+             - "-retry-join=consul-cluster-0.consul-cluster.$(NAMESPACE)"
+             - "-retry-join=consul-cluster-1.consul-cluster.$(NAMESPACE)"
+             - "-retry-join=consul-cluster-2.consul-cluster.$(NAMESPACE)"
+             # - "-domain=zach"
+             - "-datacenter=zach"
+             - "-disable-host-node-id"
+        env:
+            - name: PODIP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+            - name: NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+        ports:
+            - containerPort: 8500
+              name: ui-port
+            - containerPort: 8400
+              name: alt-port
+            - containerPort: 53
+              name: udp-port
+            - containerPort: 8443
+              name: https-port
+            - containerPort: 8080
+              name: http-port
+            - containerPort: 8301
+              name: serflan
+            - containerPort: 8302
+              name: serfwan
+            - containerPort: 8600
+              name: consuldns
+            - containerPort: 8300
+              name: server
+        volumeMounts:
+            - name: consul-cluster-data
+              mountPath: /consul/data
+            - name: consul-cluster-acl-config
+              mountPath: /consul-conf
+      volumes:
+      - name: consul-cluster-acl-config
+        configMap:
+          name: consul-cluster-acl-config
+  volumeClaimTemplates:
+  - metadata:
+      name: consul-cluster-data
+    spec:
+      accessModes: [ "ReadWriteMany" ]
+      storageClassName: zach-nfs-local-1
+      resources:
+        requests:
+          storage: 100Mi
+
