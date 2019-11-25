@@ -9,7 +9,11 @@ alerting:
   alertmanagers:
   - static_configs:
     - targets: ["localhost:9093"]
-
+  # discover by dns
+  # - dns_sd_configs:
+    # - names: ['_alertmanager._tcp.xiodi.cn']
+    # Dns type A/AAAA
+    # type: A
 # Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
 rule_files:
   - "rules.yml"
@@ -35,7 +39,20 @@ scrape_configs:
       - files:
         - /root/consul/*.json
         refresh_interval: 30s
-
+    params:
+    # 过滤需要监控的信息
+      collect[]:
+        - cpu
+        - meminfo
+        - diskstats
+        - netdev
+        - netstat
+        - filefd
+        - filesystem
+        - xfs
+        - systemd
+        
+# https://blog.csdn.net/qq_25934401/article/details/84325356
   - job_name: 'app_health_check'
     scrape_interval: 30s
     metrics_path: /probe
