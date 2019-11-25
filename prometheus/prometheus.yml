@@ -27,12 +27,17 @@ scrape_configs:
 
     static_configs:
     - targets: ['172.16.48.102:9108','172.10.101.10:9108']
-    
+      labels:
+        svc: 'elasticsearch'
+        type: 'db'
+
   - job_name: 'redis'
 
     static_configs:
     - targets: ['172.10.10.28:9121','127.0.0.1:9121','127.0.0.1:9122']
-
+      labels:
+        svc: 'redis'
+        type: 'db'
 
   - job_name: 'host_metric'
     file_sd_configs:
