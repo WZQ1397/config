@@ -1,0 +1,49 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/subnets: subnet-0544b0c58ebc522e9,subnet-0a34b28ea52869f34
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/tags: Environment=dev,Team=test
+  name: istio-ingressgateway
+  namespace: istio-system
+spec:
+  rules:
+  - host: grafana.istio.k8s-alb.tsjinrong.cn
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: grafana-dashboard
+          servicePort: 3000
+  - host: jagger.istio.k8s-alb.tsjinrong.cn
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: jaegertracing-dashboard
+          servicePort: 16686
+  - host: zipkin.istio.k8s-alb.tsjinrong.cn
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: jaegertracing-dashboard
+          servicePort: 9411
+  - host: prometheus.istio.k8s-alb.tsjinrong.cn
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: prometheus-dashboard
+          servicePort: 9090
+  - host: kiali.istio.k8s-alb.tsjinrong.cn
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: kiali-dashboard
+          servicePort: 20001
+
+
