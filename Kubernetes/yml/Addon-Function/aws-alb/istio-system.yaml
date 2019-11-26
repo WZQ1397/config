@@ -1,0 +1,65 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: grafana-dashboard
+  namespace: istio-system
+spec:
+  type: NodePort
+  ports:
+  - port: 3000
+    nodePort: 39990
+    protocol: TCP
+  selector:
+    app: grafana
+    release: istio
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus-dashboard
+  namespace: istio-system
+spec:
+  type: NodePort
+  ports:
+  - port: 9090
+    nodePort: 39991
+    protocol: TCP
+  selector:
+    app: prometheus
+    release: istio
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jaegertracing-dashboard
+  namespace: istio-system
+spec:
+  type: NodePort
+  ports:
+  - name: jagger
+    port: 16686
+    nodePort: 39993
+    protocol: TCP
+  - name: zipkin
+    port: 9411
+    nodePort: 39994
+    protocol: TCP
+  selector:
+    app: jaeger
+    release: istio
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kiali-dashboard
+  namespace: istio-system
+spec:
+  type: NodePort
+  ports:
+  - port: 20001
+    nodePort: 39992
+    protocol: TCP
+  selector:
+    app: kiali
+    release: istio
