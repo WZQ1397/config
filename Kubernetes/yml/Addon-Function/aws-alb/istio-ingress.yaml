@@ -1,0 +1,44 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: istio-ingress
+  namespace: istio-system
+spec:
+  rules:
+  - host: grafana.istio.k8s-prd.tsjinrong.cn
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: grafana-dashboard
+          servicePort: 3000
+  - host: jagger.istio.k8s-prd.tsjinrong.cn
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: jaegertracing-dashboard
+          servicePort: 16686
+  - host: zipkin.istio.k8s-prd.tsjinrong.cn
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: jaegertracing-dashboard
+          servicePort: 9411
+  - host: prometheus.istio.k8s-prd.tsjinrong.cn
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: prometheus-dashboard
+          servicePort: 9090
+  - host: kiali.istio.k8s-prd.tsjinrong.cn
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: kiali-dashboard
+          servicePort: 20001
+
+
