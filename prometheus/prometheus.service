@@ -1,0 +1,10 @@
+[Unit]
+Description=prometheus-server
+After=network.target
+[Service]
+Type=simple
+User=root
+ExecStart=/root/prometheus/prometheus --config.file=/root/prometheus/prometheus.yml --web.enable-lifecycle --storage.tsdb.retention=90d
+Restart=on-failure
+[Install]
+WantedBy=multi-user.target
