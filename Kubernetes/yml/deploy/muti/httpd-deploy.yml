@@ -27,6 +27,9 @@ spec:
       maxSurge: 1
       # Maximum number of pods allowed for RollingUpdate
       maxUnavailable: 1
+      ### Use percentage to update max pods equal replicas * (1+25%)
+      # maxSurge: "25%"
+      # maxUnavailable: "25%"
   template:
     metadata:
       labels:
