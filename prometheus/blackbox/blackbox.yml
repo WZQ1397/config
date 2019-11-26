@@ -1,7 +1,14 @@
 modules:
-  http_2xx:  # http 监测模块
+  http_2xx_check: # http 监测模块
     prober: http
+    timeout: 5s
     http:
+      valid_http_versions: ["HTTP/1.1", "HTTP/2"]
+      valid_status_codes: [200,302,401] # Defaults to 2xx
+      method: GET
+        # headers:
+          # Host: vhost.example.com
+          # Accept-Language: en-US
   http_post_2xx: # http post 监测模块
     prober: http
     http:
@@ -13,3 +20,13 @@ modules:
     timeout: 5s
     icmp:
       preferred_ip_protocol: "ip4"
+  ssh_banner:
+    prober: tcp
+    tcp:
+      query_response:
+      - expect: "^SSH-2.0-"
+  dns_examplecom_check:
+    prober: dns
+    dns:
+      preferred_ip_protocol: "ip4"
+      query_name: "www.zach.com"
