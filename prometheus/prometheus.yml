@@ -12,7 +12,7 @@ alerting:
   # discover by dns
   # - dns_sd_configs:
     # - names: ['_alertmanager._tcp.xiodi.cn']
-    # Dns type A/AAAA
+    # Dns type A/AAAA default is SRV
     # type: A
 # Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
 rule_files:
