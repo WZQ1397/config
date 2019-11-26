@@ -63,3 +63,13 @@ groups:
     annotations:
       summary: "有 {{ $value }} 个服务挂啦，连不到consul，快到这里来http://47.74.219.229:9090/alerts"
 
+# 创建快捷永久记录
+- name: record_shortcut
+  interval: 10s
+  rules:
+  - record: instance::predict_networktraffic
+    expr: predict_linear(node_network_transmit_bytes_total{device="eth0",instance="172.10.10.28"}[7d],7*86400) / 1024/1024/1024
+    labels:
+      provider: "aws"
+      metric_type: aggregation
+
