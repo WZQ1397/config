@@ -1,0 +1,59 @@
+global:
+  scrape_interval:     15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
+  evaluation_interval: 15s # Evaluate rules every 15 seconds. The 
+
+scrape_configs:
+  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
+  - job_name: 'node'
+    static_configs:
+    - targets: ['172.16.48.102:9100']
+      # 添加新的标签
+      labels:
+        svc: 'EC2'
+        location: 'CN'
+        cloudprovider: 'AWS'
+        
+    metric_relabel_configs:
+    # 删除不需要的指标/隐藏标签
+    - source_labels: [__name__]
+      separator: ','
+      regex: '(container_tasks_state|container_memory_failures_total)'
+      action: drop
+    # 将container_name该label用container替换，值保持不变, 实际上是根据已有的标签，生成一个新标签
+    metric_relabel_configs:
+    - source_labels: [host]
+      regex: "([a-zA-Z0-9]+).tsjinrong.(top|cn)"
+      replacement: $1
+      target_label: hostname
+      action: replace		# 可省略默认replace
+    # 删除某个标签
+    - regex: "host"
+      action: labeldrop
+      
+  - job_name: "user_server_icmp_detect"
+    consul_sd_configs:
+    - server: "127.0.0.1:8500"
+    scheme: http
+    metrics_path: /probe
+    params:
+      module: [icmp]
+    relabel_configs:
+    - action: keep
+      source_labels: [__meta_consul_tags]        #如果__meta_consul_tags匹配正则，则保留该目标
+      regex: '.*,icmp,.*'
+    - source_labels: [__meta_consul_service]
+      regex: '(.+)@(.+)@(.+)'
+      replacement: ${2}
+      target_label: type
+    - source_labels: [__meta_consul_service]
+      regex: '(.+)@(.+)@(.+)'
+      replacement: ${1}
+      target_label: user
+    - source_labels: [__address__]
+      regex: (.+):(.+)
+      replacement: ${1}
+      target_label: __param_target
+    - target_label: __address__
+      replacement:  10.10.199.154:9115
+    - source_labels: [__param_target]
+      target_label: instance
