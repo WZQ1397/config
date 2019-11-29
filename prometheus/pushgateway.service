@@ -1,0 +1,15 @@
+[Unit]
+Description=pushgateway
+After=network.target 
+
+[Service]
+User=prometheus
+Group=prometheus
+# curl --data-binary @- http://xxxx:9091/metrics/job/$job_name/instance/$instance_name
+WorkingDirectory=/usr/local/prometheus/pushgateway
+ExecStart=/usr/local/prometheus/pushgateway/pushgateway \
+                --web.enable-admin-api  \
+                --persistence.file="pushfile.txt" \
+                --persistence.interval=10m 
+[Install]
+WantedBy=multi-user.target
