@@ -1,0 +1,88 @@
+# https://www.cnblogs.com/zlslch/p/6622079.html
+#============== Filebeat prospectors ===========
+filebeat.inputs:   # 6.3以前是 filebeat.prospectors:
+# input类型,默认为log，6.0以前配置是 - input_type: log
+# support ==> log、stdin、redis、tcp、syslog
+- type: log        
+  paths:
+    - /var/log/java/*-java.log
+    - /var/log/*/*/*.log
+  fields:          
+    log_topic: zach_aws_cn     # 附加的可选字段,以向output添加额外的信息。output里面可以使用这个变量
+		env: prod
+		project: gjbt-mobile
+	# 新增fields成为顶级目录，而不是将其放在fields目录下
+	# 高级参数 https://blog.csdn.net/a464057216/article/details/51233375
+	fields_under_root: true
+  multiline.pattern: '^\['   #多行合并 同logstash的multiline用法相似
+  multiline.negate: true
+  multiline.match: after
+	exclude_lines: ['^tomcat']
+	# include_lines: ['^ERR', '^WARN']
+	exclude_files: ['*localhost*']
+ 
+- type: log     # 一个配置文件里面可以同时收集多个日志
+  enabled: true
+  paths:
+    - /var/log/nginx/*.log
+  fields:
+    my_log_topic: nginx_log
+	tail_files: true  # default ==> false
+	scan_frequency: 10s
+
+filebeat.modules：
+	- module：nginx
+	- module：mysql
+	- module：system
+
+output.elasticsearch:
+	hosts: ["myEShost:9200"]
+	username: "filebeat_internal"
+	password: "{pwd}" 
+	# ssl.certificate_authorities: ["/etc/pki/root/ca.pem"]
+  # ssl.certificate: "/etc/pki/client/cert.pem"
+  # ssl.key: "/etc/pki/client/cert.key"
+	# 基于条件、基于格式字符串的字段访问和名称映射。如果索引缺失或没有匹配规则，将使用index字段。
+	# index: "filebeat-%{[beat.version]}-%{+yyyy.MM.dd}"
+	  # indices:
+    # - index: "critical-%{[beat.version]}-%{+yyyy.MM.dd}"
+      # when.contains:
+        # message: "CRITICAL"
+    # - index: "error-%{[beat.version]}-%{+yyyy.MM.dd}"
+      # when.contains:
+        # message: "ERR"
+				
+output.logstash:
+  # ==> logstash.index.conf
+  hosts: ["172.10.10.112:5044","172.10.10.111:5044"]
+  loadbalance: true
+
+output.kafka:
+  # initial brokers for reading cluster metadata
+  hosts: ["kafka1:9092", "kafka2:9092", "kafka3:9092"]
+
+  # message topic selection + partitioning
+  topic: '%{[fields.log_topic]}'
+  partition.round_robin:
+    reachable_only: false
+
+  required_acks: 1
+  compression: gzip
+  max_message_bytes: 1000000
+
+# processors:
+  # - drop_fields:    #删除字段，不再kibana里面展示，默认情况kibana里面会自动展示这些beat字段
+    # fields: ["beat.hostname","beat.version","beat.name","prospector.type","input.type"]
+
+setup.kibana:
+	host: "mykibanahost:5601"
+	username: "my_kibana_user"  
+	password: "{pwd}"
+
+# https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-modules.html
+filebeat.config.modules:
+  enabled: true
+  path: ${path.config}/modules.d/*.yml
+	
+filebeat.config_dir: path/to/configs
+filebeat.shutdown_timeout：15s
