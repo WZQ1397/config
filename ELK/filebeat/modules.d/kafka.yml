@@ -1,0 +1,8 @@
+- module: kafka
+  log:
+    enabled: true
+    var.paths:
+      - "/path/to/logs/controller.log*"
+      - "/path/to/logs/server.log*"
+      - "/path/to/logs/state-change.log*"
+      - "/path/to/logs/kafka-*.log*"
