@@ -15,6 +15,7 @@ spec:
     image: alpine-ssh-server:latest
     restartPolicy: OnFailure
     imagePullPolicy: IfNotPresent
+    workingDir: "/"
     command: ["/usr/sbin/sshd","-D"]
     volumeMounts:
     - name: podinfo
