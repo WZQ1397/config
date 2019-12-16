@@ -1,0 +1,21 @@
+kind: Service
+apiVersion: v1
+metadata:
+  labels:
+    monitor: rabbitmq-cluster
+    type: prometheus
+    location: local
+  name: rmq-cluster-prometheus
+  namespace: monitoring
+spec:
+  ports:
+  - name: metric
+    port: 9419
+    protocol: TCP
+    targetPort: 9419
+    nodePort: 29419
+  selector:
+    monitor: rabbitmq-cluster
+    type: prometheus
+    location: local
+  type: NodePort

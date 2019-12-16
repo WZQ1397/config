@@ -1,0 +1,45 @@
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  name: rmq-cluster-prometheus
+  namespace: monitoring
+  labels:
+    monitor: rabbitmq-cluster
+    type: prometheus
+    location: local
+spec:
+  template:
+    metadata:
+      labels:
+        monitor: rabbitmq-cluster
+        type: prometheus
+        location: local
+    spec:
+      containers:
+      - image: kbudde/rabbitmq-exporter
+        name: rabbitmq-exporter-local
+        env:
+        - name: RABBIT_URL	
+          valueFrom:
+            configMapKeyRef:
+              key: RABBIT_URL
+              name: rmq-cluster-exporter
+        - name: RABBIT_USER	
+          valueFrom:
+            configMapKeyRef:
+              key: RABBIT_USER
+              name: rmq-cluster-exporter
+        - name: RABBIT_PASSWORD	
+          valueFrom:
+            configMapKeyRef:
+              key: RABBIT_PASSWORD
+              name: rmq-cluster-exporter
+        - name: PUBLISH_PORT	
+          valueFrom:
+            configMapKeyRef:
+              key: PUBLISH_PORT
+              name: rmq-cluster-exporter
+        ports:
+        - containerPort: 9419
+          name: metric
+          protocol: TCP

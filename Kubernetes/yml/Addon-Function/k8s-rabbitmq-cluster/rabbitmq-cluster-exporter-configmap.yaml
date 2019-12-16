@@ -1,0 +1,12 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: rmq-cluster-exporter
+  namespace: monitoring
+  labels:
+    addonmanager.kubernetes.io/mode: Reconcile
+data:
+  RABBIT_URL: "http://rmq-cluster-balancer.monitoring:15672"
+  RABBIT_USER: "guest"
+  RABBIT_PASSWORD: "guest"
+  PUBLISH_PORT: "9419"
