@@ -1,0 +1,34 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-echo-with-mirror
+  annotations:
+    nginx.ingress.kubernetes.io/mirror-uri: "/echo"
+    # 默认将请求的 body 一同复制，如果不想复制 body,开启下面
+    nginx.ingress.kubernetes.io/mirror-request-body: "off"
+spec:
+  rules:
+  - host: mirror.echo.example 
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: echo
+          servicePort: 80
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    # 使用原始的 uri
+    nginx.ingress.kubernetes.io/rewrite-target: $request_uri
+  name: ingress-echo-with-mirror-backend
+spec:
+  rules:
+  - host: mirror.echo.example 
+    http:
+      paths:
+      - path: /echo
+        backend:
+          serviceName: http-record
+          servicePort: 80
