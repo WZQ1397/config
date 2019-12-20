@@ -7,6 +7,7 @@ filebeat.inputs:   # 6.3以前是 filebeat.prospectors:
   paths:
     - /var/log/java/*-java.log
     - /var/log/*/*/*.log
+		
   fields:          
     log_topic: zach_aws_cn     # 附加的可选字段,以向output添加额外的信息。output里面可以使用这个变量
 		env: prod
