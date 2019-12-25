@@ -1,0 +1,52 @@
+[Unit]
+Description=Kubernetes Kubelet
+Documentation=https://github.com/GoogleCloudPlatform/kubernetes
+After=docker.service
+Requires=docker.service
+
+[Service]
+WorkingDirectory=/var/lib/kubelet
+ExecstartPre=/usr/bin/mkdir -p /sys/fs/cgroup/cpuset/system.slice/kubelet.service
+ExecstartPre=/usr/bin/mkdir -p /sys/fs/cgroup/hugetlb/system.slice/kubelet.service
+#--pod-infra-container-image=registry.access.redhat.com/rhel7/pod-infrastructure:latest
+ExecStart=/opt/kube/bin/kubelet \
+  --address=172.20.1.142 \
+  --allow-privileged=true \
+  --anonymous-auth=false \
+  --authentication-token-webhook \
+  --authorization-mode=Webhook \
+  --client-ca-file=/etc/kubernetes/ssl/ca.pem \
+  --cluster-dns=10.0.0.2 \
+  --cluster-domain=cluster.zach. \
+  --cni-bin-dir=/opt/kube/bin \
+  --cni-conf-dir=/etc/cni/net.d \
+  --fail-swap-on=false \
+  --hairpin-mode hairpin-veth \
+  --hostname-override=172.20.1.142 \
+  --kubeconfig=/etc/kubernetes/kubelet.kubeconfig \
+  --max-pods=110 \
+  --network-plugin=cni \
+  --enforce-node-allocatable=pods,kube-reserved,system-reserved \
+  --kube-reserved-cgroup=/system.slice/kubelet.service \
+  --system-reserved-cgroup=/system.slice \
+  --kube-reserved=cpu=1,memory=2Gi,ephemeral-storage=1Gi \
+  --system-reserved=cpu=500m,memory=1Gi,ephemeral-storage=1Gi \
+  --eviction-hard=memory.available<500Mi,nodefs.available<10% \
+	# --node-status-update-frequency =10s \
+  # --eviction-pressure-transition-period=20s \
+  --pod-infra-container-image=mirrorgooglecontainers/pause-amd64:3.1 \
+  --register-node=true \
+  --root-dir=/var/lib/kubelet \
+  --tls-cert-file=/etc/kubernetes/ssl/kubelet.pem \
+  --tls-private-key-file=/etc/kubernetes/ssl/kubelet-key.pem \
+  --v=2
+#kubelet cAdvisor 默认在所有接口监听 4194 端口的请求, 以下iptables限制内网访问
+ExecStartPost=/sbin/iptables -A INPUT -s 10.0.0.0/8 -p tcp --dport 4194 -j ACCEPT
+ExecStartPost=/sbin/iptables -A INPUT -s 172.16.0.0/12 -p tcp --dport 4194 -j ACCEPT
+ExecStartPost=/sbin/iptables -A INPUT -s 192.168.0.0/16 -p tcp --dport 4194 -j ACCEPT
+ExecStartPost=/sbin/iptables -A INPUT -p tcp --dport 4194 -j DROP
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
