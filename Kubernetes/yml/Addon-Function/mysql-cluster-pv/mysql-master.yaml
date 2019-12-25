@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-master
+  namespace: monitoring
+spec:
+  type: NodePort
+  ports:
+  - port: 3306
+    nodePort: 33336
+    protocol: TCP
+  selector:
+    app: mysql
+    statefulset.kubernetes.io/pod-name: mysql-0

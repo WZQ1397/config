@@ -1,0 +1,182 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mysql
+spec:
+  selector:
+    matchLabels:
+      app: mysql
+  serviceName: mysql
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      initContainers:
+      - name: init-mysql
+        image: mysql:5.7
+        imagePullPolicy: IfNotPresent
+        env:
+        #- name: MYSQL_ALLOW_EMPTY_PASSWORD
+        #  value: "1"
+        - name: MYSQL_ROOT_PASSWORD
+          value: "12345678"
+        - name: MYSQL_REPLICATION_USER
+          value: "repl"
+        - name: MYSQL_REPLICAITON_PASSWORD
+          value: "12345678"
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: POD_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: SVCName
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.labels['app']
+        command:
+        - bash
+        - "-cx"
+        - |
+          # Generate mysql server-id from pod ordinal index.
+          [[ `hostname` =~ -([0-9]+)$ ]] || exit 1
+          rm -rf /etc/mysql/*.cnf*
+          ordinal=${BASH_REMATCH[1]}
+          echo [mysqld] > /etc/mysql/conf.d/server-id.cnf
+          # Add an offset to avoid reserved server-id=0 value.
+          echo server-id=$((100 + $ordinal)) >> /etc/mysql/conf.d/server-id.cnf
+          # Copy appropriate conf.d files from config-map to emptyDir.
+          if [[ $ordinal -eq 0 ]]; then
+            cp /mnt/config-map/master.cnf /etc/mysql/mysql.conf.d/
+          else
+            cp /mnt/config-map/slave.cnf /etc/mysql/mysql.conf.d/
+          fi
+          cp -rv /etc/mysql/* /mnt/conf.d
+          cp -v /mnt/mysqlconf/my.cnf /mnt/conf.d
+          service mysql start
+          service mysql status
+          if [[ $ordinal -eq 0 ]]; then
+            echo "GRANT REPLICATION SLAVE ON *.* TO '${MYSQL_REPLICATION_USER}'@'%' IDENTIFIED BY '${MYSQL_REPLICAITON_PASSWORD}';" > /etc/mysql/change_master_to.sql.in
+            echo "FLUSH PRIVILEGES;" >> /etc/mysql/change_master_to.sql.in
+            mysql -uroot -p${MYSQL_ROOT_PASSWORD} -e "show master status \G;"  > /etc/mysql/master_status
+            exec_name="/etc/mysql/master_status"
+            cp -v ${exec_name} /mnt/conf.d
+            cp -v /etc/mysql/change_master_to.sql.in /docker-entrypoint-initdb.d
+          fi
+        volumeMounts:
+        - name: conf
+          mountPath: /mnt/conf.d
+        - name: config-map
+          mountPath: /mnt/config-map
+        - name: mysql-main-conf
+          mountPath: /mnt/mysqlconf
+        - name: docker-init
+          mountPath: /docker-entrypoint-initdb.d
+      containers:
+      - name: mysql
+        image: mysql:5.7
+        imagePullPolicy: IfNotPresent
+        lifecycle:
+          postStart:
+            exec:
+              command:
+              - bash
+              - "-cx"
+              - |
+                set -ex
+                if [[ `hostname | awk -F "-" '{print $2}'` -ne 0 ]];then
+                  echo ok
+                  mysql -hmysql-0.${SVCName}.${POD_NAMESPACE} -uroot -p${MYSQL_ROOT_PASSWORD} -e "show master status \G;"  > /etc/mysql/master_status
+                  logfile_name=`grep File /etc/mysql/master_status | awk -F ":" '{print $2}' | sed 's/^[ \t]*//g'`
+                  logfile_pos=`grep Position /etc/mysql/master_status | awk -F ":" '{print $2}' | sed 's/^[ \t]*//g'`
+                  slave_sql="/etc/mysql/start_slave_to.sql.in"
+                  echo "CHANGE MASTER TO MASTER_HOST='mysql-0.${SVCName}.${POD_NAMESPACE}',MASTER_USER='${MYSQL_REPLICATION_USER}',MASTER_PASSWORD='${MYSQL_REPLICAITON_PASSWORD}',MASTER_LOG_FILE='${logfile_name}',MASTER_LOG_POS=${logfile_pos};" >> $slave_sql
+                  echo "start slave;" >> $slave_sql
+                  echo "show slave status\G;" >> $slave_sql
+                  # service mysql status
+                  # mysql -uroot -e "select 1"
+                  # if [[ $? ]];then
+                  #  mysql -uroot -p${MYSQL_ROOT_PASSWORD} < $slave_sql
+                  # else
+                    echo "ALTER USER root IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';" >> $slave_sql
+                  # mysql < $slave_sql
+                  # fi
+                fi
+        env:
+        #- name: MYSQL_ALLOW_EMPTY_PASSWORD
+        #  value: "1"
+        - name: MYSQL_ROOT_PASSWORD
+          value: "12345678"
+        - name: MYSQL_REPLICATION_USER
+          value: "repl"
+        - name: MYSQL_REPLICAITON_PASSWORD
+          value: "12345678"
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: POD_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: SVCName
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.labels['app']
+        ports:
+        - name: mysql
+          containerPort: 3306
+        resources:
+          requests:
+            cpu: 500m
+            memory: 1Gi
+        livenessProbe:
+          exec:
+            command: ["mysqladmin", "ping"]
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+        #readinessProbe:
+        #  exec:
+            # Check we can execute queries over TCP (skip-networking is off).
+        #    command: ["mysql", "-h", "127.0.0.1", "-e", "SELECT 1"]
+            # command: ["mysql", "-h", "127.0.0.1", "-e", "SELECT 1"]
+        #  initialDelaySeconds: 5
+        #  periodSeconds: 2
+        #  timeoutSeconds: 1
+        volumeMounts:
+        - name: mysql-cluster-data
+          mountPath: /var/lib/mysql
+          subPath: mysql
+        - name: conf
+          mountPath: /etc/mysql
+        - name: docker-init
+          mountPath: /docker-entrypoint-initdb.d
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+      volumes:
+      - name: conf
+        emptyDir: {}
+      - name: docker-init
+        emptyDir: {}
+      - name: config-map
+        configMap:
+          name: mysql
+      - name: mysql-main-conf
+        configMap:
+          name: mysql-main-conf
+  volumeClaimTemplates:
+  - metadata:
+      name: mysql-cluster-data
+    spec:
+      accessModes: [ "ReadWriteMany" ]
+      storageClassName: zach-nfs-local-1
+      resources:
+        requests:
+          storage: 1Gi
