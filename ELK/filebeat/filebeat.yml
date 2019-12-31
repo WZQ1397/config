@@ -74,7 +74,15 @@ output.kafka:
 # processors:
   # - drop_fields:    #删除字段，不再kibana里面展示，默认情况kibana里面会自动展示这些beat字段
     # fields: ["beat.hostname","beat.version","beat.name","prospector.type","input.type"]
-
+#----------------------------- Redis output --------------------------------
+output.redis:
+  hosts: ["192.168.10.102"]
+  password: "ilinux.io"
+  key: "httpdlogs"
+  datatype: "list"
+  db: 0
+  timeout: 5
+	
 setup.kibana:
   host: "mykibanahost:5601"
   username: "my_kibana_user"  
