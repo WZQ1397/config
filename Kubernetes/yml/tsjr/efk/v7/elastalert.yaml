@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: elastalert
+  namespace: syslog
+  labels:
+    k8s-app: elastalert
+    addonmanager.kubernetes.io/mode: Reconcile
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: elastalert
+  template:
+    metadata:
+      labels:
+        k8s-app: elastalert
+    spec:
+      containers:
+      - name: elastalert
+        image: bitsensor/elastalert:3.0.0-beta.1
+        resources:
+          # need more cpu upon initialization, therefore burstable class
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 100m
+        ports:
+        - containerPort: 3030
+          name: tcp
+          protocol: TCP
+        - containerPort: 3333
+          name: websocket
+          protocol: TCP
+        volumeMounts:
+        - name: config-yaml
+          mountPath: /opt/elastalert/config.yaml
+        - name: config-json
+          mountPath: /opt/elastalert-server/config/config.json
+        - name: rules
+          mountPath: /opt/elastalert/rules
+        - name: rules-template
+          mountPath: /opt/elastalert/rule_templates
+      volumes:
+      - name: config-yaml
+        hostPath:
+          path: /tsjr-data/kibana/elastalert/elastalert.yaml
+      - name: config-json
+        hostPath:
+          path: /tsjr-data/kibana/elastalert/config.json
+      - name: rules
+        hostPath:
+          path: /tsjr-data/kibana/elastalert/rules
+      - name: rules-template
+        hostPath:
+          path: /tsjr-data/kibana/elastalert/rules-template
