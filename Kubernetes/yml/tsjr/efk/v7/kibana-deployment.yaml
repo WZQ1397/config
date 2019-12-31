@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kibana-logging
+  namespace: syslog
+  labels:
+    k8s-app: kibana-logging
+    addonmanager.kubernetes.io/mode: Reconcile
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: kibana-logging
+  template:
+    metadata:
+      labels:
+        k8s-app: kibana-logging
+      annotations:
+        seccomp.security.alpha.kubernetes.io/pod: 'docker/default'
+    spec:
+      containers:
+      - name: kibana-logging
+        image: docker.elastic.co/kibana/kibana-oss:7.2.0
+        resources:
+          # need more cpu upon initialization, therefore burstable class
+          limits:
+            cpu: 1000m
+          requests:
+            cpu: 100m
+        env:
+          - name: ELASTICSEARCH_HOSTS
+            value: http://elasticsearch-logging:9200
+          - name: SERVER_NAME
+            value: kibana-logging
+#          - name: SERVER_BASEPATH
+#            value: /api/v1/namespaces/syslog/services/kibana-logging/proxy
+          - name: SERVER_REWRITEBASEPATH
+            value: "false"
+#          - name: XPACK_MONITORING_UI_ENABLED
+#            value: "true"
+#          - name: XPACK_MONITORING_ENABLED
+#            value: "true"
+#          - name: XPACK_GROKDEBUGGER_ENABLED
+#            value: "true"
+        ports:
+        - containerPort: 5601
+          name: ui
+          protocol: TCP
+        volumeMounts:
+        - name: datadir
+          mountPath: /usr/share/kibana/data
+        - name: plugdir
+          mountPath: /usr/share/kibana/plugins
+        - name: optimize
+          mountPath: /usr/share/kibana/optimize
+        - name: runshell
+          mountPath: /usr/local/bin/kibana-docker
+      volumes:
+      - name: datadir
+        hostPath:
+          path: /tsjr-data/kibana/data
+          type: DirectoryOrCreate
+      - name: plugdir
+        hostPath:
+          path: /tsjr-data/kibana/plugin
+          type: DirectoryOrCreate
+      - name: optimize
+        hostPath:
+          path: /tsjr-data/kibana/optimize
+          type: DirectoryOrCreate
+      - name: runshell
+        hostPath:
+          path: /tsjr-data/kibana/kibana-docker
