@@ -1,0 +1,75 @@
+filter {
+　　if [fields][type] == "pachongmysql" {
+　　　　grok {
+　　　　　　match => { 
+　　　　　　　　"message" => "^#\ Time:\ (?<Time>.*)"
+　　　　　　}
+　　　　　　match => {
+　　　　　　　　"message" => "^#\ User\@Host:\ (?<User>.*)\[exiuapp\]\ \@\ \ \[%{IP:hostip}\]\ \ Id:\ \ \ \ %{NUMBER:Id:int}"
+　　　　　　}
+　　　　　　match => {
+　　　　　　　　"message" => "^#\ Query_time:\ %{NUMBER:Query_time:float}\ \ Lock_time:\ %{NUMBER:Lock_time:float}\ Rows_sent:\ %{NUMBER:Rows_sent:int}\ \ Rows_examined:\ %{NUMBER:Rows_examined:int}"
+　　　　　　}
+　　　　　　match => {
+　　　　　　　　"message" => "^use\ (?<database>.*)"
+　　　　　　}
+　　　　　　match => {
+　　　　　　　　"message" => "^SET\ timestamp=%{NUMBER:timestamp:int}\;"
+　　　　　　}
+　　　　　　match => {
+　　　　　　　　"message" => "(?<sql>.*);"
+　　　　　　}
+　　　　　　remove_field => "message"
+　　　　}
+　　}
+}
+
+# 55.3.244.1 GET /index.html 15824 0.043
+filter {
+grok { match => { "message" => "%{IP:client} %{WORD:method} %{URIPATHPARAM:request} %{NUMBER:bytes} %{NUMBER:duration}"} } 
+}
+
+# 2018-02-24 11:19:23,532 [143] DEBUG performanceTrace 1145 http://api.114995.com:8082/api/Carpool/QueryMatchRoutes 183.205.134.240 null 972533 310000 TITTL00 HUAWEI 860485038452951 3.1.146 HUAWEI 5.1 113.552344 33.332737 发送响应完成 Exception:(null)
+
+filter {
+    grok {
+        match => {
+            "message" => "%{TIMESTAMP_ISO8601:timestamp} \[%{NUMBER:thread:int}\] %{DATA:level} (?<logger>[a-zA-Z]+) %{NUMBER:executeTime:int} %{URI:url} %{IP:clientip} %{USERNAME:UserName} %{NUMBER:userid:int} %{NUMBER:AreaCode:int} (?<Board>[0-9a-zA-Z]+[-]?[0-9a-zA-Z]+) (?<Brand>[0-9a-zA-Z]+[-]?[0-9a-zA-Z]+) %{NUMBER:DeviceId:int} (?<TerminalSourceVersion>[0-9a-z\.]+) %{NUMBER:Sdk:float} %{NUMBER:Lng:float} %{NUMBER:Lat:float} (?<Exception>.*)"
+        }
+        remove_field => "message"
+    }
+    date {
+                   match => ["timestamp","dd/MMM/YYYY:H:m:s Z"]
+        remove_field => "timestamp"
+           }
+    geoip {
+        source => "clientip"
+        target => "geoip"
+        database => "/etc/logstash/maxmind/GeoLite2-City.mmdb"
+    }
+}
+
+
+# 2018-03-20 10:44:01,523 [33]DEBUG Debug - task request,task Id:1cbb72f1-a5ea-4e73-957c-6d20e9e12a7a,start time:2018-03-20 10:43:59
+-- Request String : {"UserName":"15046699923","Pwd":"ZYjyh727","DeviceType":2,"DeviceId":"PC-20170525SADY","EquipmentNo":null,"SSID":"pc","RegisterPhones":null,"AppKey":"ab09d78e3b2c40b789ddfc81674bc24deac","Version":"2.0.5.3"} -- End
+-- Response String : {"ErrorCode":0,"Success":true,"ErrorMsg":null,"Result":null,"WaitInterval":30} -- End
+
+# 分行处理
+match => {
+    "message" => "^20.*-\ task\ request,.*,start\ time\:%{TIMESTAMP_ISO8601:RequestTime}"
+match => {
+    "message" => "^--\ Request\ String\ :\ \{\"UserName\":\"%{NUMBER:UserName:int}\",\"Pwd\":\"(?<Pwd>.*)\",\"DeviceType\":%{NUMBER:DeviceType:int},\"DeviceId\":\"(?<DeviceId>.*)\",\"EquipmentNo\":(?<EquipmentNo>.*),\"SSID\":(?<SSID>.*),\"RegisterPhones\":(?<RegisterPhones>.*),\"AppKey\":\"(?<AppKey>.*)\",\"Version\":\"(?<Version>.*)\"\}\ --\ \End.*"    
+}
+match => {
+    "message" => "^--\ Response\ String\ :\ \{\"ErrorCode\":%{NUMBER:ErrorCode:int},\"Success\":(?<Success>[a-z]*),\"ErrorMsg\":(?<ErrorMsg>.*),\"Result\":(?<Result>.*),\"WaitInterval\":%{NUMBER:WaitInterval:int}\}\ --\ \End.*"
+}
+
+# 合并处理
+filter {
+　　grok {
+　　　　match => {
+　　　　　　"message" => "^%{TIMESTAMP_ISO8601:InsertTime}\ .*-\ task\ request,.*,start\ time:%{TIMESTAMP_ISO8601:RequestTime}\n--\ Request\ String\ :\ \{\"UserName\":\"%{NUMBER:UserName:int}\",\"Pwd\":\"(?<Pwd>.*)\",\"DeviceType\":%{NUMBER:DeviceType:int},\"DeviceId\":\"(?<DeviceId>.*)\",\"EquipmentNo\":(?<EquipmentNo>.*),\"SSID\":(?<SSID>.*),\"RegisterPhones\":(?<RegisterPhones>.*),\"AppKey\":\"(?<AppKey>.*)\",\"Version\":\"(?<Version>.*)\"\}\ --\ \End\n--\ Response\ String\ :\ \{\"ErrorCode\":%{NUMBER:ErrorCode:int},\"Success\":(?<Success>[a-z]*),\"ErrorMsg\":(?<ErrorMsg>.*),\"Result\":(?<Result>.*),\"WaitInterval\":%{NUMBER:WaitInterval:int}\}\ --\ \End"
+　　　　}
+　　}
+}
+
