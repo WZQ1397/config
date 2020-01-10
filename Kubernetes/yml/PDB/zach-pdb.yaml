@@ -1,0 +1,13 @@
+apiVersion: policy/v1beta1
+kind: PodDisruptionBudget
+metadata:
+  name: zk-pdb
+spec:
+  # maxUnavailable 值为 0% (或 0),或者minAvailable值为100%(或者与replicas的值相等)则会完全阻止pod驱离.
+  # 在一个PDB定义中,只能指定minAvailable或maxUnavailable其一
+  # maxUnavailable: 20%
+  minAvailable: 2
+  selector:
+    # 此为必选项
+    matchLabels:
+      app: zach
