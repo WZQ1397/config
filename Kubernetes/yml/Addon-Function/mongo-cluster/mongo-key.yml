@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mongo-key
+type: Opaque
+data:
+  key: UERVU0hWVU9KT1ZQVUVYT0JXWU8=

@@ -1,0 +1,90 @@
+---
+apiVersion: apps/v1beta1
+kind: StatefulSet
+metadata:
+  name: mongo
+spec:
+  selector:
+    matchLabels:
+      app: mongo
+  serviceName: "mongo"
+  replicas: 3
+  podManagementPolicy: Parallel
+  template:
+    metadata:
+      labels:
+        app: mongo
+    spec:
+      terminationGracePeriodSeconds: 10
+      affinity:
+         podAntiAffinity:
+           requiredDuringSchedulingIgnoredDuringExecution:
+           - labelSelector:
+               matchExpressions:
+               - key: "app"
+                 operator: In
+                 values:
+                 - mongo
+             topologyKey: "kubernetes.io/hostname"
+      initContainers:
+      - name: init-mongo
+        image: alpine
+        imagePullPolicy: IfNotPresent
+        command:
+        - sh
+        - "-cx"
+        - |
+          mkdir -pv /etc/conf.d/secret-key
+          cp -v /tmp/secret-key/key/..data/key /etc/conf.d/secret-key/
+          cp -rv /tmp/conf.d/..data/* /etc/conf.d
+          chmod 600 -R /etc/conf.d/secret-key
+        volumeMounts:
+        - name: secret-key
+          mountPath: /tmp/secret-key/key
+        - name: mongo-config
+          mountPath: /tmp/conf.d
+        - name: all-config
+          mountPath: /etc/conf.d
+      containers:
+      - name: mongo-node
+        image: mongo:3.6
+        imagePullPolicy: IfNotPresent
+        command:
+        - mongod
+        - "-f"
+        - "/etc/conf.d/mongo36-auth"
+        - "--bind_ip_all"
+        - "--auth"
+        - "--replSet"
+        - zach
+        ports:
+        - containerPort: 27017
+        volumeMounts:
+        - name: mongo-data
+          mountPath: /var/lib/mongodb
+        - name: all-config
+          mountPath: /etc/conf.d
+        livenessProbe:
+          tcpSocket:
+            port: 27017
+          initialDelaySeconds: 15
+          periodSeconds: 20
+      volumes:
+      - name: all-config
+        emptyDir: {}
+      - name: mongo-config
+        configMap:
+          name: mongodb-config
+      - name: secret-key
+        secret:
+          secretName: mongo-key
+  volumeClaimTemplates:
+  - metadata:
+      name: mongo-data
+    spec:
+      accessModes: [ "ReadWriteMany" ]
+      storageClassName: zach-nfs-local-1
+      resources:
+        requests:
+          storage: 1Gi
+
