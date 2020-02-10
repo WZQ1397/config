@@ -1,0 +1,15 @@
+tribe:
+  1002:
+    cluster.name: es1002
+    discovery.zen.ping.timeout: 100s
+    discovery.zen.ping.multicast.enabled: false
+    discovery.zen.ping.unicast.hosts: ["10.19.0.22","10.19.0.24",10.19.0.21"]
+  1003:
+    cluster.name: es1003
+    discovery.zen.ping.timeout: 100s
+    discovery.zen.ping.multicast.enabled: false
+    discovery.zen.ping.unicast.hosts: ["10.19.0.97","10.19.0.98","10.19.0.99","10.19.0.100"]
+  blocks:
+    write:    true
+    metadata: true
+  on_conflict: prefer_1003
