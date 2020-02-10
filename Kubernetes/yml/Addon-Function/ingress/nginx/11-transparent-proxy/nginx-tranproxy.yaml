@@ -24,8 +24,28 @@ spec:
     spec:
       containers:
       - image: lijiaocn/nginx-tranproxy:0.1
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         name: nginx-tranproxy
+        args:
+        - -P
+        - "80"
+        - -P
+        - "8080"
+        - -N
+        - "114.114.114.114"
+        - -N
+        - "8.8.8.8"
+        - --Set-Forwarded-For
+        - default
+        - --Set-Client-Hostname
+        - default
+        - -H
+        - tranproxy:true
+        env:
+        - name: PODIP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
         resources: {}
         securityContext:
           capabilities:
@@ -34,7 +54,5 @@ spec:
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
       dnsPolicy: ClusterFirst
-      restartPolicy: Always
-      schedulerName: default-scheduler
-      securityContext: {}
+      restartPolicy: IfNotPresent
       terminationGracePeriodSeconds: 30

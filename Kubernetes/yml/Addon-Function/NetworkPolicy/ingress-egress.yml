@@ -16,11 +16,11 @@ spec:
         cidr: 172.17.0.0/16
         except:
         - 172.17.1.0/24
-	# Label project=myproject allowed in Any NS
+    # Label project=myproject allowed in Any NS
     - namespaceSelector:
         matchLabels:
           project: myproject
-	# Label role=frontend allowed in default NS
+    # Label role=frontend allowed in default NS
     - podSelector:
         matchLabels:
           role: frontend

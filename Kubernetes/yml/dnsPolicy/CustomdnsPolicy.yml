@@ -8,6 +8,9 @@ spec:
   containers:
     - name: test
       image: nginx
+  # None 表示会清除 Pod 预设的 DNS 配置，当 dnsPolicy 设置成这个值之后，Kubernetes 不会为 Pod 预先载入任何自身逻辑判断得到的 DNS 配置。因此若要将 dnsPolicy 的值设为 None，为了避免 Pod 里面没有配置任何 DNS，最好再添加 dnsConfig 来描述自定义的 DNS 参数。
+  # Default 表示 Pod 里面的 DNS 配置继承了宿主机上的 DNS 配置。
+  # ClusterFirst 是完全相反的操作，它会预先把  kube-dns（或 CoreDNS）的信息当作预设参数写入到该 Pod 内的 DNS 配置。
   dnsPolicy: "None"
   dnsConfig:
     nameservers:
