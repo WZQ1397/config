@@ -9,12 +9,12 @@ spec:
     command:
     - sleep
     - "6000"
-	dnsPolicy: ClusterFirst
+  dnsPolicy: ClusterFirst
     resources: {}
     securityContext:
-	  runAsNonRoot: true
+    runAsNonRoot: true
       capabilities:
-	    add:
+      add:
         - IPC_LOCK
         - SYS_RESOURCE
         drop:
