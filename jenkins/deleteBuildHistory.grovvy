@@ -1,0 +1,52 @@
+#假设jenkins的job名称为：auto_get_product_info，占用空间最多的构建版本：1888
+#如下代码将删除1到1000的历史构建
+
+# 单个任务
+def jobName = "suncash-lend-sit" 
+def maxNumber = 1000
+
+Jenkins.instance.getItemByFullName(jobName).builds.findAll {
+  it.number <= maxNumber
+}.each {
+  println(it.name)
+  it.delete()
+}
+
+
+# 批量设置所有的Jenkins的Job的保留的编译build历史数量
+import hudson.model.*
+def items = Hudson.instance.allItems
+
+items.each { item ->
+
+  if (item instanceof Job) {
+    item.logRotator = new hudson.tasks.LogRotator ( "", "10", "", "")
+        println "$item.name fixed "
+    
+  }
+}
+return
+
+# 删除所有的Jenkins中的Job的编译历史并重置build号
+import hudson.model.*
+def items = Hudson.instance.allItems
+
+items.each { item ->
+
+  if (item instanceof Job) {
+
+    def builds = item.getBuilds()
+
+    builds.each { build ->
+      def since = groovy.time.TimeCategory.minus( new Date(), build.getTime() )
+      def status = build.getBuildStatusSummary().message
+      println "Build: ${build} | Since: ${since} | Status: ${status}" 
+      build.delete()
+    }
+    
+    item.nextBuildNumber = 1
+    item.save()
+  }
+}
+return
+        
