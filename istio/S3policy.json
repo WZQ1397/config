@@ -1,0 +1,38 @@
+{
+    "Version":"2012-10-17",
+    "Id":"PreventHotLinking",
+    "Statement":[
+        {
+            "Sid":"Allow get requests referred by www.mysite.com and mysite.com",
+            "Effect":"Allow",
+            "Principal":"*",
+            "Action":"s3:GetObject",
+            "Resource":"arn:aws:s3:::examplebucket/*",
+            "Condition":{
+                "StringLike":{
+                    "aws:Referer":[
+                        "http://www.example.com/*",
+                        "http://example.com/*"
+                    ]
+                }
+								"IpAddress": {"aws:SourceIp": "54.240.143.0/24"},
+								"NotIpAddress": {"aws:SourceIp": "54.240.143.188/32"} 
+            }
+        },
+        {
+            "Sid":"Explicit deny to ensure requests are allowed only from specific referer.",
+            "Effect":"Deny",
+            "Principal":"*",
+            "Action":"s3:*",
+            "Resource":"arn:aws:s3:::examplebucket/*",
+            "Condition":{
+                "StringNotLike":{
+                    "aws:Referer":[
+                        "http://www.example.com/*",
+                        "http://example.com/*"
+                    ]
+                }
+            }
+        }
+    ]
+}
