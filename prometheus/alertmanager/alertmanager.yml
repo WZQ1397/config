@@ -18,14 +18,23 @@ route:
 #templates:
 #  - '/root/prometheus/alertmanager-0.15.3.linux-amd64/template/*.tmpl'
 
+
 receivers:
+# dingding webhook method
 - name: 'MonitorSystem'
   webhook_configs:
   - url: "http://127.0.0.1"
 - name: 'mail'
   email_configs:
   - to: "zach@zach.cn"
-  
+# Wechat method
+- name: 'wechat'
+  wechat_configs:
+  - corp_id: 'xxx'
+    to_party: '1'
+    agent_id: '1000002'
+    api_secret: 'xxxx'
+		
 inhibit_rules: 
   - source_match: 
      severity: 'critical' 
