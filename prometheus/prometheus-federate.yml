@@ -1,0 +1,16 @@
+- job_name: 'federate'
+  scrape_interval: 15s
+
+  honor_labels: true
+  metrics_path: '/federate'
+
+  params:
+    'match[]':
+      - '{job="prometheus"}'
+      - '{__name__=~"job:.*"}'
+
+  static_configs:
+    - targets:
+      - 'source-prometheus-1:9090'
+      - 'source-prometheus-2:9090'
+      - 'source-prometheus-3:9090'
