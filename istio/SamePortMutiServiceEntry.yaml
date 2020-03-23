@@ -1,0 +1,31 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: ServiceEntry
+metadata:
+  name: github
+  namespace： ns1
+spec:
+  hosts:
+  - github.com
+  ports:
+  - number: 443
+    name: tcp
+    protocol: TCP
+  resolution: DNS
+  location: MESH_EXTERNAL
+  configScope: PRIVATE   # default public all workload can find, PRIVATE only can find in current namespace
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: ServiceEntry
+metadata:
+  name: hwcloud
+  namespace： ns2
+spec:
+  hosts:
+  - www.huaweicloud.com
+  ports:
+  - number: 443
+    name: tcp
+    protocol: TCP
+  resolution: DNS
+  location: MESH_EXTERNAL
+  configScope: PRIVATE
