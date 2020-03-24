@@ -49,4 +49,9 @@ items.each { item ->
   }
 }
 return
-        
+      
+
+# modify time zone
+# execute command on jenkins web-ui : system manage ==> script command line
+System.setProperty('org.apache.commons.jelly.tags.fmt.timeZone', 'Asia/Shanghai')
+			
