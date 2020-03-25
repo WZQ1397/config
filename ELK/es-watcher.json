@@ -1,0 +1,154 @@
+curl -XPUT 'http://localhost:9200/_watcher/watch/log_error_watch' -d '
+{
+  "trigger": {
+    "schedule": {
+        "interval": "1m"
+    }
+		# "schedule" : { "cron" : "0/5 * * * * ?" }
+		# "schedule" : {"hourly" : { "minute" : [ 0, 15, 30, 45 ] }}
+		# "schedule" : {"daily" : { "at" : [ "midnight", "noon", "17:00" ] }}
+		# "schedule" : {"daily" : {"at" {"hour" : [ 0, 12, 17 ]"minute" : [0, 30]}
+		# "schedule" : {"weekly" : [{ "on" : "tuesday", "at" : "noon" },{ "on" : "friday", "at" : "17:00" }]}
+		# "schedule" : {"weekly" : {"on" : [ "tuesday", "friday" ]"at" : [ "noon", "17:00" ]}
+		# "schedule" : {"yearly" : {"in: : [ "jan", "dec" ],"on" : [ 10, 20 ],"at" : [ "midnight", "noon" ]}
+  },
+  "input": {
+    "search": {
+      "request": {
+        "indices": [
+          "zach_monitor-{now/d}"
+        ],
+        "types" : [ "event" ],
+        "body": {
+          "query": {
+            "bool": {
+              "must": [
+                {
+                  "match": {
+                    "servity": "ERROR"
+                  }
+                },
+                {
+									"range": {
+										"createTime": {
+											"gt" : "now-1m",
+											"lt" : "now-15m"
+											# "from" : "{{ctx.trigger.scheduled_time}}||-30s",
+											# "to" : "{{ctx.trigger.triggered_time}}"
+										}
+									}
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "http" : {
+      "request" : {
+        "host" : "host.domain",
+        "port" : 9200,
+        "path" : "/idx/_search",
+        "body" :  "\"query\" :  {  \"match\" : { \"category\" : \"event\"}",
+        "auth" : {
+          "basic" : {
+            "username" : "user",
+            "password" : "pass"
+          }
+        }
+        "params" : {
+          "human" : "true"  #优化展示结果
+        }
+				# "path" : "/{{ctx.watch_id}}/_search",
+				# "body" : "\"query\" : {\"range\": {\"@timestamp\" : {\"from\": \"{{ctx.trigger.triggered_time}}||-5m\",\"to\": \"{{ctx.trigger.triggered_time}}\"}}}"
+      }
+		}
+  },
+  "condition": {
+    "compare": {
+      "ctx.payload.hits.total": {
+          "gt": 10
+      }
+    }
+		# 或者 ==> 
+		# "script" : "return ctx.payload.hits.total > 10"
+  },
+  "transform" : {
+    "chain" : [ #定义格式
+      {
+        "search" : {  #搜索Transform，执行count查询
+          "search_type" : "count",
+          "indices" : [ "logstash-*" ],
+          "body" : {
+            "query" : {
+              "match" : { "priority" : "error"}
+            }
+          }
+        }
+      },
+      { #脚本Transform，将count结果赋值给Error_count字段
+        "script" : "return [ error_count : ctx.payload.hits.total ]"  
+      }
+    ]
+  },
+	"actions": {
+    "send_email": {
+      "email": {
+        "to": "zach@zach.com",
+        "subject": "{{ctx.watch_id}} Project ERROR WARNING ",
+        "body": "Project has {{ ctx.payload.hits.total }} ERROR in 15 mins! \n Happened at {{ctx.execution_time}} "
+      }
+    },
+		"webhook" : {
+			"auth" : {
+				"basic" : {
+					"username" : "<username>",
+					"password" : "<password>" 
+				}
+			}
+			"method" : "POST",
+			"host" : "<zach_monitor_server_address>",
+			"port" : 9200,
+			"path": ":/{{ctx.watch_id}",
+			"headers" : { #自定义头部信息
+				"Content-Type" : "application/yaml"
+			},
+			"body" : "Project has {{ ctx.payload.hits.total }} ERROR in 15 mins! \n Happened at {{ctx.execution_time}} "
+		},
+		"index_payload" : {
+		 "index" : {
+			 "index" : "zachMonitorIndex",  #索引名称
+			 "doc_type" : "string" #索引类型
+		 }
+		},
+		"log" : {
+			"logging" : {
+				"text" : "Project has {{ ctx.payload.hits.total }} ERROR in 15 mins! \n Happened at {{ctx.execution_time}}"
+			}
+		}
+	}
+}'
+
+
+Watcher 中可用的 ctx 变量包括：
+ctx.watch_id
+ctx.execution_time
+ctx.trigger.triggered_time
+ctx.trigger.scheduled_time
+ctx.metadata.*
+ctx.payload.*
+
+
+# 验证watcher是否启动
+curl --user elastic:changeme -XGET 'http://127.0.0.1:9200/_watcher/stats?pretty'
+
+# 查看watcher内容：
+curl --user elastic:changeme -XGET 'http://127.0.0.1:9200/_watcher/watch/weifan_watch'
+
+
+# 写时序索引动态定义方式如 <logstash-{now/d}>,在yaml文件中配置如下: 
+watcher.input.search.dynamic_indices.time_zone: '+08:00'
+
+
+# 管理服务
+# https://blog.csdn.net/corejava999/article/details/84721070
