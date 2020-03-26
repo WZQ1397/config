@@ -1,0 +1,528 @@
+#==============================#
+#  Traffic Management Segment  #
+#==============================#
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: bookinfo-gateway
+spec:
+  selector:
+    istio: ingressgateway # use istio default controller
+  servers:
+  - port:
+      # default IngressGateway is only open on ports 80, 443, 31400, and 15443.
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "*.bookinfo.zach.cn"
+    - "postdata.dc.zach.cn"
+  - port:
+      number: 443
+      name: book-https
+      protocol: HTTPS
+    tls:
+      mode: SIMPLE
+      # kubectl create secret tls istio-ingressgateway-certs --key rocks/key.pem --cert rocks/cert.pem
+      # mount secret to directoty /etc/istio/ingressgateway-certs/
+      serverCertificate: /etc/istio/ingressgateway-certs/book-tls.crt
+      privateKey: /etc/istio/ingressgateway-certs/book-tls.key
+    hosts:
+    - "*.bookinfo.zach.cn"
+    - "postdata.dc.zach.cn"
+  - port:
+      number: 443
+      name: helloworld-https
+      protocol: HTTPS
+    tls:
+      mode: SIMPLE
+      serverCertificate: /etc/istio/ingressgateway-certs/helloworld-tls.crt
+      privateKey: /etc/istio/ingressgateway-certs/helloworld-tls.key
+    hosts:
+    - "helloworld"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: zach-gateway
+spec:
+  selector:
+    istio: ingressgateway # use istio default controller
+  servers:
+  - port:
+      number: 443
+      name: zach-https
+      protocol: HTTPS
+    tls:
+      mode: SIMPLE
+      serverCertificate: /etc/istio/ingressgateway-certs/zach-tls.crt
+      privateKey: /etc/istio/ingressgateway-certs/zach-tls.key
+    hosts:
+    - "zach"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: egressgateway-to-ingressgateway-server-ns2
+spec:
+  hosts:
+  - server.ns2.svc.cluster.global
+  gateways:
+  - istio-egressgateway-server-ns2
+  tls:
+  - match:
+    - port: 80
+      sniHosts:
+      - server.ns2.svc.cluster.global
+    route:
+    - destination:
+        host: cluster2-ingress-gateway.service.entry
+        port:
+          number: 80
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: bookinfo
+spec:
+  hosts:
+  - "*"
+  gateways:
+  # if no indicate, default value ==> - mesh 
+  - "*.bookinfo-gateway"
+  http:
+  - timeout: 5s
+  - match:
+    - gateways:
+      - zach-gateway
+        # route:
+        # - destination:
+            # host: zach
+            # subset: v1
+    - uri:  # match exactly correct string
+        exact: /productpage
+    - uri:  # match only for the head of string
+        prefix: /static
+    - uri:
+        exact: /get
+      rewrite:
+        uri: /post
+      route:
+      - destination:
+          host: postdata.dc.zach.cn
+      retries:
+        # total = attempts * perTryTimeout
+        # select the min delay of total and timeout ==> in this way timeout win.
+        attempts: 3
+        perTryTimeout: 2s
+    - uri:
+        prefix: /api/v1/products
+    - headers:
+        user-agent:
+          regex: '.*Firefox.*'
+        cookie:
+          exact: "role=1"
+        cookie:
+          regex: "^(.*?;)?(email=[^;]*@some-company-name.com)(;.*)?$"
+    - sourceLabels:
+        app: bookinfo
+        env: product
+      uri:
+        exact: /logout
+    redirect:
+      uri: /main
+    fault:
+      delay:
+        fixedDelay: 5s
+        percent: 100
+      abort:
+        percent: 10
+        httpStatus: 400
+    - route:
+      - destination:
+          host: productpage
+          port:
+            number: 9080
+          subset: v1
+        weight: 80
+      - destination:
+          host: productpage
+          port:
+            number: 8080
+          subset: v2
+        weight: 20
+      mirror:
+        host: httpbin.default.svc.cluster.local
+        subsets: v2
+  - route:
+    - destination:
+        host: helloworld
+        subset: v1
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: ratings
+spec:
+  host: ratings
+  trafficPolicy:
+    loadBalancer:
+      simple: RANDOM 
+  subsets:
+  - name: v1
+    labels:
+      version: v1
+  - name: v2
+    labels:
+      version: v2
+  - name: v2-mysql
+    labels:
+      version: v2-mysql
+  - name: v2-mysql-vm
+    labels:
+      version: v2-mysql-vm
+    trafficPolicy:
+      loadBalancer:
+        simple: ROUND_ROBIN # RANDOM/ROUND_ROBIN/LEAST_CONN/PAASTHROUGH
+---
+apiVersion: "networking.istio.io/v1alpha3"
+kind: "DestinationRule"
+metadata:
+  name: "example-2"
+spec:
+  host: httpbin.bar.svc.cluster.local
+  trafficPolicy:
+    tls:
+      mode: DISABLE  # default which is DISABLE
+    portLevelSettings:
+    - port:
+        number: 1234
+      tls:
+        mode: ISTIO_MUTUAL  # enable the mtls mode in portLevel
+---   
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: httpbin
+spec:
+  host: httpbin
+  trafficPolicy:
+    connectionPool:
+      tcp:
+        maxConnections: 10
+      http: 
+        # Maxium of single target Queue
+        httplMaxPendingRequests: 10
+        # http2MaxRequests: 10000
+        # Maxium requests of per connection
+        maxRequestsPerConnection: 10
+    outlierDetection:
+      consecutiveErrors: 1 
+      interval: 1s 
+      baseEjectionTime: 3m 
+      maxEjectionPercent: 100
+# https://www.cnblogs.com/CCE-SWR/p/10329579.html
+---
+#==============================#
+#   Route Management Segment   #
+#==============================#
+apiVersion: networking.istio.io/v1alpha3
+kind: ServiceEntry
+metadata:
+  name: external-svc-mongocluster
+spec:
+  hosts:
+  - mymongodb.somedomain
+  addresses:
+  - 192.192.192.192/24 # VIPs
+  ports:
+  - number: 27018
+    name: mongodb
+    protocol: MONGO
+  location: MESH_INTERNAL
+  resolution: STATIC
+  endpoints:
+  - address: 2.2.2.2
+  - address: 3.3.3.3
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: ServiceEntry
+metadata:
+  name: httpbin-ext
+spec: 
+  hosts:
+  - httpbin.org 
+  ports:
+  - number : 80
+    name: http
+    protocol: HTTP
+  # location: MESH_EXTERNAL
+  resolution: DNS
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: mtls-mysqlcluster
+spec:
+  selector:
+    db: mysql
+    env: prd
+    node: SG-A
+  trafficPolicy:
+    tls:
+      mode: MUTUAL  # DISABLE
+      clientCertificate: /etc/certs/myclientcert.pem
+      privateKey: /etc/certs/client_private_key.pem
+      caCertificates: /etc/certs/rootcacerts.pem
+      # SNI（Server Name Indication）是 TLS 的扩展，用来解决一个服务器拥有多个域名的情况。
+      # sni: server.ns2.svc.cluster.global
+---
+#==============================#
+#  Security Management Segment #
+#==============================#
+apiVersion: authentication.istio.io/v1alpha1
+kind: MeshPolicy
+metadata:
+  name: default
+  namespace: default
+spec:
+  peers:
+  - mtls: {}
+  # Transport Layer Security (TLS) 和 Mutual Transport Layer Security (MTLS) 
+---
+apiVersion: authentication.istio.io/v1alpha1
+kind: Policy
+metadata:
+  name: mtls-to-analyzer
+  namespace: default
+spec:
+  targets:
+  # targets which is an option item，if it is not exists , the action scope will enlarge to all namespace.
+  - name: analyzer
+  peers:
+  - mtls:
+      mode: PERMISSIVE  # PERMISSIVE allow plaintext and ciphertext , however STRICT only support ciphertext
+  # Transport Layer Security (TLS) 和 Mutual Transport Layer Security (MTLS) 
+---
+# Control Access to Your Service
+# 
+# kubectl create sa {{ svc_sa_name }}
+# echo "      serviceAccountName: {{ svc_sa_name }}" >> xxx-deployment.yaml
+# kubectl replace -f xxx-deployment.yaml
+apiVersion: "rbac.istio.io/v1alpha1"
+kind: RbacConfig
+metadata:
+  name: default
+spec:
+  mode: 'ON_WITH_INCLUSION'
+  inclusion:
+    services: ["*.default.svc.cluster.local"]
+    namespace: ["default","analyzer"]
+---
+apiVersion: "rbac.istio.io/v1alpha1"
+kind: ServiceRole
+metadata:
+  name: zach-viewer
+  namespace: default
+spec:
+  rules:
+  - services: ["admin.default.svc.cluster.local"]
+    methods: ["*"]
+    constraints:
+    - key: "destination.labels["version"]"
+      values: ["2.0","2.1"]
+    - key: "destination.labels["project"]"
+      values: ["tsjr-analyzer-*","tsjr-analyzer-gateway"]
+---
+apiVersion: "rbac.istio.io/v1alpha1"
+kind: ServiceRoleBinding
+metadata:
+  name: bind-admin-viewer-analyzer
+  namespace: default
+spec:
+  subjects:
+  - properties:
+      source.namespace: "default"
+  - properties:
+      source.namespace: "analyzer"
+  roleRef:
+    kind: ServiceRole
+    name: "zach-viewer"
+---
+apiVersion: "rbac.istio.io/v1alpha1"
+kind: ServiceRole
+metadata:
+  name: analyzer-viewer
+  namespace: default
+spec:
+  rules:
+  - services: ["analyzer.default.svc.cluster.local"]
+    methods: ["POST"]
+  - services: ["data.default.svc.cluster.local"]
+    methods: ["GET","DELETE"]
+---
+apiVersion: "rbac.istio.io/v1alpha1"
+kind: ServiceRoleBinding
+metadata:
+  name: bind-analyzer-viewer-analyzer
+  namespace: default
+spec:
+  subjects:
+  - user: "cluster.local/ns/default/sa/guestbook"
+  roleRef:
+    kind: ServiceRole
+    name: "analyzer-viewer"
+# inject istio sidecar
+# kubectl apply -f <(istioctl kube-inject -f guestbook/guestbook-ui-deployment.yaml --debug) -f guestbook/guestbook-ui-service.yaml
+
+---
+#==============================#
+#  Security Management Segment #
+#==============================#
+
+#+++++++++++++#
+# 1. define denier/listchecker adapter
+# 2. define handler
+# 3. define rule and associate with instances and adapter
+#+++++++++++++#
+# ACL for denier adapter
+# Create a denier that returns a google.rpc.Code 7 (PERMISSION_DENIED)
+apiVersion: "config.istio.io/v1alpha2"
+kind: denier
+metadata:
+  name: denyall
+  namespace: istio-system
+spec:
+  status:
+    code: 7
+    message: Not allowed
+---
+# The (empty) data handed to denyall at run time
+apiVersion: "config.istio.io/v1alpha2"
+kind: checknothing
+metadata:
+  name: denyrequest
+  namespace: istio-system
+spec:
+---
+# The rule that uses denier to deny requests to the helloworld service
+apiVersion: "config.istio.io/v1alpha2"
+kind: rule
+metadata:
+  name: deny-hello-world
+  namespace: istio-system
+spec:
+  match: destination.service=="helloworld-service.default.svc.cluster.local" && destination.labels["version"] == "2.0"
+  actions:
+  - handler: denyall.denier
+    instances:
+    - denyrequest.checknothing
+---
+# ++++++++++++++
+# ACL for listchecker adapter
+apiVersion: config.istio.io/v1alpha2 
+kind: listchecker
+metadata:
+  name: chaos
+spec:
+  overrides: ["v1","v3"] 
+  blacklist: true
+  # whitelist: true
+---
+apiVersion: config.istio.io/v1alpha2 
+kind: listentry
+metadata:
+  name: version 
+spec:
+  value: source.labels["version"]
+---
+apiVersion: "config.istio.io/v1alpha2" 
+kind: rule
+metadata:
+  name: checkversion
+spec:
+  match: destination.labels["app"]=="httpbin"
+  actions:
+  - handler: chaos.listchecker
+    instances:
+    - version.listentry
+---
+# ++++++++++++++
+# ACL for memquota adapter(Product environment which not recommanded! For this adapter bind on mixer process and no persist and also not support HA feature. redisqouta is recommanded! )
+# Using FIXED_WINDOW Algorithm
+apiVersion: config.istio.io/v1alpha2
+kind: memquota
+metadata:
+ name: memquota-handler
+spec:
+ quotas:
+   - name: tmpl-quota.quota.istio-workload # 引用模板名称 格式：[quota 模板].quota.[namespace]
+     maxAmount: 5000 # 缺省限制
+     validDuration: 10s # 计时窗口
+     overrides: # 根据条件进行重载
+     - dimensions:
+         # dst pod services
+         destination: php-server
+         # src pod services
+         source: sleep
+       maxAmount: 5
+       validDuration: 10s
+---
+# ++++++++++++++
+# ACL for redisqouta adapter(Product environment recommanded! )
+apiVersion: config.istio.io/v1alpha2
+kind: redisquota
+metadata:
+ name: redisqouta-handler
+spec:
+  redisServerUrl: redis-dev:6379
+  connectionPoolSize: 10
+  quotas:
+  - name: tmpl-quota.quota.istio-workload
+    maxAmount: 50   # 50 qps
+    validDuration: 60s
+    bucketDuration: 1s  # Not work in FIXED_WINDOW mode
+    rateLimitAlgorithm: ROLLING_WINDOW  # FIXED_WINDOW is saving resource
+    overrides:
+    - dimensions:
+        destination: php-server
+        source: sleep
+      maxAmount: 12   # 12 qps
+    - dimensions:
+        destination: php-server
+      maxAmount: 5     # 5 qps
+---
+apiVersion: config.istio.io/v1alpha2
+kind: rule
+metadata:
+ name: rule-quota
+spec:
+ actions:
+ - handler: memquota-handler.memquota # 引用适配器名称，这里需要加上适配器类型
+   instances:
+   - tmpl-quota.quota # 引用 Quota 模板
+---
+apiVersion: config.istio.io/v1alpha2
+kind: QuotaSpec
+metadata:
+ name: spec-request-count
+spec:
+ rules:
+ - quotas:
+   - charge: 5 # 每请求的消耗资源数量/倍数
+     quota: "PHP Server meet sth wrong!\n" # 随便叫什么，会出现在错误信息中的资源名称
+---
+apiVersion: config.istio.io/v1alpha2
+kind: QuotaSpecBinding
+metadata:
+ name: request-count
+spec:
+ quotaSpecs:
+ - name: spec-request-count # quotaspec 名称
+   namespace: istio-workload # 必须
+ services:
+ - name: php-server
+ 
+ 
+ ---
+ 
