@@ -50,6 +50,68 @@ https://github.com/alibaba/canal/releases
 bin/startup.sh
 ```
 
+###### 测试
+```
+mysql> show master status;
++------------------+----------+--------------+------------------+----------------------------------------------+
+| File             | Position | Binlog_Do_DB | Binlog_Ignore_DB | Executed_Gtid_Set                            |
++------------------+----------+--------------+------------------+----------------------------------------------+
+| mysql-bin.000013 |    27442 |              |                  | 479ffdb7-625c-11e9-a43f-0242ac110007:1-37040 |
++------------------+----------+--------------+------------------+----------------------------------------------+
+1 row in set (0.00 sec)
 
-####### 监控
+mysql> show binary logs;
++------------------+-----------+
+| Log_name         | File_size |
++------------------+-----------+
+| mysql-bin.000012 |   4582754 |
+| mysql-bin.000013 |     27442 |
++------------------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> show binlog events in 'mysql-bin.000012' limit 5\G;
+*************************** 1. row ***************************
+   Log_name: mysql-bin.000012
+        Pos: 4
+ Event_type: Format_desc
+  Server_id: 1817
+End_log_pos: 120
+       Info: Server ver: 5.6.32-log, Binlog ver: 4
+*************************** 2. row ***************************
+   Log_name: mysql-bin.000012
+        Pos: 120
+ Event_type: Previous_gtids
+  Server_id: 1817
+End_log_pos: 187
+       Info: 479ffdb7-625c-11e9-a43f-0242ac110007:1-30422
+*************************** 3. row ***************************
+   Log_name: mysql-bin.000012
+        Pos: 187
+ Event_type: Gtid
+  Server_id: 1817
+End_log_pos: 231
+       Info: SET @@SESSION.GTID_NEXT= '479ffdb7-625c-11e9-a43f-0242ac110007:30423'
+*************************** 4. row ***************************
+   Log_name: mysql-bin.000012
+        Pos: 231
+ Event_type: Query
+  Server_id: 1817
+End_log_pos: 912
+       Info: use `approval`; create table inspector_info (
+       id VARCHAR(22) BINARY not null,
+        created_time TIMESTAMP(3) NULL,
+        updated_time TIMESTAMP(3) NULL,
+        account varchar(45) DEFAULT NULL COMMENT '用户账号',
+        primary key (id)
+    ) comment='审批表' engine=InnoDB
+*************************** 5. row ***************************
+   Log_name: mysql-bin.000012
+        Pos: 912
+ Event_type: Gtid
+  Server_id: 1817
+End_log_pos: 956
+       Info: SET @@SESSION.GTID_NEXT= '479ffdb7-625c-11e9-a43f-0242ac110007:30424'
+```
+
+###### 监控
 https://github.com/alibaba/canal/wiki/Prometheus-QuickStart
