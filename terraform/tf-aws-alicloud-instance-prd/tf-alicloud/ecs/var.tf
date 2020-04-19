@@ -4,11 +4,11 @@ variable "ecs-region" {
 }
 
 variable "ecs-access_key" {
-  default = "LTAIuGDJAmUNUVDK"
+  default = "LTAIuGhfdgfdhdzf"
 }
 
 variable "ecs-secret_key" {
-  default = "qwnrLmfvokzOYOzcvvoqxng7npqE4i"
+  default = "qwnrLmfv389Efdsixomoi4i"
 }
 
 
