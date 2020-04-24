@@ -25,7 +25,7 @@ scrape_configs:
       regex: "([a-zA-Z0-9]+).tsjinrong.(top|cn)"
       replacement: $1
       target_label: hostname
-      action: replace		# 可省略默认replace
+      action: replace   # 可省略默认replace
     # 删除某个标签
     - regex: "host"
       action: labeldrop
@@ -57,3 +57,30 @@ scrape_configs:
       replacement:  10.10.199.154:9115
     - source_labels: [__param_target]
       target_label: instance
+      
+  - job_name: 'cadvisor-1'
+    consul_sd_configs:
+    - server: 10.0.0.3:8500
+      services:
+        - cadvisor-1 # This is the 2nd slave
+    metrics_path: /metrics/cadvisor
+    scheme: https
+
+    # 请求 kubelet metrics 接口也需要认证和授权，通常会用 webhook 方式让 apiserver 代理进行 RBAC 校验，所以还是用 ServiceAccount 的 token
+    bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+
+    kubernetes_sd_configs:
+    - role: node
+
+    # 通常不校验 kubelet 的 server 证书，避免报 x509: certificate signed by unknown authority
+    tls_config:
+      insecure_skip_verify: true
+
+    relabel_configs:
+    - source_labels: [__address__]
+      modulus:       4    # 将节点分片成 4 个 group
+      target_label:  __tmp_hash
+      action:        hashmod
+    - source_labels: [__tmp_hash]
+      regex:         ^1$  # 只抓第 2 个 group 中节点的数据(序号 0 为第 1 个 group)
+      action:        keep
