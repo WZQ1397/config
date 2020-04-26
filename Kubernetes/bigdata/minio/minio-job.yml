@@ -1,0 +1,27 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  namespace: minio1
+  name: minio1-setup
+  labels:
+    component: minio1
+spec:
+  template:
+    metadata:
+      name: minio1-setup
+    spec:
+      restartPolicy: OnFailure
+      volumes:
+      - name: config
+        emptyDir: {}
+      containers:
+      - name: mc
+        image: minio/mc:latest
+        imagePullPolicy: IfNotPresent
+        command:
+        - /bin/sh
+        - -c
+        - "mc --config-dir=/config config host add velero <your minio_server_url> <your minino_access_key> <your minio_secret_key> && mc --config-dir=/config mb -p velero/velero"
+        volumeMounts:
+        - name: config
+          mountPath: "/config"

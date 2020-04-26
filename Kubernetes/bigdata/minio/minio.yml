@@ -1,0 +1,67 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: minio
+ 
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  namespace: minio
+  name: minio
+  labels:
+    component: minio
+spec:
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        component: minio
+    spec:
+      volumes:
+      - name: storage
+        emptyDir: {}
+      - name: config
+        emptyDir: {}
+      containers:
+      - name: minio
+        image: minio/minio:latest
+        imagePullPolicy: IfNotPresent
+        args:
+        - server
+        - /storage
+        - --config-dir=/config
+        env:
+        - name: MINIO_ACCESS_KEY
+          value: "<your MINIO_ACCESS_KEY>"
+        - name: MINIO_SECRET_KEY
+          value: "your MINIO_SECRET_KEY"
+        ports:
+        - containerPort: 9000
+        volumeMounts:
+        - name: storage
+          mountPath: "/storage"
+        - name: config
+          mountPath: "/config"
+ 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: minio
+  name: minio
+  labels:
+    component: minio
+spec:
+  # ClusterIP is recommended for production environments.
+  # Change to NodePort if needed per documentation,
+  # but only if you run Minio in a test/trial environment, for example with Minikube.
+  type: LoadBalancer
+  ports:
+    - port: 9000
+      targetPort: 9000
+      protocol: TCP
+  selector:
+    component: minio
