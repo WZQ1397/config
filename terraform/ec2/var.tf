@@ -9,12 +9,12 @@ variable "type" {
 
 variable "key" {
   description = "IAM key string"
-  default = "tongshan"
+  default = "ts"
 }
 
 variable "PATH_TO_PRIVATE_KEY" {
   description = "IAM key path"
-  default = "./tongshan.pem"
+  default = "./ts.pem"
 }
 
 variable "region" {
