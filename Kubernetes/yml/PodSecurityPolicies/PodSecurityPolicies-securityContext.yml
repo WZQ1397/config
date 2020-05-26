@@ -7,6 +7,8 @@ spec:
     runAsUser: 1000
     runAsGroup: 3000
     fsGroup: 2000
+    runAsNonRoot:true
+    readOnlyRootFilesystem:true
   volumes:
   - name: sec-ctx-vol
     emptyDir: {}
@@ -18,5 +20,7 @@ spec:
     - name: sec-ctx-vol
       mountPath: /data/demo
     securityContext:
-		  runAsUser: 1000
       allowPrivilegeEscalation: false
+      capabilities:
+        drop: ["ALL"]
+      SupplementalGroups: 9001
