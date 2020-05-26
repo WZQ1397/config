@@ -1,0 +1,9 @@
+apiVersion: policy/v1beta1
+kind: PodSecurityPolicy
+metadata:
+  name: sysctl-psp
+spec:
+  allowedUnsafeSysctls:
+  - kernel.msg*
+  forbiddenSysctls:
+  - kernel.shm_rmid_forced
