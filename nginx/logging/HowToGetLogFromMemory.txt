@@ -1,0 +1,9 @@
+# 查看内存中日志的方法: 
+gdb-p [worker进程id]-ex "source nginx.gdb" --batch 
+# nginx.gdb脚本内容
+set $log = ngx_cycle->log
+while $log->writer != ngxlog_memory_writer 
+  set Slog = Slog->next
+end
+set $buf =(ngx_log_memory buf t*) $log->wdata
+dump binary memory debug log.txt Sbuf->start Sbuf->end
