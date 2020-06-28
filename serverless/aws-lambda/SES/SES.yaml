@@ -1,0 +1,28 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: >-
+  An Amazon SES notification handler for processing bounces, complaints and
+  deliveries.
+Resources:
+  SES:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: lambda_function.lambda_handler
+      Runtime: python3.7
+      CodeUri: .
+      Description: >-
+        An Amazon SES notification handler for processing bounces, complaints
+        and deliveries.
+      MemorySize: 128
+      Timeout: 3
+      Role: 'arn:aws-cn:iam::525194943916:role/service-role/SES-role-ymzl1pls'
+      Events:
+        SNS1:
+          Type: SNS
+          Properties:
+            Topic:
+              Ref: SNSTopic1
+      Tags:
+        'lambda-console:blueprint': ses-notification-python
+  SNSTopic1:
+    Type: 'AWS::SNS::Topic'
