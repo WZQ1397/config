@@ -1,0 +1,60 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: An AWS Serverless Specification template describing your function.
+Resources:
+  S3dangerOps:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: lambda_function.lambda_handler
+      Runtime: python3.7
+      CodeUri: .
+      Description: ''
+      MemorySize: 128
+      Timeout: 3
+      Role: 'arn:aws-cn:iam::525194943916:role/service-role/S3dangerOps'
+      Events:
+        BucketEvent1:
+          Type: S3
+          Properties:
+            Bucket:
+              Ref: Bucket1
+            Events:
+              - 's3:ObjectCreated:*'
+        BucketEvent2:
+          Type: S3
+          Properties:
+            Bucket:
+              Ref: Bucket2
+            Events:
+              - 's3:ObjectRemoved:*'
+        BucketEvent3:
+          Type: S3
+          Properties:
+            Bucket:
+              Ref: Bucket3
+            Events:
+              - 's3:ObjectRemoved:*'
+        BucketEvent4:
+          Type: S3
+          Properties:
+            Bucket:
+              Ref: Bucket4
+            Events:
+              - 's3:ObjectRemoved:*'
+        BucketEvent5:
+          Type: S3
+          Properties:
+            Bucket:
+              Ref: Bucket5
+            Events:
+              - 's3:ObjectCreated:*'
+  Bucket1:
+    Type: 'AWS::S3::Bucket'
+  Bucket2:
+    Type: 'AWS::S3::Bucket'
+  Bucket3:
+    Type: 'AWS::S3::Bucket'
+  Bucket4:
+    Type: 'AWS::S3::Bucket'
+  Bucket5:
+    Type: 'AWS::S3::Bucket'
