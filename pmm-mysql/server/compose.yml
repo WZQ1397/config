@@ -1,0 +1,22 @@
+# Local dirs used as volumes will be created automatically if not exists. 
+version: "3.3"
+services:
+  pmm-server:
+    image: percona/pmm-server:1.17.1
+    tty: true
+    hostname: pmm_server
+    network_mode: bridge
+    privileged: true
+    ports:
+      - "51239:80"
+#      - "443:443"
+    volumes:
+      - pmm-mysqldata:/var/lib/mysql
+    restart: always
+
+volumes:
+  pmm-mysqldata:
+    driver_opts:
+      type: "none"
+      o: "bind"
+      device: "/home/data/docker-data/pmm-mysql/server/volume"

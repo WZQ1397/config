@@ -1,0 +1,66 @@
+#!/bin/bash
+
+BDIR="$( cd -P "$( dirname "$0" )" && pwd )"
+YML=compose.yml
+export PRJ=pmm
+#export IP=`hostname --ip-address | grep  -o "[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*" | head -1`
+#export IP=`ip a | grep "inet"  | grep "global" | grep -v "docker0" | awk '{print $2}' | awk -F '/' '{print $1}' | head -1`
+export HOST=`hostname -s`
+export PATH=$PATH:/opt
+
+
+if [ "$1" == "" ]; then
+	echo "Usage: run [OPTION]
+
+  restart - restart all containers
+  start   - start all containers
+  stop    - stop all containers
+  sh img  - execute shell in the specified image
+  import file 
+          - reset data to the specified file, for example 'run import 0.tar.gz'
+  export file 
+          - export data to the specified file, for example 'run export 0.tar.gz'
+";
+	exit;
+fi
+
+if [ "$1" == "enable" ] || [ "$1" == "disable" ] ; then
+	sudo systemctl $1 $BDIR/$PRJ.service
+fi
+if [ "$1" == "restart"  ]; then
+	docker-compose -f $BDIR/$YML -p $PRJ restart
+fi
+if [ "$1" == "start" ] || [ "$1" == "up" ]; then
+	docker-compose -f $BDIR/$YML -p $PRJ up -d
+fi
+if [ "$1" == "stop" ]; then
+	docker-compose -f $BDIR/$YML -p $PRJ stop
+fi
+if [ "$1" == "rm" ]; then
+	if [ "$2" == "yes" ]; then
+		docker-compose -f $BDIR/$YML -p $PRJ stop
+		docker-compose -f $BDIR/$YML -p $PRJ rm
+	else
+		echo "DANGER: All containers will be removed, are you sure???"
+	fi
+fi
+if [ "$1" == "import" ]; then
+	docker-compose -f $YML -p $PRJ stop
+	echo "Import $2 ..."
+	pushd .;
+	sudo mkdir -p /data/$PRJ/main 
+	cd /data/$PRJ/main; sudo tar xzf $2; ls -l /data/$PRJ/main
+	popd;
+	docker-compose -f $YML -p $PRJ up -d
+fi
+if [ "$1" == "export" ]; then
+	pushd .;
+	cd /data/$PRJ/main; sudo tar czf $2 *; ls -lh $2
+	popd;
+fi
+if [ "$1" == "scale" ]; then
+	docker-compose -f $YML -p $PRJ scale $2
+fi
+if [ "$1" == "sh" ]; then
+	docker exec -ti $2 /bin/bash
+fi

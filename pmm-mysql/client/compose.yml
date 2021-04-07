@@ -1,0 +1,19 @@
+# Local dirs used as volumes will be created automatically if not exists. 
+version: "3.3"
+services:
+  pmm-client:
+    image: pmm-client:1.0
+    tty: true
+    hostname: client
+    privileged: true
+    network_mode: host
+    environment: 
+      PMM_SERVER: "192.168.28.121"
+      PMM_PORT: "51239"
+      DB_HOST: "192.168.28.121"
+      DB_PORT: "51219"
+      DB_USER: "root"
+      DB_PASSWORD: "123456"
+      DB_TYPE: "mysql"
+    restart: always
+
