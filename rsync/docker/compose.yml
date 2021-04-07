@@ -1,0 +1,26 @@
+# Local dirs used as volumes will be created automatically if not exists. 
+version: "3.3"
+services:
+  web: 
+    image: apnar/rsync-server
+    tty: true  
+    hostname: rsync
+    privileged: true
+    network_mode: bridge
+    environment:
+      USERNAME: admin
+      PASSWORD: Passw0rd
+    volumes:
+      - data:/data
+      - ./rsyncd.conf:/etc/rsyncd.conf
+#      - ./rsyncd.secrets:/etc/rsyncd.secrets
+    ports:
+      - "51218:873"
+    restart: always
+
+volumes:
+  data:
+    driver_opts:
+      type: "none"
+      o: "bind"
+      device: "/home/data/docker-data/test/rsync/volume"
