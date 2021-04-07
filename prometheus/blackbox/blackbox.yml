@@ -13,6 +13,9 @@ modules:
     prober: http
     http:
       method: POST
+      headers:
+        Content-Type: application/json
+      body: '{}'
   tcp_connect: # tcp 监测模块
     prober: tcp
   ping: # icmp 检测模块
@@ -30,3 +33,30 @@ modules:
     dns:
       preferred_ip_protocol: "ip4"
       query_name: "www.zach.com"
+  https_post_health:
+    prober: http
+    http:
+      method: POST
+      valid_http_versions: ["HTTP/1.1","HTTP/2"]
+      fail_if_not_ssl: true
+      headers:
+        Content-Type: application/json
+      body: '{"username": "dev", "password": "pwd"}'
+
+  http_basic_auth_label:
+    prober: http
+    timeout: 10s
+    http:
+      method: POST
+      basic_auth:
+        username: "admin"
+        password: "admin"
+      valid_status_codes: [200]
+      
+  http_api_detection:
+    prober: http
+    timeout: 10s
+    http:
+      method: GET
+      valid_http_versions: ["HTTP/1.1","HTTP/2"]
+      valid_status_codes: [405,400]

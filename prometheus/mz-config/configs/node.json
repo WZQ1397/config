@@ -1,0 +1,26 @@
+[
+  {
+    "targets": ["192.168.28.116:9100"],
+    "labels": {
+      "hostname": "DB6"
+    }
+  },
+  {
+    "targets": ["192.168.28.124:9990"],
+    "labels": {
+      "hostname": "DB14"
+    }
+  },
+  {
+    "targets": ["192.168.28.120:9990"],
+    "labels": {
+      "hostname": "DB10"
+    }
+  },
+  {
+    "targets": ["192.168.28.121:9990"],
+    "labels": {
+      "hostname": "DB11"
+    }
+  }
+]

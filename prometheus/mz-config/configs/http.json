@@ -1,0 +1,10 @@
+[
+  {
+    "targets": ["http://ms.mmdev.cn:55214/detect/"],
+    "labels": {
+      "env": "release",
+      "job": "监测系统",
+      "domain": "DB10: 202.120.39.166:59221"
+    }
+  }
+]

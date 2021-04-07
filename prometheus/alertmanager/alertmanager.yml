@@ -1,5 +1,10 @@
 global:
   resolve_timeout: 5m
+  smtp_from: dev@zach.cn
+  smtp_smarthost: smtp.qiye.aliyun.com:465
+  smtp_auth_username: dev@zach.cn
+  smtp_auth_password: pwd666
+  smtp_require_tls: false
 
 route:
   group_by: ['alertname']
@@ -24,9 +29,16 @@ receivers:
 - name: 'MonitorSystem'
   webhook_configs:
   - url: "http://127.0.0.1"
+  
 - name: 'mail'
   email_configs:
   - to: "zach@zach.cn"
+  
+- name: 'host'
+  email_configs:
+  - send_resolved: true
+    to: test@qq.com
+    
 # Wechat method
 - name: 'wechat'
   wechat_configs:

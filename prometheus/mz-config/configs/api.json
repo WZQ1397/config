@@ -1,0 +1,10 @@
+[
+  {
+    "targets": ["http://ams.mmdev.cn:9994/api/video"],
+    "labels": {
+      "env": "release",
+      "job": "眼动AI视频接口",
+      "domain": "DB14: 202.120.39.167:58122"
+    }
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "targets": ["https://health.mmdev.cn/health_register/api/v1/auth/login"],
+    "labels": {
+      "env": "release",
+      "job": "防疫系统小程序: AI赢冠",
+      "domain": "111.229.172.96"
+    }
+  },
+  {
+    "targets": ["https://health.mmdev.cn/health_v2/api/v1/auth/login"],
+    "labels": {
+      "env": "release",
+      "job": "防疫系统小程序: AI赢冠+",
+      "domain": "111.229.172.96"
+    }
+  }
+]
