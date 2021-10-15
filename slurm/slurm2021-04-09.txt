@@ -1,0 +1,151 @@
+https://lisz.me/tech/docker/docker-slurm-cluster.html
+https://docs.hpc.sjtu.edu.cn/container/index.html
+http://blog.zxh.site/2018/05/25/slurm-singularity/
+http://bicmr.pku.edu.cn/~wenzw/pages/conda.html
+https://docs.slurm.cn/users/yi-gou-de-gong-zuo-zhi-chi
+https://slurm.schedmd.com/containers.html#docker
+
+
+Job Script Generator
+https://rc.byu.edu/documentation/slurm/script-generator
+https://github.com/accre/SLURM
+
+Singularity on the cluster
+https://docs.rc.fas.harvard.edu/kb/singularity-on-the-cluster/
+
+https://github.com/jakevc/rstudio_singularity_slurm
+https://github.com/sylabs/wlm-operator
+
+Submit sequence of three batch jobs
+> sbatch-ntasks=1-time=10 pre process.bash
+Submitted batch job 45001
+> sbatch-ntasks=128-time=60--depend=45001 do work.bash
+Submitted batch job 45002
+> sbatch-ntasks=1-time-30--depend=45002 post process.bash
+Submitted batch job 45003
+
+
+Create allocation for 2 tasks then launch "hostname" on the allocation, label output with the task ID
+> srun -ntasks=2 -label hostname 
+0: tux123
+1: tux123
+As above, but allocate the job two whole nodes 
+> srun -nnodes=2 --exclusive -label hostname
+0: tux123
+1: tux124
+
+> scancel 45001.1 (cancel job step 45001.1)
+> scancel 45002 (cancel job 45002)
+> scancel -user=alec-state-pending (cancel all pending jobs from user "alec")
+
+sinfo -Nel
+scontrol show nodes
+
+# 查看历史任务状态
+sacct -a -X --format=jobid,user,alloccpu,allocgres,Reqgres,state%15,exitcode
+sacct -E now --field=jobid,partition,jobname,user,nnodes,nodelist,start,end,elapsed,state
+
+# 信息格式化
+sinfo --format="%9P %l %10n %.14C %.10T "
+sinfo --format="sbatch -p %9P -n 4 -w %10n run.ypnis.slurm"
+
+# 恢复状态
+scontrol update NodeName=worker01 State=RESUME
+
+# 查看任务资源占用
+sstat -a --format="JobId,Pids,AveCPU,AveRSS,MaxRSS" 800
+
+# tty
+srun --pty --gres=gpu:1 bash
+# 统计使用资源
+sreport -tminper cluster utilization --tres="gres/gpu" start=2021-05-01T00:00:00
+
+# 获取配置
+slurmd -C
+
+# 自动配置CUDA GPU
+srun -p gpu-titan -w worker25 -n 1 -c 2 --gres=gpu:3 bash -c 'CUDA_VISIBLE_DEVICES=$GPU_DEVICE_ORDINAL env' | grep CUDA
+
+
+squeue --Format=JOBID,PARTITION,NAME,USER,batchflag --states=RUNNING
+sacctmgr list qos format=name,cluster,maxtres%20,flags,maxwall,MaxJobsPU,MaxSubmitJobsPerUser,GrpJobs,GrpSubmit
+
+sacctmgr modify qos zach-gpu-a set MaxTRESPerJob=cpu=8,mem=256 MaxWall=00:02:00
+sacctmgr modify qos zach-gpu-a set MaxJobs=3,MaxSubmitJobs=3
+sacctmgr modify qos zach-gpu-a set GrpSubmitJobs=2,MaxSubmitJobsPerUser=3
+
+
+
+https://slurm.schedmd.com/configurator.html
+
+
+https://github.com/NVIDIA/pyxis
+https://github.com/NVIDIA/enroot
+
+????
+https://slurm.schedmd.com/prolog_epilog.html
+
+
+https://github.com/OleHolmNielsen/Slurm_tools/tree/master/pestat
+https://github.com/grondo/sqlog
+
+install
+https://github.com/SciDAS/slurm-in-docker
+https://github.com/mknoxnv/ubuntu-slurm
+
+https://github.com/vpenso/prometheus-slurm-exporter
+https://github.com/dholt/slurm-gpu
+
+idinfo=`grep -i db93 /etc/hosts `
+id=`echo $idinfo | awk '{print $NF}'`
+echo $id
+bash /DATA9_DB12/slurm-in-docker/slurm-zach-build/docker-command-node-run.sh $id
+docker exec -it $id bash /docker-entrypoint.sh
+
+
+重点
+https://wiki.fysik.dtu.dk/niflheim/SLURM#nvidia-gpus
+
+https://www.chpc.utah.edu/documentation/software/modules-advanced.php
+
+docker run --rm -e SLURM_VERSION=19.05.1 -v $(pwd)/rpms:/packages scidas/slurm.rpms:19.05.11
+
+
+
+rm -rf home/worker/.ssh/*
+rm -rf secret/*
+cp home/config/slurmdbd.conf secret/
+sudo docker-compose down
+sudo docker-compose up -d
+
+#### enroot
+arch=$(uname -m)
+sudo yum install -y epel-release # required on some distributions
+curl -fSsL -O https://github.com/NVIDIA/enroot/releases/download/v3.3.0/enroot-3.3.0-1.el7.${arch}.rpm
+curl -fSsL -O https://github.com/NVIDIA/enroot/releases/download/v3.3.0/enroot+caps-3.3.0-1.el7.${arch}.rpm
+yum install -y enroot-3.3.0-1.el7.${arch}.rpm
+yum install -y enroot+caps-3.3.0-1.el7.${arch}.rpm
+
+#### pyxis
+yum install -y git
+git clone https://github.com/NVIDIA/pyxis.git
+cd pyxis
+make install
+mkdir -pv /etc/slurm-llnl/plugstack.conf.d
+ln -s /usr/local/share/pyxis/pyxis.conf /etc/slurm-llnl/plugstack.conf.d/pyxis.conf
+kill `ps aux | grep slurmd | grep -v grep | awk '{print $2}'`
+
+#### rootless docker
+curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
+yum install -y screen shadow-utils
+useradd docker -g docker
+dockerd-rootless-setuptool.sh install
+
+## 非root
+export XDG_RUNTIME_DIR=/home/docker/.docker/run
+export PATH=/bin:$PATH
+export DOCKER_HOST=unix:///home/docker/.docker/run/docker.sock
+docker pull nginx
+enroot import -o nginx-zach.enroot 'docker://nginx'
+enroot create --name mynginx enroot-img/nginx-zach.enroot
+enroot start --root --rw mynginx sh -c 'df -h'
