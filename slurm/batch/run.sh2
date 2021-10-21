@@ -1,0 +1,16 @@
+sbatch -p gpu-v100 -n 4 -w worker30   run.chinesesupport.slurm
+sbatch -p gpu-3090  -n 4 -w worker10   run.chinesesupport.slurm
+sbatch -p gpu-3090  -n 4 -w worker11   run.chinesesupport.slurm
+sbatch -p gpu-3090  -n 4 -w worker12   run.chinesesupport.slurm
+sbatch -p gpu-3090  -n 4 -w worker13   run.chinesesupport.slurm
+sbatch -p gpu-3090  -n 4 -w worker14   run.chinesesupport.slurm
+sbatch -p gpu-titan -n 4 -w worker20   run.chinesesupport.slurm
+sbatch -p gpu-titan -n 4 -w worker21   run.chinesesupport.slurm
+sbatch -p gpu-titan -n 4 -w worker01   run.chinesesupport.slurm
+sbatch -p gpu-titan -n 4 -w worker02   run.chinesesupport.slurm
+sbatch -p gpu-titan -n 4 -w worker03   run.chinesesupport.slurm
+sbatch -p gpu-titan -n 4 -w worker22   run.chinesesupport.slurm
+sbatch -p gpu-titan -n 4 -w worker23   run.chinesesupport.slurm
+sbatch -p gpu-titan -n 4 -w worker24   run.chinesesupport.slurm
+sbatch -p gpu-titan -n 4 -w worker25   run.chinesesupport.slurm
+sbatch -p gpu-titan -n 4 -w worker26   run.chinesesupport.slurm

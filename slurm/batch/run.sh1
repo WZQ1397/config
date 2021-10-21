@@ -1,0 +1,19 @@
+srun -p PARTITION -n 4 -w HOSTNAMES  service ypbind status
+srun -p gpu-v100* -n 4 -w worker30   service ypbind status
+srun -p gpu-3090  -n 4 -w worker10   service ypbind status
+srun -p gpu-3090  -n 4 -w worker11   service ypbind status
+srun -p gpu-3090  -n 4 -w worker12   service ypbind status
+srun -p gpu-3090  -n 4 -w worker13   service ypbind status
+srun -p gpu-3090  -n 4 -w worker14   service ypbind status
+srun -p gpu-titan -n 4 -w worker21   service ypbind status
+srun -p gpu-titan -n 4 -w worker01   service ypbind status
+srun -p gpu-titan -n 4 -w worker02   service ypbind status
+srun -p gpu-titan -n 4 -w worker03   service ypbind status
+srun -p gpu-titan -n 4 -w worker20   service ypbind status
+srun -p gpu-titan -n 4 -w worker22   service ypbind status
+srun -p gpu-titan -n 4 -w worker23   service ypbind status
+srun -p gpu-titan -n 4 -w worker24   service ypbind status
+srun -p gpu-titan -n 4 -w worker25   service ypbind status
+srun -p gpu-titan -n 4 -w worker26   service ypbind status
+srun -p zach-root -n 4 -w            service ypbind status
+srun -p cpu-A     -n 4 -w worker-C01 service ypbind status
