@@ -1,0 +1,111 @@
+@Library('jenkinslib') _     
+ 
+def tools = new zach.devops.codeTools.stringTool()
+def zssh = new zach.devops.sshserver()
+def FULL_JOB_NAME= "${JOB_NAME}".replaceAll("/","-")
+def PROJ_NAME = "${FULL_JOB_NAME}".minus("/${JOB_BASE_NAME}")
+def IMG_BASE_NAME = "${PROJ_NAME}-base:v2.1-cuda${CUDA_VERSION}-jenkins"
+def IMG_PROJ_NAME = "${FULL_JOB_NAME}:v2.1-cuda${CUDA_VERSION}-jenkins"
+def sshServer = zssh.getServer("${SVC_IP}","${SVC_PORT}")
+pipeline  {
+    agent any
+    options {
+        timeout(time: 60, unit: 'MINUTES')
+        ansiColor('xterm')
+        disableConcurrentBuilds()
+    }
+    parameters {
+      string defaultValue: 'ssh://git@192.168.1.102:5850/vision/cctv_news/face.git', name: 'CODE_REPO'
+    //   listGitBranches branchFilter: '.*', credentialsId: '93c4bf13-4b05-46f7-8179-237403d26d74', defaultValue: '', name: 'branch', quickFilterEnabled: false, remoteURL: "${CODE_REPO}" , selectedValue: 'NONE', sortMode: 'NONE', tagFilter: '*', type: 'PT_BRANCH_TAG'
+      choice choices: ['10.2', '11.2'], name: 'CUDA_VERSION'
+      string defaultValue: '192.168.1.124', name: 'SVC_IP'
+      string defaultValue: '22', name: 'SVC_PORT'
+      string defaultValue: '/project-code-on-166/zach-cctv-news-face-video-celery-v1.0-cudnn8', name: 'CODE_PATH'
+      string defaultValue: '/zach-cctv-nfs-local-test-on-166', name: 'DATA_PATH'
+      string defaultValue: '--mac-address 00:00:00:00:00:ff -p 13001:8080', name: 'NETWORK_OPT'
+      choice choices: ['', 'tail -f /dev/null', 'cron && supervisord && tail -f /dev/null'], name: 'INIT_COMMAND'
+    }
+    
+    stages{
+        stage("Get Branches from Git Remote"){
+            steps{
+                sh """git ls-remote --refs ${CODE_REPO} | awk -F '/' '{print \$NF}' > ${WORKSPACE}/branchesList.txt
+                """
+            }
+        }
+        stage('User Input'){
+           steps{
+               timeout (time:1, unit:"HOURS") {
+               script{ 
+                    listBranchesAvailable = readFile('branchesList.txt')
+                    branchOps = input message: 'Branch to deploy', ok: 'Confirm!',submitterParameter: 'Ops',
+                            parameters: [choice(name: 'select_branch', choices: "${listBranchesAvailable}", description: 'Which branch do you want to build?')]
+                    }
+                }   
+           }       
+        }
+        stage('Preparation') { // for display purposes
+
+                steps {
+                    timeout(time:300, unit:"SECONDS"){ 
+                        
+                        script{ 
+                            git branch: "${branchOps['select_branch']}", changelog: false, credentialsId: '93c4bf13-4b05-46f7-8179-237403d26d74', poll: false, url: "${CODE_REPO}"
+                            tools.PrintMes("获取代码",'green')
+                        }
+                    }
+                }
+        }
+        
+        stage('Build') {
+            
+            // environment {
+            //     IMG_BASE_NAME = "zach-cctv-news-face-detect-base:v2.1-cuda${CUDA-VERSION}-jenkins"
+            // }
+            stages{
+                stage("BasicImg"){
+                    steps {
+                        timeout(time:1500, unit:"SECONDS"){ 
+                            script{ 
+                                // sshCommand remote: sshServer, command: "sudo docker ps"
+                                sshCommand remote: sshServer, command: "cd /data1/imgs/zach-cctv-face/zach-cctv-item-detect-base && sudo docker build -f Dockerfile.cuda${CUDA_VERSION} -t ${IMG_BASE_NAME} ."
+                                tools.PrintMes("构建基础镜像: ${IMG_BASE_NAME}",'green')
+                            }
+                        }
+                    }
+                }
+                stage("ProjImg"){ 
+                    steps {
+                        timeout(time:1500, unit:"SECONDS"){ 
+                            script{ 
+                                sshCommand remote: sshServer, command: "cd /data1/imgs/zach-cctv-face/zach-cctv-item-detect-base/weapon && sudo docker build -f Dockerfile.cuda${CUDA_VERSION} -t ${IMG_PROJ_NAME} ."
+                                tools.PrintMes("构建项目镜像: ${IMG_PROJ_NAME}",'green')
+                            }
+                        }
+                    }
+                }
+            }
+
+
+        }
+        
+        stage('Deploy') {
+            
+            stages{
+                stage("DeploySvc"){
+                    steps {
+                        timeout(time:120, unit:"SECONDS"){ 
+                            script{ 
+                                // sshServer = zssh.getServer("${SVC_IP}","${SVC_PORT}")
+                                sshCommand remote: sshServer, command: "[[ `sudo docker ps -a | grep zach-${FULL_JOB_NAME}-${branchOps['select_branch']} | wc -l` -ge 1 ]] && (sudo docker kill zach-${FULL_JOB_NAME}-${branchOps['select_branch']}  && sudo docker rm zach-${FULL_JOB_NAME}-${branchOps['select_branch']}) || echo 'NOT EXISTS' "
+                                sshCommand remote: sshServer, command: "sudo docker run --restart unless-stopped -itd --name zach-${FULL_JOB_NAME}-${branchOps['select_branch']} --gpus all -v /etc/localtime:/etc/localtime:ro -v /etc/timezone:/etc/timezone:ro -v ${CODE_PATH}:/data/code -v ${DATA_PATH}:/storage-data ${NETWORK_OPT} ${IMG_PROJ_NAME} ${INIT_COMMAND}"
+                                // sshCommand remote: sshServer, command: "cd /data1/imgs/zach-cctv-face/zach-cctv-item-detect-base && sudo docker build -f Dockerfile.cuda${CUDA-VERSION} -t ${IMG_BASE_NAME} ."
+                                tools.PrintMes("部署到 ${SVC_IP} ==> ${IMG_PROJ_NAME}",'green')
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,109 @@
+@Library('jenkinslib') _     
+ 
+def tools = new zach.devops.codeTools.stringTool()
+def zssh = new zach.devops.sshserver()
+def FULL_JOB_NAME= "${JOB_NAME}".replaceAll("/","-")
+def sshServer = zssh.getServer("${SVC_IP}","${SVC_PORT}")
+
+pipeline  {
+    agent any
+    options {
+        timeout(time: 60, unit: 'MINUTES')
+        ansiColor('xterm')
+        disableConcurrentBuilds()
+    }
+    parameters {
+      string defaultValue: '', name: 'CODE_REPO'
+      string defaultValue: '192.168.1.124', name: 'SVC_IP'
+      string defaultValue: '22', name: 'SVC_PORT'
+      string defaultValue: '/tmp', name: 'TARGET_WEB_HOME'
+    }
+    stages{
+        stage("Get Branches from Git Remote"){
+            steps{
+                sh """
+                rm -rf ${WORKSPACE}/*
+                git ls-remote --refs ${CODE_REPO} | awk -F '/' '{print \$NF}' > ${WORKSPACE}/branchesList.txt
+                """
+            }
+        }
+        stage('User Input'){
+           steps{
+               timeout (time:1, unit:"HOURS") {
+               script{ 
+                    listBranchesAvailable = readFile('branchesList.txt')
+                    branchOps = input message: 'Branch to deploy', ok: 'Confirm!',submitterParameter: 'Ops',
+                            parameters: [choice(name: 'select_branch', choices: "${listBranchesAvailable}", description: 'Which branch do you want to build?')]
+                    }
+                }   
+           }       
+        }
+        stage('Preparation') { // for display purposes
+
+                steps {
+                    timeout(time:300, unit:"SECONDS"){ 
+                        
+                        script{ 
+                            git branch: "${branchOps['select_branch']}", changelog: false, credentialsId: '93c4bf13-4b05-46f7-8179-237403d26d74', poll: false, url: "${CODE_REPO}"
+                            tools.PrintMes("获取代码",'green')
+                        }
+                    }
+                }
+        }
+        stage ('Build') {
+            steps{
+                timestamps {
+                    timeout(time:1500, unit:"SECONDS"){ 
+                        nodejs('npm16.10') {
+
+                            sh """ 
+                            node -v
+                            npm -v 
+                            cnpm install 
+                            cnpm run build 
+                             """ 
+                    	}
+                    }
+                }
+            }
+        }
+        stage ('Package') {
+            steps{
+                 timeout(time:1500, unit:"SECONDS"){
+                    timestamps {
+                        sh """ 
+                        cd dist
+                        tar zcvf ${FULL_JOB_NAME}-${BUILD_NUMBER}.tar.gz ./*
+                         """ 
+                    }
+                }
+            }
+        }
+        stage ('Push code') {
+            steps{
+                timestamps {
+                    timeout(time:600, unit:"SECONDS"){ 
+                        script{ 
+                            sshPut remote: sshServer, from: "dist/${FULL_JOB_NAME}-${BUILD_NUMBER}.tar.gz", into: "${TARGET_WEB_HOME}"
+                            // sshPut remote: sshServer, from: "dist/${FULL_JOB_NAME}-${BUILD_NUMBER}.tar.gz", into: '${TARGET_WEB_HOME}'
+
+                            tools.PrintMes("推送新代码 : ${FULL_JOB_NAME}",'green')
+                        }
+                    }
+                }
+            }
+        }
+        stage ('Deploy code') {
+            steps{
+                timestamps {
+                    timeout(time:600, unit:"SECONDS"){ 
+                        script{ 
+                            sshCommand remote: sshServer, command: "tar zxvf ${TARGET_WEB_HOME}/${FULL_JOB_NAME}-${BUILD_NUMBER}.tar.gz"
+                            tools.PrintMes("部署新代码 : ${FULL_JOB_NAME}",'green')
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
