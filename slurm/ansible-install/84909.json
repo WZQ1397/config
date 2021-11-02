@@ -1,0 +1,6398 @@
+{
+  "stdout": [
+    [
+      0.143343,
+      "\u001b]0;myusername@mylaptop:~/Git3\u0007"
+    ],
+    [
+      0.000119,
+      "\u001b[?1034h"
+    ],
+    [
+      1.7e-05,
+      "[Git3]$"
+    ],
+    [
+      0.630923,
+      "#"
+    ],
+    [
+      0.520888,
+      " "
+    ],
+    [
+      3.095046,
+      "p"
+    ],
+    [
+      0.120043,
+      "r"
+    ],
+    [
+      0.080122,
+      "o"
+    ],
+    [
+      0.112162,
+      "v"
+    ],
+    [
+      0.056127,
+      "i"
+    ],
+    [
+      0.143765,
+      "s"
+    ],
+    [
+      0.031989,
+      "i"
+    ],
+    [
+      0.063938,
+      "o"
+    ],
+    [
+      0.063912,
+      "n"
+    ],
+    [
+      0.152034,
+      " "
+    ],
+    [
+      0.256032,
+      "a"
+    ],
+    [
+      0.079946,
+      " "
+    ],
+    [
+      1.015923,
+      "C"
+    ],
+    [
+      0.200039,
+      "e"
+    ],
+    [
+      0.080023,
+      "n"
+    ],
+    [
+      0.104014,
+      "t"
+    ],
+    [
+      0.256007,
+      "O"
+    ],
+    [
+      0.079931,
+      "S"
+    ],
+    [
+      0.240113,
+      "7"
+    ],
+    [
+      0.063993,
+      " "
+    ],
+    [
+      0.328419,
+      "V"
+    ],
+    [
+      0.04779,
+      "M"
+    ],
+    [
+      0.433525,
+      "\r\n\u001b]0;myusername@mylaptop:~/Git3\u0007[Git3]$"
+    ],
+    [
+      0.414331,
+      "#"
+    ],
+    [
+      0.088102,
+      " "
+    ],
+    [
+      1.279715,
+      "i"
+    ],
+    [
+      0.088135,
+      "f"
+    ],
+    [
+      0.079929,
+      " "
+    ],
+    [
+      0.064118,
+      "i"
+    ],
+    [
+      0.079898,
+      "t"
+    ],
+    [
+      0.104141,
+      "'"
+    ],
+    [
+      0.071961,
+      "s"
+    ],
+    [
+      0.064059,
+      " "
+    ],
+    [
+      0.127904,
+      "c"
+    ],
+    [
+      0.007812,
+      "a"
+    ],
+    [
+      0.056216,
+      "l"
+    ],
+    [
+      0.143969,
+      "l"
+    ],
+    [
+      0.040087,
+      "e"
+    ],
+    [
+      0.167929,
+      "d"
+    ],
+    [
+      0.063963,
+      " "
+    ],
+    [
+      0.111942,
+      "s"
+    ],
+    [
+      0.048093,
+      "l"
+    ],
+    [
+      0.064067,
+      "u"
+    ],
+    [
+      0.056029,
+      "r"
+    ],
+    [
+      0.104238,
+      "m"
+    ],
+    [
+      0.128187,
+      "-"
+    ],
+    [
+      0.111646,
+      "a"
+    ],
+    [
+      0.05584,
+      "n"
+    ],
+    [
+      0.088003,
+      "s"
+    ],
+    [
+      0.064007,
+      "i"
+    ],
+    [
+      0.071936,
+      "b"
+    ],
+    [
+      0.088033,
+      "l"
+    ],
+    [
+      0.096048,
+      "e"
+    ],
+    [
+      1.512101,
+      ","
+    ],
+    [
+      0.071966,
+      " "
+    ],
+    [
+      0.175986,
+      "m"
+    ],
+    [
+      0.071709,
+      "a"
+    ],
+    [
+      0.136247,
+      "k"
+    ],
+    [
+      0.09598,
+      "e"
+    ],
+    [
+      0.088002,
+      " "
+    ],
+    [
+      0.408021,
+      "y"
+    ],
+    [
+      0.032072,
+      "o"
+    ],
+    [
+      0.048375,
+      "u"
+    ],
+    [
+      0.127468,
+      "r"
+    ],
+    [
+      0.079891,
+      " "
+    ],
+    [
+      0.080075,
+      "s"
+    ],
+    [
+      0.176134,
+      "s"
+    ],
+    [
+      0.072247,
+      "h"
+    ],
+    [
+      0.176158,
+      "."
+    ],
+    [
+      0.103492,
+      "c"
+    ],
+    [
+      0.096464,
+      "o"
+    ],
+    [
+      0.039899,
+      "n"
+    ],
+    [
+      0.087686,
+      "f"
+    ],
+    [
+      0.160057,
+      "i"
+    ],
+    [
+      0.17583,
+      "g"
+    ],
+    [
+      2.088314,
+      " "
+    ],
+    [
+      0.136115,
+      "s"
+    ],
+    [
+      0.055787,
+      "o"
+    ],
+    [
+      0.064021,
+      " "
+    ],
+    [
+      0.183962,
+      "y"
+    ],
+    [
+      0.056079,
+      "o"
+    ],
+    [
+      0.056018,
+      "u"
+    ],
+    [
+      0.032214,
+      " "
+    ],
+    [
+      0.127745,
+      "c"
+    ],
+    [
+      0.040047,
+      "a"
+    ],
+    [
+      0.095731,
+      "n"
+    ],
+    [
+      0.016059,
+      " "
+    ],
+    [
+      0.192169,
+      "s"
+    ],
+    [
+      0.191947,
+      "s"
+    ],
+    [
+      0.064057,
+      "h"
+    ],
+    [
+      0.056182,
+      " "
+    ],
+    [
+      0.127825,
+      "t"
+    ],
+    [
+      0.06399,
+      "o"
+    ],
+    [
+      0.048419,
+      " "
+    ],
+    [
+      0.079962,
+      "t"
+    ],
+    [
+      0.056025,
+      "h"
+    ],
+    [
+      0.039712,
+      "a"
+    ],
+    [
+      0.071916,
+      "t"
+    ],
+    [
+      0.80157,
+      "\r\n\u001b]0;myusername@mylaptop:~/Git3\u0007[Git3]$"
+    ],
+    [
+      2.654423,
+      "s"
+    ],
+    [
+      0.152063,
+      "s"
+    ],
+    [
+      0.063941,
+      "h"
+    ],
+    [
+      0.040053,
+      " "
+    ],
+    [
+      0.792017,
+      "s"
+    ],
+    [
+      0.111941,
+      "l"
+    ],
+    [
+      0.039943,
+      "u"
+    ],
+    [
+      0.032115,
+      "r"
+    ],
+    [
+      0.199893,
+      "m"
+    ],
+    [
+      0.128027,
+      "-"
+    ],
+    [
+      0.448143,
+      "a"
+    ],
+    [
+      0.079948,
+      "n"
+    ],
+    [
+      0.087939,
+      "s"
+    ],
+    [
+      0.072004,
+      "i"
+    ],
+    [
+      0.072004,
+      "b"
+    ],
+    [
+      0.080015,
+      "l"
+    ],
+    [
+      0.096302,
+      "e"
+    ],
+    [
+      0.22538,
+      "\r\n"
+    ],
+    [
+      0.084559,
+      "Warning: Permanently added '10.0.0.1' (ECDSA) to the list of known hosts.\r\r\n"
+    ],
+    [
+      0.412625,
+      "X11 forwarding request failed on channel 0\r\n"
+    ],
+    [
+      0.111558,
+      "\u001b]0;cloud-user@slurm-build:~\u0007"
+    ],
+    [
+      0.001258,
+      "\u001b[?1034h[cloud-user@slurm-build ~]$ "
+    ],
+    [
+      2.349084,
+      "s"
+    ],
+    [
+      0.055835,
+      "i"
+    ],
+    [
+      0.039764,
+      "n"
+    ],
+    [
+      0.056292,
+      "f"
+    ],
+    [
+      0.0729,
+      "o"
+    ],
+    [
+      0.264287,
+      "\r\n"
+    ],
+    [
+      0.000368,
+      "-bash: sinfo: command not found\r\n"
+    ],
+    [
+      0.000177,
+      "\u001b]0;cloud-user@slurm-build:~\u0007[cloud-user@slurm-build ~]$ "
+    ],
+    [
+      0.678275,
+      "#"
+    ],
+    [
+      0.200062,
+      " "
+    ],
+    [
+      0.559888,
+      "s"
+    ],
+    [
+      0.080123,
+      "l"
+    ],
+    [
+      0.039964,
+      "u"
+    ],
+    [
+      0.047918,
+      "r"
+    ],
+    [
+      0.160107,
+      "m"
+    ],
+    [
+      0.023951,
+      " "
+    ],
+    [
+      0.088112,
+      "i"
+    ],
+    [
+      0.095707,
+      "s"
+    ],
+    [
+      0.048203,
+      " "
+    ],
+    [
+      0.079854,
+      "n"
+    ],
+    [
+      0.040124,
+      "o"
+    ],
+    [
+      0.047903,
+      "t"
+    ],
+    [
+      0.072415,
+      " "
+    ],
+    [
+      0.087909,
+      "i"
+    ],
+    [
+      0.039799,
+      "n"
+    ],
+    [
+      0.032704,
+      "s"
+    ],
+    [
+      0.055441,
+      "t"
+    ],
+    [
+      0.023738,
+      "a"
+    ],
+    [
+      0.072166,
+      "l"
+    ],
+    [
+      0.13593,
+      "l"
+    ],
+    [
+      0.047824,
+      "e"
+    ],
+    [
+      0.152269,
+      "d"
+    ],
+    [
+      0.232211,
+      "\r\n\u001b]0;cloud-user@slurm-build:~\u0007[cloud-user@slurm-build ~]$ "
+    ],
+    [
+      0.777067,
+      "logout\r\nConnection to 10.0.0.1 closed.\r\r\n"
+    ],
+    [
+      0.000216,
+      "\u001b]0;myusername@mylaptop:~/Git3\u0007[Git3]$"
+    ],
+    [
+      3.013645,
+      "#"
+    ],
+    [
+      0.111976,
+      " "
+    ],
+    [
+      0.128047,
+      "s"
+    ],
+    [
+      0.048081,
+      "e"
+    ],
+    [
+      0.04797,
+      "t"
+    ],
+    [
+      0.039796,
+      "u"
+    ],
+    [
+      0.048124,
+      "p"
+    ],
+    [
+      0.040055,
+      " "
+    ],
+    [
+      0.672005,
+      "w"
+    ],
+    [
+      0.064003,
+      "o"
+    ],
+    [
+      0.064294,
+      "r"
+    ],
+    [
+      0.095721,
+      "k"
+    ],
+    [
+      0.344045,
+      "i"
+    ],
+    [
+      0.048002,
+      "n"
+    ],
+    [
+      0.063886,
+      "g"
+    ],
+    [
+      0.128057,
+      " "
+    ],
+    [
+      0.088006,
+      "d"
+    ],
+    [
+      0.096248,
+      "i"
+    ],
+    [
+      0.079769,
+      "r"
+    ],
+    [
+      0.032031,
+      "e"
+    ],
+    [
+      0.167757,
+      "c"
+    ],
+    [
+      0.184319,
+      "t"
+    ],
+    [
+      0.072008,
+      "o"
+    ],
+    [
+      0.079989,
+      "r"
+    ],
+    [
+      0.048196,
+      "y"
+    ],
+    [
+      0.24102,
+      "\r\n\u001b]0;myusername@mylaptop:~/Git3\u0007[Git3]$"
+    ],
+    [
+      3.545864,
+      "mkdir -p slurm_workdir/{files,roles,group_vars/all}; cd slurm_workdir\r\n"
+    ],
+    [
+      0.001817,
+      "\u001b]0;myusername@mylaptop:~/Git3/slurm_workdir\u0007[slurm_workdir]$"
+    ],
+    [
+      1.883088,
+      "#"
+    ],
+    [
+      0.159961,
+      " "
+    ],
+    [
+      0.216033,
+      "c"
+    ],
+    [
+      0.064237,
+      "l"
+    ],
+    [
+      0.007927,
+      "k"
+    ],
+    [
+      0.623849,
+      "\b\u001b[K"
+    ],
+    [
+      0.319953,
+      "o"
+    ],
+    [
+      0.048055,
+      "n"
+    ],
+    [
+      0.080006,
+      "e"
+    ],
+    [
+      0.567936,
+      "\b\b\b\b\b"
+    ],
+    [
+      0.280067,
+      "gclone\b\b\b\b\b"
+    ],
+    [
+      0.040075,
+      "iclone\b\b\b\b\b"
+    ],
+    [
+      0.12001,
+      "tclone\b\b\b\b\b"
+    ],
+    [
+      0.032008,
+      " clone\b\b\b\b\b"
+    ],
+    [
+      0.255988,
+      "\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C"
+    ],
+    [
+      0.567953,
+      ","
+    ],
+    [
+      0.040075,
+      " "
+    ],
+    [
+      1.735998,
+      "\b\u001b[K"
+    ],
+    [
+      0.128058,
+      "\b\u001b[K"
+    ],
+    [
+      0.055909,
+      " "
+    ],
+    [
+      0.320041,
+      "t"
+    ],
+    [
+      0.047956,
+      "h"
+    ],
+    [
+      0.080143,
+      "e"
+    ],
+    [
+      0.039898,
+      " "
+    ],
+    [
+      0.192019,
+      "m"
+    ],
+    [
+      0.087864,
+      "a"
+    ],
+    [
+      0.064113,
+      "i"
+    ],
+    [
+      0.031997,
+      "n"
+    ],
+    [
+      0.031852,
+      " "
+    ],
+    [
+      0.14413,
+      "r"
+    ],
+    [
+      0.040019,
+      "e"
+    ],
+    [
+      0.079933,
+      "p"
+    ],
+    [
+      0.02405,
+      "o"
+    ],
+    [
+      0.064082,
+      " "
+    ],
+    [
+      0.06451,
+      "a"
+    ],
+    [
+      0.111449,
+      "n"
+    ],
+    [
+      0.031819,
+      "d"
+    ],
+    [
+      0.072546,
+      " "
+    ],
+    [
+      0.759544,
+      "t"
+    ],
+    [
+      0.047969,
+      "w"
+    ],
+    [
+      0.040087,
+      "o"
+    ],
+    [
+      0.031991,
+      " "
+    ],
+    [
+      0.104526,
+      "d"
+    ],
+    [
+      0.183501,
+      "e"
+    ],
+    [
+      0.063933,
+      "p"
+    ],
+    [
+      0.120035,
+      "e"
+    ],
+    [
+      0.087877,
+      "n"
+    ],
+    [
+      0.088038,
+      "d"
+    ],
+    [
+      0.144071,
+      "e"
+    ],
+    [
+      0.040202,
+      "n"
+    ],
+    [
+      0.111804,
+      "c"
+    ],
+    [
+      0.096398,
+      "i"
+    ],
+    [
+      0.063647,
+      "e"
+    ],
+    [
+      0.048006,
+      "s"
+    ],
+    [
+      0.313759,
+      "\r\n\u001b]0;myusername@mylaptop:~/Git3/slurm_workdir\u0007[slurm_workdir]$"
+    ],
+    [
+      4.049351,
+      "git clone https://github.com/CSC-IT-Center-for-Science/ansible-role-slurm roles \r/ansible-role-slurm\r\n"
+    ],
+    [
+      0.001033,
+      "Cloning into 'roles/ansible-role-slurm'...\r\n"
+    ],
+    [
+      4.333755,
+      "remote: Counting objects: 1131, done.\u001b[K"
+    ],
+    [
+      8.3e-05,
+      "\r\nremote: Compressing objects:   1% (1/93)   \u001b[K\rremote: Compressing objects:   2% (2/93)   \u001b[K\rremote: Compressing objects:   3% (3/93)   \u001b[K\r"
+    ],
+    [
+      6.3e-05,
+      "remote: Compressing objects:   4% (4/93)   \u001b[K\rremote: Compressing objects:   5% (5/93)   \u001b[K\rremote: Compressing objects:   6% (6/93)   \u001b[K\rremote: Compressing objects:   7% (7/93)   \u001b[K\rremote: Compressing objects:   8% (8/93)   \u001b[K\rremote: Compressing objects:   9% (9/93)   \u001b[K\rremote: Compressing objects:  10% (10/93)   \u001b[K\rremote: Compressing objects:  11% (11/93)   \u001b[K\rremote: Compressing objects:  12% (12/93)   \u001b[K\rremote: Compressing objects:  13% (13/93)   \u001b[K\r"
+    ],
+    [
+      5.2e-05,
+      "remote: Compressing objects:  15% (14/93)   \u001b[K\r"
+    ],
+    [
+      4.9e-05,
+      "remote: Compressing objects:  16% (15/93)   \u001b[K\r"
+    ],
+    [
+      7.6e-05,
+      "remote: Compressing objects:  17% (16/93)   \u001b[K\rremote: Compressing objects:  18% (17/93)   \u001b[K\rremote: Compressing objects:  19% (18/93)   \u001b[K\rremote: Compressing objects:  20% (19/93)   \u001b[K\r"
+    ],
+    [
+      3.9e-05,
+      "remote: Compressing objects:  21% (20/93)   \u001b[K\rremote: Compressing objects:  22% (21/93)   \u001b[K\rremote: Compressing objects:  23% (22/93)   \u001b[K\rremote: Compressing objects:  24% (23/93)   \u001b[K\rremote: Compressing objects:  25% (24/93)   \u001b[K\rremote: Compressing objects:  26% (25/93)   \u001b[K\rremote: Compressing objects:  27% (26/93)   \u001b[K\r"
+    ],
+    [
+      1.9e-05,
+      "remote: Compressing objects:  29% (27/93)   \u001b[K\rremote: Compressing objects:  30% (28/93)   \u001b[K\rremote: Compressing objects:  31% (29/93)   \u001b[K\r"
+    ],
+    [
+      0.114635,
+      "remote: Compressing objects:  32% (30/93)   \u001b[K\rremote: Compressing objects:  33% (31/93)   \u001b[K\rremote: Compressing objects:  34% (32/93)   \u001b[K\rremote: Compressing objects:  35% (33/93)   \u001b[K\rremote: Compressing objects:  36% (34/93)   \u001b[K\rremote: Compressing objects:  37% (35/93)   \u001b[K\r"
+    ],
+    [
+      2.7e-05,
+      "remote: Compressing objects:  38% (36/93)   \u001b[K\rremote: Compressing objects:  39% (37/93)   \u001b[K\rremote: Compressing objects:  40% (38/93)   \u001b[K\rremote: Compressing objects:  41% (39/93)   \u001b[K\rremote: Compressing objects:  43% (40/93)   \u001b[K\rremote: Compressing objects:  44% (41/93)   \u001b[K\rremote: Compressing objects:  45% (42/93)   \u001b[K\rremote: Compressing objects:  46% (43/93)   \u001b[K\rremote: Compressing objects:  47% (44/93)   \u001b[K\rremote: Compressing objects:  48% (45/93)   \u001b[K\r"
+    ],
+    [
+      1.4e-05,
+      "remote: Compressing objects:  49% (46/93)   \u001b[K\rremote: Compressing objects:  50% (47/93)   \u001b[K\r"
+    ],
+    [
+      1.2e-05,
+      "remote: Compressing objects:  51% (48/93)   \u001b[K\rremote: Compressing objects:  52% (49/93)   \u001b[K\r"
+    ],
+    [
+      8.9e-05,
+      "remote: Compressing objects:  53% (50/93)   \u001b[K\rremote: Compressing objects:  54% (51/93)   \u001b[K\rremote: Compressing objects:  55% (52/93)   \u001b[K\rremote: Compressing objects:  56% (53/93)   \u001b[K\rremote: Compressing objects:  58% (54/93)   \u001b[K\r"
+    ],
+    [
+      3.8e-05,
+      "remote: Compressing objects:  59% (55/93)   \u001b[K\rremote: Compressing objects:  60% (56/93)   \u001b[K\rremote: Compressing objects:  61% (57/93)   \u001b[K\rremote: Compressing objects:  62% (58/93)   \u001b[K\rremote: Compressing objects:  63% (59/93)   \u001b[K\rremote: Compressing objects:  64% (60/93)   \u001b[K\rremote: Compressing objects:  65% (61/93)   \u001b[K\rremote: Compressing objects:  66% (62/93)   \u001b[K\rremote: Compressing objects:  67% (63/93)   \u001b[K\rremote: Compressing objects:  68% (64/93)   \u001b[K\rremote: Compressing objects:  69% (65/93)   \u001b[K\rremote: Compressing objects:  70% (66/93)   \u001b[K\r"
+    ],
+    [
+      3.1e-05,
+      "remote: Compressing objects:  72% (67/93)   \u001b[K\rremote: Compressing objects:  73% (68/93)   \u001b[K\rremote: Compressing objects:  74% (69/93)   \u001b[K\rremote: Compressing objects:  75% (70/93)   \u001b[K\rremote: Compressing objects:  76% (71/93)   \u001b[K\rremote: Compressing objects:  77% (72/93)   \u001b[K\rremote: Compressing objects:  78% (73/93)   \u001b[K\rremote: Compressing objects:  79% (74/93)   \u001b[K\r"
+    ],
+    [
+      2.9e-05,
+      "remote: Compressing objects:  80% (75/93)   \u001b[K\rremote: Compressing objects:  81% (76/93)   \u001b[K\rremote: Compressing objects:  82% (77/93)   \u001b[K\rremote: Compressing objects:  83% (78/93)   \u001b[K\rremote: Compressing objects:  84% (79/93)   \u001b[K\rremote: Compressing objects:  86% (80/93)   \u001b[K\rremote: Compressing objects:  87% (81/93)   \u001b[K\rremote: Compressing objects:  88% (82/93)   \u001b[K\r"
+    ],
+    [
+      0.000577,
+      "remote: Compressing objects:  89% (83/93)   \u001b[K\rremote: Compressing objects:  90% (84/93)   \u001b[K\rremote: Compressing objects:  91% (85/93)   \u001b[K\rremote: Compressing objects:  92% (86/93)   \u001b[K\rremote: Compressing objects:  93% (87/93)   \u001b[K\rremote: Compressing objects:  94% (88/93)   \u001b[K\rremote: Compressing objects:  95% (89/93)   \u001b[K\rremote: Compressing objects:  96% (90/93)   \u001b[K\rremote: Compressing objects:  97% (91/93)   \u001b[K\rremote: Compressing objects:  98% (92/93)   \u001b[K\rremote: Compressing objects: 100% (93/93)   \u001b[K\rremote: Compressing objects: 100% (93/93), done.\u001b[K\r\n"
+    ],
+    [
+      0.004791,
+      "Receiving objects:   0% (1/1131)   \r"
+    ],
+    [
+      0.000166,
+      "Receiving objects:   1% (12/1131)   \r"
+    ],
+    [
+      0.000173,
+      "Receiving objects:   2% (23/1131)   \r"
+    ],
+    [
+      0.000146,
+      "Receiving objects:   3% (34/1131)   \r"
+    ],
+    [
+      0.113344,
+      "Receiving objects:   4% (46/1131)   \r"
+    ],
+    [
+      6.7e-05,
+      "Receiving objects:   5% (57/1131)   \r"
+    ],
+    [
+      0.000168,
+      "Receiving objects:   6% (68/1131)   \r"
+    ],
+    [
+      0.000164,
+      "Receiving objects:   7% (80/1131)   \r"
+    ],
+    [
+      0.000143,
+      "Receiving objects:   8% (91/1131)   \r"
+    ],
+    [
+      0.000127,
+      "Receiving objects:   9% (102/1131)   \r"
+    ],
+    [
+      0.000613,
+      "Receiving objects:  10% (114/1131)   \r"
+    ],
+    [
+      0.000141,
+      "Receiving objects:  11% (125/1131)   \r"
+    ],
+    [
+      0.000166,
+      "Receiving objects:  12% (136/1131)   \r"
+    ],
+    [
+      0.00186,
+      "Receiving objects:  13% (148/1131)   \r"
+    ],
+    [
+      0.000181,
+      "Receiving objects:  14% (159/1131)   \r"
+    ],
+    [
+      0.00017,
+      "Receiving objects:  15% (170/1131)   \r"
+    ],
+    [
+      0.000166,
+      "Receiving objects:  16% (181/1131)   \r"
+    ],
+    [
+      0.000258,
+      "Receiving objects:  17% (193/1131)   \r"
+    ],
+    [
+      0.000113,
+      "Receiving objects:  18% (204/1131)   \r"
+    ],
+    [
+      0.000131,
+      "Receiving objects:  19% (215/1131)   \r"
+    ],
+    [
+      0.000134,
+      "Receiving objects:  20% (227/1131)   \r"
+    ],
+    [
+      0.000237,
+      "Receiving objects:  21% (238/1131)   \r"
+    ],
+    [
+      0.000216,
+      "Receiving objects:  22% (249/1131)   \r"
+    ],
+    [
+      0.000112,
+      "Receiving objects:  23% (261/1131)   \r"
+    ],
+    [
+      0.113401,
+      "Receiving objects:  24% (272/1131)   \r"
+    ],
+    [
+      0.000225,
+      "Receiving objects:  25% (283/1131)   \r"
+    ],
+    [
+      0.000237,
+      "Receiving objects:  26% (295/1131)   \r"
+    ],
+    [
+      0.000133,
+      "Receiving objects:  27% (306/1131)   \r"
+    ],
+    [
+      0.000143,
+      "Receiving objects:  28% (317/1131)   \r"
+    ],
+    [
+      5.4e-05,
+      "Receiving objects:  29% (328/1131)   \r"
+    ],
+    [
+      2.6e-05,
+      "Receiving objects:  30% (340/1131)   \r"
+    ],
+    [
+      2.3e-05,
+      "Receiving objects:  31% (351/1131)   \r"
+    ],
+    [
+      2e-05,
+      "Receiving objects:  32% (362/1131)   \r"
+    ],
+    [
+      0.000138,
+      "Receiving objects:  33% (374/1131)   \rReceiving objects:  34% (385/1131)   \rReceiving objects:  35% (396/1131)   \r"
+    ],
+    [
+      4.3e-05,
+      "Receiving objects:  36% (408/1131)   \r"
+    ],
+    [
+      4.7e-05,
+      "Receiving objects:  37% (419/1131)   \r"
+    ],
+    [
+      0.000909,
+      "Receiving objects:  38% (430/1131)   \r"
+    ],
+    [
+      0.000211,
+      "Receiving objects:  39% (442/1131)   \r"
+    ],
+    [
+      0.000112,
+      "Receiving objects:  40% (453/1131)   \r"
+    ],
+    [
+      0.000113,
+      "Receiving objects:  41% (464/1131)   \r"
+    ],
+    [
+      0.001082,
+      "Receiving objects:  42% (476/1131)   \r"
+    ],
+    [
+      0.000103,
+      "Receiving objects:  43% (487/1131)   \r"
+    ],
+    [
+      3.5e-05,
+      "Receiving objects:  44% (498/1131)   \r"
+    ],
+    [
+      0.00012,
+      "Receiving objects:  45% (509/1131)   \r"
+    ],
+    [
+      8.8e-05,
+      "Receiving objects:  46% (521/1131)   \r"
+    ],
+    [
+      4e-05,
+      "Receiving objects:  47% (532/1131)   \r"
+    ],
+    [
+      7.3e-05,
+      "Receiving objects:  48% (543/1131)   \r"
+    ],
+    [
+      6.7e-05,
+      "Receiving objects:  49% (555/1131)   \r"
+    ],
+    [
+      0.000107,
+      "Receiving objects:  50% (566/1131)   \r"
+    ],
+    [
+      4.2e-05,
+      "Receiving objects:  51% (577/1131)   \r"
+    ],
+    [
+      3.5e-05,
+      "Receiving objects:  52% (589/1131)   \r"
+    ],
+    [
+      0.000169,
+      "Receiving objects:  53% (600/1131)   \r"
+    ],
+    [
+      9.8e-05,
+      "Receiving objects:  54% (611/1131)   \r"
+    ],
+    [
+      3.1e-05,
+      "Receiving objects:  55% (623/1131)   \r"
+    ],
+    [
+      0.00019,
+      "Receiving objects:  56% (634/1131)   \r"
+    ],
+    [
+      0.000108,
+      "Receiving objects:  57% (645/1131)   \r"
+    ],
+    [
+      0.00024,
+      "Receiving objects:  58% (656/1131)   \r"
+    ],
+    [
+      0.00012,
+      "Receiving objects:  59% (668/1131)   \r"
+    ],
+    [
+      1.5e-05,
+      "Receiving objects:  60% (679/1131)   \r"
+    ],
+    [
+      0.000179,
+      "Receiving objects:  61% (690/1131)   \rReceiving objects:  62% (702/1131)   \r"
+    ],
+    [
+      0.000172,
+      "Receiving objects:  63% (713/1131)   \r"
+    ],
+    [
+      3.3e-05,
+      "Receiving objects:  64% (724/1131)   \r"
+    ],
+    [
+      6.7e-05,
+      "Receiving objects:  65% (736/1131)   \r"
+    ],
+    [
+      2.1e-05,
+      "Receiving objects:  66% (747/1131)   \r"
+    ],
+    [
+      4.2e-05,
+      "Receiving objects:  67% (758/1131)   \r"
+    ],
+    [
+      2.7e-05,
+      "Receiving objects:  68% (770/1131)   \r"
+    ],
+    [
+      4.2e-05,
+      "Receiving objects:  69% (781/1131)   \r"
+    ],
+    [
+      2.2e-05,
+      "Receiving objects:  70% (792/1131)   \r"
+    ],
+    [
+      8e-05,
+      "Receiving objects:  71% (804/1131)   \r"
+    ],
+    [
+      2.4e-05,
+      "Receiving objects:  72% (815/1131)   \r"
+    ],
+    [
+      3.1e-05,
+      "Receiving objects:  73% (826/1131)   \r"
+    ],
+    [
+      2.2e-05,
+      "Receiving objects:  74% (837/1131)   \r"
+    ],
+    [
+      2.1e-05,
+      "Receiving objects:  75% (849/1131)   \r"
+    ],
+    [
+      4.6e-05,
+      "Receiving objects:  76% (860/1131)   \r"
+    ],
+    [
+      2.3e-05,
+      "Receiving objects:  77% (871/1131)   \r"
+    ],
+    [
+      2.1e-05,
+      "Receiving objects:  78% (883/1131)   \r"
+    ],
+    [
+      6.7e-05,
+      "Receiving objects:  79% (894/1131)   \r"
+    ],
+    [
+      0.000128,
+      "Receiving objects:  80% (905/1131)   \rReceiving objects:  81% (917/1131)   \r"
+    ],
+    [
+      3.7e-05,
+      "Receiving objects:  82% (928/1131)   \r"
+    ],
+    [
+      4.3e-05,
+      "Receiving objects:  83% (939/1131)   \r"
+    ],
+    [
+      4.4e-05,
+      "Receiving objects:  84% (951/1131)   \r"
+    ],
+    [
+      5.5e-05,
+      "Receiving objects:  85% (962/1131)   \r"
+    ],
+    [
+      2.1e-05,
+      "Receiving objects:  86% (973/1131)   \r"
+    ],
+    [
+      3.3e-05,
+      "Receiving objects:  87% (984/1131)   \r"
+    ],
+    [
+      5.5e-05,
+      "Receiving objects:  88% (996/1131)   \r"
+    ],
+    [
+      5.9e-05,
+      "Receiving objects:  89% (1007/1131)   \r"
+    ],
+    [
+      6.3e-05,
+      "Receiving objects:  90% (1018/1131)   \r"
+    ],
+    [
+      0.000115,
+      "Receiving objects:  91% (1030/1131)   \r"
+    ],
+    [
+      0.000176,
+      "Receiving objects:  92% (1041/1131)   \r"
+    ],
+    [
+      0.000208,
+      "Receiving objects:  93% (1052/1131)   \r"
+    ],
+    [
+      0.038154,
+      "Receiving objects:  94% (1064/1131)   \rReceiving objects:  95% (1075/1131)   \r"
+    ],
+    [
+      4e-05,
+      "Receiving objects:  96% (1086/1131)   \r"
+    ],
+    [
+      0.073738,
+      "Receiving objects:  97% (1098/1131)   \rremote: Total 1131 (delta 45), reused 0 (delta 0), pack-reused 1035\u001b[K\r\n"
+    ],
+    [
+      0.00029,
+      "Receiving objects:  98% (1109/1131)   \r"
+    ],
+    [
+      0.000275,
+      "Receiving objects:  99% (1120/1131)   \r"
+    ],
+    [
+      0.000185,
+      "Receiving objects: 100% (1131/1131)   \rReceiving objects: 100% (1131/1131), 198.86 KiB | 0 bytes/s, done.\r\n"
+    ],
+    [
+      0.000602,
+      "Resolving deltas:   0% (0/675)   \r"
+    ],
+    [
+      0.000221,
+      "Resolving deltas:   1% (10/675)   \r"
+    ],
+    [
+      0.000113,
+      "Resolving deltas:   3% (25/675)   \r"
+    ],
+    [
+      0.00013,
+      "Resolving deltas:   5% (37/675)   \r"
+    ],
+    [
+      6.7e-05,
+      "Resolving deltas:   6% (47/675)   \r"
+    ],
+    [
+      8.9e-05,
+      "Resolving deltas:   8% (58/675)   \r"
+    ],
+    [
+      6.3e-05,
+      "Resolving deltas:   9% (62/675)   \r"
+    ],
+    [
+      0.000109,
+      "Resolving deltas:  10% (74/675)   \r"
+    ],
+    [
+      0.000165,
+      "Resolving deltas:  13% (91/675)   \r"
+    ],
+    [
+      8.1e-05,
+      "Resolving deltas:  14% (99/675)   \r"
+    ],
+    [
+      3e-05,
+      "Resolving deltas:  15% (107/675)   \r"
+    ],
+    [
+      8e-05,
+      "Resolving deltas:  16% (110/675)   \r"
+    ],
+    [
+      1.6e-05,
+      "Resolving deltas:  17% (118/675)   \r"
+    ],
+    [
+      0.000124,
+      "Resolving deltas:  21% (142/675)   \r"
+    ],
+    [
+      5.3e-05,
+      "Resolving deltas:  22% (152/675)   \r"
+    ],
+    [
+      6.5e-05,
+      "Resolving deltas:  23% (159/675)   \r"
+    ],
+    [
+      4.9e-05,
+      "Resolving deltas:  24% (162/675)   \r"
+    ],
+    [
+      8e-05,
+      "Resolving deltas:  25% (169/675)   \r"
+    ],
+    [
+      8.5e-05,
+      "Resolving deltas:  26% (180/675)   \r"
+    ],
+    [
+      8.2e-05,
+      "Resolving deltas:  28% (191/675)   \r"
+    ],
+    [
+      1.8e-05,
+      "Resolving deltas:  29% (198/675)   \r"
+    ],
+    [
+      8.3e-05,
+      "Resolving deltas:  30% (208/675)   \r"
+    ],
+    [
+      2.6e-05,
+      "Resolving deltas:  31% (213/675)   \r"
+    ],
+    [
+      0.000485,
+      "Resolving deltas:  43% (292/675)   \r"
+    ],
+    [
+      0.000109,
+      "Resolving deltas:  45% (307/675)   \r"
+    ],
+    [
+      0.000782,
+      "Resolving deltas:  57% (390/675)   \rResolving deltas:  58% (392/675)   \r"
+    ],
+    [
+      9.1e-05,
+      "Resolving deltas:  59% (400/675)   \r"
+    ],
+    [
+      7.2e-05,
+      "Resolving deltas:  61% (414/675)   \r"
+    ],
+    [
+      0.00012,
+      "Resolving deltas:  64% (436/675)   \r"
+    ],
+    [
+      5.4e-05,
+      "Resolving deltas:  65% (441/675)   \r"
+    ],
+    [
+      1.5e-05,
+      "Resolving deltas:  66% (448/675)   \r"
+    ],
+    [
+      5.5e-05,
+      "Resolving deltas:  67% (457/675)   \r"
+    ],
+    [
+      0.000138,
+      "Resolving deltas:  73% (498/675)   \r"
+    ],
+    [
+      9.4e-05,
+      "Resolving deltas:  76% (515/675)   \r"
+    ],
+    [
+      0.000442,
+      "Resolving deltas:  86% (584/675)   \rResolving deltas:  87% (593/675)   \rResolving deltas:  88% (594/675)   \rResolving deltas:  89% (604/675)   \rResolving deltas:  91% (616/675)   \r"
+    ],
+    [
+      1.9e-05,
+      "Resolving deltas:  92% (621/675)   \r"
+    ],
+    [
+      1.5e-05,
+      "Resolving deltas:  93% (628/675)   \r"
+    ],
+    [
+      0.000122,
+      "Resolving deltas:  96% (650/675)   \r"
+    ],
+    [
+      1.8e-05,
+      "Resolving deltas:  97% (655/675)   \r"
+    ],
+    [
+      8.1e-05,
+      "Resolving deltas:  98% (662/675)   \r"
+    ],
+    [
+      0.000103,
+      "Resolving deltas:  99% (671/675)   \r"
+    ],
+    [
+      7.7e-05,
+      "Resolving deltas: 100% (675/675)   \r"
+    ],
+    [
+      1.3e-05,
+      "Resolving deltas: 100% (675/675), done.\r\n"
+    ],
+    [
+      0.029302,
+      "\u001b]0;myusername@mylaptop:~/Git3/slurm_workdir\u0007[slurm_workdir]$git clone https://github.com/jabl/ansible-role-pam roles/ansible-role-pam\r\n"
+    ],
+    [
+      0.000964,
+      "Cloning into 'roles/ansible-role-pam'...\r\n"
+    ],
+    [
+      1.186861,
+      "remote: Counting objects: 67, done.\u001b[K\r\n"
+    ],
+    [
+      0.118369,
+      "Unpacking objects:   1% (1/67)   \r"
+    ],
+    [
+      0.000175,
+      "Unpacking objects:   2% (2/67)   \r"
+    ],
+    [
+      0.000184,
+      "Unpacking objects:   4% (3/67)   \r"
+    ],
+    [
+      0.000201,
+      "remote: Total 67 (delta 0), reused 0 (delta 0), pack-reused 67\u001b[K\r\nUnpacking objects:   5% (4/67)   \r"
+    ],
+    [
+      0.000227,
+      "Unpacking objects:   7% (5/67)   \r"
+    ],
+    [
+      0.000147,
+      "Unpacking objects:   8% (6/67)   \r"
+    ],
+    [
+      0.000173,
+      "Unpacking objects:  10% (7/67)   \r"
+    ],
+    [
+      0.00016,
+      "Unpacking objects:  11% (8/67)   \r"
+    ],
+    [
+      0.0005,
+      "Unpacking objects:  13% (9/67)   \r"
+    ],
+    [
+      0.000158,
+      "Unpacking objects:  14% (10/67)   \r"
+    ],
+    [
+      0.000142,
+      "Unpacking objects:  16% (11/67)   \r"
+    ],
+    [
+      0.000148,
+      "Unpacking objects:  17% (12/67)   \r"
+    ],
+    [
+      0.000141,
+      "Unpacking objects:  19% (13/67)   \r"
+    ],
+    [
+      0.000139,
+      "Unpacking objects:  20% (14/67)   \r"
+    ],
+    [
+      0.000159,
+      "Unpacking objects:  22% (15/67)   \r"
+    ],
+    [
+      0.000181,
+      "Unpacking objects:  23% (16/67)   \r"
+    ],
+    [
+      0.000172,
+      "Unpacking objects:  25% (17/67)   \r"
+    ],
+    [
+      0.000171,
+      "Unpacking objects:  26% (18/67)   \r"
+    ],
+    [
+      0.000139,
+      "Unpacking objects:  28% (19/67)   \r"
+    ],
+    [
+      0.00016,
+      "Unpacking objects:  29% (20/67)   \r"
+    ],
+    [
+      0.000187,
+      "Unpacking objects:  31% (21/67)   \r"
+    ],
+    [
+      0.000139,
+      "Unpacking objects:  32% (22/67)   \r"
+    ],
+    [
+      0.000133,
+      "Unpacking objects:  34% (23/67)   \r"
+    ],
+    [
+      0.00013,
+      "Unpacking objects:  35% (24/67)   \r"
+    ],
+    [
+      0.000152,
+      "Unpacking objects:  37% (25/67)   \r"
+    ],
+    [
+      0.000167,
+      "Unpacking objects:  38% (26/67)   \r"
+    ],
+    [
+      0.000123,
+      "Unpacking objects:  40% (27/67)   \r"
+    ],
+    [
+      0.000158,
+      "Unpacking objects:  41% (28/67)   \r"
+    ],
+    [
+      9.8e-05,
+      "Unpacking objects:  43% (29/67)   \r"
+    ],
+    [
+      0.000156,
+      "Unpacking objects:  44% (30/67)   \r"
+    ],
+    [
+      0.000133,
+      "Unpacking objects:  46% (31/67)   \r"
+    ],
+    [
+      0.000166,
+      "Unpacking objects:  47% (32/67)   \r"
+    ],
+    [
+      0.000123,
+      "Unpacking objects:  49% (33/67)   \r"
+    ],
+    [
+      0.000275,
+      "Unpacking objects:  50% (34/67)   \r"
+    ],
+    [
+      0.000129,
+      "Unpacking objects:  52% (35/67)   \r"
+    ],
+    [
+      0.000146,
+      "Unpacking objects:  53% (36/67)   \r"
+    ],
+    [
+      0.000139,
+      "Unpacking objects:  55% (37/67)   \r"
+    ],
+    [
+      0.000141,
+      "Unpacking objects:  56% (38/67)   \r"
+    ],
+    [
+      0.000148,
+      "Unpacking objects:  58% (39/67)   \r"
+    ],
+    [
+      0.00015,
+      "Unpacking objects:  59% (40/67)   \r"
+    ],
+    [
+      0.000145,
+      "Unpacking objects:  61% (41/67)   \r"
+    ],
+    [
+      0.000143,
+      "Unpacking objects:  62% (42/67)   \r"
+    ],
+    [
+      0.000154,
+      "Unpacking objects:  64% (43/67)   \r"
+    ],
+    [
+      0.000139,
+      "Unpacking objects:  65% (44/67)   \r"
+    ],
+    [
+      0.000162,
+      "Unpacking objects:  67% (45/67)   \r"
+    ],
+    [
+      0.000122,
+      "Unpacking objects:  68% (46/67)   \r"
+    ],
+    [
+      0.000154,
+      "Unpacking objects:  70% (47/67)   \r"
+    ],
+    [
+      0.00013,
+      "Unpacking objects:  71% (48/67)   \r"
+    ],
+    [
+      0.000233,
+      "Unpacking objects:  73% (49/67)   \r"
+    ],
+    [
+      0.00012,
+      "Unpacking objects:  74% (50/67)   \r"
+    ],
+    [
+      0.000158,
+      "Unpacking objects:  76% (51/67)   \r"
+    ],
+    [
+      0.000143,
+      "Unpacking objects:  77% (52/67)   \r"
+    ],
+    [
+      0.000144,
+      "Unpacking objects:  79% (53/67)   \r"
+    ],
+    [
+      0.000138,
+      "Unpacking objects:  80% (54/67)   \r"
+    ],
+    [
+      0.000163,
+      "Unpacking objects:  82% (55/67)   \r"
+    ],
+    [
+      0.000176,
+      "Unpacking objects:  83% (56/67)   \r"
+    ],
+    [
+      0.000114,
+      "Unpacking objects:  85% (57/67)   \r"
+    ],
+    [
+      0.0001,
+      "Unpacking objects:  86% (58/67)   \r"
+    ],
+    [
+      0.000122,
+      "Unpacking objects:  88% (59/67)   \r"
+    ],
+    [
+      0.000119,
+      "Unpacking objects:  89% (60/67)   \r"
+    ],
+    [
+      0.000137,
+      "Unpacking objects:  91% (61/67)   \r"
+    ],
+    [
+      0.000152,
+      "Unpacking objects:  92% (62/67)   \r"
+    ],
+    [
+      0.000124,
+      "Unpacking objects:  94% (63/67)   \r"
+    ],
+    [
+      0.000154,
+      "Unpacking objects:  95% (64/67)   \r"
+    ],
+    [
+      0.000132,
+      "Unpacking objects:  97% (65/67)   \r"
+    ],
+    [
+      0.000139,
+      "Unpacking objects:  98% (66/67)   \r"
+    ],
+    [
+      0.000138,
+      "Unpacking objects: 100% (67/67)   \rUnpacking objects: 100% (67/67), done.\r\n"
+    ],
+    [
+      0.03134,
+      "\u001b]0;myusername@mylaptop:~/Git3/slurm_workdir\u0007[slurm_workdir]$git clone https://github.com/CSC-IT-Center-for-Science/ansible-role-nhc roles/a \rnsible-role-nhc\r\n"
+    ],
+    [
+      0.000902,
+      "Cloning into 'roles/ansible-role-nhc'...\r\n"
+    ],
+    [
+      1.163924,
+      "remote: Counting objects: 230, done.\u001b[K\r\n"
+    ],
+    [
+      0.004521,
+      "Receiving objects:   0% (1/230)   \r"
+    ],
+    [
+      8.7e-05,
+      "Receiving objects:   1% (3/230)   \r"
+    ],
+    [
+      6.5e-05,
+      "Receiving objects:   2% (5/230)   \r"
+    ],
+    [
+      5.7e-05,
+      "Receiving objects:   3% (7/230)   \r"
+    ],
+    [
+      6.4e-05,
+      "Receiving objects:   4% (10/230)   \r"
+    ],
+    [
+      7.4e-05,
+      "Receiving objects:   5% (12/230)   \r"
+    ],
+    [
+      5.4e-05,
+      "Receiving objects:   6% (14/230)   \r"
+    ],
+    [
+      9.5e-05,
+      "Receiving objects:   7% (17/230)   \r"
+    ],
+    [
+      0.000536,
+      "Receiving objects:   8% (19/230)   \r"
+    ],
+    [
+      5.4e-05,
+      "Receiving objects:   9% (21/230)   \r"
+    ],
+    [
+      1.5e-05,
+      "Receiving objects:  10% (23/230)   \r"
+    ],
+    [
+      5.9e-05,
+      "Receiving objects:  11% (26/230)   \r"
+    ],
+    [
+      5.6e-05,
+      "Receiving objects:  12% (28/230)   \r"
+    ],
+    [
+      5.4e-05,
+      "Receiving objects:  13% (30/230)   \r"
+    ],
+    [
+      6e-05,
+      "Receiving objects:  14% (33/230)   \r"
+    ],
+    [
+      4.8e-05,
+      "Receiving objects:  15% (35/230)   \r"
+    ],
+    [
+      5.2e-05,
+      "Receiving objects:  16% (37/230)   \r"
+    ],
+    [
+      5.7e-05,
+      "Receiving objects:  17% (40/230)   \r"
+    ],
+    [
+      0.114545,
+      "Receiving objects:  18% (42/230)   \rReceiving objects:  19% (44/230)   \rReceiving objects:  20% (46/230)   \rremote: Total 230 (delta 0), reused 0 (delta 0), pack-reused 230\u001b[K\r\nReceiving objects:  21% (49/230)   \rReceiving objects:  22% (51/230)   \rReceiving objects:  23% (53/230)   \rReceiving objects:  24% (56/230)   \rReceiving objects:  25% (58/230)   \rReceiving objects:  26% (60/230)   \rReceiving objects:  27% (63/230)   \rReceiving objects:  28% (65/230)   \rReceiving objects:  29% (67/230)   \rReceiving objects:  30% (69/230)   \rReceiving objects:  31% (72/230)   \rReceiving objects:  32% (74/230)   \rReceiving objects:  33% (76/230)   \rReceiving objects:  34% (79/230)   \rReceiving objects:  35% (81/230)   \rReceiving objects:  36% (83/230)   \rReceiving objects:  37% (86/230)   \rReceiving objects:  38% (88/230)   \rReceiving objects:  39% (90/230)   \rReceiving objects:  40% (92/230)   \rReceiving objects:  41% (95/230)   \rReceiving objects:  42% (97/230)   \rReceiving objects:  43% (99/230)   \rReceiving objects: "
+    ],
+    [
+      2.4e-05,
+      " 44% (102/230)   \rReceiving objects:  45% (104/230)   \rReceiving objects:  46% (106/230)   \rReceiving objects:  47% (109/230)   \rReceiving objects:  48% (111/230)   \rReceiving objects:  49% (113/230)   \rReceiving objects:  50% (115/230)   \rReceiving objects:  51% (118/230)   \rReceiving objects:  52% (120/230)   \rReceiving objects:  53% (122/230)   \rReceiving objects:  54% (125/230)   \rReceiving objects:  55% (127/230)   \rReceiving objects:  56% (129/230)   \rReceiving objects:  57% (132/230)   \rReceiving objects:  58% (134/230)   \rReceiving objects:  59% (136/230)   \rReceiving objects:  60% (138/230)   \rReceiving objects:  61% (141/230)   \rReceiving objects:  62% (143/230)   \rReceiving objects:  63% (145/230)   \rReceiving objects:  64% (148/230)   \rReceiving objects:  65% (150/230)   \rReceiving objects:  66% (152/230)   \rReceiving objects:  67% (155/230)   \rReceiving objects:  68% (157/230)   \rReceiving objects:  69% (159/230)   \rReceiving objects:  70% (161/230)   \rReceiving objects:  71% (164/230)   \rReceivi"
+    ],
+    [
+      1.4e-05,
+      "ng objects:  72% (166/230)   \rReceiving objects:  73% (168/230)   \rReceiving objects:  74% (171/230)   \rReceiving objects:  75% (173/230)   \rReceiving objects:  76% (175/230)   \rReceiving objects:  77% (178/230)   \rReceiving objects:  78% (180/230)   \rReceiving objects:  79% (182/230)   \rReceiving objects:  80% (184/230)   \rReceiving objects:  81% (187/230)   \rReceiving objects:  82% (189/230)   \rReceiving objects:  83% (191/230)   \rReceiving objects:  84% (194/230)   \rReceiving objects:  85% (196/230)   \rReceiving objects:  86% (198/230)   \rReceiving objects:  87% (201/230)   \rReceiving objects:  88% (203/230)   \rReceiving objects:  89% (205/230)   \rReceiving objects:  90% (207/230)   \rReceiving objects:  91% (210/230)   \rReceiving objects:  92% (212/230)   \rReceiving objects:  93% (214/230)   \rReceiving objects:  94% (217/230)   \rReceiving objects:  95% (219/230)   \rReceiving objects:  96% (221/230)   \rReceiving objects:  97% (224/230)   \rReceiving objects:  98% (226/230)   \rReceiving objects:  99% (228/230"
+    ],
+    [
+      1e-05,
+      ")   \rReceiving objects: 100% (230/230)   \rReceiving objects: 100% (230/230), 34.12 KiB | 0 bytes/s, done.\r\nResolving deltas:   0% (0/123)   \r"
+    ],
+    [
+      0.000255,
+      "Resolving deltas:  23% (29/123)   \r"
+    ],
+    [
+      6.8e-05,
+      "Resolving deltas:  27% (34/123)   \r"
+    ],
+    [
+      8e-06,
+      "Resolving deltas:  28% (35/123)   \r"
+    ],
+    [
+      6.4e-05,
+      "Resolving deltas:  30% (37/123)   \r"
+    ],
+    [
+      6.6e-05,
+      "Resolving deltas:  34% (43/123)   \r"
+    ],
+    [
+      0.000222,
+      "Resolving deltas:  52% (64/123)   \r"
+    ],
+    [
+      5.6e-05,
+      "Resolving deltas:  58% (72/123)   \r"
+    ],
+    [
+      4.4e-05,
+      "Resolving deltas:  63% (78/123)   \r"
+    ],
+    [
+      0.000211,
+      "Resolving deltas:  65% (80/123)   \rResolving deltas:  69% (86/123)   \rResolving deltas:  71% (88/123)   \rResolving deltas:  72% (89/123)   \rResolving deltas:  76% (94/123)   \rResolving deltas:  77% (95/123)   \r"
+    ],
+    [
+      0.000158,
+      "Resolving deltas:  84% (104/123)   \rResolving deltas:  88% (109/123)   \rResolving deltas:  92% (114/123)   \r"
+    ],
+    [
+      4.9e-05,
+      "Resolving deltas:  96% (119/123)   \r"
+    ],
+    [
+      9.8e-05,
+      "Resolving deltas: 100% (123/123)   \r"
+    ],
+    [
+      0.000217,
+      "Resolving deltas: 100% (123/123), done.\r\n"
+    ],
+    [
+      0.035248,
+      "\u001b]0;myusername@mylaptop:~/Git3/slurm_workdir\u0007[slurm_workdir]$"
+    ],
+    [
+      1.164711,
+      "#"
+    ],
+    [
+      0.296021,
+      "c"
+    ],
+    [
+      0.072234,
+      "o"
+    ],
+    [
+      0.063682,
+      "p"
+    ],
+    [
+      0.120047,
+      "y"
+    ],
+    [
+      0.055999,
+      " "
+    ],
+    [
+      0.127768,
+      "i"
+    ],
+    [
+      0.040251,
+      "n"
+    ],
+    [
+      0.031912,
+      " "
+    ],
+    [
+      0.039988,
+      "t"
+    ],
+    [
+      0.103971,
+      "h"
+    ],
+    [
+      0.047973,
+      "e"
+    ],
+    [
+      0.047991,
+      " "
+    ],
+    [
+      1.352036,
+      "i"
+    ],
+    [
+      0.056115,
+      "n"
+    ],
+    [
+      0.047673,
+      "v"
+    ],
+    [
+      0.048131,
+      "e"
+    ],
+    [
+      0.072284,
+      "n"
+    ],
+    [
+      0.095806,
+      "t"
+    ],
+    [
+      0.079806,
+      "o"
+    ],
+    [
+      0.056157,
+      "r"
+    ],
+    [
+      0.064122,
+      "y"
+    ],
+    [
+      0.063904,
+      " "
+    ],
+    [
+      0.080361,
+      "a"
+    ],
+    [
+      0.07958,
+      "n"
+    ],
+    [
+      0.088073,
+      "d"
+    ],
+    [
+      0.1041,
+      " "
+    ],
+    [
+      1.503979,
+      "a"
+    ],
+    [
+      0.080031,
+      "n"
+    ],
+    [
+      0.063999,
+      "s"
+    ],
+    [
+      0.095974,
+      "i"
+    ],
+    [
+      0.040034,
+      "b"
+    ],
+    [
+      0.136168,
+      "l"
+    ],
+    [
+      0.103895,
+      "e"
+    ],
+    [
+      0.231934,
+      " "
+    ],
+    [
+      0.136072,
+      "p"
+    ],
+    [
+      0.0319,
+      "l"
+    ],
+    [
+      0.048049,
+      "a"
+    ],
+    [
+      0.04784,
+      "y"
+    ],
+    [
+      0.248131,
+      "b"
+    ],
+    [
+      0.047979,
+      "o"
+    ],
+    [
+      0.152071,
+      "o"
+    ],
+    [
+      0.024041,
+      "k"
+    ],
+    [
+      0.2734,
+      "\r\n\u001b]0;myusername@mylaptop:~/Git3/slurm_workdir\u0007[slurm_workdir]$"
+    ],
+    [
+      3.161721,
+      "cp roles/ansible-role-slurm/tests/inventory .\r\n"
+    ],
+    [
+      0.00372,
+      "\u001b]0;myusername@mylaptop:~/Git3/slurm_workdir\u0007[slurm_workdir]$cp roles/ansible-role-slurm/tests/test.yml .\r\n"
+    ],
+    [
+      0.001204,
+      "\u001b]0;myusername@mylaptop:~/Git3/slurm_workdir\u0007"
+    ],
+    [
+      1.5e-05,
+      "[slurm_workdir]$"
+    ],
+    [
+      1.351936,
+      "#"
+    ],
+    [
+      0.304246,
+      " "
+    ],
+    [
+      0.120075,
+      "u"
+    ],
+    [
+      0.071641,
+      "p"
+    ],
+    [
+      0.040031,
+      "d"
+    ],
+    [
+      0.088019,
+      "a"
+    ],
+    [
+      0.055907,
+      "t"
+    ],
+    [
+      0.056163,
+      "e"
+    ],
+    [
+      0.007927,
+      " "
+    ],
+    [
+      0.144173,
+      "i"
+    ],
+    [
+      0.047603,
+      "n"
+    ],
+    [
+      0.056184,
+      "v"
+    ],
+    [
+      0.072254,
+      "e"
+    ],
+    [
+      0.047771,
+      "n"
+    ],
+    [
+      0.096092,
+      "t"
+    ],
+    [
+      0.071906,
+      "o"
+    ],
+    [
+      0.056104,
+      "r"
+    ],
+    [
+      0.07996,
+      "y"
+    ],
+    [
+      0.047923,
+      " "
+    ],
+    [
+      0.088059,
+      "w"
+    ],
+    [
+      0.040055,
+      "i"
+    ],
+    [
+      0.087896,
+      "t"
+    ],
+    [
+      0.080009,
+      "h"
+    ],
+    [
+      0.040008,
+      " "
+    ],
+    [
+      0.040078,
+      "t"
+    ],
+    [
+      0.103737,
+      "h"
+    ],
+    [
+      0.048142,
+      "e"
+    ],
+    [
+      0.096267,
+      " "
+    ],
+    [
+      0.751863,
+      "a"
+    ],
+    [
+      0.087951,
+      "d"
+    ],
+    [
+      0.151936,
+      "d"
+    ],
+    [
+      0.135985,
+      "r"
+    ],
+    [
+      0.056025,
+      "e"
+    ],
+    [
+      0.023938,
+      "s"
+    ],
+    [
+      0.151993,
+      "s"
+    ],
+    [
+      0.072362,
+      " "
+    ],
+    [
+      0.079643,
+      "t"
+    ],
+    [
+      0.056091,
+      "o"
+    ],
+    [
+      0.063945,
+      " "
+    ],
+    [
+      0.047931,
+      "t"
+    ],
+    [
+      0.056085,
+      "h"
+    ],
+    [
+      0.07195,
+      "e"
+    ],
+    [
+      0.040068,
+      " "
+    ],
+    [
+      0.880373,
+      "n"
+    ],
+    [
+      0.047806,
+      "o"
+    ],
+    [
+      0.031861,
+      "d"
+    ],
+    [
+      0.191954,
+      "e"
+    ],
+    [
+      0.217469,
+      "\r\n\u001b]0;myusername@mylaptop:~/Git3/slurm_workdir\u0007[slurm_workdir]$"
+    ],
+    [
+      0.238857,
+      "v"
+    ],
+    [
+      0.039977,
+      "i"
+    ],
+    [
+      0.087671,
+      "m"
+    ],
+    [
+      0.016006,
+      " "
+    ],
+    [
+      0.168104,
+      "i"
+    ],
+    [
+      0.047918,
+      "n"
+    ],
+    [
+      0.10407,
+      "v"
+    ],
+    [
+      0.007601,
+      "e"
+    ],
+    [
+      0.184916,
+      "ntory "
+    ],
+    [
+      0.633164,
+      "\r\n"
+    ],
+    [
+      0.040283,
+      "\u001b[?1049h\u001b[?1h\u001b=\u001b[2;1H▽\u001b[6n\u001b[1;1H  \u001b[1;1H"
+    ],
+    [
+      0.001238,
+      "\u001b[1;53r\u001b[?12;25h\u001b[?12l\u001b[?25h\u001b[27m\u001b[m\u001b[H\u001b[2J\u001b[?25l\u001b[53;1H\"inventory\""
+    ],
+    [
+      3.6e-05,
+      " 32L, 359C"
+    ],
+    [
+      0.019211,
+      "\u001b[>c"
+    ],
+    [
+      0.003837,
+      "\u001b[1;1H\u001b[96m# https://github.com/CSC-IT-Center-for-Science/fgci-ansible/blob/master/examples/hosts-example\u001b[m\r\nlocalhost\r\n\r\n[login]\r\nlocalhost\r\n\r\n[admin]\r\nlocalhost\r\n\r\n[grid]\r\nlocalhost\r\n\r\n[install]\r\nlocalhost\r\n\r\n[compute]\r\nlocalhost\r\n\r\n[pxe_bootable_nodes:children]\r\ncompute\r\n\r\n[production:children]\r\ninstall\r\nadmin\r\n\u001b[96m#login\u001b[m\r\ngrid\r\n\r\n[slurm_service:children]\r\ninstall\r\n\r\n[slurm_compute:children]\r\ncompute\r\n\u001b[94m~                                                                                              \u001b[34;1H~                                                                                              \u001b[35;1H~                                                                                              \u001b[36;1H~                                                                                              \u001b[37;1H~                                                                                              \u001b[38;1H~                                                                                              \u001b"
+    ],
+    [
+      1.5e-05,
+      "[39;1H~                                                                                              \u001b[40;1H~                                                                                              \u001b[41;1H~                                                                                              \u001b[42;1H~                                                                                              \u001b[43;1H~                                                                                              \u001b[44;1H~                                                                                              \u001b[45;1H~                                                                                              \u001b[46;1H~                                                                                              \u001b[47;1H~                                                                                              \u001b[48;1H~                                                                                              "
+    ],
+    [
+      0.000764,
+      "\u001b[49;1H~                                                                                              \u001b[50;1H~                                                                                              \u001b[51;1H~                                                                                              \u001b[m\u001b[52;1H\u001b[38;5;17m\u001b[48;5;190m \u001b[m\u001b[1m\u001b[38;5;17m\u001b[48;5;190mNORMAL\u001b[m\u001b[38;5;17m\u001b[48;5;190m \u001b[m\u001b[38;5;190m\u001b[48;5;238m>\u001b[m\u001b[38;5;238m\u001b[48;5;234m>\u001b[m\u001b[38;5;85m\u001b[48;5;234m inventory                                    \u001b[m\u001b[38;5;234m\u001b[48;5;234m<\u001b[m\u001b[38;5;85m\u001b[48;5;234m conf \u001b[m\u001b[38;5;238m\u001b[48;5;234m<\u001b[m\u001b[38;5;255m\u001b[48;5;238m utf-8[unix] \u001b[m\u001b[38;5;190m\u001b[48;5;238m<\u001b[m\u001b[38;5;17m\u001b[48;5;190m  53% :\u001b[m\u001b[1m\u001b[38;5;17m\u001b[48;5;190m  17\u001b[m\u001b[38;5;17m\u001b[48;5;190m:  1  \u001b[17;1H\u001b[?12l\u001b[?25h\u001bP+q436f\u001b\\\u001bP+q6b75\u001b\\\u001bP+q6b64\u001b\\\u001bP+q6b72\u001b\\\u001bP+q6b6c\u001b\\\u001bP+q2332\u001b\\\u001bP+q2334\u001b\\\u001bP+q2569\u001b\\\u001bP+q2a37\u001b\\\u001bP+q6b31\u001b\\"
+    ],
+    [
+      1.013867,
+      "\u001b[?25l\u001b[m\u001b[16;1H\u001b[46m[\u001b[7C]\u001b[m\u001b[52;82H\u001b[38;5;17m\u001b[48;5;190m0\u001b[m\u001b[6C\u001b[1m\u001b[38;5;17m\u001b[48;5;190m6\u001b[m\u001b[38;5;17m\u001b[48;5;190m:\u001b[16;1H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.151695,
+      "\u001b[?25l\u001b[m[\u001b[7C]\u001b[52;81H\u001b[38;5;17m\u001b[48;5;190m46\u001b[m\u001b[6C\u001b[1m\u001b[38;5;17m\u001b[48;5;190m5\u001b[m\u001b[38;5;17m\u001b[48;5;190m:\u001b[15;1H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.151833,
+      "\u001b[52;82H3\u001b[m\u001b[6C\u001b[1m\u001b[38;5;17m\u001b[48;5;190m4\u001b[m\u001b[38;5;17m\u001b[48;5;190m:\u001b[14;1H"
+    ],
+    [
+      0.358521,
+      "\u001b[?25l\u001b[m\u001b[53;1H\u001b[1m-- INSERT --\u001b[m\u001b[53;13H\u001b[K"
+    ],
+    [
+      0.001656,
+      "\u001b[14;1H\u001b[K\u001b[52;1H\u001b[38;5;17m\u001b[48;5;45m \u001b[m\u001b[1m\u001b[38;5;17m\u001b[48;5;45mINSERT\u001b[m\u001b[38;5;17m\u001b[48;5;190m \u001b[m\b\u001b[38;5;17m\u001b[48;5;45m \u001b[m\u001b[38;5;45m\u001b[48;5;27m>\u001b[m\u001b[38;5;27m\u001b[48;5;53m>\u001b[m\u001b[38;5;255m\u001b[48;5;53m inventory[+]                                 \u001b[m\u001b[38;5;17m\u001b[48;5;53m<\u001b[m\u001b[97m\u001b[48;5;17m conf \u001b[m\u001b[38;5;27m\u001b[48;5;17m<\u001b[m\u001b[38;5;255m\u001b[48;5;27m utf-8[unix] \u001b[m\u001b[38;5;45m\u001b[48;5;27m<\u001b[m\u001b[38;5;17m\u001b[48;5;45m  43% :\u001b[m\u001b[1m\u001b[38;5;17m\u001b[48;5;45m  14\u001b[m\u001b[38;5;17m\u001b[48;5;190m:\u001b[m\b\u001b[38;5;17m\u001b[48;5;45m:  1  \u001b[14;1H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.217496,
+      "\u001b[?25l\u001b[ms\u001b[52;93H\u001b[38;5;17m\u001b[48;5;45m2\u001b[14;2H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.071166,
+      "\u001b[?25l\u001b[ml\u001b[52;93H\u001b[38;5;17m\u001b[48;5;45m3\u001b[14;3H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.088084,
+      "\u001b[?25l\u001b[mu\u001b[52;93H\u001b[38;5;17m\u001b[48;5;45m4\u001b[14;4H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.023518,
+      "\u001b[?25l\u001b[mr\u001b[52;93H\u001b[38;5;17m\u001b[48;5;45m5\u001b[14;5H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.151559,
+      "\u001b[?25l\u001b[mm\u001b[52;93H\u001b[38;5;17m\u001b[48;5;45m6\u001b[14;6H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.193296,
+      "\u001b[?25l\u001b[m-\u001b[52;93H\u001b[38;5;17m\u001b[48;5;45m7\u001b[14;7H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.167497,
+      "\u001b[?25l\u001b[ma\u001b[52;93H\u001b[38;5;17m\u001b[48;5;45m8\u001b[14;8H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.047489,
+      "\u001b[?25l\u001b[mn\u001b[52;93H\u001b[38;5;17m\u001b[48;5;45m9\u001b[14;9H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.104015,
+      "\u001b[?25l\u001b[ms\u001b[52;92H\u001b[38;5;17m\u001b[48;5;45m10\u001b[14;10H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.057239,
+      "\u001b[?25l\u001b[mi\u001b[52;93H\u001b[38;5;17m\u001b[48;5;45m1\u001b[14;11H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.086617,
+      "\u001b[?25l\u001b[mb\u001b[52;93H\u001b[38;5;17m\u001b[48;5;45m2\u001b[14;12H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.064206,
+      "\u001b[?25l\u001b[ml\u001b[52;93H\u001b[38;5;17m\u001b[48;5;45m3\u001b[14;13H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.103799,
+      "\u001b[?25l\u001b[me\u001b[52;93H\u001b[38;5;17m\u001b[48;5;45m4\u001b[14;14H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.268323,
+      "\u001b[?25l\u001b[m\u001b[53;1H\u001b[K"
+    ],
+    [
+      0.000495,
+      "\u001b[52;1H\u001b[38;5;17m\u001b[48;5;190m \u001b[m\u001b[1m\u001b[38;5;17m\u001b[48;5;190mNORMAL\u001b[m\u001b[38;5;17m\u001b[48;5;45m \u001b[m\b\u001b[38;5;17m\u001b[48;5;190m \u001b[m\u001b[38;5;190m\u001b[48;5;238m>\u001b[m\u001b[38;5;238m\u001b[48;5;53m>\u001b[m\u001b[46C\u001b[38;5;234m\u001b[48;5;53m<\u001b[m\u001b[38;5;85m\u001b[48;5;234m conf \u001b[m\u001b[38;5;238m\u001b[48;5;234m<\u001b[m\u001b[38;5;255m\u001b[48;5;238m utf-8[unix] \u001b[m\u001b[38;5;190m\u001b[48;5;238m<\u001b[m\u001b[38;5;17m\u001b[48;5;190m  43% :\u001b[m\u001b[1m\u001b[38;5;17m\u001b[48;5;190m  14\u001b[m\u001b[38;5;17m\u001b[48;5;45m:\u001b[m\b\u001b[38;5;17m\u001b[48;5;190m: 13  \u001b[14;13H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.115883,
+      "\u001b[?25l\u001b[52;82H6\u001b[m\u001b[6C\u001b[1m\u001b[38;5;17m\u001b[48;5;190m5\u001b[m\u001b[38;5;17m\u001b[48;5;190m:  1\u001b[15;1H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.264511,
+      "\u001b[?25l\u001b[m\r\n\u001b[46m[\u001b[7C]\u001b[m\u001b[52;81H\u001b[38;5;17m\u001b[48;5;190m50\u001b[m\u001b[6C\u001b[1m\u001b[38;5;17m\u001b[48;5;190m6\u001b[m\u001b[38;5;17m\u001b[48;5;190m:  9\u001b[16;9H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.184469,
+      "\u001b[?25l\u001b[m\r[\u001b[7C]\u001b[52;82H\u001b[38;5;17m\u001b[48;5;190m3\u001b[m\u001b[6C\u001b[1m\u001b[38;5;17m\u001b[48;5;190m7\u001b[m\u001b[38;5;17m\u001b[48;5;190m:\u001b[17;9H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.223352,
+      "\u001b[52;93H1\u001b[17;1H"
+    ],
+    [
+      0.580776,
+      "\u001b[?25l\u001b[m\u001b[53;1H\u001b[1m-- INSERT --\u001b[m\u001b[17;1H\u001b[K\u001b[52;1H\u001b[38;5;17m\u001b[48;5;45m \u001b[m\u001b[1m\u001b[38;5;17m\u001b[48;5;45mINSERT\u001b[m\u001b[38;5;17m\u001b[48;5;190m \u001b[m\b\u001b[38;5;17m\u001b[48;5;45m \u001b[m\u001b[38;5;45m\u001b[48;5;27m>\u001b[m\u001b[38;5;27m\u001b[48;5;53m>\u001b[m\u001b[46C\u001b[38;5;17m\u001b[48;5;53m<\u001b[m\u001b[97m\u001b[48;5;17m conf \u001b[m\u001b[38;5;27m\u001b[48;5;17m<\u001b[m\u001b[38;5;255m\u001b[48;5;27m utf-8[unix] \u001b[m\u001b[38;5;45m\u001b[48;5;27m<\u001b[m\u001b[38;5;17m\u001b[48;5;45m  53% :\u001b[m\u001b[1m\u001b[38;5;17m\u001b[48;5;45m  17\u001b[m\u001b[38;5;17m\u001b[48;5;190m:\u001b[m\b\u001b[38;5;17m\u001b[48;5;45m:  1  \u001b[17;1H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.226357,
+      "\u001b[?25l\u001b[ms\u001b[52;93H\u001b[38;5;17m\u001b[48;5;45m2\u001b[17;2H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.119859,
+      "\u001b[?25l\u001b[ml\u001b[52;93H\u001b[38;5;17m\u001b[48;5;45m3\u001b[17;3H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.344028,
+      "\u001b[?25l\u001b[mu\u001b[52;93H\u001b[38;5;17m\u001b[48;5;45m4\u001b[17;4H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.136,
+      "\u001b[?25l\u001b[mr\u001b[52;93H\u001b[38;5;17m\u001b[48;5;45m5\u001b[17;5H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.079948,
+      "\u001b[?25l\u001b[mm\u001b[52;93H\u001b[38;5;17m\u001b[48;5;45m6\u001b[17;6H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.144162,
+      "\u001b[?25l\u001b[m-\u001b[52;93H\u001b[38;5;17m\u001b[48;5;45m7\u001b[17;7H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.183969,
+      "\u001b[?25l\u001b[ma\u001b[52;93H\u001b[38;5;17m\u001b[48;5;45m8\u001b[17;8H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.096982,
+      "\u001b[?25l\u001b[mn\u001b[52;93H\u001b[38;5;17m\u001b[48;5;45m9\u001b[17;9H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.071352,
+      "\u001b[?25l\u001b[ms\u001b[52;92H\u001b[38;5;17m\u001b[48;5;45m10\u001b[17;10H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.079499,
+      "\u001b[?25l\u001b[mi\u001b[52;93H\u001b[38;5;17m\u001b[48;5;45m1\u001b[17;11H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.080041,
+      "\u001b[?25l\u001b[mb\u001b[52;93H\u001b[38;5;17m\u001b[48;5;45m2\u001b[17;12H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.104156,
+      "\u001b[?25l\u001b[ml\u001b[52;93H\u001b[38;5;17m\u001b[48;5;45m3\u001b[17;13H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.095904,
+      "\u001b[?25l\u001b[me\u001b[52;93H\u001b[38;5;17m\u001b[48;5;45m4\u001b[17;14H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.221586,
+      "\u001b[?25l\u001b[m\u001b[53;1H\u001b[K\u001b[52;1H\u001b[38;5;17m\u001b[48;5;190m \u001b[m\u001b[1m\u001b[38;5;17m\u001b[48;5;190mNORMAL\u001b[m\u001b[38;5;17m\u001b[48;5;45m \u001b[m\b\u001b[38;5;17m\u001b[48;5;190m \u001b[m\u001b[38;5;190m\u001b[48;5;238m>\u001b[m\u001b[38;5;238m\u001b[48;5;53m>\u001b[m\u001b[46C\u001b[38;5;234m\u001b[48;5;53m<\u001b[m\u001b[38;5;85m\u001b[48;5;234m conf \u001b[m\u001b[38;5;238m\u001b[48;5;234m<\u001b[m\u001b[38;5;255m\u001b[48;5;238m utf-8[unix] \u001b[m\u001b[38;5;190m\u001b[48;5;238m<\u001b[m\u001b[38;5;17m\u001b[48;5;190m  53% :\u001b[m\u001b[1m\u001b[38;5;17m\u001b[48;5;190m  17\u001b[m\u001b[38;5;17m\u001b[48;5;45m:\u001b[m\b\u001b[38;5;17m\u001b[48;5;190m: 13  \u001b[17;13H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.217848,
+      "\u001b[?25l\u001b[53;1H\u001b[m:\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.088184,
+      "w\u001b[?25l\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.039891,
+      "q\u001b[?25l\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.248341,
+      "\r"
+    ],
+    [
+      7.7e-05,
+      "\u001b[?25l"
+    ],
+    [
+      0.000218,
+      "\"inventory\""
+    ],
+    [
+      0.010165,
+      " 32L, 367C written"
+    ],
+    [
+      0.013053,
+      "\r\r\r\n\u001b[?1l\u001b>\u001b[?12l\u001b[?25h\u001b[?1049l"
+    ],
+    [
+      0.001679,
+      "\u001b]0;myusername@mylaptop:~/Git3/slurm_workdir\u0007[slurm_workdir]$"
+    ],
+    [
+      2.022371,
+      "#"
+    ],
+    [
+      0.151981,
+      " "
+    ],
+    [
+      0.768214,
+      "c"
+    ],
+    [
+      0.079918,
+      "o"
+    ],
+    [
+      0.023975,
+      "n"
+    ],
+    [
+      0.079682,
+      "f"
+    ],
+    [
+      0.080256,
+      "i"
+    ],
+    [
+      0.095952,
+      "g"
+    ],
+    [
+      0.055979,
+      "u"
+    ],
+    [
+      0.112033,
+      "r"
+    ],
+    [
+      0.047961,
+      "e"
+    ],
+    [
+      0.040047,
+      " "
+    ],
+    [
+      0.088054,
+      "t"
+    ],
+    [
+      0.039973,
+      "h"
+    ],
+    [
+      0.07193,
+      "e"
+    ],
+    [
+      0.040086,
+      " "
+    ],
+    [
+      0.103984,
+      "p"
+    ],
+    [
+      0.048008,
+      "l"
+    ],
+    [
+      0.072449,
+      "a"
+    ],
+    [
+      0.039925,
+      "y"
+    ],
+    [
+      0.223635,
+      "b"
+    ],
+    [
+      0.064406,
+      "o"
+    ],
+    [
+      0.15158,
+      "o"
+    ],
+    [
+      0.040144,
+      "k"
+    ],
+    [
+      0.152002,
+      " "
+    ],
+    [
+      2.255847,
+      "i"
+    ],
+    [
+      0.032065,
+      "n"
+    ],
+    [
+      0.047973,
+      " "
+    ],
+    [
+      0.095989,
+      "r"
+    ],
+    [
+      0.023992,
+      "e"
+    ],
+    [
+      0.159901,
+      "g"
+    ],
+    [
+      0.136092,
+      "a"
+    ],
+    [
+      0.055908,
+      "r"
+    ],
+    [
+      0.080066,
+      "d"
+    ],
+    [
+      0.023971,
+      "s"
+    ],
+    [
+      0.063923,
+      " "
+    ],
+    [
+      0.080064,
+      "t"
+    ],
+    [
+      0.064039,
+      "o"
+    ],
+    [
+      0.048052,
+      " "
+    ],
+    [
+      0.223944,
+      "w"
+    ],
+    [
+      0.080241,
+      "h"
+    ],
+    [
+      0.032173,
+      "i"
+    ],
+    [
+      0.111483,
+      "c"
+    ],
+    [
+      0.064077,
+      "h"
+    ],
+    [
+      0.024035,
+      " "
+    ],
+    [
+      0.119994,
+      "u"
+    ],
+    [
+      0.072002,
+      "s"
+    ],
+    [
+      0.047941,
+      "e"
+    ],
+    [
+      0.016133,
+      "r"
+    ],
+    [
+      0.055966,
+      " "
+    ],
+    [
+      0.183948,
+      "t"
+    ],
+    [
+      0.080061,
+      "o"
+    ],
+    [
+      0.031967,
+      " "
+    ],
+    [
+      0.095999,
+      "s"
+    ],
+    [
+      0.151901,
+      "s"
+    ],
+    [
+      0.04814,
+      "h"
+    ],
+    [
+      0.032012,
+      " "
+    ],
+    [
+      0.119935,
+      "a"
+    ],
+    [
+      0.06401,
+      "s"
+    ],
+    [
+      0.424141,
+      " "
+    ],
+    [
+      0.063935,
+      "a"
+    ],
+    [
+      0.087935,
+      "n"
+    ],
+    [
+      0.056082,
+      "d"
+    ],
+    [
+      0.047965,
+      " "
+    ],
+    [
+      0.471952,
+      "t"
+    ],
+    [
+      0.048065,
+      "o"
+    ],
+    [
+      0.031935,
+      " "
+    ],
+    [
+      0.095953,
+      "u"
+    ],
+    [
+      0.032012,
+      "s"
+    ],
+    [
+      0.040413,
+      "e"
+    ],
+    [
+      0.047704,
+      " "
+    ],
+    [
+      0.103907,
+      "s"
+    ],
+    [
+      0.056026,
+      "u"
+    ],
+    [
+      0.112537,
+      "d"
+    ],
+    [
+      0.087378,
+      "o"
+    ],
+    [
+      0.30545,
+      "\r\n"
+    ],
+    [
+      0.000478,
+      "\u001b]0;myusername@mylaptop:~/Git3/slurm_workdir\u0007[slurm_workdir]$"
+    ],
+    [
+      0.406104,
+      "n"
+    ],
+    [
+      0.112041,
+      "v"
+    ],
+    [
+      0.080027,
+      "i"
+    ],
+    [
+      0.055941,
+      "m"
+    ],
+    [
+      0.047951,
+      " "
+    ],
+    [
+      0.688179,
+      "t"
+    ],
+    [
+      0.05584,
+      "e"
+    ],
+    [
+      0.03196,
+      "s"
+    ],
+    [
+      0.080099,
+      "t"
+    ],
+    [
+      0.1962,
+      ".yml "
+    ],
+    [
+      0.453511,
+      "\r\n"
+    ],
+    [
+      0.069884,
+      "\u001b[?1049h\u001b[H\u001b[2J\u001b[?2004h\u001b[8;53;95t\u001b[H\u001b[2J\u001b[1;1H\u001b[1;1H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.000773,
+      "\u001b[?25l\u001b[?1002h\u001b[?1006h\u001b[H\u001b[2J\u001b[1;1H\u001b[53;1H\"test.yml\"\u001b[53;11H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      3.7e-05,
+      "\u001b[?25l\u001b[53;12H29L,\u001b[53;17H889C\u001b[53;21H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.007,
+      "\u001b[?25l\u001b[1;1H---\u001b[3;2H-\u001b[3;4Hhosts:\u001b[3;11Hinstall,compute\u001b[4;4Hremote_user:\u001b[4;17Hroot\u001b[5;4Hroles:\u001b[6;6H-\u001b[6;8Hansible-role-pam\u001b[7;6H-\u001b[7;8Hansible-role-nhc\u001b[8;6H-\u001b[8;8Hansible-role-slurm\u001b[9;4Hvars:\u001b[10;6H-\u001b[10;8Hslurm_TrackWCKey:\u001b[10;26H\"no\"\u001b[11;6H-\u001b[11;8Hslurm_ExtraParamsList:\u001b[12;8H-\u001b[12;10H\"TrackWCKey={{\u001b[12;25Hslurm_TrackWCKey\u001b[12;42H}}\"\u001b[13;8H-\u001b[13;10H\"TreeWidth=50\"\u001b[14;6H-\u001b[14;8Hslurm_mysql_password:\u001b[14;30H\"changeme\"\u001b[15;6H-\u001b[15;8Hslurm_munge_key_to_nfs:\u001b[15;32HFalse\u001b[16;6H-\u001b[16;8Hslurm_compute_nodes:\u001b[16;29H\"{{\u001b[16;33Hansible_hostname\u001b[16;50H}}\"\u001b[17;6H-\u001b[17;8Hslurm_manage_sysctl:\u001b[17;29HFalse\u001b[18;6H-\u001b[18;8Hnhc_short_hostname:\u001b[18;28HFalse\u001b[19;6H-\u001b[19;8Hnhc_github:\u001b[19;20HFalse\u001b[20;6H-\u001b[20;8Hnhc_use_default_checks:\u001b[20;32HFalse\u001b[21;6H-\u001b[21;8Hnhc_rm:\u001b[21;16H\"\"\u001b[22;6H-\u001b[22;8Hnhc_checks:\u001b[23;8H-\u001b[23;10H{\u001b[23;12Hmatch:\u001b[23;19H\"*\",\u001b[23;24Hname:\u001b[23;30H\"check_reboot_slurm\",\u001b[23;52Harguments:\u001b[23;63H\"\"\u001b[23;66H}\u001b[24;8H-\u001b[24;10H{\u001b[24;12Hmatch:\u001b[24;19H'{gpu[1-19]}',\u001b[24;34Hname:\u001b[24;40H\"check_hw_ib\",\u001b[24;55Hargu"
+    ],
+    [
+      1.6e-05,
+      "ments:\u001b[24;66H\"40\"\u001b[24;71H}\u001b[25;8H-\u001b[25;10H{\u001b[25;12Hmatch:\u001b[25;19H\"{gpu[2-22]}\",\u001b[25;34Hname:\u001b[25;40H\"check_hw_ib\",\u001b[25;55Harguments:\u001b[25;66H\"56\"\u001b[25;71H}\u001b[26;8H-\u001b[26;10H{\u001b[26;12Hmatch:\u001b[26;19H\"*\",\u001b[26;24Hname:\u001b[26;30H\"check_hw_eth\",\u001b[26;46Harguments:\u001b[26;57H\"eth0\"\u001b[26;64H}\u001b[28;4Hpre_tasks:\u001b[29;4H-\u001b[29;6Hdebug:\u001b[29;13Hvar=group_names\u001b[30;1H\u001b(B\u001b[m\u001b[94m~                                                                                              \u001b[31;1H~                                                                                              \u001b[32;1H~                                                                                              \u001b[33;1H~                                                                                              \u001b[34;1H~                                                                                              \u001b[35;1H~                                                                                              \u001b[36;1H~                                                          "
+    ],
+    [
+      1.3e-05,
+      "                                    \u001b[37;1H~                                                                                              \u001b[38;1H~                                                                                              \u001b[39;1H~                                                                                              \u001b[40;1H~                                                                                              \u001b[41;1H~                                                                                              \u001b[42;1H~                                                                                              \u001b[43;1H~                                                                                              \u001b[44;1H~                                                                                              \u001b[45;1H~                                                                                              \u001b[46;1H~                                                              "
+    ],
+    [
+      1e-05,
+      "                                \u001b[47;1H~                                                                                              \u001b[48;1H~                                                                                              \u001b[49;1H~                                                                                              \u001b[50;1H~                                                                                              \u001b[51;1H~                                                                                              \u001b[52;1H\u001b(B\u001b[m\u001b[1m\u001b[7mtest.yml                                                                                       \u001b[1;1H\u001b[1;1H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[1;1H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.49644,
+      "\u001b[?25l\u001b[1;1H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[1;1H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.000209,
+      "\u001b[?25l\u001b[2;1H\u001b[2;1H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[2;1H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.151828,
+      "\u001b[?25l\u001b[2;1H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[2;1H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.000196,
+      "\u001b[?25l\u001b[3;1H\u001b[3;1H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[3;1H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.112048,
+      "\u001b[?25l\u001b[3;1H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[3;1H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.000247,
+      "\u001b[?25l\u001b[4;1H\u001b[4;1H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;1H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.271657,
+      "\u001b[?25l\u001b[4;1H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;1H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.000174,
+      "\u001b[?25l\u001b[4;20H\u001b[4;20H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;20H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.32786,
+      "\u001b[?25l\u001b[4;20H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;20H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.000203,
+      "\u001b[?25l\u001b[4;19H\u001b[4;19H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;19H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.151672,
+      "\u001b[?25l\u001b[4;19H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;19H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.000244,
+      "\u001b[?25l\u001b[4;18H\u001b[4;18H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;18H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.151964,
+      "\u001b[?25l\u001b[4;18H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;18H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.000268,
+      "\u001b[?25l\u001b[4;17H\u001b[4;17H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;17H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.119769,
+      "\u001b[?25l\u001b[4;17H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;17H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;17H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;17H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.183967,
+      "\u001b[?25l\u001b[4;17H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;17H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.000131,
+      "\u001b[?25l\u001b[?1002h\u001b[?1006h\u001b[4;17H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[53;1H\u001b(B\u001b[m\u001b[1m-- INSERT --\u001b(B\u001b[m\u001b[53;13H\u001b[K\u001b[53;13H\u001b[53;13H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[53;13H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.000371,
+      "\u001b[?25l\u001b[4;17H\u001b[4;17H\u001b[K\u001b[4;17H\u001b[52;10H\u001b(B\u001b[m\u001b[1m\u001b[7m[+]\u001b[4;17H\u001b[4;17H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;17H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.255753,
+      "\u001b[?25l\u001b[4;17H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;17H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;17H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;17H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;17H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.000612,
+      "\u001b[?25l\u001b(B\u001b[mc\u001b[4;18H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;18H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.055151,
+      "\u001b[?25l\u001b[4;18H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;18H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;18H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;18H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;18H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.000391,
+      "\u001b[?25ll\u001b[4;19H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;19H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.191566,
+      "\u001b[?25l\u001b[4;19H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;19H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;19H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;19H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;19H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.000355,
+      "\u001b[?25lo\u001b[4;20H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;20H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.079839,
+      "\u001b[?25l\u001b[4;20H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;20H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;20H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;20H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;20H\u001b[?12l\u001b[?25h\u001b[?25lu\u001b[4;21H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;21H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.231861,
+      "\u001b[?25l\u001b[4;21H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;21H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;21H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;21H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;21H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.00041,
+      "\u001b[?25ld\u001b[4;22H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;22H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.135337,
+      "\u001b[?25l\u001b[4;22H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;22H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;22H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;22H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;22H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.000388,
+      "\u001b[?25l-\u001b[4;23H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;23H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.15191,
+      "\u001b[?25l\u001b[4;23H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;23H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;23H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;23H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;23H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.00045,
+      "\u001b[?25lu\u001b[4;24H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;24H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.087415,
+      "\u001b[?25l\u001b[4;24H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;24H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;24H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;24H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;24H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.000312,
+      "\u001b[?25ls\u001b[4;25H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;25H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.031694,
+      "\u001b[?25l\u001b[4;25H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;25H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;25H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;25H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;25H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.000321,
+      "\u001b[?25le\u001b[4;26H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;26H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.039758,
+      "\u001b[?25l\u001b[4;26H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;26H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;26H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;26H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;26H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.000346,
+      "\u001b[?25lr\u001b[4;27H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;27H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.304105,
+      "\u001b[?25l\u001b[?1002h\u001b[?1006h\u001b[53;1H\u001b[53;1H\u001b[J\u001b[53;1H\u001b[53;1H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.000479,
+      "\u001b[?25l\u001b[4;26H\u001b[4;26H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;26H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.191145,
+      "\u001b[?25l\u001b[4;26H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[4;26H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[?1002h\u001b[?1006h\u001b[4;26H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.000127,
+      "\u001b[?25l\u001b[53;1H\u001b(B\u001b[m\u001b[1m-- INSERT --\u001b[53;13H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[53;13H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.000447,
+      "\u001b[?25l\u001b[5;51r\u001b[5;1H\u001b(B\u001b[m\u001b[L\u001b[1;53r\u001b[53;13H\u001b[53;13H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;4H\u001b[5;4H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;4H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.551376,
+      "\u001b[?25l\u001b[5;4H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;4H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;4H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;4H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;4H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.000317,
+      "\u001b[?25lb\u001b[5;5H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;5H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.079614,
+      "\u001b[?25l\u001b[5;5H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;5H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;5H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;5H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;5H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.000309,
+      "\u001b[?25le\u001b[5;6H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;6H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.127561,
+      "\u001b[?25l\u001b[5;6H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;6H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;6H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;6H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;6H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.000304,
+      "\u001b[?25lo\u001b[5;7H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;7H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.015761,
+      "\u001b[?25l\u001b[5;7H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;7H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;7H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;7H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;7H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.000301,
+      "\u001b[?25lm\u001b[5;8H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;8H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.063731,
+      "\u001b[?25l\u001b[5;8H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;8H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;8H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;8H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;8H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.000302,
+      "\u001b[?25le\u001b[5;9H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;9H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.295755,
+      "\u001b[?25l\u001b[5;9H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;9H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;9H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;9H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;9H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.000459,
+      "\u001b[?25l:\u001b[5;10H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;10H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.047513,
+      "\u001b[?25l\u001b[5;10H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;10H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;10H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;10H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;10H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.000323,
+      "\u001b[?25l\u001b[5;11H\u001b[5;11H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;11H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.552358,
+      "\u001b[?25l\u001b[5;11H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;11H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;11H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;11H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.000714,
+      "\u001b[?25l\u001b[5;10H\u001b[5;10H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;10H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.126598,
+      "\u001b[?25l\u001b[5;10H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;10H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;10H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;10H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.000457,
+      "\u001b[?25l\u001b[5;9H\u001b[5;9H\u001b[K\u001b[5;9H\u001b[5;9H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;9H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.151649,
+      "\u001b[?25l\u001b[5;9H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;9H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;9H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;9H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.000387,
+      "\u001b[?25l\u001b[5;8H\u001b[5;8H\u001b[K\u001b[5;8H\u001b[5;8H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;8H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.151652,
+      "\u001b[?25l\u001b[5;8H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;8H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;8H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;8H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.000378,
+      "\u001b[?25l\u001b[5;7H\u001b[5;7H\u001b[K\u001b[5;7H\u001b[5;7H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;7H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.143558,
+      "\u001b[?25l\u001b[5;7H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;7H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;7H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;7H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.000348,
+      "\u001b[?25l\u001b[5;6H\u001b[5;6H\u001b[K\u001b[5;6H\u001b[5;6H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;6H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.071626,
+      "\u001b[?25l\u001b[5;6H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;6H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;6H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;6H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;6H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.000324,
+      "\u001b[?25lc\u001b[5;7H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;7H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.120066,
+      "\u001b[?25l\u001b[5;7H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;7H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;7H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;7H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;7H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.000581,
+      "\u001b[?25lo\u001b[5;8H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;8H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.023394,
+      "\u001b[?25l\u001b[5;8H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;8H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;8H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;8H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;8H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.000709,
+      "\u001b[?25lm\u001b[5;9H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;9H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.079287,
+      "\u001b[?25l\u001b[5;9H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;9H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;9H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;9H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;9H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.000736,
+      "\u001b[?25le\u001b[5;10H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;10H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.175004,
+      "\u001b[?25l\u001b[5;10H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;10H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;10H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;10H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;10H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.00037,
+      "\u001b[?25l.\u001b[5;11H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;11H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.087582,
+      "\u001b[?25l\u001b[5;11H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;11H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;11H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;11H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;11H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.000415,
+      "\u001b[?25l\u001b[5;12H\u001b[5;12H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;12H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.167575,
+      "\u001b[?25l\u001b[5;12H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;12H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;12H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;12H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;12H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.000341,
+      "\u001b[?25lT\u001b[5;13H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;13H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.639563,
+      "\u001b[?25l\u001b[5;13H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;13H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;13H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;13H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.00031,
+      "\u001b[?25l\u001b[5;12H\u001b[5;12H\u001b[K\u001b[5;12H\u001b[5;12H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;12H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.143835,
+      "\u001b[?25l\u001b[5;12H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;12H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;12H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;12H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.000411,
+      "\u001b[?25l\u001b[5;11H\u001b[5;11H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;11H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.151493,
+      "\u001b[?25l\u001b[5;11H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;11H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;11H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;11H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.000316,
+      "\u001b[?25l\u001b[5;10H\u001b[5;10H\u001b[K\u001b[5;10H\u001b[5;10H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;10H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.231501,
+      "\u001b[?25l\u001b[5;10H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;10H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;10H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;10H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;10H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.000333,
+      "\u001b[?25l:\u001b[5;11H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;11H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.047729,
+      "\u001b[?25l\u001b[5;11H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;11H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;11H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;11H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;11H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.000323,
+      "\u001b[?25l\u001b[5;12H\u001b[5;12H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;12H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.183793,
+      "\u001b[?25l\u001b[5;12H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;12H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;12H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;12H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;12H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.0003,
+      "\u001b[?25lT\u001b[5;13H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;13H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.231702,
+      "\u001b[?25l\u001b[5;13H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;13H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;13H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;13H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;13H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.000302,
+      "\u001b[?25lr\u001b[5;14H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;14H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.087698,
+      "\u001b[?25l\u001b[5;14H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;14H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;14H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;14H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;14H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.000304,
+      "\u001b[?25lu\u001b[5;15H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;15H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.064029,
+      "\u001b[?25l\u001b[5;15H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;15H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;15H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;15H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;15H\u001b[?12l\u001b[?25h\u001b[?25le\u001b[5;16H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;16H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.240235,
+      "\u001b[?25l\u001b[?1002h\u001b[?1006h\u001b[53;1H\u001b[53;1H\u001b[J\u001b[53;1H\u001b[53;1H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.000561,
+      "\u001b[?25l\u001b[5;15H\u001b[5;15H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;15H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.303041,
+      "\u001b[?25l\u001b[5;15H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[5;15H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[53;1H:\u001b[?1002h\u001b[?1006h\u001b[53;2H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[53;2H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.28793,
+      "\u001b[?25l\u001b[53;2H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[53;2H\u001b[?12l\u001b[?25h\u001b[?25lw\u001b[53;3H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[53;3H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[53;3H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.047884,
+      "\u001b[?25l\u001b[53;3H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[53;3H\u001b[?12l\u001b[?25h\u001b[?25lq\u001b[53;4H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[53;4H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[53;4H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.416415,
+      "\u001b[?25l\u001b[53;4H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[53;4H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[53;1H\u001b[53;1H\u001b[?12l\u001b[?25h\u001b[?25l\u001b[?1002h\u001b[?1006h\"test.yml\"\u001b[53;11H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.011949,
+      "\u001b[?25l\u001b[53;12H30L,\u001b[53;17H911C\u001b[53;22Hwritten\u001b[53;29H\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.030391,
+      "\u001b[?25l\u001b[53;1H\u001b[?1002l\u001b[?1006l\u001b(B\u001b[m\u001b[?12l\u001b[?25h\u001b[?1049l\u001b[?2004l\u001b[?12l\u001b[?25h"
+    ],
+    [
+      0.01091,
+      "\u001b]0;myusername@mylaptop:~/Git3/slurm_workdir\u0007[slurm_workdir]$"
+    ],
+    [
+      3.354226,
+      "#"
+    ],
+    [
+      0.088124,
+      " "
+    ],
+    [
+      0.135998,
+      "r"
+    ],
+    [
+      0.048059,
+      "u"
+    ],
+    [
+      0.063957,
+      "n"
+    ],
+    [
+      0.071987,
+      "a"
+    ],
+    [
+      0.071938,
+      "n"
+    ],
+    [
+      0.064011,
+      "s"
+    ],
+    [
+      0.072066,
+      "i"
+    ],
+    [
+      0.047728,
+      "b"
+    ],
+    [
+      0.096217,
+      "l"
+    ],
+    [
+      0.096203,
+      "e"
+    ],
+    [
+      0.696264,
+      "\b"
+    ],
+    [
+      0.135888,
+      "\b"
+    ],
+    [
+      0.199758,
+      "\b"
+    ],
+    [
+      0.127881,
+      "\b"
+    ],
+    [
+      0.143986,
+      "\b"
+    ],
+    [
+      0.160027,
+      "\b"
+    ],
+    [
+      0.208508,
+      "\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C"
+    ],
+    [
+      0.361309,
+      "\r\n\u001b]0;myusername@mylaptop:~/Git3/slurm_workdir\u0007[slurm_workdir]$"
+    ],
+    [
+      5.542998,
+      "ansible-playbook -i inventory test.yml --diff"
+    ],
+    [
+      1.87924,
+      " "
+    ],
+    [
+      0.144184,
+      "#"
+    ],
+    [
+      0.151855,
+      " "
+    ],
+    [
+      0.095959,
+      "a"
+    ],
+    [
+      0.104067,
+      "n"
+    ],
+    [
+      0.039944,
+      "d"
+    ],
+    [
+      0.09626,
+      " "
+    ],
+    [
+      0.455749,
+      "-"
+    ],
+    [
+      0.135936,
+      "-"
+    ],
+    [
+      0.048063,
+      " "
+    ],
+    [
+      0.55201,
+      "\b\u001b[K"
+    ],
+    [
+      0.072032,
+      "d"
+    ],
+    [
+      0.119732,
+      "i"
+    ],
+    [
+      0.128492,
+      "f"
+    ],
+    [
+      0.14383,
+      "f"
+    ],
+    [
+      0.080252,
+      " "
+    ],
+    [
+      0.159813,
+      "m"
+    ],
+    [
+      0.055944,
+      "e"
+    ],
+    [
+      0.024313,
+      "a"
+    ],
+    [
+      0.08006,
+      "n"
+    ],
+    [
+      0.071681,
+      "a"
+    ],
+    [
+      0.007903,
+      "s"
+    ],
+    [
+      0.032002,
+      " "
+    ],
+    [
+      0.12803,
+      "t"
+    ],
+    [
+      0.056006,
+      "o"
+    ],
+    [
+      0.039734,
+      " "
+    ],
+    [
+      0.088322,
+      "s"
+    ],
+    [
+      0.103951,
+      "h"
+    ],
+    [
+      0.056005,
+      "o"
+    ],
+    [
+      0.807994,
+      "\b"
+    ],
+    [
+      0.501086,
+      "\b"
+    ],
+    [
+      0.030118,
+      "\b"
+    ],
+    [
+      0.030013,
+      "\b"
+    ],
+    [
+      0.029931,
+      "\b"
+    ],
+    [
+      0.03,
+      "\b"
+    ],
+    [
+      0.030282,
+      "\b"
+    ],
+    [
+      0.029938,
+      "\b"
+    ],
+    [
+      0.366923,
+      "\b\u001b[1P"
+    ],
+    [
+      0.215766,
+      "\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C"
+    ],
+    [
+      0.375887,
+      "w"
+    ],
+    [
+      0.072041,
+      " "
+    ],
+    [
+      0.07219,
+      "t"
+    ],
+    [
+      0.063971,
+      "h"
+    ],
+    [
+      0.087981,
+      "e"
+    ],
+    [
+      0.048364,
+      " "
+    ],
+    [
+      0.215504,
+      "c"
+    ],
+    [
+      0.048291,
+      "h \r"
+    ],
+    [
+      0.063567,
+      "a"
+    ],
+    [
+      0.096126,
+      "n"
+    ],
+    [
+      0.056009,
+      "g"
+    ],
+    [
+      0.056476,
+      "e"
+    ],
+    [
+      0.039856,
+      "s"
+    ],
+    [
+      0.377468,
+      "\r\n"
+    ],
+    [
+      0.638643,
+      "\r\nPLAY [install,compute] *********************************************************\r\n"
+    ],
+    [
+      0.198346,
+      "\r\nTASK [setup] *******************************************************************\r\n"
+    ],
+    [
+      1.236932,
+      "\u001b[0;32mok: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.008887,
+      "\r\nTASK [debug] *******************************************************************\r\n"
+    ],
+    [
+      0.069431,
+      "\u001b[0;32mok: [slurm-ansible] => {\r\n    \"group_names\": [\r\n        \"compute\", \r\n        \"install\", \r\n        \"production\", \r\n        \"pxe_bootable_nodes\", \r\n        \"slurm_compute\", \r\n        \"slurm_service\"\r\n    ]\r\n}\u001b[0m"
+    ],
+    [
+      2.8e-05,
+      "\r\n"
+    ],
+    [
+      0.009312,
+      "\r\nTASK [ansible-role-pam : template pam.d system-auth] ***************************\r\n"
+    ],
+    [
+      0.023852,
+      "\u001b[0;36mskipping: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.007287,
+      "\r\nTASK [ansible-role-pam : template pam.d password-auth] *************************\r\n"
+    ],
+    [
+      0.025068,
+      "\u001b[0;36mskipping: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.007433,
+      "\r\nTASK [ansible-role-pam : template /etc/security/namespace.d/site.conf] *********\r\n"
+    ],
+    [
+      0.025293,
+      "\u001b[0;36mskipping: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.00735,
+      "\r\nTASK [ansible-role-pam : lineinfile add admin groups to /etc/security/access.conf] ***\r\n"
+    ],
+    [
+      0.068262,
+      "\u001b[0;36mskipping: [slurm-ansible] => (item=admin) \u001b[0m\r\n"
+    ],
+    [
+      0.014273,
+      "\u001b[0;36mskipping: [slurm-ansible] => (item=root) \u001b[0m\r\n"
+    ],
+    [
+      0.007556,
+      "\u001b[0;36mskipping: [slurm-ansible] => (item=wheel) \u001b[0m\r\n"
+    ],
+    [
+      0.017755,
+      "\r\nTASK [ansible-role-pam : lineinfile deny all at the end of /etc/security/access.conf] ***\r\n"
+    ],
+    [
+      0.060619,
+      "\u001b[0;36mskipping: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.007071,
+      "\r\nTASK [ansible-role-nhc : Check if fgci-release7 is installed] ******************\r\n"
+    ],
+    [
+      9.823124,
+      "\u001b[0;31mfatal: [slurm-ansible]: FAILED! => {\"changed\": false, \"failed\": true, \"msg\": \"No Package matching 'fgci-release7' found available, installed or updated\", \"rc\": 0, \"results\": []}\u001b[0m\r\n\u001b[0;36m...ignoring\u001b[0m"
+    ],
+    [
+      2.5e-05,
+      "\r\n"
+    ],
+    [
+      0.007269,
+      "\r\nTASK [ansible-role-nhc : Install FGCI repo] ************************************\r\n"
+    ],
+    [
+      5.020072,
+      "\u001b[0;33mchanged: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.006963,
+      "\r\nTASK [ansible-role-nhc : Check if lbnl-nhc-nhc_version is installed] ***********\r\n"
+    ],
+    [
+      0.059237,
+      "\u001b[0;36mskipping: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.007709,
+      "\r\nTASK [ansible-role-nhc : install NHC from github] ******************************\r\n"
+    ],
+    [
+      0.055592,
+      "\u001b[0;36mskipping: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.007049,
+      "\r\nTASK [ansible-role-nhc : install NHC from a yum repo] **************************\r\n"
+    ],
+    [
+      3.778649,
+      "\u001b[0;33mchanged: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.007247,
+      "\r\nTASK [ansible-role-nhc : configure NHC] ****************************************\r\n"
+    ],
+    [
+      1.863551,
+      "\u001b[0;33mchanged: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.001261,
+      "\u001b[0;31m--- before: /etc/nhc/nhc.conf\r\n\u001b[0m\u001b[0;32m+++ after: dynamically generated\r\n\u001b[0m\u001b[0;36m@@ -1,3 +1,5 @@\r\n\u001b[0m\u001b[0;32m+# Managed by Ansible\r\n\u001b[0m\u001b[0;32m+#\r\n\u001b[0m # NHC Configuration File (sample)\r\n #\r\n # Lines are in the form \"<hostmask>||<check>\"\r\n\u001b[0;36m@@ -9,8 +11,6 @@\r\n\u001b[0m ###"
+    ],
+    [
+      2.5e-05,
+      "\r\n ### NHC Configuration Variables\r\n ###\r\n\u001b[0;31m-# Explicitly instruct NHC to assume PBS (TORQUE, PBSPro) is the Resource Manager\r\n\u001b[0m\u001b[0;31m-#   * || export NHC_RM=pbs\r\n\u001b[0m \r\n # Do not mark nodes offline\r\n #   * || export MARK_OFFLINE=0\r\n\u001b[0;36m@@ -29,169 +29,14 @@\r\n\u001b[0m #   * || export PATH=\"$MOABHOMEDIR/bin:$PATH\"\r\n \r\n \r\n\u001b[0;32m+# Not using any defaults - only the ones defined in nhc_checks\r\n\u001b[0m #######################################################################\r\n ###\r\n\u001b[0;31m-### Hardware checks\r\n\u001b[0m\u001b[0;32m+### More checks\r\n\u001b[0m ###\r\n\u001b[0;31m-# Set these to your correct socket, core, and thread counts.\r\n"
+    ],
+    [
+      0.000457,
+      "\u001b[0m\u001b[0;31m-#   * || check_hw_cpuinfo 2 12 24\r\n\u001b[0m\u001b[0;32m+#\r\n\u001b[0m \r\n\u001b[0;31m-# Set these to the amount of physical RAM you have (leave the fudge factor).\r\n\u001b[0m\u001b[0;31m-#   * || check_hw_physmem 32gb 32gb 5%\r\n\u001b[0m\u001b[0;31m-\r\n\u001b[0m\u001b[0;31m-# Set these to the amount of swap you have (leave the fudge factor).\r\n\u001b[0m\u001b[0;31m-#   * || check_hw_swap 8g 8g 3%\r\n\u001b[0m\u001b[0;31m-\r\n\u001b[0m\u001b[0;31m-# If you prefer to use this instead of the previous two, you can.\r\n\u001b[0m\u001b[0;31m-#   * || check_hw_mem 40g 40g 5%\r\n\u001b[0m\u001b[0;31m-\r\n\u001b[0m\u001b[0;31m-# Check specifically for free physical memory.\r\n\u001b[0m\u001b[0;31m-#   * || check_hw_physmem_free 1MB\r\n\u001b[0m\u001b[0;31m-\r\n\u001b[0m\u001b[0;31m-# Same, but for swap space.\r\n\u001b[0m\u001b[0;31m-#   * || check_hw_swap_free 1MB\r\n\u001b[0m\u001b[0;31m-\r\n\u001b[0m\u001b[0;31m-# Check for some sort of free memory of either type.\r\n\u001b[0m\u001b[0;31m-   * || check_hw_mem_free 1mb\r\n\u001b[0m\u001b[0;31m-\r\n\u001b[0m\u001b[0;31m-# Checks that there's a QDR IB interface that's ACTIVE and shows LinkUp.\r\n\u001b[0m\u001b[0;31m-#   * || check_hw_ib 40\r\n\u001b[0m\u001b[0;31m-\r\n\u001b[0m\u001b[0;31m-# Checks for an active Myrine"
+    ],
+    [
+      5.1e-05,
+      "t interface named \"myri0.\"\r\n\u001b[0m\u001b[0;31m-#   * || check_hw_gm myri0\r\n\u001b[0m\u001b[0;31m-\r\n\u001b[0m\u001b[0;31m-# Checks for an active ethernet interface named \"eth1.\"\r\n\u001b[0m\u001b[0;31m-#   * || check_hw_eth eth1\r\n\u001b[0m\u001b[0;31m-\r\n\u001b[0m\u001b[0;31m-# Make sure we're running the correct BIOS version on all nodes.\r\n\u001b[0m\u001b[0;31m-#   * || check_dmi_data_match \"BIOS Information: Version: 2.0.1\"\r\n\u001b[0m\u001b[0;31m-\r\n\u001b[0m\u001b[0;31m-# Make sure our RAM is running at the correct bus rate.\r\n\u001b[0m\u001b[0;31m-#   * || check_dmi_data_match -t \"Memory Device\" \"*Speed: 1866 MHz\"\r\n\u001b[0m\u001b[0;31m-\r\n\u001b[0m\u001b[0;31m-# Check the mcelog daemon for any pending errors.\r\n\u001b[0m\u001b[0;31m-#   * || check_hw_mcelog\r\n\u001b[0m\u001b[0;31m-\r\n\u001b[0m\u001b[0;31m-\r\n\u001b[0m\u001b[0;31m-#######################################################################\r\n\u001b[0m\u001b[0;31m-###\r\n\u001b[0m\u001b[0;31m-### Filesystem checks\r\n\u001b[0m\u001b[0;31m-###\r\n\u001b[0m\u001b[0;31m-# All nodes should have their root filesystem mounted read/write.\r\n\u001b[0m\u001b[0;31m-   * || check_fs_mount_rw -f /\r\n\u001b[0m\u001b[0;31m-\r\n\u001b[0m\u001b[0;31m-# Assert that /tmp is a mounted filesystem of type \"t"
+    ],
+    [
+      3.6e-05,
+      "mpfs.\"\r\n\u001b[0m\u001b[0;31m-#   * || check_fs_mount_rw -t tmpfs -f /tmp\r\n\u001b[0m\u001b[0;31m-\r\n\u001b[0m\u001b[0;31m-# Controlling TTYs are a good thing!\r\n\u001b[0m\u001b[0;31m-#   * || check_fs_mount_rw -t devpts -s '/(none|devpts)/' -f /dev/pts\r\n\u001b[0m\u001b[0;31m-\r\n\u001b[0m\u001b[0;31m-# Make sure the root filesystem doesn't get too full.\r\n\u001b[0m\u001b[0;31m-#   * || check_fs_free / 3%\r\n\u001b[0m\u001b[0;31m-\r\n\u001b[0m\u001b[0;31m-# Free inodes are also important.\r\n\u001b[0m\u001b[0;31m-#   * || check_fs_ifree / 1k\r\n\u001b[0m\u001b[0;31m-\r\n\u001b[0m\u001b[0;31m-# The following illustrates how to assert an NFSv3 mount (or any other specific mount option).\r\n\u001b[0m\u001b[0;31m-#   * || check_fs_mount -s bluearc0:/home -t nfs -o '/(^|,)vers=3(,|$)/' -f /home\r\n\u001b[0m\u001b[0;31m-\r\n\u001b[0m\u001b[0;31m-\r\n\u001b[0m\u001b[0;31m-#######################################################################\r\n\u001b[0m\u001b[0;31m-###\r\n\u001b[0m\u001b[0;31m-### File/metadata checks\r\n\u001b[0m\u001b[0;31m-###\r\n\u001b[0m\u001b[0;31m-# These should always be directories and always be read/write/execute and sticky.\r\n\u001b[0m\u001b[0;31m-   * || check_file_test -r -w -x -d -k /tmp /var/tmp\r\n\u001b[0m\u001b[0;31m-\r\n\u001b[0m\u001b[0;31"
+    ],
+    [
+      3e-05,
+      "m-# These should always be readable and should never be empty.\r\n\u001b[0m\u001b[0;31m-   * || check_file_test -r -s /etc/passwd /etc/group\r\n\u001b[0m\u001b[0;31m-\r\n\u001b[0m\u001b[0;31m-# Assert common properties for /dev/null (which occasionally gets clobbered).\r\n\u001b[0m\u001b[0;31m-   * || check_file_test -c -r -w /dev/null /dev/zero\r\n\u001b[0m\u001b[0;31m-#   * || check_file_stat -m 0666 -u 0 -g 0 -t 1 -T 3 /dev/null\r\n\u001b[0m\u001b[0;31m-\r\n\u001b[0m\u001b[0;31m-# Make sure there's relatively recent activity from the syslog.\r\n\u001b[0m\u001b[0;31m-#   * || check_file_stat -n 7200 /var/log/messages\r\n\u001b[0m\u001b[0;31m-\r\n\u001b[0m\u001b[0;31m-# Validate a couple important accounts in the passwd file.\r\n\u001b[0m\u001b[0;31m-#   * || check_file_contents /etc/passwd \"/^root:x:0:0:/\" \"sshd:*\"\r\n\u001b[0m\u001b[0;31m-\r\n\u001b[0m\u001b[0;31m-\r\n\u001b[0m\u001b[0;31m-#######################################################################\r\n\u001b[0m\u001b[0;31m-###\r\n\u001b[0m\u001b[0;31m-### Process checks\r\n\u001b[0m\u001b[0;31m-###\r\n\u001b[0m\u001b[0;31m-# Everybody needs sshd running, right?  But don't use -r (restart)!\r\n\u001b[0m\u001b[0;31m-   * || check_ps_service -u root -S sshd\r\n\u001b[0m\u001b[0;31m-"
+    ],
+    [
+      2.3e-05,
+      "\r\n\u001b[0m\u001b[0;31m-# The cron daemon is another useful critter...\r\n\u001b[0m\u001b[0;31m-#   * || check_ps_service -r crond\r\n\u001b[0m\u001b[0;31m-\r\n\u001b[0m\u001b[0;31m-# Check for wulfd but don't manage it.\r\n\u001b[0m\u001b[0;31m-#   * || check_ps_daemon wulfd root\r\n\u001b[0m\u001b[0;31m-\r\n\u001b[0m\u001b[0;31m-# Make sure no users are SSH'd in, but don't kill them.\r\n\u001b[0m\u001b[0;31m-#   * || check_ps_blacklist sshd '!root'\r\n\u001b[0m\u001b[0;31m-\r\n\u001b[0m\u001b[0;31m-# Flag and kill any processes which are owned by unauthorized users.\r\n\u001b[0m\u001b[0;31m-#   * || check_ps_unauth_users log syslog kill\r\n\u001b[0m\u001b[0;31m-\r\n\u001b[0m\u001b[0;31m-# Flag any user processes not properly parented.\r\n\u001b[0m\u001b[0;31m-#   * || check_ps_userproc_lineage log syslog\r\n\u001b[0m\u001b[0;31m-\r\n\u001b[0m\u001b[0;31m-# Most systems also need NFS locking services.\r\n\u001b[0m\u001b[0;31m-#   * || check_ps_service -d rpc.statd -r nfslock\r\n\u001b[0m\u001b[0;31m-\r\n\u001b[0m\u001b[0;31m-# The audit daemon can sometimes disappear if things get hairy.\r\n\u001b[0m\u001b[0;31m-#   * || check_ps_service -r auditd\r\n\u001b[0m\u001b[0;31m-\r\n\u001b[0m\u001b[0;31m-# This is only valid for RHEL6 and similar/newer systems.\r\n\u001b[0m\u001b[0;3"
+    ],
+    [
+      1.1e-05,
+      "1m-#   * || check_ps_service -d rsyslogd -r rsyslog\r\n\u001b[0m\u001b[0;31m-\r\n\u001b[0m\u001b[0;31m-# In the case of MySQL, it's typically better to cycle.\r\n\u001b[0m\u001b[0;31m-#   * || check_ps_service -c mysqld\r\n\u001b[0m\u001b[0;31m-\r\n\u001b[0m\u001b[0;31m-# Double your core count is a good rule of thumb for load average max.\r\n\u001b[0m\u001b[0;31m-#   * || check_ps_loadavg 24\r\n\u001b[0m\u001b[0;31m-# This should work if you place it after one of the check_hw_*() checks.\r\n\u001b[0m\u001b[0;31m-#   * || check_ps_loadavg $((2*HW_CORES))\r\n\u001b[0m\u001b[0;31m-\r\n\u001b[0m\u001b[0;31m-\r\n\u001b[0m\u001b[0;31m-#######################################################################\r\n\u001b[0m\u001b[0;31m-###\r\n\u001b[0m\u001b[0;31m-### TORQUE/Moab checks\r\n\u001b[0m\u001b[0;31m-###\r\n\u001b[0m\u001b[0;31m-# Monitor trqauthd to make sure it's always running.\r\n\u001b[0m\u001b[0;31m-#   * || check_ps_service -u root -r trqauthd\r\n\u001b[0m\u001b[0;31m-\r\n\u001b[0m\u001b[0;31m-# Same for pbs_mom...just make sure NHC runs out-of-band in some way!\r\n\u001b[0m\u001b[0;31m-#   * || check_ps_service -u root -r pbs_mom\r\n\u001b[0m\u001b[0;31m-\r\n\u001b[0m\u001b[0;31m-# On the master node, pbs_server gets monitored too.\r\n\u001b[0m\u001b[0;31m-#  "
+    ],
+    [
+      8e-06,
+      " * || check_ps_service -u root -r pbs_server\r\n\u001b[0m\u001b[0;31m-\r\n\u001b[0m\u001b[0;31m-# Verify Moab status and version.\r\n\u001b[0m\u001b[0;31m-#   * || check_moab_sched -t 10 -v 7.2.3 -m '!/PAUSED/'\r\n\u001b[0m\u001b[0;31m-\r\n\u001b[0m\u001b[0;31m-# RM engine sanity checks.\r\n\u001b[0m\u001b[0;31m-#   * || check_moab_rm -t 10\r\n\u001b[0m\u001b[0;31m-\r\n\u001b[0m\u001b[0;31m-# TORQUE configuration sanity checks.\r\n\u001b[0m\u001b[0;31m-#   * || check_moab_torque -t 10\r\n\u001b[0m\u001b[0;31m-\r\n\u001b[0m\u001b[0;31m-# Assert specific TORQUE settings that are critical to operation.\r\n\u001b[0m\u001b[0;31m-#   * || check_file_contents $PBS_SERVER_HOME/mom_priv/config '/^\\$pbsserver master$/' '/^\\$spool_as_final_name true$/' '!/localhost/'\r\n\u001b[0m\u001b[0;31m-\r\n\u001b[0m\u001b[0;31m-\r\n\u001b[0m\u001b[0;31m-#######################################################################\r\n\u001b[0m\u001b[0;31m-###\r\n\u001b[0m\u001b[0;31m-### Other checks\r\n\u001b[0m\u001b[0;31m-###\r\n\u001b[0m\u001b[0;31m-# Check to verify that SELinux is disabled.  (Remove the \"-r 1\" to verify it's enabled.)\r\n\u001b[0m\u001b[0;31m-#   * || check_cmd_status -t 1 -r 1 selinuxenabled\r\n\u001b[0m\u001b[0;31m-\r\n\u001b[0m\u001b[0;31m-# Verify settings for an Ethern"
+    ],
+    [
+      9e-06,
+      "et interface.\r\n\u001b[0m\u001b[0;31m-#   * || check_cmd_output -m '/addr:10\\.0\\.0\\.1/' -m '/Bcast:10\\.0\\.0\\.255/' -m '/Mask:255\\.255\\.255\\.0/' -m '/^[[:space:]]*UP /' /sbin/ifconfig eth3\r\n\u001b[0m\u001b[0;31m-\r\n\u001b[0m\u001b[0;31m-# nVidia HealthMon GPU health checks (requires Tesla Development Kit)\r\n\u001b[0m\u001b[0;31m-#   * || check_nv_healthmon\r\n\u001b[0m\u001b[0;32m+    * || check_reboot_slurm \r\n\u001b[0m\u001b[0;32m+    {gpu[1-19]} || check_hw_ib 40\r\n\u001b[0m\u001b[0;32m+    {gpu[2-22]} || check_hw_ib 56\r\n\u001b[0m\u001b[0;32m+    * || check_hw_eth eth0\r\n\u001b[0m\r\n"
+    ],
+    [
+      0.007244,
+      "\r\nTASK [ansible-role-nhc : add nhc scripts] **************************************\r\n"
+    ],
+    [
+      1.27037,
+      "\u001b[0;33mchanged: [slurm-ansible] => (item=healthcheck.nhc)\u001b[0m"
+    ],
+    [
+      5.1e-05,
+      "\r\n"
+    ],
+    [
+      0.005979,
+      "\u001b[0;31m--- before"
+    ],
+    [
+      3.8e-05,
+      "\r\n"
+    ],
+    [
+      3.6e-05,
+      "\u001b[0m\u001b[0;32m+++ after: dynamically generated"
+    ],
+    [
+      2.7e-05,
+      "\r\n"
+    ],
+    [
+      2.4e-05,
+      "\u001b[0m\u001b[0;36m@@ -0,0 +1,81 @@"
+    ],
+    [
+      2.7e-05,
+      "\r\n"
+    ],
+    [
+      3.4e-05,
+      "\u001b[0m\u001b[0;32m+#!/bin/bash"
+    ],
+    [
+      2.6e-05,
+      "\r\n"
+    ],
+    [
+      2.4e-05,
+      "\u001b[0m\u001b[0;32m+# Managed by Ansible"
+    ],
+    [
+      2.6e-05,
+      "\r\n"
+    ],
+    [
+      2.5e-05,
+      "\u001b[0m\u001b[0;32m+##"
+    ],
+    [
+      2.3e-05,
+      "\r\n"
+    ],
+    [
+      2.7e-05,
+      "\u001b[0m\u001b[0;32m+# SLURM health check program"
+    ],
+    [
+      2.5e-05,
+      "\r\n"
+    ],
+    [
+      2.4e-05,
+      "\u001b[0m\u001b[0;32m+# ulf.tigerstedt e-mail 2012"
+    ],
+    [
+      2.6e-05,
+      "\r\n"
+    ],
+    [
+      2.5e-05,
+      "\u001b[0m\u001b[0;32m+# johan.guldmyr e-mail 2014 # Removed health check stuff and kept only reboot/resume node depending on node state. So that this script can be used with NHC https://github.com/mej/nhc"
+    ],
+    [
+      2.6e-05,
+      "\r\n"
+    ],
+    [
+      2.5e-05,
+      "\u001b[0m\u001b[0;32m+"
+    ],
+    [
+      2.6e-05,
+      "\r\n"
+    ],
+    [
+      2.6e-05,
+      "\u001b[0m\u001b[0;32m+FAILED=0"
+    ],
+    [
+      2.6e-05,
+      "\r\n"
+    ],
+    [
+      2.1e-05,
+      "\u001b[0m\u001b[0;32m+ERROR=\"\""
+    ],
+    [
+      2.3e-05,
+      "\r\n"
+    ],
+    [
+      2.6e-05,
+      "\u001b[0m\u001b[0;32m+HOSTNAME=`hostname -s`"
+    ],
+    [
+      2.4e-05,
+      "\r\n"
+    ],
+    [
+      2.5e-05,
+      "\u001b[0m\u001b[0;32m+DEBUG=\"\""
+    ],
+    [
+      2.5e-05,
+      "\r\n"
+    ],
+    [
+      2.4e-05,
+      "\u001b[0m\u001b[0;32m+"
+    ],
+    [
+      2.5e-05,
+      "\r\n"
+    ],
+    [
+      2.6e-05,
+      "\u001b[0m\u001b[0;32m+STATELINE=`scontrol -o show node $HOSTNAME`"
+    ],
+    [
+      2.4e-05,
+      "\r\n"
+    ],
+    [
+      2.6e-05,
+      "\u001b[0m\u001b[0;32m+# Check if this is a SLURM worker node at all"
+    ],
+    [
+      2.4e-05,
+      "\r\n"
+    ],
+    [
+      2.4e-05,
+      "\u001b[0m\u001b[0;32m+if [ $? = 1 ] ; then"
+    ],
+    [
+      2.3e-05,
+      "\r\n"
+    ],
+    [
+      2.5e-05,
+      "\u001b[0m\u001b[0;32m+"
+    ],
+    [
+      2.6e-05,
+      "\t"
+    ],
+    [
+      2.6e-05,
+      "#echo Not a slurm node"
+    ],
+    [
+      2.6e-05,
+      "\r\n"
+    ],
+    [
+      2.6e-05,
+      "\u001b[0m\u001b[0;32m+"
+    ],
+    [
+      2.5e-05,
+      "\t"
+    ],
+    [
+      2.3e-05,
+      "exit"
+    ],
+    [
+      2.2e-05,
+      "\r\n"
+    ],
+    [
+      2.4e-05,
+      "\u001b[0m\u001b[0;32m+fi"
+    ],
+    [
+      2.3e-05,
+      "\r\n"
+    ],
+    [
+      2.8e-05,
+      "\u001b[0m\u001b[0;32m+if [ \"$1\" = \"-d\" ]; then"
+    ],
+    [
+      2.4e-05,
+      "\r\n"
+    ],
+    [
+      2.6e-05,
+      "\u001b[0m\u001b[0;32m+"
+    ],
+    [
+      2.3e-05,
+      "\t"
+    ],
+    [
+      2.4e-05,
+      "DEBUG=\"1\""
+    ],
+    [
+      2.4e-05,
+      "\r\n"
+    ],
+    [
+      2.3e-05,
+      "\u001b[0m\u001b[0;32m+fi"
+    ],
+    [
+      2.3e-05,
+      "\r\n"
+    ],
+    [
+      2.5e-05,
+      "\u001b[0m\u001b[0;32m+"
+    ],
+    [
+      2.7e-05,
+      "\r\n"
+    ],
+    [
+      2.5e-05,
+      "\u001b[0m\u001b[0;32m+check_reboot_slurm() {"
+    ],
+    [
+      2.5e-05,
+      "\r\n"
+    ],
+    [
+      2.5e-05,
+      "\u001b[0m\u001b[0;32m+# The name of this function is defined in nhc.conf as a check."
+    ],
+    [
+      2.4e-05,
+      "\r\n"
+    ],
+    [
+      2.4e-05,
+      "\u001b[0m\u001b[0;32m+"
+    ],
+    [
+      2.4e-05,
+      "\r\n"
+    ],
+    [
+      2.5e-05,
+      "\u001b[0m\u001b[0;32m+# Mangle the scontrol "
+    ],
+    [
+      2.6e-05,
+      "output into $LABEL=$PARAMETER values"
+    ],
+    [
+      2.2e-05,
+      "\r\n"
+    ],
+    [
+      2.2e-05,
+      "\u001b[0m\u001b[0;32m+# Available parameters:"
+    ],
+    [
+      2.3e-05,
+      "\r\n"
+    ],
+    [
+      3.2e-05,
+      "\u001b[0m\u001b[0;32m+# NodeName=ae5 Arch=x86_64 CoresPerSocket=6 CPUAlloc=0 CPUErr=0 CPUTot=12 Features=(null) Gres=(null) OS=Linux RealMemory=23000 Sockets=2 State=IDLE ThreadsPerCore=1 TmpDisk=0 Weight=1 BootTime=2012-01-31T17:10:45 SlurmdStartTime=2012-01-31T17:11:23 Reason=(null)"
+    ],
+    [
+      2.8e-05,
+      "\r\n"
+    ],
+    [
+      2.6e-05,
+      "\u001b[0m\u001b[0;32m+"
+    ],
+    [
+      2.5e-05,
+      "\r\n"
+    ],
+    [
+      2.6e-05,
+      "\u001b[0m\u001b[0;32m+for a in $STATELINE; do"
+    ],
+    [
+      2.5e-05,
+      "\r\n"
+    ],
+    [
+      2.3e-05,
+      "\u001b[0m\u001b[0;32m+"
+    ],
+    [
+      2.3e-05,
+      "\t"
+    ],
+    [
+      2.4e-05,
+      "LABEL=`echo $a | cut -d = -f 1`"
+    ],
+    [
+      2.3e-05,
+      "\r\n"
+    ],
+    [
+      2.3e-05,
+      "\u001b[0m\u001b[0;32m+"
+    ],
+    [
+      2.2e-05,
+      "\t"
+    ],
+    [
+      2.3e-05,
+      "PARAMETER=`echo $a | cut -d = -f 2`"
+    ],
+    [
+      2.4e-05,
+      "\r\n"
+    ],
+    [
+      2.3e-05,
+      "\u001b[0m\u001b[0;32m+"
+    ],
+    [
+      2.2e-05,
+      "\t"
+    ],
+    [
+      2.3e-05,
+      "\r\n"
+    ],
+    [
+      2.3e-05,
+      "\u001b[0m\u001b[0;32m+"
+    ],
+    [
+      2.4e-05,
+      "\t"
+    ],
+    [
+      2.4e-05,
+      "if [ $LABEL = \"Reason\" ]; then "
+    ],
+    [
+      2.8e-05,
+      "\r\n"
+    ],
+    [
+      2.4e-05,
+      "\u001b[0m\u001b[0;32m+"
+    ],
+    [
+      2.5e-05,
+      "\t"
+    ],
+    [
+      2.3e-05,
+      "\t"
+    ],
+    [
+      2.4e-05,
+      "REASON=$PARAMETER"
+    ],
+    [
+      2.2e-05,
+      "\r\n"
+    ],
+    [
+      2.3e-05,
+      "\u001b[0m\u001b[0;32m+"
+    ],
+    [
+      2.2e-05,
+      "\t"
+    ],
+    [
+      2.3e-05,
+      "fi"
+    ],
+    [
+      2.3e-05,
+      "\r\n"
+    ],
+    [
+      2.5e-05,
+      "\u001b[0m\u001b[0;32m+"
+    ],
+    [
+      2.5e-05,
+      "\t"
+    ],
+    [
+      2.4e-05,
+      "if [ $LABEL = \"State\" ]; then "
+    ],
+    [
+      2.4e-05,
+      "\r\n"
+    ],
+    [
+      2.5e-05,
+      "\u001b[0m\u001b[0;32m+"
+    ],
+    [
+      2.5e-05,
+      "\t"
+    ],
+    [
+      2.5e-05,
+      "\t"
+    ],
+    [
+      2.5e-05,
+      "STATE=$PARAMETER"
+    ],
+    [
+      2.6e-05,
+      "\r\n"
+    ],
+    [
+      2.6e-05,
+      "\u001b[0m\u001b[0;32m+"
+    ],
+    [
+      2.9e-05,
+      "\t"
+    ],
+    [
+      2.3e-05,
+      "fi"
+    ],
+    [
+      2.7e-05,
+      "\r\n"
+    ],
+    [
+      2.6e-05,
+      "\u001b[0m\u001b[0;32m+done"
+    ],
+    [
+      2.5e-05,
+      "\r\n"
+    ],
+    [
+      2.4e-05,
+      "\u001b[0m\u001b[0;32m+if [ -n \"$DEBUG\" ]; then echo Slurm thinks $HOSTNAME has STATE=$STATE and REASON=$REASON; fi"
+    ],
+    [
+      2.8e-05,
+      "\r\n"
+    ],
+    [
+      2.4e-05,
+      "\u001b[0m\u001b[0;32m+"
+    ],
+    [
+      2.5e-05,
+      "\r\n"
+    ],
+    [
+      2.4e-05,
+      "\u001b[0m\u001b[0;32m+"
+    ],
+    [
+      2.5e-05,
+      "\r\n"
+    ],
+    [
+      2.6e-05,
+      "\u001b[0m\u001b[0;32m+if [ \"$REASON\" = \"rebooting\" ]; then"
+    ],
+    [
+      2.5e-05,
+      "\r\n"
+    ],
+    [
+      2.5e-05,
+      "\u001b[0m\u001b[0;32m+"
+    ],
+    [
+      2.3e-05,
+      "\t"
+    ],
+    [
+      2.6e-05,
+      "if [ \"$STATE\" = \"DOWN+DRAIN\" -o \"$STATE\" = \"IDLE+DRAIN\" ]; then"
+    ],
+    [
+      2.6e-05,
+      "\r\n"
+    ],
+    [
+      2.5e-05,
+      "\u001b[0m\u001b[0;32m+"
+    ],
+    [
+      2.3e-05,
+      "\t"
+    ],
+    [
+      2.5e-05,
+      "\t"
+    ],
+    [
+      3.1e-05,
+      "if [ -n \"$DEBUG\" ]; then echo Resuming after reboot ; fi"
+    ],
+    [
+      2.5e-05,
+      "\r\n"
+    ],
+    [
+      2.3e-05,
+      "\u001b[0m\u001b[0;32m+"
+    ],
+    [
+      2.5e-05,
+      "\t"
+    ],
+    [
+      2.3e-05,
+      "\t"
+    ],
+    [
+      2.4e-05,
+      "scontrol update NodeName=$HOSTNAME state=RESUME"
+    ],
+    [
+      2.2e-05,
+      "\r\n"
+    ],
+    [
+      2.5e-05,
+      "\u001b[0m\u001b[0;32m+"
+    ],
+    [
+      2.4e-05,
+      "\t"
+    ],
+    [
+      2.3e-05,
+      "fi"
+    ],
+    [
+      2.6e-05,
+      "\r\n"
+    ],
+    [
+      2.5e-05,
+      "\u001b[0m\u001b[0;32m+fi"
+    ],
+    [
+      2.7e-05,
+      "\r\n"
+    ],
+    [
+      2.7e-05,
+      "\u001b[0m\u001b[0;32m+"
+    ],
+    [
+      2.6e-05,
+      "\r\n"
+    ],
+    [
+      2.4e-05,
+      "\u001b[0m\u001b[0;32m+"
+    ],
+    [
+      2.4e-05,
+      "\r\n"
+    ],
+    [
+      2.6e-05,
+      "\u001b[0m\u001b[0;32m+if [ \"$REASON\" = \"reboot\" -a \"$STATE\" = \"IDLE+DRAIN\" ]; then"
+    ],
+    [
+      2.3e-05,
+      "\r\n"
+    ],
+    [
+      2.4e-05,
+      "\u001b[0m\u001b[0;32m+"
+    ],
+    [
+      2.3e-05,
+      "\t"
+    ],
+    [
+      2.8e-05,
+      "if [ -n \"$DEBUG\" ]; then echo Rebooting ; fi"
+    ],
+    [
+      2.6e-05,
+      "\r\n"
+    ],
+    [
+      2.4e-05,
+      "\u001b[0m\u001b[0;32m+"
+    ],
+    [
+      2.3e-05,
+      "\t"
+    ],
+    [
+      2.8e-05,
+      "scontrol update NodeName=$HOSTNAME state=DOWN reason=rebooting"
+    ],
+    [
+      2.5e-05,
+      "\r\n"
+    ],
+    [
+      2.4e-05,
+      "\u001b[0m\u001b[0;32m+"
+    ],
+    [
+      2.2e-05,
+      "\t"
+    ],
+    [
+      2.6e-05,
+      "sleep 2"
+    ],
+    [
+      2.4e-05,
+      "\r\n"
+    ],
+    [
+      2.9e-05,
+      "\u001b[0m\u001b[0;32m+"
+    ],
+    [
+      2.4e-05,
+      "\t"
+    ],
+    [
+      2.7e-05,
+      "# stop slurm just in case"
+    ],
+    [
+      2.5e-05,
+      "\r\n"
+    ],
+    [
+      2.4e-05,
+      "\u001b[0m\u001b[0;32m+"
+    ],
+    [
+      2.4e-05,
+      "\t"
+    ],
+    [
+      2.5e-05,
+      "service slurm stop"
+    ],
+    [
+      2.6e-05,
+      "\r\n"
+    ],
+    [
+      2.5e-05,
+      "\u001b[0m\u001b[0;32m+"
+    ],
+    [
+      3.1e-05,
+      "\t"
+    ],
+    [
+      2.7e-05,
+      "sleep 2"
+    ],
+    [
+      2.6e-05,
+      "\r\n"
+    ],
+    [
+      2.4e-05,
+      "\u001b[0m\u001b[0;32m+"
+    ],
+    [
+      2.5e-05,
+      "\t"
+    ],
+    [
+      2.4e-05,
+      "/sbin/reboot "
+    ],
+    [
+      2.3e-05,
+      "\r\n"
+    ],
+    [
+      2.4e-05,
+      "\u001b[0m\u001b[0;32m+"
+    ],
+    [
+      2.4e-05,
+      "\t"
+    ],
+    [
+      2.3e-05,
+      "exit"
+    ],
+    [
+      2.6e-05,
+      "\r\n"
+    ],
+    [
+      2.5e-05,
+      "\u001b[0m\u001b[0;32m+fi"
+    ],
+    [
+      2.4e-05,
+      "\r\n"
+    ],
+    [
+      2.3e-05,
+      "\u001b[0m\u001b[0;32m+if [ \"$REASON\" = \"shutdown\" -a \"$STATE\" = \"IDLE+DRAIN\" ]; then"
+    ],
+    [
+      2.6e-05,
+      "\r\n"
+    ],
+    [
+      2.5e-05,
+      "\u001b[0m\u001b[0;32m+"
+    ],
+    [
+      2.4e-05,
+      "\t"
+    ],
+    [
+      2.5e-05,
+      "if [ -n \"$DEBUG\" ]; then echo Shutting down; fi"
+    ],
+    [
+      2.9e-05,
+      "\r\n"
+    ],
+    [
+      2.9e-05,
+      "\u001b[0m\u001b[0;32m+"
+    ],
+    [
+      2.5e-05,
+      "\t"
+    ],
+    [
+      2.8e-05,
+      "scontrol update NodeName=$HOSTNAME state=DOWN reason=shutteddown"
+    ],
+    [
+      2.5e-05,
+      "\r\n"
+    ],
+    [
+      2.4e-05,
+      "\u001b[0m\u001b[0;32m+"
+    ],
+    [
+      2.4e-05,
+      "\t"
+    ],
+    [
+      2.5e-05,
+      "sleep 2"
+    ],
+    [
+      2.5e-05,
+      "\r\n"
+    ],
+    [
+      2.5e-05,
+      "\u001b[0m\u001b[0;32m+"
+    ],
+    [
+      2.3e-05,
+      "\t"
+    ],
+    [
+      2.6e-05,
+      "# stop slurm just in case"
+    ],
+    [
+      2.4e-05,
+      "\r\n"
+    ],
+    [
+      2.7e-05,
+      "\u001b[0m\u001b[0;32m+"
+    ],
+    [
+      2.3e-05,
+      "\t"
+    ],
+    [
+      2.4e-05,
+      "service slurm stop"
+    ],
+    [
+      2.4e-05,
+      "\r\n"
+    ],
+    [
+      2.5e-05,
+      "\u001b[0m\u001b[0;32m+"
+    ],
+    [
+      2.5e-05,
+      "\t"
+    ],
+    [
+      2.4e-05,
+      "sleep 2"
+    ],
+    [
+      2.5e-05,
+      "\r\n"
+    ],
+    [
+      2.5e-05,
+      "\u001b[0m\u001b[0;32m+"
+    ],
+    [
+      3.4e-05,
+      "\t"
+    ],
+    [
+      2.7e-05,
+      "/sbin/shutdown -h now"
+    ],
+    [
+      2.5e-05,
+      "\r\n"
+    ],
+    [
+      2.4e-05,
+      "\u001b[0m\u001b[0;32m+"
+    ],
+    [
+      2.4e-05,
+      "\t"
+    ],
+    [
+      2.4e-05,
+      "exit"
+    ],
+    [
+      2.4e-05,
+      "\r\n"
+    ],
+    [
+      2.4e-05,
+      "\u001b[0m\u001b[0;32m+fi"
+    ],
+    [
+      2.3e-05,
+      "\r\n"
+    ],
+    [
+      2.4e-05,
+      "\u001b[0m\u001b[0;32m+if [ \"$REASON\" = \"shutteddown\" ]; then"
+    ],
+    [
+      2.4e-05,
+      "\r\n"
+    ],
+    [
+      2.3e-05,
+      "\u001b[0m\u001b[0;32m+"
+    ],
+    [
+      2.4e-05,
+      "\t"
+    ],
+    [
+      2.5e-05,
+      "if [ \"$STATE\" = \"DOWN+DRAIN\" -o \"$STATE\" = \"IDLE+DRAIN\""
+    ],
+    [
+      2.7e-05,
+      " ]; then"
+    ],
+    [
+      2.4e-05,
+      "\r\n"
+    ],
+    [
+      2.5e-05,
+      "\u001b[0m\u001b[0;32m+"
+    ],
+    [
+      2.5e-05,
+      "\t"
+    ],
+    [
+      2.4e-05,
+      "\t"
+    ],
+    [
+      2.5e-05,
+      "if [ -n \"$DEBUG\" ]; then echo Resuming after shutdown; fi"
+    ],
+    [
+      2.4e-05,
+      "\r\n"
+    ],
+    [
+      2.6e-05,
+      "\u001b[0m\u001b[0;32m+"
+    ],
+    [
+      2.4e-05,
+      "\t"
+    ],
+    [
+      2.5e-05,
+      "\t"
+    ],
+    [
+      2.5e-05,
+      "scontrol update NodeName=$HOSTNAME state=RESUME"
+    ],
+    [
+      2.7e-05,
+      "\r\n"
+    ],
+    [
+      2.6e-05,
+      "\u001b[0m\u001b[0;32m+"
+    ],
+    [
+      2.3e-05,
+      "\t"
+    ],
+    [
+      2.6e-05,
+      "fi"
+    ],
+    [
+      3.3e-05,
+      "\r\n"
+    ],
+    [
+      2.7e-05,
+      "\u001b[0m\u001b[0;32m+fi"
+    ],
+    [
+      2.4e-05,
+      "\r\n"
+    ],
+    [
+      2.7e-05,
+      "\u001b[0m\u001b[0;32m+"
+    ],
+    [
+      2.5e-05,
+      "\r\n"
+    ],
+    [
+      2.7e-05,
+      "\u001b[0m\u001b[0;32m+if [ -n \"$DEBUG\" ]; then echo Health check done; fi"
+    ],
+    [
+      2.3e-05,
+      "\r\n"
+    ],
+    [
+      2.6e-05,
+      "\u001b[0m\u001b[0;32m+"
+    ],
+    [
+      2.3e-05,
+      "\r\n"
+    ],
+    [
+      2.7e-05,
+      "\u001b[0m\u001b[0;32m+}"
+    ],
+    [
+      2.5e-05,
+      "\r\n"
+    ],
+    [
+      3.3e-05,
+      "\u001b[0m"
+    ],
+    [
+      2.5e-05,
+      "\r\n"
+    ],
+    [
+      1.206211,
+      "\u001b[0;33mchanged: [slurm-ansible] => (item=csc_nvidia_smi.nhc)\u001b[0m\r\n"
+    ],
+    [
+      0.003554,
+      "\u001b[0;31m--- before\r\n\u001b[0m\u001b[0;32m+++ after: dynamically generated\r\n\u001b[0m\u001b[0;36m@@ -0,0 +1,80 @@\r\n\u001b[0m\u001b[0;32m+# NHC - nVidia GPU Checks\r\n\u001b[0m\u001b[0;32m+#\r\n"
+    ],
+    [
+      3.2e-05,
+      "\u001b[0m\u001b[0;32m+# Johan Guldmyr <myusername@csc.fi>\r\n\u001b[0m\u001b[0;32m+# 17 Dec 2015\r\n\u001b[0m\u001b[0;32m+#\r\n\u001b[0m\u001b[0;32m+\r\n\u001b[0m\u001b[0;32m+NVIDIA_SMI_HEALTHMON=\"${NVIDIA_SMI_HEALTHMON:-nvidia-smi}\"\r\n\u001b[0m\u001b[0;32m+NVIDIA_SMI_HEALTHMON_ARGS=\"${NVIDIA_SMI_HEALTHMON_ARGS:-}\"\r\n\u001b[0m\u001b[0;32m+\r\n\u001b[0m\u001b[0;32m+NVSMI_HEALTHMON_LINES=( )\r\n\u001b[0m\u001b[0;32m+NVSMI_HEALTHMON_OUTPUT=\"\"\r\n\u001b[0m\u001b[0;32m+NVSMI_HEALTHMON_RC=\"\"\r\n\u001b[0m\u001b[0;32m+\r\n\u001b[0m\u001b[0;32m+export NVSMI_HEALTHMON_LINES NVSMI_HEALTHMON_OUTPUT NVSMI_HEALTHMON_RC\r\n"
+    ],
+    [
+      2.2e-05,
+      "\u001b[0m\u001b[0;32m+\r\n\u001b[0m\u001b[0;32m+function nhc_nvsmi_gather_data() {\r\n\u001b[0m\u001b[0;32m+    local IFS\r\n\u001b[0m\u001b[0;32m+\r\n\u001b[0m\u001b[0;32m+    NVSMI_HEALTHMON_OUTPUT=$($NVIDIA_SMI_HEALTHMON $NVIDIA_SMI_HEALTHMON_ARGS 2>/dev/null)\r\n\u001b[0m\u001b[0;32m+    NVSMI_HEALTHMON_RC=$?\r\n\u001b[0m\u001b[0;32m+    IFS=$'\\n'"
+    ],
+    [
+      1.7e-05,
+      "\r\n\u001b[0m\u001b[0;32m+    NVSMI_HEALTHMON_LINES=( $NVSMI_HEALTHMON_OUTPUT )\r\n\u001b[0m\u001b[0;32m+}\r\n\u001b[0m\u001b[0;32m+\r\n\u001b[0m\u001b[0;32m+# Run the nvidia-smi utility and verify that all GPUs\r\n"
+    ],
+    [
+      2.3e-05,
+      "\u001b[0m\u001b[0;32m+# are functioning properly.\r\n\u001b[0m\u001b[0;32m+function check_nvsmi_healthmon() {\r\n\u001b[0m\u001b[0;32m+    if [[ -z \"$NVSMI_HEALTHMON_RC\" ]]; then\r\n\u001b[0m\u001b[0;32m+        nhc_nvsmi_gather_data\r\n\u001b[0m\u001b[0;32m+    fi\r\n"
+    ],
+    [
+      1.9e-05,
+      "\u001b[0m\u001b[0;32m+\r\n\u001b[0m\u001b[0;32m+    if [[ $NVSMI_HEALTHMON_RC -eq 4 ]]; then\r\n\u001b[0m\u001b[0;32m+        die 1 \"$FUNCNAME:  $NVIDIA_SMI_HEALTHMON permission denied\"\r\n\u001b[0m\u001b[0;32m+        return 1\r\n\u001b[0m\u001b[0;32m+    elif [[ $NVSMI_HEALTHMON_RC -eq 8 ]]; then\r\n"
+    ],
+    [
+      1.7e-05,
+      "\u001b[0m\u001b[0;32m+        die 1 \"$FUNCNAME:  $NVIDIA_SMI_HEALTHMON power cables not attached\"\r\n\u001b[0m\u001b[0;32m+        return 1\r\n\u001b[0m\u001b[0;32m+    elif [[ $NVSMI_HEALTHMON_RC -eq 2 ]]; then\r\n\u001b[0m\u001b[0;32m+        die 1 \"$FUNCNAME:  $NVIDIA_SMI_HEALTHMON invalid argument or flag\"\r\n"
+    ],
+    [
+      1.6e-05,
+      "\u001b[0m\u001b[0;32m+        return 1\r\n\u001b[0m\u001b[0;32m+    elif [[ $NVSMI_HEALTHMON_RC -eq 9 ]]; then\r\n\u001b[0m\u001b[0;32m+        die 1 \"$FUNCNAME:  $NVIDIA_SMI_HEALTHMON NVIDIA driver not loaded\"\r\n\u001b[0m\u001b[0;32m+        return 1\r\n"
+    ],
+    [
+      1.9e-05,
+      "\u001b[0m\u001b[0;32m+    elif [[ $NVSMI_HEALTHMON_RC -eq 10 ]]; then\r\n\u001b[0m\u001b[0;32m+        die 1 \"$FUNCNAME:  $NVIDIA_SMI_HEALTHMON interrupt issue with a GPU\"\r\n\u001b[0m\u001b[0;32m+        return 1\r\n\u001b[0m\u001b[0;32m+    elif [[ $NVSMI_HEALTHMON_RC -eq 12 ]]; then\r\n"
+    ],
+    [
+      2.8e-05,
+      "\u001b[0m\u001b[0;32m+        die 1 \"$FUNCNAME:  $NVIDIA_SMI_HEALTHMON NVML shared library could not be found\"\r\n\u001b[0m\u001b[0;32m+        return 1\r\n\u001b[0m\u001b[0;32m+    elif [[ $NVSMI_HEALTHMON_RC -eq 14 ]]; then\r\n\u001b[0m\u001b[0;32m+        die 1 \"$FUNCNAME:  $NVIDIA_SMI_HEALTHMON infoROM is corrupted\"\r\n\u001b[0m\u001b[0;32m+        return 1\r\n\u001b[0m\u001b[0;32m+    elif [[ $NVSMI_HEALTHMON_RC -eq 15 ]]; then\r\n"
+    ],
+    [
+      1.8e-05,
+      "\u001b[0m\u001b[0;32m+        die 1 \"$FUNCNAME:  $NVIDIA_SMI_HEALTHMON The GPU has fallen off the bus or has otherwise become inaccessible\"\r\n\u001b[0m\u001b[0;32m+        return 1\r\n\u001b[0m\u001b[0;32m+    elif [[ $NVSMI_HEALTHMON_RC -eq 17 ]]; then\r\n\u001b[0m\u001b[0;32m+        if [[ $NHC_RM == \"slurm\" ]]; then\r\n\u001b[0m\u001b[0;32m+          scontrol update nodename=$HOSTNAME state=drain reason=reboot"
+    ],
+    [
+      1.7e-05,
+      "\r\n\u001b[0m\u001b[0;32m+        else\r\n\u001b[0m\u001b[0;32m+          die 1 \"$FUNCNAME:  $NVIDIA_SMI_HEALTHMON The GPU has fallen off the bus or has otherwise become inaccessible\"\r\n\u001b[0m\u001b[0;32m+          return 1\r\n"
+    ],
+    [
+      0.001112,
+      "\u001b[0m\u001b[0;32m+        fi\r\n\u001b[0m\u001b[0;32m+    elif [[ $NVSMI_HEALTHMON_RC -eq 255 ]]; then\r\n\u001b[0m\u001b[0;32m+        if [[ $NHC_RM == \"slurm\" ]]; then\r\n\u001b[0m\u001b[0;32m+          scontrol update nodename=$HOSTNAME state=drain reason=reboot\r\n\u001b[0m\u001b[0;32m+        else:\r\n\u001b[0m\u001b[0;32m+          die 1 \"$FUNCNAME:  $NVIDIA_SMI_HEALTHMON caught fatal signal $((NVSMI_HEALTHMON_RC-127))\"\r\n\u001b[0m\u001b[0;32m+          return 1\r\n\u001b[0m\u001b[0;32m+        fi\r\n\u001b[0m\u001b[0;32m+    elif [[ $NVSMI_HEALTHMON_RC -gt 127 ]]; then\r\n\u001b[0m\u001b[0;32m+        die 1 \"$FUNCNAME:  $NVIDIA_SMI_HEALTHMON caught fatal signal $((NVSMI_HEALTHMON_RC-127))\"\r\n\u001b[0m\u001b[0;32m+        return 1\r\n\u001b[0m\u001b[0;32m+    elif [[ $NVSMI_HEALTHMON_RC -gt 0 ]]; then\r\n\u001b[0m\u001b[0;32m+        log \"$NVSMI_HEALTHMON_OUTPUT\"\r\n\u001b[0m\u001b[0;32m+        die 1 \"$FUNCNAME:  $NVIDIA_SMI_HEALTHMON returned failure code $NVSMI_HEALTHMON_RC\"\r\n\u001b[0m\u001b[0;32m+        return 1\r\n\u001b[0m\u001b[0;32m+    else\r\n\u001b[0m\u001b[0;32m+        return 0\r\n\u001b[0m\u001b[0;32m+    fi\r\n\u001b[0m\u001b[0;32m+}\r\n\u001b[0m\r\n"
+    ],
+    [
+      0.014643,
+      "\r\nTASK [ansible-role-pam : template pam.d system-auth] ***************************\r\n"
+    ],
+    [
+      0.026252,
+      "\u001b[0;36mskipping: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.006901,
+      "\r\nTASK [ansible-role-pam : template pam.d password-auth] *************************\r\n"
+    ],
+    [
+      0.025723,
+      "\u001b[0;36mskipping: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.007747,
+      "\r\nTASK [ansible-role-pam : template /etc/security/namespace.d/site.conf] *********\r\n"
+    ],
+    [
+      0.026804,
+      "\u001b[0;36mskipping: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.007386,
+      "\r\nTASK [ansible-role-pam : lineinfile add admin groups to /etc/security/access.conf] ***\r\n"
+    ],
+    [
+      0.072876,
+      "\u001b[0;36mskipping: [slurm-ansible] => (item=admin) \u001b[0m\r\n"
+    ],
+    [
+      0.019807,
+      "\u001b[0;36mskipping: [slurm-ansible] => (item=root) \u001b[0m\r\n"
+    ],
+    [
+      0.011393,
+      "\u001b[0;36mskipping: [slurm-ansible] => (item=wheel) \u001b[0m\r\n"
+    ],
+    [
+      0.013257,
+      "\r\nTASK [ansible-role-pam : lineinfile deny all at the end of /etc/security/access.conf] ***\r\n"
+    ],
+    [
+      0.076902,
+      "\u001b[0;36mskipping: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.00916,
+      "\r\nTASK [ansible-role-slurm : Slurm OS dependent variables] ***********************\r\n"
+    ],
+    [
+      0.209452,
+      "\u001b[0;32mok: [slurm-ansible] => (item=/home/myusername/Git3/slurm_workdir/roles/ansible-role-slurm/vars/RedHat_7.yml)\u001b[0m\r\n"
+    ],
+    [
+      0.025793,
+      "\r\nTASK [ansible-role-slurm : BUILD. update all packages first] *******************\r\n"
+    ],
+    [
+      0.070529,
+      "\u001b[0;36mskipping: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.007538,
+      "\r\nTASK [ansible-role-slurm : Remove duplicate CentOS repos] **********************\r\n"
+    ],
+    [
+      0.068463,
+      "\u001b[0;36mskipping: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.007554,
+      "\r\nTASK [ansible-role-slurm : install EPEL6] **************************************\r\n"
+    ],
+    [
+      0.075404,
+      "\u001b[0;36mskipping: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.007604,
+      "\r\nTASK [ansible-role-slurm : install EPEL7] **************************************\r\n"
+    ],
+    [
+      0.070996,
+      "\u001b[0;36mskipping: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.007779,
+      "\r\nTASK [ansible-role-slurm : install software required to build slurm] ***********\r\n"
+    ],
+    [
+      0.236166,
+      "\u001b[0;36mskipping: [slurm-ansible] => (item=[]) \u001b[0m\r\n"
+    ],
+    [
+      0.020495,
+      "\r\nTASK [ansible-role-slurm : debug] **********************************************\r\n"
+    ],
+    [
+      0.074296,
+      "\u001b[0;36mskipping: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.007639,
+      "\r\nTASK [ansible-role-slurm : Add FGI slurm repo] *********************************\r\n"
+    ],
+    [
+      1.270689,
+      "\u001b[0;33mchanged: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.000295,
+      "\u001b[0;31m--- before\r\n\u001b[0m\u001b[0;32m+++ after: dynamically generated\r\n\u001b[0m\u001b[0;36m@@ -0,0 +1,6 @@\r\n\u001b[0m\u001b[0;32m+[fgislurm]\r\n\u001b[0m\u001b[0;32m+name=fgislurm\r\n\u001b[0m\u001b[0;32m+baseurl=http://idris.fgi.csc.fi/fgci7/x86_64/fgcislurm1508\r\n\u001b[0m\u001b[0;32m+enabled=1\r\n\u001b[0m\u001b[0;32m+gpgcheck=1\r\n\u001b[0m\u001b[0;32m+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CSC-GRID-2\r\n\u001b[0m\r\n"
+    ],
+    [
+      0.007793,
+      "\r\nTASK [ansible-role-slurm : Import FGI slurm repo key] **************************\r\n"
+    ],
+    [
+      1.105786,
+      "\u001b[0;32mok: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.00766,
+      "\r\nTASK [ansible-role-slurm : Install FGCI repo] **********************************\r\n"
+    ],
+    [
+      0.701196,
+      "\u001b[0;32mok: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.007636,
+      "\r\nTASK [ansible-role-slurm : install common Slurm packages] **********************\r\n"
+    ],
+    [
+      28.63576,
+      "\u001b[0;33mchanged: [slurm-ansible] => (item=[u'slurm', u'slurm-devel', u'slurm-perlapi', u'slurm-pam_slurm', u'slurm-sjstat', u'slurm-torque', u'slurm-munge', u'slurm-sjobexit'])\u001b[0m\r\n"
+    ],
+    [
+      0.025454,
+      "\r\nTASK [ansible-role-slurm : install fgci Slurm addons] **************************\r\n"
+    ],
+    [
+      7.050142,
+      "\u001b[0;33mchanged: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.011413,
+      "\r\n"
+    ],
+    [
+      0.000243,
+      "TASK [ansible-role-slurm : Copy pam.d/slurm] ***********************************"
+    ],
+    [
+      8.8e-05,
+      "\r\n"
+    ],
+    [
+      1.285988,
+      "\u001b[0;33mchanged: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.000175,
+      "\u001b[0;31m--- before\r\n\u001b[0m\u001b[0;32m+++ after: /home/myusername/Git3/slurm_workdir/roles/ansible-role-slurm/files/pam_slurm\r\n\u001b[0m\u001b[0;36m@@ -0,0 +1,5 @@\r\n\u001b[0m\u001b[0;32m+# Managed by ansible-role-slurm\r\n\u001b[0m\u001b[0;32m+auth      required      pam_localuser.so"
+    ],
+    [
+      1.8e-05,
+      "\r\n\u001b[0m\u001b[0;32m+account   required      pam_unix.so\r\n\u001b[0m\u001b[0;32m+session   required      pam_limits.so\r\n\u001b[0m\u001b[0;32m+session   required      pam_namespace.so\r\n\u001b[0m\r\n"
+    ],
+    [
+      0.007794,
+      "\r\nTASK [ansible-role-slurm : Make from template cgroup.conf] *********************\r\n"
+    ],
+    [
+      1.282117,
+      "\u001b[0;33mchanged: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.000245,
+      "\u001b[0;31m--- before\r\n\u001b[0m\u001b[0;32m+++ after: dynamically generated\r\n\u001b[0m\u001b[0;36m@@ -0,0 +1,22 @@\r\n\u001b[0m\u001b[0;32m+###"
+    ],
+    [
+      3.1e-05,
+      "\r\n\u001b[0m\u001b[0;32m+#\r\n\u001b[0m\u001b[0;32m+# Slurm cgroup support configuration file\r\n\u001b[0m\u001b[0;32m+#\r\n\u001b[0m\u001b[0;32m+# See man slurm.conf and man cgroup.conf for further\r\n\u001b[0m\u001b[0;32m+# information on cgroup configuration parameters\r\n\u001b[0m\u001b[0;32m+#--\r\n\u001b[0m\u001b[0;32m+# Templated by ansible, don't edit manually.\r\n\u001b[0m\u001b[0;32m+#\r\n\u001b[0m\u001b[0;32m+CgroupMountpoint=/sys/fs/cgroup"
+    ],
+    [
+      9.1e-05,
+      "\r\n\u001b[0m\u001b[0;32m+CgroupAutomount=no\r\n\u001b[0m\u001b[0;32m+CgroupReleaseAgentDir=/etc/slurm/cgroup\r\n\u001b[0m\u001b[0;32m+\r\n\u001b[0m\u001b[0;32m+ConstrainCores=yes\r\n\u001b[0m\u001b[0;32m+TaskAffinity=yes\r\n\u001b[0m\u001b[0;32m+ConstrainRAMSpace=no"
+    ],
+    [
+      1.9e-05,
+      "\r\n\u001b[0m\u001b[0;32m+ConstrainSwapSpace=no\r\n\u001b[0m\u001b[0;32m+AllowedRAMSpace=100.1\r\n\u001b[0m\u001b[0;32m+MinRAMSpace=500\r\n\u001b[0m\u001b[0;32m+AllowedSwapSpace=120\r\n\u001b[0m\u001b[0;32m+ConstrainDevices=no"
+    ],
+    [
+      1.2e-05,
+      "\r\n\u001b[0m\u001b[0;32m+\r\n\u001b[0m\r\n"
+    ],
+    [
+      0.007221,
+      "\r\nTASK [ansible-role-slurm : Make from template gres.conf] ***********************\r\n"
+    ],
+    [
+      1.266443,
+      "\u001b[0;33mchanged: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.000221,
+      "\u001b[0;31m--- before\r\n\u001b[0m\u001b[0;32m+++ after: dynamically generated\r\n\u001b[0m\u001b[0;36m@@ -0,0 +1,2 @@\r\n\u001b[0m\u001b[0;32m+# Ansible managed: /home/myusername/Git3/slurm_workdir/roles/ansible-role-slurm/templates/gres.conf.j2 modified on 2016-09-06 10:11:29 by myusername on mylaptop.csc.fi\r\n"
+    ],
+    [
+      2.2e-05,
+      "\u001b[0m\u001b[0;32m+NodeName=gpu Name=gpu Type=teslak80 File=/dev/nvidia[0-7]\r\n\u001b[0m\r\n"
+    ],
+    [
+      0.007181,
+      "\r\nTASK [ansible-role-slurm : Make from template slurm.conf] **********************\r\n"
+    ],
+    [
+      1.306117,
+      "\u001b[0;33mchanged: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.000465,
+      "\u001b[0;31m--- before\r\n\u001b[0m\u001b[0;32m+++ after: dynamically generated\r\n\u001b[0m\u001b[0;36m@@ -0,0 +1,104 @@\r\n\u001b[0m\u001b[0;32m+# FGCI slurm.conf\r\n\u001b[0m\u001b[0;32m+# Example slurm.conf file. Please run configurator.html\r\n"
+    ],
+    [
+      0.000205,
+      "\u001b[0m\u001b[0;32m+# (in doc/html) to build a configuration file customized\r\n\u001b[0m\u001b[0;32m+# for your environment.\r\n\u001b[0m\u001b[0;32m+#\r\n\u001b[0m\u001b[0;32m+#\r\n\u001b[0m\u001b[0;32m+# slurm.conf file generated by configurator.html.\r\n\u001b[0m\u001b[0;32m+#\r\n\u001b[0m\u001b[0;32m+# See the slurm.conf man page for more information.\r\n\u001b[0m\u001b[0;32m+#\r\n\u001b[0m\u001b[0;32m+ClusterName=io\r\n\u001b[0m\u001b[0;32m+ControlMachine=slurm-build\r\n\u001b[0m\u001b[0;32m+SlurmUser=slurm\r\n\u001b[0m\u001b[0;32m+SlurmctldPort=6817\r\n\u001b[0m\u001b[0;32m+SlurmdPort=6818\r\n\u001b[0m\u001b[0;32m+AuthType=auth/munge\r\n\u001b[0m\u001b[0;32m+StateSaveLocation=/opt/slurmdb/tmp\r\n\u001b[0m\u001b[0;32m+SwitchType=switch/none\r\n\u001b[0m\u001b[0;32m+MpiDefault=none\r\n\u001b[0m\u001b[0;32m+MpiParams=ports=12000-12999\r\n\u001b[0m\u001b[0;32m+SlurmctldPidFile=/var/run/slurmctld.pid\r\n\u001b[0m\u001b[0;32m+SlurmdPidFile=/var/run/slurmd.pid\r\n\u001b[0m\u001b[0;32m+ProctrackType=proctrack/cgroup\r\n\u001b[0m\u001b[0;32m+CacheGroups=1\r\n\u001b[0m\u001b[0;32m+FirstJobId=2230000\r\n\u001b[0m\u001b[0;32m+ReturnToService=1\r\n\u001b[0m\u001b[0;32m+MaxJobCount=30000\r\n\u001b[0m\u001b[0;32m+MaxArraySize=10001\r\n\u001b[0m\u001b[0;32m+PropagateResourceLimitsExcept=MEMLOCK\r\n\u001b[0m\u001b[0;32m+EnforcePartLimits=YES\r\n\u001b"
+    ],
+    [
+      2.4e-05,
+      "[0m\u001b[0;32m+Epilog=/usr/local/libexec/slurm/epilog.d/*\r\n\u001b[0m\u001b[0;32m+TaskEpilog=/usr/bin/epilog\r\n\u001b[0m\u001b[0;32m+TaskPlugin=task/cgroup\r\n\u001b[0m\u001b[0;32m+UsePAM=1\r\n\u001b[0m\u001b[0;32m+RebootProgram=/sbin/reboot\r\n\u001b[0m\u001b[0;32m+HealthCheckInterval=300\r\n\u001b[0m\u001b[0;32m+HealthCheckProgram=/usr/sbin/nhc\r\n\u001b[0m\u001b[0;32m+GresTypes=gpu\r\n\u001b[0m\u001b[0;32m+\r\n\u001b[0m\u001b[0;32m+# TIMERS\r\n\u001b[0m\u001b[0;32m+SlurmctldTimeout=300\r\n\u001b[0m\u001b[0;32m+SlurmdTimeout=600\r\n\u001b[0m\u001b[0;32m+InactiveLimit=0\r\n\u001b[0m\u001b[0;32m+MinJobAge=30\r\n\u001b[0m\u001b[0;32m+MessageTimeout=30\r\n\u001b[0m\u001b[0;32m+KillWait=30\r\n\u001b[0m\u001b[0;32m+CompleteWait=12\r\n\u001b[0m\u001b[0;32m+Waittime=0\r\n\u001b[0m\u001b[0;32m+KillOnBadExit=1\r\n\u001b[0m\u001b[0;32m+KeepAliveTime=60\r\n\u001b[0m\u001b[0;32m+OverTimeLimit=60\r\n\u001b[0m\u001b[0;32m+\r\n\u001b[0m\u001b[0;32m+# SCHEDULING\r\n\u001b[0m\u001b[0;32m+SchedulerType=sched/backfill\r\n\u001b[0m\u001b[0;32m+SchedulerParameters=bf_max_job_test=300,bf_max_job_part=200,bf_max_job_user=30,defer,bf_continue,bf_window=7200,bf_resolution=1800,pack_serial_at_end\r\n\u001b[0m\u001b[0;32m+SchedulerPort=7321\r\n\u001b[0m\u001b[0;32m+SelectType=select/cons_res\r\n\u001b[0m\u001b[0;32m+SelectTypeParameters=CR_Core_Memory\r\n\u001b"
+    ],
+    [
+      2.3e-05,
+      "[0m\u001b[0;32m+FastSchedule=2\r\n\u001b[0m\u001b[0;32m+PriorityType=priority/multifactor\r\n\u001b[0m\u001b[0;32m+PriorityFlags=FAIR_TREE,SMALL_RELATIVE_TO_TIME,MAX_TRES\r\n\u001b[0m\u001b[0;32m+PriorityDecayHalfLife=14-0\r\n\u001b[0m\u001b[0;32m+PriorityFavorSmall=NO\r\n\u001b[0m\u001b[0;32m+PriorityWeightFairshare=10000000\r\n\u001b[0m\u001b[0;32m+PriorityWeightAge=10000\r\n\u001b[0m\u001b[0;32m+PriorityWeightPartition=0\r\n\u001b[0m\u001b[0;32m+PriorityWeightJobSize=10000\r\n\u001b[0m\u001b[0;32m+PriorityWeightQOS=10000\r\n\u001b[0m\u001b[0;32m+PriorityMaxAge=7\r\n\u001b[0m\u001b[0;32m+\r\n\u001b[0m\u001b[0;32m+# LOGGING\r\n\u001b[0m\u001b[0;32m+SlurmctldDebug=3\r\n\u001b[0m\u001b[0;32m+SlurmdDebug=3"
+    ],
+    [
+      1.8e-05,
+      "\r\n\u001b[0m\u001b[0;32m+JobCompLoc=/var/log/slurm/slurm_jobcomp.log\r\n\u001b[0m\u001b[0;32m+JobCompType=jobcomp/filetxt\r\n\u001b[0m\u001b[0;32m+\r\n\u001b[0m\u001b[0;32m+# ACCOUNTING\r\n\u001b[0m\u001b[0;32m+JobAcctGatherType=jobacct_gather/linux"
+    ],
+    [
+      1.7e-05,
+      "\r\n\u001b[0m\u001b[0;32m+JobAcctGatherFrequency=energy=60,task=60\r\n\u001b[0m\u001b[0;32m+AcctGatherEnergyType=acct_gather_energy/rapl\r\n\u001b[0m\u001b[0;32m+AcctGatherNodeFreq=60\r\n\u001b[0m\u001b[0;32m+AccountingStorageType=accounting_storage/slurmdbd"
+    ],
+    [
+      2.6e-05,
+      "\r\n\u001b[0m\u001b[0;32m+AccountingStorageHost=slurm-build\r\n\u001b[0m\u001b[0;32m+AccountingStorageLoc=slurm_acct_db\r\n\u001b[0m\u001b[0;32m+AccountingStorageUser=slurm\r\n"
+    ],
+    [
+      2.7e-05,
+      "\u001b[0m\u001b[0;32m+AccountingStorageEnforce=safe,qos"
+    ],
+    [
+      2.4e-05,
+      "\r\n"
+    ],
+    [
+      2.4e-05,
+      "\u001b[0m\u001b[0;32m+AccountingStorageTRES=gres/gpu:teslak80"
+    ],
+    [
+      2.4e-05,
+      "\r\n"
+    ],
+    [
+      2.3e-05,
+      "\u001b[0m\u001b[0;32m+"
+    ],
+    [
+      2.1e-05,
+      "\r\n"
+    ],
+    [
+      2.3e-05,
+      "\u001b[0m\u001b[0;32m+# TOPOLOGY"
+    ],
+    [
+      2.5e-05,
+      "\r\n"
+    ],
+    [
+      2.5e-05,
+      "\u001b[0m\u001b[0;32m+#TopologyPlugin=topology/tree"
+    ],
+    [
+      2.4e-05,
+      "\r\n"
+    ],
+    [
+      2.2e-05,
+      "\u001b[0m\u001b[0;32m+"
+    ],
+    [
+      2.2e-05,
+      "\r\n"
+    ],
+    [
+      2.3e-05,
+      "\u001b[0m\u001b[0;32m+# COMPUTE NODES"
+    ],
+    [
+      2.2e-05,
+      "\r\n"
+    ],
+    [
+      2.3e-05,
+      "\u001b[0m\u001b[0;32m+NodeName=slurm-build RealMemory=126000 Sockets=2 CoresPerSocket=12 ThreadsPerCore=2 State=UNKNOWN"
+    ],
+    [
+      2.3e-05,
+      "\r\n"
+    ],
+    [
+      2.3e-05,
+      "\u001b[0m\u001b[0;32m+# If slurm_with_gpu is True then add some nodes and a partition for them."
+    ],
+    [
+      2.2e-05,
+      "\r\n"
+    ],
+    [
+      2.3e-05,
+      "\u001b[0m\u001b[0;32m+NodeName=gpu Gres=gpu:teslak80:8 RealMemory=250000 Sockets=2 CoresPerSocket=12 ThreadsPerCore=2 State=UNKNOWN"
+    ],
+    [
+      2.2e-05,
+      "\r\n"
+    ],
+    [
+      2.2e-05,
+      "\u001b[0m\u001b[0;32m+"
+    ],
+    [
+      2.2e-05,
+      "\r\n"
+    ],
+    [
+      2.2e-05,
+      "\u001b[0m\u001b[0;32m+# partitions"
+    ],
+    [
+      2.2e-05,
+      "\r\n"
+    ],
+    [
+      2.3e-05,
+      "\u001b[0m\u001b[0;32m+PartitionName=normal Nodes=slurm-build,gpu Default=YES MaxTime=7-00:00:00 State=UP DefaultTime=2:00:00"
+    ],
+    [
+      2.2e-05,
+      "\r\n"
+    ],
+    [
+      2.3e-05,
+      "\u001b[0m\u001b[0;32m+PartitionName=test Nodes=slurm-build Default=NO MaxTime=7-00:00:00 State=UP DefaultTime=2:00:00"
+    ],
+    [
+      2.2e-05,
+      "\r\n"
+    ],
+    [
+      2.9e-05,
+      "\u001b[0m\u001b[0;32m+PartitionName=grid Nodes=slurm-build Default=NO MaxTime="
+    ],
+    [
+      2.5e-05,
+      "7-00:00:00 State=UP DefaultTime=2:00:00"
+    ],
+    [
+      2e-05,
+      "\r\n"
+    ],
+    [
+      2e-05,
+      "\u001b[0m\u001b[0;32m+"
+    ],
+    [
+      2e-05,
+      "\r\n"
+    ],
+    [
+      2.1e-05,
+      "\u001b[0m\u001b[0;32m+# Slurm Extra Parameters"
+    ],
+    [
+      1.9e-05,
+      "\r\n"
+    ],
+    [
+      2.1e-05,
+      "\u001b[0m\u001b[0;32m+TrackWCKey=no"
+    ],
+    [
+      1.9e-05,
+      "\r\n"
+    ],
+    [
+      2e-05,
+      "\u001b[0m\u001b[0;32m+TreeWidth=50"
+    ],
+    [
+      1.9e-05,
+      "\r\n"
+    ],
+    [
+      2e-05,
+      "\u001b[0m"
+    ],
+    [
+      1.9e-05,
+      "\r\n"
+    ],
+    [
+      0.007097,
+      "\r\nTASK [ansible-role-slurm : write all slurm logs handled by rsyslog to one file] \r\n"
+    ],
+    [
+      1.252889,
+      "\u001b[0;33mchanged: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.000178,
+      "\u001b[0;31m--- before\r\n\u001b[0m\u001b[0;32m+++ after: dynamically generated\r\n\u001b[0m\u001b[0;36m@@ -0,0 +1,4 @@\r\n\u001b[0m\u001b[0;32m+# Managed by ansible\r\n\u001b[0m\u001b[0;32m+if $programname contains_i 'slurm' then {\r\n\u001b[0m\u001b[0;32m+\t/var/log/slurm/slurm.log\r\n\u001b[0m\u001b[0;32m+}\r\n\u001b[0m\r\n"
+    ],
+    [
+      0.007574,
+      "\r\nTASK [ansible-role-slurm : configure logrotate to rotate slurm_logs in slurm_log_dir] ***\r\n"
+    ],
+    [
+      1.26626,
+      "\u001b[0;33mchanged: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.000212,
+      "\u001b[0;31m--- before\r\n\u001b[0m\u001b[0;32m+++ after: dynamically generated\r\n\u001b[0m\u001b[0;36m@@ -0,0 +1,16 @@\r\n\u001b[0m\u001b[0;32m+# Managed by ansible\r\n\u001b[0m\u001b[0;32m+/var/log/slurm/*.log {\r\n\u001b[0m\u001b[0;32m+\t"
+    ],
+    [
+      0.000138,
+      "weekly\r\n\u001b[0m\u001b[0;32m+\tmissingok\r\n\u001b[0m\u001b[0;32m+\tnotifempty\r\n\u001b[0m\u001b[0;32m+\tsharedscripts\r\n\u001b[0m\u001b[0;32m+\trotate 8\r\n\u001b[0m\u001b[0;32m+\tcopytruncate\r\n\u001b[0m\u001b[0;32m+\tcompress\r\n\u001b[0m\u001b[0;32m+\tcreate 644 slurm slurm\r\n\u001b[0m\u001b[0;32m+\tpostrotate\r\n\u001b[0m\u001b[0;32m+\t\t/bin/kill -HUP cat /var/run/slurmctld.pid 2>/dev/null 2> /dev/null || true\r\n\u001b[0m\u001b[0;32m+\t\t/bin/kill -HUP cat /var/run/syslogd.pid 2> /dev/null 2> /dev/null || true\r\n\u001b[0m\u001b[0;32m+\t\t/bin/kill -HUP cat /var/run/slurmdbd.pid 2>/dev/null 2> /dev/null || true\r\n\u001b[0m\u001b[0;32m+\tendscript\r\n\u001b[0m\u001b[0;32m+}\r\n\u001b[0m\r\n"
+    ],
+    [
+      0.010419,
+      "\r\nTASK [ansible-role-slurm : slurm_mysql_password variable must be set] **********\r\n"
+    ],
+    [
+      0.105409,
+      "\u001b[0;32mok: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.007252,
+      "\r\nTASK [ansible-role-slurm : install slurmdbd specific packages] *****************\r\n"
+    ],
+    [
+      41.630297,
+      "\u001b[0;33mchanged: [slurm-ansible] => (item=[u'mariadb', u'mariadb-server', u'mariadb-devel', u'MySQL-python', u'slurm-slurmdbd'])\u001b[0m\r\n"
+    ],
+    [
+      0.032084,
+      "\r\nTASK [ansible-role-slurm : start and enable mariadb/mysql] *********************\r\n"
+    ],
+    [
+      4.179717,
+      "\u001b[0;33mchanged: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.007636,
+      "\r\nTASK [ansible-role-slurm : restart mariadb/mysql after install] ****************\r\n"
+    ],
+    [
+      3.56414,
+      "\u001b[0;33mchanged: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.007733,
+      "\r\nTASK [ansible-role-slurm : wait for mysql in port 3306 to start] ***************\r\n"
+    ],
+    [
+      10.534197,
+      "\u001b[0;32mok: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.0074,
+      "\r\nTASK [ansible-role-slurm : create slurm acct db] *******************************\r\n"
+    ],
+    [
+      0.564213,
+      "\u001b[0;33mchanged: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.007803,
+      "\r\nTASK [ansible-role-slurm : create slurm sql user] ******************************\r\n"
+    ],
+    [
+      0.539206,
+      "\u001b[0;33mchanged: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.007344,
+      "\r\nTASK [ansible-role-slurm : print mysqlslurmuser] *******************************\r\n"
+    ],
+    [
+      0.094576,
+      "\u001b[0;36mskipping: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.007592,
+      "\r\nTASK [ansible-role-slurm : ensure slurm sql user has a password and privileges if it does not exist or if it was just added] ***\r\n"
+    ],
+    [
+      0.480277,
+      "\u001b[0;33mchanged: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.007726,
+      "\r\nTASK [ansible-role-slurm : template in slurmdbd.conf] **************************\r\n"
+    ],
+    [
+      1.2789,
+      "\u001b[0;33mchanged: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.000245,
+      "\u001b[0;31m--- before\r\n\u001b[0m\u001b[0;32m+++ after: dynamically generated\r\n\u001b[0m\u001b[0;36m@@ -0,0 +1,35 @@\r\n\u001b[0m\u001b[0;32m+# Managed by Ansible\r\n"
+    ],
+    [
+      0.00012,
+      "\u001b[0m\u001b[0;32m+# See the slurmdbd.conf man page for more information.\r\n\u001b[0m\u001b[0;32m+#\r\n\u001b[0m\u001b[0;32m+# Archive info\r\n\u001b[0m\u001b[0;32m+ArchiveJobs=yes\r\n\u001b[0m\u001b[0;32m+#ArchiveDir=\"/tmp\"\r\n\u001b[0m\u001b[0;32m+#ArchiveSteps=yes\r\n\u001b[0m\u001b[0;32m+#ArchiveScript=\r\n\u001b[0m\u001b[0;32m+#JobPurge=12\r\n\u001b[0m\u001b[0;32m+#StepPurge=1\r\n\u001b[0m\u001b[0;32m+#\r\n\u001b[0m\u001b[0;32m+# Authentication info\r\n\u001b[0m\u001b[0;32m+AuthType=auth/munge\r\n\u001b[0m\u001b[0;32m+#AuthInfo=/var/run/munge/munge.socket.2\r\n\u001b[0m\u001b[0;32m+#\r\n\u001b[0m\u001b[0;32m+# slurmDBD info\r\n\u001b[0m\u001b[0;32m+DbdHost=slurm-build\r\n\u001b[0m\u001b[0;32m+#DbdPort=7031\r\n\u001b[0m\u001b[0;32m+SlurmUser=slurm\r\n\u001b[0m\u001b[0;32m+#MessageTimeout=300\r\n\u001b[0m\u001b[0;32m+DebugLevel=4\r\n\u001b[0m\u001b[0;32m+#DefaultQOS=normal,standby\r\n\u001b[0m\u001b[0;32m+PidFile=/var/run/slurmdbd.pid\r\n\u001b[0m\u001b[0;32m+#PluginDir=/usr/lib/slurm\r\n\u001b[0m\u001b[0;32m+#PrivateData=accounts,users,usage,jobs\r\n\u001b[0m\u001b[0;32m+#TrackWCKey=yes\r\n\u001b[0m\u001b[0;32m+#\r\n\u001b[0m\u001b[0;32m+# Database info\r\n\u001b[0m\u001b[0;32m+StorageType=accounting_storage/mysql\r\n\u001b[0m\u001b[0;32m+StorageHost=localhost\r\n\u001b[0m\u001b[0;32m+StoragePort=1234\r\n\u001b[0m\u001b[0;32m+StoragePass=changeme\r\n\u001b[0m\u001b[0;32m+Stor"
+    ],
+    [
+      2e-05,
+      "ageUser=slurm\r\n\u001b[0m\u001b[0;32m+StorageLoc=slurm_acct_db\r\n\u001b[0m\u001b[0;32m+\r\n\u001b[0m\r\n"
+    ],
+    [
+      0.007171,
+      "\r\nTASK [ansible-role-slurm : install slurm service specific packages] ************\r\n"
+    ],
+    [
+      7.515606,
+      "\u001b[0;33mchanged: [slurm-ansible] => (item=[u'lua-devel', u'mailx', u'slurm-lua', u'slurm-plugins', u'slurm-slurmdb-direct', u'slurm-sql'])\u001b[0m\r\n"
+    ],
+    [
+      0.014501,
+      "\r\nTASK [ansible-role-slurm : does the munge.key exist?] **************************\r\n"
+    ],
+    [
+      0.458323,
+      "\u001b[0;32mok: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.00719,
+      "\r\nTASK [ansible-role-slurm : create munge key] ***********************************\r\n"
+    ],
+    [
+      0.513538,
+      "\u001b[0;33mchanged: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.009419,
+      "\r\nTASK [ansible-role-slurm : Fetch munge key from Service node for distribution to nodes] ***\r\n"
+    ],
+    [
+      0.437887,
+      "\u001b[0;33mchanged: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.007288,
+      "\r\nTASK [ansible-role-slurm : create slurm_munge_key_nfs_dir] *********************\r\n"
+    ],
+    [
+      0.069623,
+      "\u001b[0;36mskipping: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.007546,
+      "\r\nTASK [ansible-role-slurm : copy munge.key to slurm_munge_key_nfs_dir too] ******\r\n"
+    ],
+    [
+      0.07699,
+      "\u001b[0;36mskipping: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.008006,
+      "\r\nTASK [ansible-role-slurm : create build dirs] **********************************\r\n"
+    ],
+    [
+      0.268981,
+      "\u001b[0;36mskipping: [slurm-ansible] => (item=BUILD) \u001b[0m"
+    ],
+    [
+      5e-05,
+      "\r\n"
+    ],
+    [
+      0.186533,
+      "\u001b[0;36mskipping: [slurm-ansible] => (item=RPMS) \u001b[0m\r\n"
+    ],
+    [
+      0.200775,
+      "\u001b[0;36mskipping: [slurm-ansible] => (item=SOURCES) \u001b[0m"
+    ],
+    [
+      3.3e-05,
+      "\r\n"
+    ],
+    [
+      0.175138,
+      "\u001b[0;36mskipping: [slurm-ansible] => (item=SPECS) \u001b[0m\r\n"
+    ],
+    [
+      0.18106,
+      "\u001b[0;36mskipping: [slurm-ansible] => (item=SRPMS) \u001b[0m\r\n"
+    ],
+    [
+      0.026149,
+      "\r\nTASK [ansible-role-slurm : download Slurm source] ******************************\r\n"
+    ],
+    [
+      0.095471,
+      "\u001b[0;36mskipping: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.007558,
+      "\r\nTASK [ansible-role-slurm : Extract Slurm source 2] *****************************\r\n"
+    ],
+    [
+      0.093905,
+      "\u001b[0;36mskipping: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.007687,
+      "\r\nTASK [ansible-role-slurm : build Slurm] ****************************************\r\n"
+    ],
+    [
+      0.258852,
+      "\u001b[0;36mskipping: [slurm-ansible] => (item=rpmbuild -bb --with lua  slurm.spec) \u001b[0m\r\n"
+    ],
+    [
+      0.027392,
+      "\r\nTASK [ansible-role-slurm : get slurm rpms to then distribute them to the nodes] \r\n"
+    ],
+    [
+      0.274563,
+      "\u001b[0;36mskipping: [slurm-ansible] => (item=/root/rpmbuild/RPMS/x86_64/slurm-plugins-15.08.3-1.el6.x86_64.rpm) \u001b[0m\r\n"
+    ],
+    [
+      0.177265,
+      "\u001b[0;36mskipping: [slurm-ansible] => (item=/root/rpmbuild/RPMS/x86_64/slurm-15.08.3-1.el6.x86_64.rpm) \u001b[0m\r\n"
+    ],
+    [
+      0.175749,
+      "\u001b[0;36mskipping: [slurm-ansible] => (item=/root/rpmbuild/RPMS/x86_64/slurm-perlapi-15.08.3-1.el6.x86_64.rpm) \u001b[0m\r\n"
+    ],
+    [
+      0.185596,
+      "\u001b[0;36mskipping: [slurm-ansible] => (item=/root/rpmbuild/RPMS/x86_64/slurm-slurmdb-direct-15.08.3-1.el6.x86_64.rpm) \u001b[0m\r\n"
+    ],
+    [
+      0.193137,
+      "\u001b[0;36mskipping: [slurm-ansible] => (item=/root/rpmbuild/RPMS/x86_64/slurm-sql-15.08.3-1.el6.x86_64.rpm) \u001b[0m\r\n"
+    ],
+    [
+      0.192785,
+      "\u001b[0;36mskipping: [slurm-ansible] => (item=/root/rpmbuild/RPMS/x86_64/slurm-lua-15.08.3-1.el6.x86_64.rpm) \u001b[0m\r\n"
+    ],
+    [
+      0.215581,
+      "\u001b[0;36mskipping: [slurm-ansible] => (item=/root/rpmbuild/RPMS/x86_64/slurm-devel-15.08.3-1.el6.x86_64.rpm) \u001b[0m\r\n"
+    ],
+    [
+      0.214144,
+      "\u001b[0;36mskipping: [slurm-ansible] => (item=/root/rpmbuild/RPMS/x86_64/slurm-pam_slurm-15.08.3-1.el6.x86_64.rpm) \u001b[0m\r\n"
+    ],
+    [
+      0.208272,
+      "\u001b[0;36mskipping: [slurm-ansible] => (item=/root/rpmbuild/RPMS/x86_64/slurm-sjstat-15.08.3-1.el6.x86_64.rpm) \u001b[0m\r\n"
+    ],
+    [
+      0.203526,
+      "\u001b[0;36mskipping: [slurm-ansible] => (item=/root/rpmbuild/RPMS/x86_64/slurm-slurmdbd-15.08.3-1.el6.x86_64.rpm) \u001b[0m\r\n"
+    ],
+    [
+      0.241542,
+      "\u001b[0;36mskipping: [slurm-ansible] => (item=/root/rpmbuild/RPMS/x86_64/slurm-torque-15.08.3-1.el6.x86_64.rpm) \u001b[0m\r\n"
+    ],
+    [
+      0.175645,
+      "\u001b[0;36mskipping: [slurm-ansible] => (item=/root/rpmbuild/RPMS/x86_64/slurm-munge-15.08.3-1.el6.x86_64.rpm) \u001b[0m\r\n"
+    ],
+    [
+      0.177311,
+      "\u001b[0;36mskipping: [slurm-ansible] => (item=/root/rpmbuild/RPMS/x86_64/slurm-sjobexit-15.08.3-1.el6.x86_64.rpm) \u001b[0m\r\n"
+    ],
+    [
+      0.028195,
+      "\r\nTASK [ansible-role-slurm : add slurm unix group] *******************************\r\n"
+    ],
+    [
+      1.857338,
+      "\u001b[0;33mchanged: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.007291,
+      "\r\nTASK [ansible-role-slurm : add slurm unix user] ********************************\r\n"
+    ],
+    [
+      0.776914,
+      "\u001b[0;33mchanged: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.007199,
+      "\r\nTASK [ansible-role-slurm : add slurm log dir] **********************************\r\n"
+    ],
+    [
+      0.4559,
+      "\u001b[0;33mchanged: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.000441,
+      "\u001b[0;31m--- before\r\n\u001b[0m\u001b[0;32m+++ after\r\n\u001b[0m\u001b[0;36m@@ -1,7 +1,7 @@\r\n\u001b[0m {\r\n\u001b[0;31m-    \"group\": 0, \r\n\u001b[0m\u001b[0;31m-    \"mode\": \"0755\", "
+    ],
+    [
+      5.4e-05,
+      "\r\n\u001b[0m\u001b[0;31m-    \"owner\": 0, \r\n\u001b[0m\u001b[0;32m+    \"group\": 1001, \r\n\u001b[0m\u001b[0;32m+    \"mode\": \"0750\", \r\n\u001b[0m\u001b[0;32m+    \"owner\": 1001, \r\n\u001b[0m     \"path\": \"/var/log/slurm\", \r\n\u001b[0;31m-    \"state\": \"absent\"\r\n\u001b[0m\u001b[0;32m+    \"state\": \"directory\"\r\n\u001b[0m }\r\n"
+    ],
+    [
+      0.0076,
+      "\r\nTASK [ansible-role-slurm : add slurm tmp dir] **********************************\r\n"
+    ],
+    [
+      0.46663,
+      "\u001b[0;33mchanged: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.000356,
+      "\u001b[0;31m--- before\r\n\u001b[0m\u001b[0;32m+++ after\r\n\u001b[0m\u001b[0;36m@@ -1,7 +1,7 @@\r\n\u001b[0m {\r\n\u001b[0;31m-    \"group\": 0, \r\n\u001b[0m\u001b[0;31m-    \"mode\": \"0755\", \r\n\u001b[0m\u001b[0;31m-    \"owner\": 0, \r\n\u001b[0m\u001b[0;32m+    \"group\": 1001, \r\n\u001b[0m\u001b[0;32m+    \"mode\": \"0750\", "
+    ],
+    [
+      2.7e-05,
+      "\r\n\u001b[0m\u001b[0;32m+    \"owner\": 1001, \r\n\u001b[0m     \"path\": \"/opt/slurmdb/tmp/slurmd\", \r\n\u001b[0;31m-    \"state\": \"absent\"\r\n\u001b[0m\u001b[0;32m+    \"state\": \"directory\"\r\n\u001b[0m }\r\n"
+    ],
+    [
+      0.007313,
+      "\r\nTASK [ansible-role-slurm : add slurm state dir] ********************************\r\n"
+    ],
+    [
+      0.442316,
+      "\u001b[0;32mok: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.007638,
+      "\r\nTASK [ansible-role-slurm : add slurm etc dir] **********************************\r\n"
+    ],
+    [
+      0.471492,
+      "\u001b[0;32mok: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.007363,
+      "\r\nTASK [ansible-role-slurm : Update NIS DB] **************************************\r\n"
+    ],
+    [
+      0.079401,
+      "\u001b[0;36mskipping: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.007576,
+      "\r\nTASK [ansible-role-slurm : restart munge] **************************************\r\n"
+    ],
+    [
+      0.489055,
+      "\u001b[0;33mchanged: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.007914,
+      "\r\nTASK [ansible-role-slurm : start and enable munge] *****************************\r\n"
+    ],
+    [
+      0.517167,
+      "\u001b[0;33mchanged: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.041577,
+      "\r\nTASK [ansible-role-slurm : copy in munge key to slurm_accounting_storage_host too if it is different than the service node] ***\r\n"
+    ],
+    [
+      0.050648,
+      "\u001b[0;36mskipping: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.012126,
+      "\r\nTASK [ansible-role-slurm : start and enable munge on the slurm_accounting_storage_host too if it is different than the service node] ***\r\n"
+    ],
+    [
+      0.049688,
+      "\u001b[0;36mskipping: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.007594,
+      "\r\nTASK [ansible-role-slurm : Increase net.core.somaxconn for slurmctld] **********\r\n"
+    ],
+    [
+      0.045112,
+      "\u001b[0;36mskipping: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.007619,
+      "\r\nTASK [ansible-role-slurm : Increase net.ipv4.tcp_max_syn_backlog for slurmctld] \r\n"
+    ],
+    [
+      0.045337,
+      "\u001b[0;36mskipping: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.007729,
+      "\r\nTASK [ansible-role-slurm : install Slurm ( state=present - not updating )] *****\r\n"
+    ],
+    [
+      0.881323,
+      "\u001b[0;32mok: [slurm-ansible] => (item=[u'slurm', u'slurm-devel', u'slurm-perlapi', u'slurm-pam_slurm', u'slurm-sjstat', u'slurm-torque', u'slurm-munge', u'slurm-sjobexit'])\u001b[0m\r\n"
+    ],
+    [
+      0.035225,
+      "\r\nTASK [ansible-role-slurm : start and enable slurmdbd on slurm_accounting_storage_host] ***\r\n"
+    ],
+    [
+      0.049885,
+      "\u001b[0;36mskipping: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.008336,
+      "\r\nTASK [ansible-role-slurm : start and enable slurmdbd] **************************\r\n"
+    ],
+    [
+      1.435235,
+      "\u001b[0;33mchanged: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.007543,
+      "\r\nTASK [ansible-role-slurm : sacctmgr show cluster siteName and store in slurm_clusterlist variable] ***\r\n"
+    ],
+    [
+      0.599999,
+      "\u001b[0;32mok: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.007293,
+      "\r\nTASK [ansible-role-slurm : add cluster to accounting] **************************\r\n"
+    ],
+    [
+      2.421019,
+      "\u001b[0;33mchanged: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.007609,
+      "\r\nTASK [ansible-role-slurm : disable the slurm init script slurm on el7] *********\r\n"
+    ],
+    [
+      0.481879,
+      "\u001b[0;33mchanged: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.007583,
+      "\r\nTASK [ansible-role-slurm : start and enable slurmctld] *************************\r\n"
+    ],
+    [
+      0.49817,
+      "\u001b[0;33mchanged: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.007763,
+      "\r\nTASK [ansible-role-slurm : get munge key for distribution to nodes] ************\r\n"
+    ],
+    [
+      0.765855,
+      "\u001b[0;32mok: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.007855,
+      "\r\nTASK [ansible-role-slurm : copy the munge key from NFS] ************************\r\n"
+    ],
+    [
+      0.043943,
+      "\u001b[0;36mskipping: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.007707,
+      "\r\nTASK [ansible-role-slurm : set permissions on the munge key from NFS] **********\r\n"
+    ],
+    [
+      0.04378,
+      "\u001b[0;36mskipping: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.007883,
+      "\r\nTASK [ansible-role-slurm : start and enable munge] *****************************\r\n"
+    ],
+    [
+      0.435629,
+      "\u001b[0;32mok: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.007602,
+      "\r\nTASK [ansible-role-slurm : Make sure /usr/local/libexec/slurm/epilog.d exists] *\r\n"
+    ],
+    [
+      0.415384,
+      "\u001b[0;33mchanged: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.000342,
+      "\u001b[0;31m--- before\r\n\u001b[0m\u001b[0;32m+++ after\r\n\u001b[0m\u001b[0;36m@@ -1,4 +1,4 @@\r\n\u001b[0m {\r\n     \"path\": \"/usr/local/libexec/slurm/epilog.d\", \r\n\u001b[0;31m-    \"state\": \"absent\"\r\n"
+    ],
+    [
+      1.6e-05,
+      "\u001b[0m\u001b[0;32m+    \"state\": \"directory\"\r\n\u001b[0m }\r\n"
+    ],
+    [
+      0.007624,
+      "\r\nTASK [ansible-role-slurm : Create namespace epilog script] *********************\r\n"
+    ],
+    [
+      1.23097,
+      "\u001b[0;33mchanged: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.000245,
+      "\u001b[0;31m--- before\r\n\u001b[0m\u001b[0;32m+++ after: dynamically generated\r\n\u001b[0m\u001b[0;36m@@ -0,0 +1,6 @@\r\n\u001b[0m\u001b[0;32m+#!/bin/bash\r\n\u001b[0m\u001b[0;32m+\r\n\u001b[0m\u001b[0;32m+# Managed by ansible-role-slurm\r\n\u001b[0m\u001b[0;32m+\r\n\u001b[0m\u001b[0;32m+# If pam_namespace is used to create per-job /tmp/, /var/tmp, /dev/shm,\r\n\u001b[0m\u001b[0;32m+# clean it here in the epilog when no jobs are running on the node.\r\n\u001b[0m\r\n"
+    ],
+    [
+      0.007815,
+      "\r\nTASK [ansible-role-slurm : disable the slurm init script slurm on el7] *********\r\n"
+    ],
+    [
+      0.435557,
+      "\u001b[0;32mok: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.007515,
+      "\r\nTASK [ansible-role-slurm : start and enable slurmd] ****************************\r\n"
+    ],
+    [
+      0.517952,
+      "\u001b[0;33mchanged: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.007543,
+      "\r\nTASK [ansible-role-slurm : get munge key for distribution to nodes] ************\r\n"
+    ],
+    [
+      0.043663,
+      "\u001b[0;36mskipping: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.007396,
+      "\r\nTASK [ansible-role-slurm : start munge] ****************************************\r\n"
+    ],
+    [
+      0.046991,
+      "\u001b[0;36mskipping: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.009494,
+      "\r\nRUNNING HANDLER [ansible-role-slurm : restart slurm] ***************************\r\n"
+    ],
+    [
+      0.418593,
+      "\u001b[0;33mchanged: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.005265,
+      "\r\nRUNNING HANDLER [ansible-role-slurm : restart slurmd] **************************\r\n"
+    ],
+    [
+      0.449391,
+      "\u001b[0;33mchanged: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.005407,
+      "\r\nRUNNING HANDLER [ansible-role-slurm : restart slurmctld] ***********************\r\n"
+    ],
+    [
+      1.174005,
+      "\u001b[0;33mchanged: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.005297,
+      "\r\nRUNNING HANDLER [ansible-role-slurm : restart slurmdbd] ************************\r\n"
+    ],
+    [
+      0.999614,
+      "\u001b[0;33mchanged: [slurm-ansible]\u001b[0m\r\n"
+    ],
+    [
+      0.010471,
+      "\r\nPLAY RECAP *********************************************************************\r\n\u001b[0;33mslurm-ansible\u001b[0m              : \u001b[0;32mok\u001b[0m\u001b[0;32m=\u001b[0m\u001b[0;32m56\u001b[0m   \u001b[0;33mchanged\u001b[0m\u001b[0;33m=\u001b[0m\u001b[0;33m40\u001b[0m   unreachable=0    failed=0   \r\n\r\n"
+    ],
+    [
+      0.034244,
+      "\u001b]0;myusername@mylaptop:~/Git3/slurm_workdir\u0007[slurm_workdir]$"
+    ],
+    [
+      2.423822,
+      "t"
+    ],
+    [
+      0.047984,
+      "h"
+    ],
+    [
+      0.056022,
+      "a"
+    ],
+    [
+      0.056124,
+      "t"
+    ],
+    [
+      0.055851,
+      "'"
+    ],
+    [
+      0.10403,
+      "s"
+    ],
+    [
+      0.055974,
+      " "
+    ],
+    [
+      0.056035,
+      "i"
+    ],
+    [
+      0.087985,
+      "t"
+    ],
+    [
+      0.720074,
+      "\b\b\b\b\b\b\b\b\b"
+    ],
+    [
+      0.119991,
+      "\u001b[1@#"
+    ],
+    [
+      0.479733,
+      "\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C"
+    ],
+    [
+      0.25635,
+      "!"
+    ],
+    [
+      0.281736,
+      "\r\n\u001b]0;myusername@mylaptop:~/Git3/slurm_workdir\u0007[slurm_workdir]$"
+    ],
+    [
+      0.50211,
+      "s"
+    ],
+    [
+      0.144481,
+      "s"
+    ],
+    [
+      0.039834,
+      "h"
+    ],
+    [
+      0.087694,
+      " "
+    ],
+    [
+      0.208018,
+      "s"
+    ],
+    [
+      0.080078,
+      "l"
+    ],
+    [
+      0.039914,
+      "u"
+    ],
+    [
+      0.056011,
+      "r"
+    ],
+    [
+      0.136036,
+      "m"
+    ],
+    [
+      0.087965,
+      "-"
+    ],
+    [
+      0.12807,
+      "a"
+    ],
+    [
+      0.055912,
+      "n"
+    ],
+    [
+      0.088019,
+      "s"
+    ],
+    [
+      0.079936,
+      "i"
+    ],
+    [
+      0.080031,
+      "b"
+    ],
+    [
+      0.080022,
+      "l"
+    ],
+    [
+      0.119983,
+      "e"
+    ],
+    [
+      0.281722,
+      "\r\n"
+    ],
+    [
+      0.056499,
+      "Warning: Permanently added '10.0.0.1' (ECDSA) to the list of known hosts.\r\r\n"
+    ],
+    [
+      0.323384,
+      "X11 forwarding request failed on channel 0\r\n"
+    ],
+    [
+      0.001418,
+      "Last login: Tue Sep  6 07:15:32 2016 from mylaptop.csc.fi\r\r\n"
+    ],
+    [
+      0.022421,
+      "\u001b]0;cloud-user@slurm-build:~\u0007\u001b[?1034h[cloud-user@slurm-build ~]$ "
+    ],
+    [
+      0.539534,
+      "s"
+    ],
+    [
+      0.063848,
+      "i"
+    ],
+    [
+      0.047951,
+      "n"
+    ],
+    [
+      0.048059,
+      "f"
+    ],
+    [
+      0.095833,
+      "o"
+    ],
+    [
+      0.721696,
+      "\r\n"
+    ],
+    [
+      0.009889,
+      "PARTITION AVAIL  TIMELIMIT  NODES  STATE NODELIST\r\nnormal*      up 7-00:00:00      1   idle slurm-build\r\ntest         up 7-00:00:00      1   idle slurm-build\r\ngrid         up 7-00:00:00      1   idle slurm-build\r\n\u001b]0;cloud-user@slurm-build:~\u0007[cloud-user@slurm-build ~]$ "
+    ],
+    [
+      1.084714,
+      "s"
+    ],
+    [
+      0.143817,
+      "r"
+    ],
+    [
+      0.047852,
+      "u"
+    ],
+    [
+      0.087882,
+      "n"
+    ],
+    [
+      0.056779,
+      " "
+    ],
+    [
+      0.432082,
+      "-"
+    ],
+    [
+      1.655588,
+      "p"
+    ],
+    [
+      0.031918,
+      " "
+    ],
+    [
+      0.255759,
+      "n"
+    ],
+    [
+      0.032017,
+      "o"
+    ],
+    [
+      0.152113,
+      "r"
+    ],
+    [
+      0.320043,
+      "m"
+    ],
+    [
+      0.112118,
+      "a"
+    ],
+    [
+      0.039855,
+      "l"
+    ],
+    [
+      0.048046,
+      " "
+    ],
+    [
+      0.224201,
+      "h"
+    ],
+    [
+      0.031616,
+      "o"
+    ],
+    [
+      0.040144,
+      "s"
+    ],
+    [
+      0.039911,
+      "t"
+    ],
+    [
+      0.128171,
+      "n"
+    ],
+    [
+      0.0319,
+      "a"
+    ],
+    [
+      0.128849,
+      "m"
+    ],
+    [
+      0.079554,
+      "e"
+    ],
+    [
+      0.313014,
+      "\r\n"
+    ],
+    [
+      0.006311,
+      "srun: error: Unable to allocate resources: Invalid account or account/partition combination specified\r\n"
+    ],
+    [
+      0.000685,
+      "\u001b]0;cloud-user@slurm-build:~\u0007[cloud-user@slurm-build ~]$ "
+    ],
+    [
+      1.607691,
+      "s"
+    ],
+    [
+      0.080043,
+      "u"
+    ],
+    [
+      0.080123,
+      "d"
+    ],
+    [
+      0.055922,
+      "o"
+    ],
+    [
+      0.04783,
+      " "
+    ],
+    [
+      0.20793,
+      "!"
+    ],
+    [
+      0.136039,
+      "!"
+    ],
+    [
+      0.400496,
+      "\r\nsudo srun -p normal hostname\r\n"
+    ],
+    [
+      0.017853,
+      "srun: job 2230001 queued and waiting for resources\r\n"
+    ],
+    [
+      12.164171,
+      "srun: job 2230001 has been allocated resources\r\n"
+    ],
+    [
+      0.034815,
+      "slurm-build\r\n"
+    ],
+    [
+      0.007687,
+      "\u001b]0;cloud-user@slurm-build:~\u0007[cloud-user@slurm-build ~]$ "
+    ],
+    [
+      2.055294,
+      "sudo srun -p normal hostname"
+    ],
+    [
+      1.208433,
+      "\r\n"
+    ],
+    [
+      0.014206,
+      "srun: job 2230002 queued and waiting for resources\r\n"
+    ],
+    [
+      26.679897,
+      "srun: job 2230002 has been allocated resources\r\n"
+    ],
+    [
+      0.032285,
+      "slurm-build\r\n"
+    ],
+    [
+      0.007443,
+      "\u001b]0;cloud-user@slurm-build:~\u0007[cloud-user@slurm-build ~]$ "
+    ],
+    [
+      11.658063,
+      "e"
+    ],
+    [
+      0.5602,
+      "\b\u001b[K"
+    ],
+    [
+      0.169061,
+      "logout\r\nConnection to 10.0.0.1 closed.\r\r\n"
+    ],
+    [
+      0.000237,
+      "\u001b]0;myusername@mylaptop:~/Git3/slurm_workdir\u0007[slurm_workdir]$"
+    ]
+  ],
+  "version": 1,
+  "title": "ansible-role-slurm_1",
+  "command": null,
+  "width": 95,
+  "env": {
+    "SHELL": "/bin/bash",
+    "TERM": "xterm-256color"
+  },
+  "duration": 378.157304,
+  "height": 53
+}
