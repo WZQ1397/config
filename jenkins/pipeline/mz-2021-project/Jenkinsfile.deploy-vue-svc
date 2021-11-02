@@ -1,8 +1,13 @@
 @Library('jenkinslib') _     
  
 def tools = new zach.devops.codeTools.stringTool()
+def notify = new zach.devops.notify.wechat()
+def frontDeploy = new zach.devops.codeTools.frontDeploy()
+def codeOps = new zach.devops.codeTools.pullCode()
 def zssh = new zach.devops.sshserver()
 def FULL_JOB_NAME= "${JOB_NAME}".replaceAll("/","-")
+def PROJ_NAME="${FULL_JOB_NAME}"
+def DEFAULT_BRANCH=""
 def sshServer = zssh.getServer("${SVC_IP}","${SVC_PORT}")
 
 pipeline  {
@@ -13,77 +18,127 @@ pipeline  {
         disableConcurrentBuilds()
     }
     parameters {
-      string defaultValue: '', name: 'CODE_REPO'
+      string defaultValue: 'ssh://git@gt.mz.devmz.cn:5850/cctv/cctv-news/cctv-news-web.git', name: 'CODE_REPO'
       string defaultValue: '192.168.1.124', name: 'SVC_IP'
       string defaultValue: '22', name: 'SVC_PORT'
-      string defaultValue: '/tmp', name: 'TARGET_WEB_HOME'
+      string defaultValue: "/data1/zach-blobdata-upload/front-page/autodeploy/${FULL_JOB_NAME}", name: 'TARGET_WEB_HOME'
+      gitParameter branch: '', branchFilter: '.*', defaultValue: '', name: 'branch', quickFilterEnabled: false, selectedValue: 'NONE', sortMode: 'NONE', tagFilter: '*', type: 'PT_BRANCH', useRepository: "${CODE_REPO}"
+      gitParameter branch: '', branchFilter: '.*', defaultValue: '', name: 'tag', quickFilterEnabled: false, selectedValue: 'NONE', sortMode: 'NONE', tagFilter: '*', type: 'PT_TAG', useRepository: "${CODE_REPO}"
+
     }
     stages{
-        stage("Get Branches from Git Remote"){
-            steps{
-                sh """
-                rm -rf ${WORKSPACE}/*
-                git ls-remote --refs ${CODE_REPO} | awk -F '/' '{print \$NF}' > ${WORKSPACE}/branchesList.txt
-                """
-            }
-        }
-        stage('User Input'){
-           steps{
-               timeout (time:1, unit:"HOURS") {
-               script{ 
-                    listBranchesAvailable = readFile('branchesList.txt')
-                    branchOps = input message: 'Branch to deploy', ok: 'Confirm!',submitterParameter: 'Ops',
-                            parameters: [choice(name: 'select_branch', choices: "${listBranchesAvailable}", description: 'Which branch do you want to build?')]
-                    }
-                }   
-           }       
-        }
+        // stage("Get Branches from Git Remote"){
+        //     steps{
+        //         sh """
+        //         rm -rf ${WORKSPACE}/*
+        //         git ls-remote --refs ${CODE_REPO} | awk -F '/' '{print \$NF}' > ${WORKSPACE}/branchesList.txt
+        //         """
+        //     }
+        // }
+        // stage('User Input'){
+        //   steps{
+        //       timeout (time:1, unit:"HOURS") {
+        //       script{ 
+        //             listBranchesAvailable = readFile('branchesList.txt')
+        //             branchOps = input message: 'Branch to deploy', ok: 'Confirm!',submitterParameter: 'Ops',
+        //                     parameters: [choice(name: 'select_branch', choices: "${listBranchesAvailable}", description: 'Which branch do you want to build?')]
+        //             }
+        //         }   
+        //   }       
+        // }
         stage('Preparation') { // for display purposes
-
-                steps {
-                    timeout(time:300, unit:"SECONDS"){ 
-                        
-                        script{ 
-                            git branch: "${branchOps['select_branch']}", changelog: false, credentialsId: '93c4bf13-4b05-46f7-8179-237403d26d74', poll: false, url: "${CODE_REPO}"
-                            tools.PrintMes("获取代码",'green')
+            environment {
+                STEPS_NAME='Preparation'
+            }
+            steps {
+                timeout(time:300, unit:"SECONDS"){ 
+                    
+                    script{ 
+                        // git branch: "${branch}", changelog: false, credentialsId: '93c4bf13-4b05-46f7-8179-237403d26d74', poll: false, url: "${CODE_REPO}"
+                        if("${tag}" != "")
+                        {
+                            DEFAULT_BRANCH="${tag}"
                         }
+                        else
+                        {
+                            if("${branch}" == "")
+                            {
+                                branch="origin/master"
+                            }
+                            DEFAULT_BRANCH="${branch}"
+                        }
+                        tools.PrintMes("已选择 ${DEFAULT_BRANCH} 分支",'blue')
+                        codeOps.GetCode("${CODE_REPO}","${branch}","93c4bf13-4b05-46f7-8179-237403d26d74","${tag}")
+                        tools.PrintMes("获取代码",'green')
                     }
                 }
+            }
+            post {
+                failure {
+                    script{
+                        notify.run("failure","${PROJ_NAME}","${DEFAULT_BRANCH}","${STEPS_NAME}")
+                    }
+                }
+                aborted {
+                    script{
+                        notify.run("failure","${PROJ_NAME}","${DEFAULT_BRANCH}","${STEPS_NAME}")
+                    }
+                }
+            }
         }
         stage ('Build') {
+            environment {
+                    STEPS_NAME='Web build'
+            }
             steps{
-                timestamps {
-                    timeout(time:1500, unit:"SECONDS"){ 
-                        nodejs('npm16.10') {
-
-                            sh """ 
-                            node -v
-                            npm -v 
-                            cnpm install 
-                            cnpm run build 
-                             """ 
-                    	}
+                script{
+                frontDeploy.build()
+                }
+            }
+            post {
+                failure {
+                    script{
+                        notify.run("failure","${PROJ_NAME}","${DEFAULT_BRANCH}","${STEPS_NAME}")
+                    }
+                }
+                aborted {
+                    script{
+                        notify.run("failure","${PROJ_NAME}","${DEFAULT_BRANCH}","${STEPS_NAME}")
                     }
                 }
             }
         }
         stage ('Package') {
+            environment {
+                STEPS_NAME='Web Pack'
+            }
             steps{
-                 timeout(time:1500, unit:"SECONDS"){
-                    timestamps {
-                        sh """ 
-                        cd dist
-                        tar zcvf ${FULL_JOB_NAME}-${BUILD_NUMBER}.tar.gz ./*
-                         """ 
+                 script{
+                    frontDeploy.handler("${FULL_JOB_NAME}","${BUILD_NUMBER}")
+                }
+            }
+            post {
+                failure {
+                    script{
+                        notify.run("failure","${PROJ_NAME}","${DEFAULT_BRANCH}","${STEPS_NAME}")
+                    }
+                }
+                aborted {
+                    script{
+                        notify.run("failure","${PROJ_NAME}","${DEFAULT_BRANCH}","${STEPS_NAME}")
                     }
                 }
             }
         }
         stage ('Push code') {
+            environment {
+                STEPS_NAME='Push Code'
+            }
             steps{
                 timestamps {
                     timeout(time:600, unit:"SECONDS"){ 
                         script{ 
+                            sshCommand remote: sshServer, command: "mkdir -pv  ${TARGET_WEB_HOME} "
                             sshPut remote: sshServer, from: "dist/${FULL_JOB_NAME}-${BUILD_NUMBER}.tar.gz", into: "${TARGET_WEB_HOME}"
                             // sshPut remote: sshServer, from: "dist/${FULL_JOB_NAME}-${BUILD_NUMBER}.tar.gz", into: '${TARGET_WEB_HOME}'
 
@@ -92,18 +147,53 @@ pipeline  {
                     }
                 }
             }
+            post {
+                failure {
+                    script{
+                        notify.run("failure","${PROJ_NAME}","${DEFAULT_BRANCH}","${STEPS_NAME}")
+                    }
+                }
+                aborted {
+                    script{
+                        notify.run("failure","${PROJ_NAME}","${DEFAULT_BRANCH}","${STEPS_NAME}")
+                    }
+                }
+            }
         }
         stage ('Deploy code') {
+            environment {
+                STEPS_NAME='Deploy Code'
+            }
             steps{
                 timestamps {
                     timeout(time:600, unit:"SECONDS"){ 
                         script{ 
-                            sshCommand remote: sshServer, command: "tar zxvf ${TARGET_WEB_HOME}/${FULL_JOB_NAME}-${BUILD_NUMBER}.tar.gz"
+                            sshCommand remote: sshServer, command: "cd ${TARGET_WEB_HOME} && tar zxvf ${TARGET_WEB_HOME}/${FULL_JOB_NAME}-${BUILD_NUMBER}.tar.gz"
                             tools.PrintMes("部署新代码 : ${FULL_JOB_NAME}",'green')
                         }
                     }
                 }
             }
+            post {
+                failure {
+                    script{
+                        notify.run("failure","${PROJ_NAME}","${DEFAULT_BRANCH}","${STEPS_NAME}")
+                    }
+                }
+                aborted {
+                    script{
+                        notify.run("failure","${PROJ_NAME}","${DEFAULT_BRANCH}","${STEPS_NAME}")
+                    }
+                }
+            }
         }
     }
+    post {
+        success {
+            script{
+                notify.run("success","${PROJ_NAME}","${DEFAULT_BRANCH}","FINALLY")
+            }
+        }
+    }
+    
 }
