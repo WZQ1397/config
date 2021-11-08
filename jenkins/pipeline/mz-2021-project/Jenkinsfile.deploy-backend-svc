@@ -1,6 +1,6 @@
 @Library('jenkinslib') _     
  /* YOU NEED set "zach    ALL=(ALL:ALL) NOPASSWD:/usr/bin/docker,/bin/chmod" in /etc/sudoers */
- /* curl -X POST "zach:116d5ead75af8df338f02bde654386ddd5@192.168.1.124:8081/view/CCTV-NEWS/job/zach-cctv-news-detect-weapon-v2.0/buildWithParameters?token=zach.wang"  -d "DEFAULT_BRANCH=master" */
+ /* curl -X POST "zach:116d5ead75af8df338f02bde654386ddd5@192.168.1.124:8081/view/CCTV-NEWS/job/zach-cctv-news-detect-weapon-v2.0/buildWithParameters?token=zach.wang"  -d "branch=origin/master&tag=''" */
 def tools = new zach.devops.codeTools.stringTool()
 def notify = new zach.devops.notify.wechat()
 // def notify = new zach.devops.notify.stageNotify()
@@ -25,7 +25,7 @@ pipeline  {
         disableConcurrentBuilds()
     }
     parameters {
-      string defaultValue: 'ssh://git@gt.mz.devmz.cn:5850/vision/cctv_news/landmark.git', name: 'CODE_REPO'
+      string defaultValue: 'ssh://git@gt.mz.devmz.cn:5850/vision/cctv_news/weapon.git', name: 'CODE_REPO'
     //   listGitBranches branchFilter: '.*', credentialsId: '93c4bf13-4b05-46f7-8179-237403d26d74', defaultValue: '', name: 'branch', quickFilterEnabled: false, remoteURL: "${CODE_REPO}" , selectedValue: 'NONE', sortMode: 'NONE', tagFilter: '*', type: 'PT_BRANCH_TAG'
       choice choices: ['10.2', '11.2'], name: 'CUDA_VERSION'
       string defaultValue: '192.168.1.124', name: 'SVC_IP'
@@ -35,7 +35,7 @@ pipeline  {
       gitParameter branch: '', branchFilter: '.*', defaultValue: '', name: 'tag', quickFilterEnabled: false, selectedValue: 'NONE', sortMode: 'NONE', tagFilter: '*', type: 'PT_TAG', useRepository: "${CODE_REPO}"
 
       string defaultValue: '/data1/imgs/zach-cctv-proj/zach-cctv-item-detect-base', name: 'Basic_DockerfilePath'
-      string defaultValue: 'landmark', name: 'Proj_DockerfilePath'
+      string defaultValue: 'weapon', name: 'Proj_DockerfilePath'
       string defaultValue: '/project-code-on-166', name: 'BASE_CODE_PATH'
       string defaultValue: '/zach-cctv-nfs-local-test-on-166', name: 'DATA_PATH'
     //   string defaultValue: '', name: 'DEFAULT_BRANCH'
@@ -81,19 +81,19 @@ pipeline  {
                         
                         script{ 
                             // git branch: "${DEFAULT_BRANCH}", changelog: false, credentialsId: '93c4bf13-4b05-46f7-8179-237403d26d74', poll: false, url: "${CODE_REPO}"
-                            if("${tag}" != "")
+                            if("${tag}".length() < 1)
                             {
                                 DEFAULT_BRANCH="${tag}"
                             }
                             else
                             {
-                                if("${branch}" == "")
-                                {
-                                    branch="origin/master"
-                                }
                                 DEFAULT_BRANCH="${branch}"
+                                if("${branch}".length() < 1)
+                                {
+                                    DEFAULT_BRANCH="origin/master"
+                                }
                             }
-                            tools.PrintMes("已选择 ${DEFAULT_BRANCH} 分支",'blue')
+                            tools.PrintMes("已选择分支: ${branch} -  标签: ${tag} => 最终: ${DEFAULT_BRANCH}",'blue')
                             codeOps.GetCode("${CODE_REPO}","${branch}","93c4bf13-4b05-46f7-8179-237403d26d74","${tag}")
                             tools.PrintMes("获取代码",'green')
                         }
@@ -187,7 +187,7 @@ pipeline  {
                             script{ 
                                 // sshServer = zssh.getServer("${SVC_IP}","${SVC_PORT}")
                                 def DOCKER_BRANCH_TAG="${DEFAULT_BRANCH}".replaceAll("/","-")
-                                def DOCKER_CONTAINER_NAME="zach-${FULL_JOB_NAME}-${DOCKER_BRANCH_TAG}"
+                                def DOCKER_CONTAINER_NAME="${FULL_JOB_NAME}-${DOCKER_BRANCH_TAG}"
                                 tools.PrintMes("部署到 ${DOCKER_BRANCH_TAG}",'green')
                                 sshCommand remote: sshServer, command: "[[ `sudo docker ps -a | grep ${DOCKER_CONTAINER_NAME} | wc -l` -ge 1 ]] && (sudo docker kill ${DOCKER_CONTAINER_NAME}  && sudo docker rm ${DOCKER_CONTAINER_NAME}) || echo 'NOT EXISTS' "
                                 sshCommand remote: sshServer, command: "sudo docker run --restart unless-stopped -itd --name ${DOCKER_CONTAINER_NAME} --gpus all -v /etc/localtime:/etc/localtime:ro -v /etc/timezone:/etc/timezone:ro -v ${CODE_PATH}:/data/code -v ${DATA_PATH}:/storage-data ${NETWORK_OPT} ${IMG_PROJ_NAME} ${INIT_COMMAND}"
