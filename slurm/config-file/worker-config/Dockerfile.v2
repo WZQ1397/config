@@ -1,0 +1,7 @@
+FROM slurm.worker:19.05.1-enroot
+RUN mkdir -pv /var/log/slurm-job && chmod 777 /var/log/slurm-job
+RUN yum install libSM-1.2.2-2.el7.i686 --setopt=protected_multilib=false -y
+RUN yum install ypbind authconfig numactl git htop telnet net-tools python-qt4 -y
+
+COPY docker-entrypoint.sh /
+ENTRYPOINT /usr/sbin/init 
