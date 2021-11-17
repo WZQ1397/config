@@ -1,0 +1,280 @@
+@Library('jenkinslib') _     
+ /* YOU NEED set "zach    ALL=(ALL:ALL) NOPASSWD:/usr/bin/docker,/bin/chmod" in /etc/sudoers */
+ /* curl -X POST "zach:token@192.168.1.124:8081/view/CCTV-NEWS/job/zach-cctv-news-detect-weapon-v2.0/buildWithParameters?token=zach.wang"  -d "DEFAULT_BRANCH=master" */
+def tools = new zach.devops.codeTools.stringTool()
+def notify = new zach.devops.notify.wechat()
+// def notify = new zach.devops.notify.stageNotify()
+def zssh = new zach.devops.sshserver()
+def FULL_JOB_NAME= "${JOB_NAME}".replaceAll("/","-")
+def PROJ_NAME = "${FULL_JOB_NAME}".minus("/${JOB_BASE_NAME}")
+def IMG_BASE_NAME = "${PROJ_NAME}-base:v2.1-cuda${CUDA_VERSION}-jenkins"
+def IMG_PROJ_NAME = "${FULL_JOB_NAME}:v2.1-cuda${CUDA_VERSION}-jenkins"
+def CODE_PATH = "${BASE_CODE_PATH}/${PROJ_NAME}"
+def BAK_CODE_PATH = "${BASE_CODE_PATH}/jk-old/${PROJ_NAME}/${BUILD_NUMBER}"
+def sshServer = zssh.getServer("${SVC_IP}","${SVC_PORT}")
+
+def codeOps = new zach.devops.codeTools.pullCode()
+def DEFAULT_BRANCH=""
+
+
+/* =============     触发远程构建和Generic Webhook Trigger不能同时存在使用,必须二选一       ================ */
+
+pipeline  {
+    agent any
+    options {
+        timeout(time: 60, unit: 'MINUTES')
+        ansiColor('xterm')
+        disableConcurrentBuilds()
+    }
+    parameters {
+      string defaultValue: 'ssh://git@gt.mz.devmz.cn:5850/vision/cctv_news/flag.git', name: 'CODE_REPO'
+    //   listGitBranches branchFilter: '.*', credentialsId: '93c4bf13-4b05-46f7-8179-237403d26d74', defaultValue: '', name: 'branch', quickFilterEnabled: false, remoteURL: "${CODE_REPO}" , selectedValue: 'NONE', sortMode: 'NONE', tagFilter: '*', type: 'PT_BRANCH_TAG'
+      choice choices: ['10.2', '11.2'], name: 'CUDA_VERSION'
+      string defaultValue: '192.168.1.124', name: 'SVC_IP'
+      string defaultValue: '22', name: 'SVC_PORT'
+      
+	  /*   gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'Branch', sortMode: 'DESCENDING_SMART', type: 'PT_BRANCH' ,listSize: '10'  */
+      gitParameter branch: '', branchFilter: '.*', defaultValue: '', name: 'branch', quickFilterEnabled: false, selectedValue: 'NONE', sortMode: 'NONE', tagFilter: '*', type: 'PT_BRANCH', useRepository: "${CODE_REPO}"
+      gitParameter branch: '', branchFilter: '.*', defaultValue: '', name: 'tag', quickFilterEnabled: false, selectedValue: 'NONE', sortMode: 'NONE', tagFilter: '*', type: 'PT_TAG', useRepository: "${CODE_REPO}"
+
+      string defaultValue: '/data1/imgs/zach-cctv-proj/zach-cctv-item-detect-base', name: 'Basic_DockerfilePath'
+      string defaultValue: 'flag', name: 'Proj_DockerfilePath'
+      string defaultValue: '/project-code-on-166', name: 'BASE_CODE_PATH'
+      string defaultValue: '/zach-cctv-nfs-local-test-on-166', name: 'DATA_PATH'
+    //   string defaultValue: '', name: 'DEFAULT_BRANCH'
+      string defaultValue: '', name: 'NETWORK_OPT'
+      choice choices: ['', 'tail -f /dev/null', 'cron && supervisord && tail -f /dev/null'], name: 'INIT_COMMAND'
+    }
+        triggers {
+      GenericTrigger(causeString: '', genericVariables: [
+          [defaultValue: '', key: 'ref', regexpFilter: '', value: '$.ref'],
+          [defaultValue: '', key: 'project', regexpFilter: '', value: '$.project.name'],
+          ], 
+      printContributedVariables: true, 
+      printPostContent: true, 
+      regexpFilterExpression: '^refs/heads/(test|release|master).*$', //  regexpFilterExpression: '^refs/heads/(test|release|master)*?$', 
+      regexpFilterText: '$ref $author', 
+      token: "${FULL_JOB_NAME}",
+      tokenCredentialId: '')
+    }
+    stages{
+        // stage("Get Branches from Git Remote"){
+        //     steps{
+        //         sh """git ls-remote --refs ${CODE_REPO} | awk -F '/' '{print \$NF}' > ${WORKSPACE}/branchesList.txt
+        //         """
+        //     }
+        // }
+        // stage('User Input'){
+        //   steps{
+        //       timeout (time:1, unit:"HOURS") {
+        //         script{ 
+
+        //             if ( DEFAULT_BRANCH.trim().equals("") ){
+        //                 listBranchesAvailable = readFile('branchesList.txt')
+        //                 branchOps = input message: 'Branch to deploy', ok: 'Confirm!',submitterParameter: 'Ops',
+        //                         parameters: [choice(name: 'select_branch', choices: "${listBranchesAvailable}", description: 'Which branch do you want to build?')]
+        //                 DEFAULT_BRANCH=branchOps['select_branch']
+        //                 }
+        //             tools.PrintMes("已选择 ${DEFAULT_BRANCH} 分支",'blue')
+        //             // echo "${DEFAULT_BRANCH}"
+        //         //     else{
+        //         //     //   branchOps['select_branch']=${DEFAULT_BRANCH}
+        //         //     DEFAULT_BRANCH=
+        //         //   }
+        //         }
+        //       }
+        //     }       
+        // }
+        
+        stage('Preparation') { // for display purposes
+                environment {
+                    STEPS_NAME='Preparation'
+                }
+                steps {
+                    timeout(time:600, unit:"SECONDS"){ 
+                        
+                        script{ 
+                            // git branch: "${DEFAULT_BRANCH}", changelog: false, credentialsId: '93c4bf13-4b05-46f7-8179-237403d26d74', poll: false, url: "${CODE_REPO}"
+						buildName "No.${BUILD_NUMBER}次构建=分支=>$ref"
+                        buildDescription "$project"
+                            if("${tag}".length() < 1)
+                            {
+                                DEFAULT_BRANCH="${tag}"
+                            }
+                            else
+                            {
+                                DEFAULT_BRANCH="${branch}"
+                                if("${branch}".length() < 1)
+                                {
+                                    DEFAULT_BRANCH="origin/master"
+                                }
+                            }
+                            tools.PrintMes("已选择分支: ${branch} -  标签: ${tag} => 最终: ${DEFAULT_BRANCH}",'blue')
+                            codeOps.GetCode("${CODE_REPO}","${branch}","93c4bf13-4b05-46f7-8179-237403d26d74","${tag}")
+                            tools.PrintMes("获取代码",'green')
+                        }
+                    }
+                }
+
+            post {
+                failure {
+                    script{
+                        notify.run("failure","${PROJ_NAME}","${DEFAULT_BRANCH}","${STEPS_NAME}")
+                    }
+                }
+                aborted {
+                    script{
+                        notify.run("failure","${PROJ_NAME}","${DEFAULT_BRANCH}","${STEPS_NAME}")
+                    }
+                }
+            }
+        }
+
+        stage('Build') {
+            
+            stages{
+                stage("BasicImg"){
+                    environment {
+                        STEPS_NAME='Build BasicImg'
+                    }
+                    steps {
+                        timeout(time:1500, unit:"SECONDS"){ 
+                            script{ 
+                                // sshCommand remote: sshServer, command: "sudo docker ps"
+                                sshCommand remote: sshServer, command: "cd ${Basic_DockerfilePath} && sudo docker build -f Dockerfile.cuda${CUDA_VERSION} -t ${IMG_BASE_NAME} ."
+                                tools.PrintMes("构建基础镜像: ${IMG_BASE_NAME}",'green')
+                            }
+                        }
+                    }
+                post {
+                    failure {
+                        script{
+                            notify.run("failure","${PROJ_NAME}","${DEFAULT_BRANCH}","${STEPS_NAME}")
+                        }
+                    }
+                    aborted {
+                        script{
+                            notify.run("failure","${PROJ_NAME}","${DEFAULT_BRANCH}","${STEPS_NAME}")
+                        }
+                    }
+                }
+                }
+                stage("ProjImg"){
+                    environment {
+                        STEPS_NAME='Build ProjImg'
+                    }
+                    steps {
+                        timeout(time:1500, unit:"SECONDS"){ 
+                            script{ 
+                                if("${Proj_DockerfilePath}" != ""){
+                                  sshCommand remote: sshServer, command: "cd ${Basic_DockerfilePath}/${Proj_DockerfilePath} && sed 's/#IMG_BASE_NAME#/${IMG_BASE_NAME}/g' Dockerfile > Dockerfile.cuda${CUDA_VERSION} && sudo docker build -f Dockerfile.cuda${CUDA_VERSION}  -t ${IMG_PROJ_NAME} ."
+                                }
+                                tools.PrintMes("构建项目镜像: ${IMG_PROJ_NAME}",'green')
+                            }
+                        }
+                    }
+                    post {
+                        failure {
+                            script{
+                                notify.run("failure","${PROJ_NAME}","${DEFAULT_BRANCH}","${STEPS_NAME}")
+                            }
+                        }
+                        aborted {
+                            script{
+                                notify.run("failure","${PROJ_NAME}","${DEFAULT_BRANCH}","${STEPS_NAME}")
+                            }
+                        }
+                    }
+                }
+            }
+
+
+        }
+        
+        stage('Deploy') {
+            
+            stages{
+                stage("DeploySvc"){
+                    environment {
+                        STEPS_NAME='DeploySvc'
+                    }
+                    steps {
+                        timeout(time:120, unit:"SECONDS"){ 
+                            script{ 
+                                // sshServer = zssh.getServer("${SVC_IP}","${SVC_PORT}")
+                                def DOCKER_BRANCH_TAG="${DEFAULT_BRANCH}".replaceAll("/","-")
+                                def DOCKER_CONTAINER_NAME="zach-${FULL_JOB_NAME}-${DOCKER_BRANCH_TAG}"
+                                tools.PrintMes("部署到 ${DOCKER_BRANCH_TAG}",'green')
+                                sshCommand remote: sshServer, command: "[[ `sudo docker ps -a | grep ${DOCKER_CONTAINER_NAME} | wc -l` -ge 1 ]] && (sudo docker kill ${DOCKER_CONTAINER_NAME}  && sudo docker rm ${DOCKER_CONTAINER_NAME}) || echo 'NOT EXISTS' "
+                                sshCommand remote: sshServer, command: "sudo docker run --restart unless-stopped -itd --name ${DOCKER_CONTAINER_NAME} --gpus all -v /etc/localtime:/etc/localtime:ro -v /etc/timezone:/etc/timezone:ro -v ${CODE_PATH}:/data/code -v ${DATA_PATH}:/storage-data ${NETWORK_OPT} ${IMG_PROJ_NAME} ${INIT_COMMAND}"
+                                tools.PrintMes("部署到 ${SVC_IP} ==> ${IMG_PROJ_NAME}",'green')
+                            }
+                        }
+                    }
+                    post {
+                        failure {
+                            script{
+                                notify.run("failure","${PROJ_NAME}","${DEFAULT_BRANCH}","${STEPS_NAME}")
+                            }
+                        }
+                        aborted {
+                            script{
+                                notify.run("failure","${PROJ_NAME}","${DEFAULT_BRANCH}","${STEPS_NAME}")
+                            }
+                        }
+                    }
+                }
+                stage('PushCodeToServer') { // for display purposes
+                    environment {
+                        STEPS_NAME='PushCodeToServer'
+                    }
+                    steps {
+                        timeout(time:1800, unit:"SECONDS"){ 
+                           
+                            script{
+                                tools.PrintMes("推送新代码 : ${PROJ_NAME}",'green')
+                                sh "cd ${WORKSPACE} "
+                                def DOCKER_BRANCH_TAG="${DEFAULT_BRANCH}".replaceAll("/","-")
+                                def DOCKER_CONTAINER_NAME="zach-${FULL_JOB_NAME}-${DOCKER_BRANCH_TAG}"
+                                try{
+                                    sh "mv ${PROJ_NAME}.tar.gz /tmp "
+                                }
+                                catch (Exception err){
+                                    tools.PrintMes("No File : ${PROJ_NAME}.tar.gz",'blue')
+                                } 
+                                finally{
+                                    sh " tar zcvf ${PROJ_NAME}.tar.gz * --exclude=.git --exclude=${PROJ_NAME}.tar.gz "
+                                    sshCommand remote: sshServer, command: "sudo chmod 777 ${CODE_PATH} && mkdir -pv ${BAK_CODE_PATH} && touch ${CODE_PATH}/${BUILD_ID} && mv -v ${CODE_PATH}/* ${BAK_CODE_PATH}"
+                                    sshPut remote: sshServer, from: "${FULL_JOB_NAME}.tar.gz", into: "${CODE_PATH}/${PROJ_NAME}.tar.gz"
+                                    // sshPut remote: sshServer, from: "dist/${FULL_JOB_NAME}-${BUILD_NUMBER}.tar.gz", into: '${TARGET_WEB_HOME}'
+                                    sshCommand remote: sshServer, command: "cd ${CODE_PATH} && tar zxvf ${PROJ_NAME}.tar.gz && sudo docker restart ${DOCKER_CONTAINER_NAME}"
+                                }
+                            }
+                        }
+                    }
+                    post {
+                        failure {
+                            script{
+                                notify.run("failure","${PROJ_NAME}","${DEFAULT_BRANCH}","${STEPS_NAME}")
+                            }
+                        }
+                        aborted {
+                            script{
+                                notify.run("failure","${PROJ_NAME}","${DEFAULT_BRANCH}","${STEPS_NAME}")
+                            }
+                        }
+                    }
+                } 
+            }
+        }
+
+    }
+        post {
+            success {
+                script{
+                    notify.run("success","${PROJ_NAME}","${DEFAULT_BRANCH}","FINALLY")
+                }
+            }
+        }
+
+}
