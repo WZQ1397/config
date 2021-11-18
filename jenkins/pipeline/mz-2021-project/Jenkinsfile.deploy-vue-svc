@@ -9,6 +9,7 @@ def FULL_JOB_NAME= "${JOB_NAME}".replaceAll("/","-")
 def PROJ_NAME="${FULL_JOB_NAME}"
 def DEFAULT_BRANCH=""
 def sshServer = zssh.getServer("${SVC_IP}","${SVC_PORT}")
+// def sshServer = zssh.getServer("${SVC_IP}","${SVC_PORT}","${SVC_STAGE}")
 
 pipeline  {
     agent any
@@ -24,7 +25,19 @@ pipeline  {
       string defaultValue: "/data1/zach-blobdata-upload/front-page/autodeploy/${FULL_JOB_NAME}", name: 'TARGET_WEB_HOME'
       gitParameter branch: '', branchFilter: '.*', defaultValue: '', name: 'branch', quickFilterEnabled: false, selectedValue: 'NONE', sortMode: 'NONE', tagFilter: '*', type: 'PT_BRANCH', useRepository: "${CODE_REPO}"
       gitParameter branch: '', branchFilter: '.*', defaultValue: '', name: 'tag', quickFilterEnabled: false, selectedValue: 'NONE', sortMode: 'NONE', tagFilter: '*', type: 'PT_TAG', useRepository: "${CODE_REPO}"
-
+   string defaultValue: 'dev', name: 'SVC_STAGE'
+    }
+    triggers {
+      GenericTrigger(causeString: '', genericVariables: [
+          [defaultValue: '', key: 'ref', regexpFilter: '', value: '$.ref'],
+          [defaultValue: '', key: 'project', regexpFilter: '', value: '$.project.name'],
+          ], 
+      printContributedVariables: true, 
+      printPostContent: true, 
+      regexpFilterExpression: '^refs/heads/(test|master).*$', //  regexpFilterExpression: '^refs/heads/(test|release|master)*?$', 
+      regexpFilterText: '$ref $author', 
+      token: "${FULL_JOB_NAME}",
+      tokenCredentialId: '')
     }
     stages{
         // stage("Get Branches from Git Remote"){
@@ -50,24 +63,39 @@ pipeline  {
             environment {
                 STEPS_NAME='Preparation'
             }
+
             steps {
                 timeout(time:300, unit:"SECONDS"){ 
                     
                     script{ 
                         // git branch: "${branch}", changelog: false, credentialsId: '93c4bf13-4b05-46f7-8179-237403d26d74', poll: false, url: "${CODE_REPO}"
-                        if("${tag}" != "")
-                        {
-                            DEFAULT_BRANCH="${tag}"
-                        }
-                        else
-                        {
-                            if("${branch}" == "")
+                        if("$ref" == "/usr/share/jenkins/ref"){
+                            def tag_len="${tag}".length()
+                            def branch_len="${branch}".length()
+                            if("${tag_len}" > 1)
                             {
-                                branch="origin/master"
+                                DEFAULT_BRANCH="${tag}"
+                                tools.PrintMes("已选择tag: ${DEFAULT_BRANCH}",'blue')
                             }
-                            DEFAULT_BRANCH="${branch}"
+                            else
+                            {
+                                DEFAULT_BRANCH="${branch}"
+                                if("${branch_len}" > 1)
+                                {
+                                    DEFAULT_BRANCH="origin/master"
+                                }
+                                tools.PrintMes("已选择branch: ${DEFAULT_BRANCH}",'blue')
+                            } 
+                            ref="${DEFAULT_BRANCH}"
                         }
-                        tools.PrintMes("已选择 ${DEFAULT_BRANCH} 分支",'blue')
+                        else{
+                            branch="${ref}".replaceAll("refs/heads","origin")
+                            DEFAULT_BRANCH="${branch}"
+                            tag=""
+                        }
+                        buildName "No.${BUILD_NUMBER}次构建=分支=>$ref"
+                        buildDescription "No.${BUILD_NUMBER}次构建| ${PROJ_NAME} | 分支=>$ref"
+                        tools.PrintMes("已选择分支: ${branch} -  标签: ${tag}   => 最终: ${DEFAULT_BRANCH}",'blue')
                         codeOps.GetCode("${CODE_REPO}","${branch}","93c4bf13-4b05-46f7-8179-237403d26d74","${tag}")
                         tools.PrintMes("获取代码",'green')
                     }
@@ -191,9 +219,10 @@ pipeline  {
     post {
         success {
             script{
+                
                 notify.run("success","${PROJ_NAME}","${DEFAULT_BRANCH}","FINALLY")
             }
         }
     }
-    
+
 }
