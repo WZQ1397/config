@@ -113,7 +113,9 @@ pipeline  {
                                 }
                                 sshCommand remote: sshServer, command: "[[ `sudo docker ps -a | grep ${DOCKER_CONTAINER_NAME} | wc -l` -ge 1 ]] && (sudo docker kill ${DOCKER_CONTAINER_NAME}  && sudo docker rm ${DOCKER_CONTAINER_NAME}) || echo 'NOT EXISTS' "
                                 sshCommand remote: sshServer, command: "sudo docker run --restart unless-stopped -itd --name ${DOCKER_CONTAINER_NAME} --gpus all -v /etc/localtime:/etc/localtime:ro -v /etc/timezone:/etc/timezone:ro -v ${CODE_PATH}:/data/code -v ${DATA_PATH}:/storage-data ${RAMDISK_OPT} ${NETWORK_OPT} ${IMG_BASE_NAME} ${INIT_COMMAND}"
+                                sshCommand remote: sshServer, command: "sudo docker exec -it ${DOCKER_CONTAINER_NAME} chown -v ${DEV_USER}.${DEV_USER} /data/code /storage-data /zach-ramdisk"
                                 tools.PrintMes("部署到 ${SVC_IP} ==> ${IMG_BASE_NAME}",'green')
+                                tools.PrintMes("${SVC_IP}机器: ${IMG_BASE_NAME}\nSSH: ${SVC_IP}:端口见端口见下方 ${DEV_USER}:${DEV_USER}\n内存盘：/zach-ramdisk \n内存盘测试数据链接: http://${SVC_IP}:10030/ 是否存在: (${NEED_RAMDISK})\n测试数据链接: http://${SVC_IP}:10032/${DEV_USER}-dev/ \n数据盘：/storage-data\n       ssh外部: 内部   服务外部: 内部 \n端口: ${NETWORK_OPT}\nPython版本: ${PYTHON_VERSION}\n",'blue')
                             }
                         }
                     }
