@@ -29,3 +29,7 @@ kubectl -n $NAMESPACE patch $WORKLOAD_TYPE $WORKLOAD_NAME --patch '{"spec": {"te
 
 ###### 线程数排名统计
 ```printf "    NUM  PID\t\tCOMMAND\n" && ps -eLf | awk '{$1=null;$3=null;$4=null;$5=null;$6=null;$7=null;$8=null;$9=null;print}' | sort |uniq -c |sort -rn | head -10```
+
+###### 清除状态为Evicted的pod
+```kubectl get pods | grep Evicted | awk '{print $1}' | xargs kubectl delete pod```
+
