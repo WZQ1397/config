@@ -1,0 +1,11 @@
+/data/code/defect-tag-api-haoran/log/* {
+    daily
+    rotate 14
+    dateext
+    dateyesterday # 用昨天的日期做后缀
+    copytruncate
+    delaycompress    # today and yesterday will not compress
+    compress
+    missingok
+    notifempty
+}
