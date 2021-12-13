@@ -1,0 +1,10 @@
+backend = "etcdv3"
+interval = 60
+nodes = [
+		"10.2.16.66:2379",
+		"10.2.16.67:2379",
+		"10.2.16.68:2379",
+]
+client_cakeys = "/root/mwetcd/zs/ca.pem"
+client_cert = "/root/mwetcd/zs/server.pem"
+client_key = "/root/mwetcd/zs/server-key.pem"

@@ -1,0 +1,44 @@
+{{$datas := json (getv "/web/nginx/103")}}
+
+{{range $k,$name := $datas.nginxcfg }}
+# -----------------------------------------------------------------------{{$k}}
+#维护者: {{$name.maintainer}}
+#说明: {{$name.info}}
+{{ $url := replace $name.domain "." "_" -1 }}
+upstream upst_{{$k}}_{{$url}}{ {{if $name.upstream.sticky}}
+  sticky name={{$k}}_nginx_id;{{end}}{{range $ips := $name.upstream.ips}}
+  server {{$ips.ip}}:{{$ips.port}} max_fails=3 fail_timeout=20s weight=1;{{end}}
+}
+
+server {
+  listen  {{with $name.listenport}}{{.}}{{else}}80{{end}};
+  server_name {{$k}}.{{$name.domain}};{{if $name.log}}
+  access_log  /var/log/nginx/{{$k}}.{{$name.domain}}.log main;{{end}}{{if $name.proxy}}
+  include   /etc/nginx/proxy_params;{{end}}{{if $name.errmsg}}
+  include   /etc/nginx/err_params;{{end}}{{with $name.uploadsize}}
+  client_max_body_size  {{.}}m;{{end}}
+  location / { {{with $name.https}}{{if and .redirect .enable}}
+	return 301 https://$server_name$request_uri;{{else}}
+	proxy_pass  http://upst_{{$k}}_{{$url}};{{end}}{{else}}
+	proxy_pass  http://upst_{{$k}}_{{$url}};{{end}}
+  }
+}
+
+{{with $name.https}}{{if .enable}}server {
+  listen  {{with .port}}{{.}}{{else}}443{{end}} ssl http2;
+  server_name {{$k}}.{{$name.domain}};
+  include /etc/nginx/ca_params_{{$url}};{{if $name.log}}
+  access_log  /var/log/nginx/{{$k}}.{{$name.domain}}.log main;{{end}}{{if $name.proxy}}
+  include   /etc/nginx/proxy_params;{{end}}{{if $name.errmsg}}
+  include   /etc/nginx/err_params;{{end}}{{with $name.uploadsize}}
+  client_max_body_size  {{.}}m;{{end}}
+  location / {
+	proxy_pass  http://upst_{{$k}}_{{$url}};
+  }
+}
+{{end}}# ======================================================================={{$k}}{{end}}
+
+{{end}}
+
+
+# etcdctl put /web/nginx/103 nginx-myapp-etcd-data.json

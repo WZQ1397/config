@@ -1,0 +1,6 @@
+# 单次运行
+confd -onetime -backend etcd -node http://127.0.0.1:2379
+# 一直运行
+confd -watch -backend etcd -node http://127.0.0.1:2379 &
+# 指定-interval 为2秒间隔轮询
+confd -interval 2 -backend redis -node 127.0.0.1:6379

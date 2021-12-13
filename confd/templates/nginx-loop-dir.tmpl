@@ -1,0 +1,33 @@
+{{/* 
+使用lsdir方法，读取（可以认为）/services/web目录下的子目录，也就是返回cust1和cust2这两个。
+并开始一个大循环，第1次循环，$dir等于cust1 ，第2次循环，$dir等于cust2
+*/}}
+{{range $dir := lsdir "/services/web"}}
+upstream {{base $dir}} {
+	{{/* 
+	使用printf方法，合成一个字符串，%s的部分用$dir来替代。
+	合成之后的新字符串赋值给$custdir，第一次应该是"/services/web/cust1/*"
+	使用gets查找key为"/services/web/cust1/*"的值，因为用到了*，会查出多个值，所以用到gets而不是get
+	每个值都会进入小循环，并用json进行解析（这里注意etcdctl put进去的value，必须符合json格式，否则在这里解析会失败）
+	解析完的内容复制给$data,然后就可以用了
+	*/}}
+	{{$custdir := printf "/services/web/%s/*" $dir}}{{range gets $custdir}}
+	server {{$data := json .Value}}{{$data.IP}}:{{$data.PORT}};
+	{{end}}
+}
+
+server {
+	server_name {{base $dir}}.example.com;
+	location / {
+		proxy_pass {{base $dir}};
+	}
+}
+{{end}}
+
+
+#./etcdctl put /services/web/cust1/1 '{"IP": "10.0.0.1","PORT":"81"}'
+#./etcdctl put /services/web/cust1/2 '{"IP": "10.0.0.2","PORT":"82"}'
+#./etcdctl put /services/web/cust1/3 '{"IP": "10.0.0.3","PORT":"83"}'
+#./etcdctl put /services/web/cust2/1 '{"IP": "10.0.0.4","PORT":"84"}'
+#./etcdctl put /services/web/cust2/2 '{"IP": "10.0.0.5","PORT":"85"}'
+./etcdctl put /services/web/cust2/3 '{"IP": "10.0.0.6","PORT":"86"}'

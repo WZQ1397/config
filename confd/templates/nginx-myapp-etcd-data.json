@@ -1,0 +1,54 @@
+{
+    "nginxcfg": {
+        "oa": {
+            "maintainer": "小明",
+            "info": "内部网",
+            "domain": "first.com",
+            "listenport": 80,
+            "log": true,
+            "errmsg": true,
+            "proxy": true,
+            "uploadsize": 100,
+            "https": {
+                "enable": true,
+                "port": 443,
+                "redirect": true
+            },
+            "upstream": {
+                "sticky": true,
+                "ips": [{
+                    "ip": "10.1.1.3",
+                    "port": 8080
+                }, {
+                    "ip": "10.1.1.4",
+                    "port": 8081
+                }]
+            }
+        },
+        "cw": {
+            "maintainer": "老王",
+            "info": "财务",
+            "domain": "second.com",
+            "listenport": 80,
+            "log": true,
+            "errmsg": true,
+            "proxy": true,
+            "uploadsize": 10,
+            "https": {
+                "enable": true,
+                "port": 443,
+                "redirect": false
+            },
+            "upstream": {
+                "sticky": true,
+                "ips": [{
+                    "ip": "10.1.1.3",
+                    "port": 8088
+                }, {
+                    "ip": "10.1.1.4",
+                    "port": 8099
+                }]
+            }
+        }
+    }
+}
