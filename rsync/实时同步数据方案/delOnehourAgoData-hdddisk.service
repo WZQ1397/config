@@ -1,0 +1,12 @@
+[Unit]
+Description=delOnehourAgoData
+ConditionFileIsExecutable=/data2/save-data/delOnehourAgoData.sh
+After=network.target
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+#Type=forking
+ExecStart=/bin/bash /data2/save-data/delOnehourAgoData.sh /data2/save-data/camera/movePicFromMemDisk/camera 3
+TimeoutSec=0

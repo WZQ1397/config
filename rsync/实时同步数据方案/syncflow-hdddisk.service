@@ -1,0 +1,12 @@
+[Unit]
+Description=syncflow
+ConditionFileIsExecutable=/data2/save-data/syncflow.sh
+After=network.target
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+#Type=forking
+ExecStart=/bin/bash /data2/save-data/syncflow.sh /data2/save-data/camera/movePicFromMemDisk/camera /data2/save-data/camera
+TimeoutSec=0
