@@ -1,0 +1,8 @@
+[template]
+src = "twemproxy.tmpl"
+dest = "/root/myapp/twemproxy/conf/twemproxy.conf"
+keys = [
+  "/twemproxy/pool"
+]
+check_cmd = "/usr/local/bin/nutcracker -t -c /root/myapp/twemproxy/conf/twemproxy.conf"
+reload_cmd = "bash /root/myapp/twemproxy/reload.sh"
