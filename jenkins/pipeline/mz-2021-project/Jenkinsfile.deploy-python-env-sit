@@ -1,6 +1,6 @@
 @Library('jenkinslib') _     
  /* YOU NEED set "zach    ALL=(ALL:ALL) NOPASSWD:/usr/bin/docker,/bin/chmod" in /etc/sudoers */
- /* curl -X POST "zach:token@192.168.1.124:8081/view/CCTV-NEWS/job/zach-cctv-news-detect-weapon-v2.0/buildWithParameters?token=zach.wang"  -d "DEFAULT_BRANCH=master" */
+ /* curl -X POST "zach:116d5ead75af8df338f02bde654386ddd5@192.168.1.124:8081/view/CCTV-NEWS/job/zach-cctv-news-detect-weapon-v2.0/buildWithParameters?token=zach.wang"  -d "DEFAULT_BRANCH=master" */
 def tools = new zach.devops.codeTools.stringTool()
 def zssh = new zach.devops.sshserver()
 def FULL_JOB_NAME= "${JOB_NAME}".replaceAll("/","-")
@@ -24,13 +24,16 @@ pipeline  {
     //   listGitBranches branchFilter: '.*', credentialsId: '93c4bf13-4b05-46f7-8179-237403d26d74', defaultValue: '', name: 'branch', quickFilterEnabled: false, remoteURL: "${CODE_REPO}" , selectedValue: 'NONE', sortMode: 'NONE', tagFilter: '*', type: 'PT_BRANCH_TAG'
       string defaultValue: '22', name: 'SVC_PORT'
 
-      choice choices: ['zhuanglin', 'xuhaoran', 'zach'], name: 'DEV_USER'
+      choice choices: ['zhuanglin', 'xuhaoran', 'zach' ,'root'], name: 'DEV_USER'
       string defaultValue: '/data1/project-code', name: 'BASE_CODE_PATH'
       string defaultValue: '/data1/zach-blobdata-upload/storage-data', name: 'DATA_PATH'
       string defaultValue: '-p 62201:22 -p 60001:8000', name: 'NETWORK_OPT'
       choice choices: ['', 'tail -f /dev/null', 'cron && supervisord && tail -f /dev/null'], name: 'INIT_COMMAND'
-      choice choices: ['192.168.1.124','192.168.1.166'], name: 'SVC_IP'
-      choice choices: ['3.6.12', '3.7', '3.8', '3.9'], name: 'PYTHON_VERSION'
+      choice choices: ['192.168.1.124','192.168.1.166','10.0.11.215'], name: 'SVC_IP'
+      choice choices: ['3.6', '3.7', '3.8', '3.9'], name: 'PYTHON_VERSION'
+      choice choices: ['10.2', '11.1','11.2.0'], name: 'CUDA_VERSION'
+      choice choices: ['7', '8'], name: 'CUDNN_VERSION'
+      choice choices: ['7.1.3.4', '7.2.3.4'], name: 'TENSORT_VERSION'
     }
     
     stages{
@@ -71,15 +74,16 @@ pipeline  {
                         STEPS_NAME='Build BasicImg'
                     }
                     steps {
-                        timeout(time:1500, unit:"SECONDS"){ 
+                        timeout(time:3000, unit:"SECONDS"){ 
                             retry(3){
                                 script{ 
                                     // sshCommand remote: sshServer, command: "sudo docker ps"
-                                    tools.PrintMes("构建基础镜像: ${PROJ_NAME}",'green')
-                                    IMG_BASE_NAME = "${PROJ_NAME}-py${PYTHON_VERSION}-dev:${DEV_USER}-jenkins"
-                                    def DOCKERFILEBASENAME = "Dockerfile.python"
+                                    IMG_BASE_NAME = "${PROJ_NAME}-py${PYTHON_VERSION}-cuda${CUDA_VERSION}-cudnn${CUDNN_VERSION}-tensort${TENSORT_VERSION}-dev:${DEV_USER}-jenkins"
+                                    tools.PrintMes("构建基础镜像: ${IMG_BASE_NAME}",'green')
+                                    
+                                    def DOCKERFILEBASENAME = "Dockerfile.gpu"
                                     def DOCKERFILENAME = "${DOCKERFILEBASENAME}.${DEV_USER}"
-                                    sshCommand remote: sshServer, command: "cd /data1/dockerfile-jk-tmp && sed -e \"s/#username#/${DEV_USER}/g\" -e \"s/#PY_IMG_NAME#/python:${PYTHON_VERSION}/g\" ${DOCKERFILEBASENAME} > ${DOCKERFILENAME} && sudo docker build -f ${DOCKERFILENAME} -t ${IMG_BASE_NAME} ."
+                                    sshCommand remote: sshServer, command: "cd /data1/dockerfile-jk-tmp && echo '''${OTHER_SCRIPT}''' > script/${DEV_USER}.sh && sed -e \"s/#username#/${DEV_USER}/g\"  -e \"s/#CUDNN_VERSION#/${CUDNN_VERSION}/g\" -e \"s/#PYTHON_VERSION#/${PYTHON_VERSION}/g\"  -e \"s/#TENSORT_VERSION#/${TENSORT_VERSION}/g\" -e \"s/#CUDA_VERSION#/${CUDA_VERSION}/g\" ${DOCKERFILEBASENAME} > ${DOCKERFILENAME} && sudo docker build -f ${DOCKERFILENAME} -t ${IMG_BASE_NAME} ."
                                     tools.PrintMes("构建基础镜像: ${IMG_BASE_NAME}",'green')
                                 }
                             }
@@ -113,7 +117,9 @@ pipeline  {
                                 }
                                 sshCommand remote: sshServer, command: "[[ `sudo docker ps -a | grep ${DOCKER_CONTAINER_NAME} | wc -l` -ge 1 ]] && (sudo docker kill ${DOCKER_CONTAINER_NAME}  && sudo docker rm ${DOCKER_CONTAINER_NAME}) || echo 'NOT EXISTS' "
                                 sshCommand remote: sshServer, command: "sudo docker run --restart unless-stopped -itd --name ${DOCKER_CONTAINER_NAME} --gpus all -v /etc/localtime:/etc/localtime:ro -v /etc/timezone:/etc/timezone:ro -v ${CODE_PATH}:/data/code -v ${DATA_PATH}:/storage-data ${RAMDISK_OPT} ${NETWORK_OPT} ${IMG_BASE_NAME} ${INIT_COMMAND}"
-                                sshCommand remote: sshServer, command: "sudo docker exec -it ${DOCKER_CONTAINER_NAME} chown -v ${DEV_USER}.${DEV_USER} /data/code /storage-data /zach-ramdisk"
+                                // sshCommand remote: sshServer, command: "sudo docker exec -i ${DOCKER_CONTAINER_NAME} chown -v ${DEV_USER}.${DEV_USER} /data/code /storage-data /zach-ramdisk"
+                                
+                                tools.PrintMes("sudo docker exec -i ${DOCKER_CONTAINER_NAME} chown -v ${DEV_USER}.${DEV_USER} /data/code /storage-data /zach-ramdisk",'red')
                                 tools.PrintMes("部署到 ${SVC_IP} ==> ${IMG_BASE_NAME}",'green')
                                 tools.PrintMes("${SVC_IP}机器: ${IMG_BASE_NAME}\nSSH: ${SVC_IP}:端口见端口见下方 ${DEV_USER}:${DEV_USER}\n内存盘：/zach-ramdisk \n内存盘测试数据链接: http://${SVC_IP}:10030/ 是否存在: (${NEED_RAMDISK})\n测试数据链接: http://${SVC_IP}:10032/${DEV_USER}-dev/ \n数据盘：/storage-data\n       ssh外部: 内部   服务外部: 内部 \n端口: ${NETWORK_OPT}\nPython版本: ${PYTHON_VERSION}\n",'blue')
                             }
