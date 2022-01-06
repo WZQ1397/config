@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: liveness-str
+  labels:
+    app: liveness
+spec:
+  containers:
+  - name: liveness
+    image: docker.io/carlziess/liveness:latest
+    imagePullPolicy: IfNotPresent
+    args:
+    - /server
+    ports:
+    - name: liveness-port
+      containerPort: 8080
+    livenessProbe:
+      httpGet:
+        path: /healthz
+        port: liveness-port
+      failureThreshold: 1
+      periodSeconds: 10
+    startupProbe:
+      httpGet:
+        path: /healthz
+        port: liveness-port
+      failureThreshold: 30
+      periodSeconds: 10

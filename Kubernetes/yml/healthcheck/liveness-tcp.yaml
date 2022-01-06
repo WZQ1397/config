@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: goproxy
+  labels:
+    app: goproxy
+spec:
+  containers:
+  - name: goproxy
+    image: docker.io/goproxy/goproxy:latest
+    imagePullPolicy: IfNotPresent
+    ports:
+    - containerPort: 8081
+    readinessProbe:
+      tcpSocket:
+        port: 8081
+      initialDelaySeconds: 5
+      periodSeconds: 10
+    livenessProbe:
+      tcpSocket:
+        port: 8081
+      initialDelaySeconds: 15
+      periodSeconds: 20
