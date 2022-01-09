@@ -1,0 +1,12 @@
+[Unit]
+Description=check ip config
+
+[Service]
+Type=forking
+User=root
+ExecStart=/usr/bin/ip-checker
+PrivateTmp=true
+
+# ONE TIMER CONTROLLER TWO SERVICE
+[Install]
+WantedBy=ip-checker.target

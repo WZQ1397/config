@@ -1,0 +1,13 @@
+[Unit]
+Description=check ip config
+
+[Timer]
+# Time to wait after enable this unit
+#OnActiveSec=1
+OnBootSec=60
+# Time between running each consecutive time
+OnUnitActiveSec=5s
+Unit=ip-checker.service
+ 
+[Install]
+WantedBy=multi-user.target

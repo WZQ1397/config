@@ -1,0 +1,21 @@
+[Unit]
+Description= Custom Server Service
+Documentation=man:htop
+After=network.target
+
+[Service]
+Type=simple
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+User=root
+LimitNOFILE=65536
+
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=python-server
+
+Restart=always
+RuntimeMaxSec=28800
+ExecStart=/usr/bin/python /path/to/file/server.py
+
+[Install]
+WantedBy=multi-user.target
