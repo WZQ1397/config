@@ -1,0 +1,9 @@
+[Unit]
+Description=在下午五到七点内的每分钟都运行 zstart.service
+
+[Timer]
+OnCalendar= *-*-* 17..19:*:00
+Unit=zstart.service
+
+[Install]
+WantedBy=basic.target

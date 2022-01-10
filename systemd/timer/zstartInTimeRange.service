@@ -1,0 +1,14 @@
+[Unit]
+Description= 运行 zstart 服务
+# zstart stop when discover zstart.service is running
+Conflicts= zstart.service
+
+[Service]
+Type= simple
+User= zach
+
+ExecStart= /bin/echo "starting ... zstart.service"
+ExecStop= /bin/kill -2 $MAINPID
+
+[Install]
+WantedBy= multi-user.targe

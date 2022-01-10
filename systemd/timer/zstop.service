@@ -1,0 +1,8 @@
+[Unit]
+Description= 关闭 zstart 服务
+# zstart stop when discover zstart.service is running
+Conflicts= zstart.service
+
+[Service]
+Type= oneshot
+ExecStart= /bin/echo "Closing down zstart.service"

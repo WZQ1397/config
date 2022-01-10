@@ -1,0 +1,9 @@
+[Unit]
+Description=每天晚上七点停止 zstop.service
+
+[Timer]
+OnCalendar= *-*-* 19:05:00
+Unit=zstop.service
+
+[Install]
+WantedBy=basic.target
