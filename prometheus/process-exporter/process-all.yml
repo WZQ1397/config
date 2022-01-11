@@ -1,0 +1,4 @@
+process_names:
+  - name: "{{.Username}}-{{.PID}}-{{.Comm}}"
+    cmdline:
+    - 'python.*'
