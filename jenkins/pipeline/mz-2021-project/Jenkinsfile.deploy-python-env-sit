@@ -116,7 +116,7 @@ pipeline  {
                                     RAMDISK_OPT="-v /zach-ramdisk:/zach-ramdisk"
                                 }
                                 sshCommand remote: sshServer, command: "[[ `sudo docker ps -a | grep ${DOCKER_CONTAINER_NAME} | wc -l` -ge 1 ]] && (sudo docker kill ${DOCKER_CONTAINER_NAME}  && sudo docker rm ${DOCKER_CONTAINER_NAME}) || echo 'NOT EXISTS' "
-                                sshCommand remote: sshServer, command: "sudo docker run --restart unless-stopped -itd --name ${DOCKER_CONTAINER_NAME} --gpus all -v /etc/localtime:/etc/localtime:ro -v /etc/timezone:/etc/timezone:ro -v ${CODE_PATH}:/data/code -v ${DATA_PATH}:/storage-data ${RAMDISK_OPT} ${NETWORK_OPT} ${IMG_BASE_NAME} ${INIT_COMMAND}"
+                                sshCommand remote: sshServer, command: "sudo docker run --restart unless-stopped -itd --name ${DOCKER_CONTAINER_NAME} --gpus all -v /etc/localtime:/etc/localtime:ro -v /etc/timezone:/etc/timezone:ro -v ${CODE_PATH}:/data/code -v ${DATA_PATH}:/storage-data ${RAMDISK_OPT} ${NETWORK_OPT} ${IMG_BASE_NAME} sh -c \"${INIT_COMMAND}\""
                                 // sshCommand remote: sshServer, command: "sudo docker exec -i ${DOCKER_CONTAINER_NAME} chown -v ${DEV_USER}.${DEV_USER} /data/code /storage-data /zach-ramdisk"
                                 
                                 tools.PrintMes("sudo docker exec -i ${DOCKER_CONTAINER_NAME} chown -v ${DEV_USER}.${DEV_USER} /data/code /storage-data /zach-ramdisk",'red')
