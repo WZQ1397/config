@@ -72,3 +72,15 @@ function resize_disk(){
 	resize2fs /dev/vg2-zach/lv2-zach
 }
 
+function sftp_split(){
+	cat >> /etc/ssh/sshd_config << EOF 
+Subsystem sftp internal-sftp         
+Match User web
+  ChrootDirectory %h
+  ForceCommand internal-sftp
+EOF
+
+	adduser --home /media/data/zach-blobdata-upload/front-page --shell /bin/false web
+	chown root.root /media/data/zach-blobdata-upload/
+
+}
