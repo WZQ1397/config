@@ -1,0 +1,28 @@
+FROM nvidia/cuda:11.2.0-devel-ubuntu18.04
+LABEL MAINTAINER ZACH.WANG
+ENV WORK_DATA_PATH /data
+ENV RUNC_USER zach
+ENV PKG_PATH package
+ENV CN_REPO_URL mirrors.aliyun.com
+
+############# BASIC PART ##########
+ENV CODE_PATH ${WORK_DATA_PATH}/code
+RUN  rm -rf /etc/apt/sources.list.d/* && sed -i -e "s/deb.debian.org/${CN_REPO_URL}/g" -e "s/security.debian.org/${CN_REPO_URL}/g" /etc/apt/sources.list && \
+    sed -i -e "s/security.ubuntu.com/${CN_REPO_URL}/g" -e "s/archive.ubuntu.com/${CN_REPO_URL}/g" /etc/apt/sources.list && \
+    apt update -y
+
+RUN apt install -y locales openssh-server screen ffmpeg cron vim supervisor software-properties-common wget mediainfo build-essential  git
+
+COPY get-pip.py /tmp/get-pip.py
+
+RUN locale-gen zh_CN.UTF-8 
+RUN DEBIAN_FRONTEND=noninteractive dpkg-reconfigure locales
+ENV LANG zh_CN.UTF-8  
+ENV LANGUAGE zh_CN.UTF-8
+ENV LC_ALL zh_CN.UTF-8
+RUN localedef -c -f UTF-8 -i zh_CN zh_CN.utf8
+RUN add-apt-repository ppa:deadsnakes/ppa
+RUN apt install -y python3-distutils
+RUN apt install -y python3.8
+RUN python3.8 /tmp/get-pip.py -i https://pypi.douban.com/simple/
+
