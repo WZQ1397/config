@@ -1,0 +1,31 @@
+FROM nvidia/cuda:11.2.0-cudnn8-devel-centos7
+LABEL MAINTAINER ZACH.WANG
+ENV WORK_DATA_PATH /data
+ENV RUNC_USER zach
+ENV PKG_PATH package
+ENV CN_REPO_URL mirrors.aliyun.com
+
+############# BASIC PART ##########
+RUN yum install -y epel-release locales openssh-server screen ffmpeg cron vim supervisor wget mediainfo build-essential  git
+ENV CODE_PATH ${WORK_DATA_PATH}/code
+
+COPY get-pip.py /tmp/get-pip.py
+
+RUN rm -rf /etc/localtime && ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+RUN yum -y install kde-l10n-Chinese && yum -y reinstall glibc-common
+RUN localedef -c -f UTF-8 -i zh_CN zh_CN.utf8
+
+RUN yum install -y zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel libffi-devel gcc make
+#RUN python3.8 /tmp/get-pip.py -i https://pypi.douban.com/simple/
+RUN wget -P /home https://cdn.npm.taobao.org/dist/python/3.8.5/Python-3.8.5.tgz
+RUN cd /home && tar -zxvf Python-3.8.5.tgz && cd Python-3.8.5 && mkdir /usr/local/python3.8.5 
+RUN yum install centos-release-scl -y && yum install devtoolset-8 -y 
+ENV CC=/opt/rh/devtoolset-8/root/usr/bin/gcc
+ENV CPP=/opt/rh/devtoolset-8/root/usr/bin/cpp
+ENV CXX=/opt/rh/devtoolset-8/root/usr/bin/c++
+RUN scl enable devtoolset-8 -- bash && source /opt/rh/devtoolset-8/enable
+RUN gcc -v && cd /home/Python-3.8.5 && ./configure --prefix=/usr/local/python3.8.5 --enable-shared --enable-optimizations && \
+   make -j8 && make install -j8
+RUN cp -rv /home/Python-3.8.5/libpython3.8.so.1.0 /usr/local/lib64/ && cp -rv /home/Python-3.8.5/libpython3.8.so.1.0 /usr/lib/ && cp -rv /home/Python-3.8.5/libpython3.8.so.1.0 /usr/lib64/
+RUN ln -s /usr/local/python3.8.5/bin/python3 /usr/bin/python3.8  && ln -s /usr/local/python3.8.5/bin/pip3 /usr/bin/pip3.8 && pip3.8 list
+#RUN python3.8 /tmp/get-pip.py -i https://pypi.douban.com/simple/ 

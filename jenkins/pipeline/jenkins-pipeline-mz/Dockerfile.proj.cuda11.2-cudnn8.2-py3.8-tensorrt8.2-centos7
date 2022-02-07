@@ -1,0 +1,29 @@
+FROM zach-gpu-env-img-py3.8-cuda11.2.0-centos7:zach-jenkins
+LABEL MAINTAINER ZACH.WANG
+ENV WORK_DATA_PATH /data
+ENV RUNC_USER zach
+ENV PKG_PATH package
+ENV CN_REPO_URL mirrors.aliyun.com
+
+############## CUDA PART  ###############
+
+ENV CUDA_PATH /usr/local/cuda
+COPY ${PKG_PATH}/cuda-cudnn8/ ${WORK_DATA_PATH}/cuda-cudnn/
+COPY ${PKG_PATH}/TensorRT-8.2.1.8/ ${WORK_DATA_PATH}/TensorRT-8.2.1.8/
+RUN cp -v ${WORK_DATA_PATH}/cuda-cudnn/lib64/libcudnn* ${CUDA_PATH}/lib64/ -d   && \
+   chmod a+r ${CUDA_PATH}/include ${CUDA_PATH}/lib64/libcudnn* && \
+   mv ${WORK_DATA_PATH}/cuda-cudnn/include/cudnn.h ${CUDA_PATH}/include
+
+RUN echo 'export LD_LIBRARY_PATH=/data/TensorRT-8.2.1.8/lib:$LD_LIBRARY_PATH' >> ~/.bashrc && \
+    echo 'export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH' >> ~/.bashrc
+
+#COPY script/root.sh /
+#RUN useradd -d /home/root -s /bin/bash -m root && echo root:root | chpasswd && \
+#   bash -x root.sh
+
+WORKDIR ${WORK_DATA_PATH}/
+
+#RUN pip3.8 install pytorch==1.9.0+cu111 -i https://pypi.tuna.tsinghua.edu.cn/simple
+
+COPY package/torch-1.9.0+cu111-cp38-cp38-linux_x86_64.whl /tmp
+RUN pip3.8 install /tmp/torch-1.9.0+cu111-cp38-cp38-linux_x86_64.whl
