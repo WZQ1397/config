@@ -1,0 +1,8 @@
+############## FINALL PART  ###############
+
+RUN cp -v ${WORK_DATA_PATH}/cuda/lib64/libcudnn* ${CUDA_PATH}/lib64/ -d   && \
+   chmod a+r ${CUDA_PATH}/include ${CUDA_PATH}/lib64/libcudnn* && \
+   mv ${WORK_DATA_PATH}/cuda/include/cudnn.h ${CUDA_PATH}/include
+WORKDIR ${WORK_DATA_PATH}/
+CMD cron && supervisord && tail -f
+
