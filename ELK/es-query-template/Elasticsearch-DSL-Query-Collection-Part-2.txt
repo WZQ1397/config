@@ -1,0 +1,119 @@
+TERM VS MATCH
+=======================================================================================
+Full text queries
+=======================================================================================
+FULL TEXT QUERIES USING-						e.g
+	match					- EACH WORD		devops
+	match_phrase				- FULL PHRASE		devops school
+	match_phrase_prefix
+	
+=======================================================================================	
+The match keyword
+=======================================================================================
+
+curl -XGET 'localhost:9200/customers/_search?pretty' -H 'Content-Type: application/json' -d'
+{
+    "query": {
+        "match" : {
+            "name" : "webster"
+        }
+    }
+}
+'
+
+curl -XGET 'localhost:9200/customers/_search?pretty' -H 'Content-Type: application/json' -d'
+{
+    "query": {
+        "match" : {
+              "name" : {
+                  "query" : "frank norris",
+                  "operator" : "or"
+               }        
+        }
+    }
+}
+'
+
+curl -XGET 'localhost:9200/customers/_search?pretty' -H 'Content-Type: application/json' -d'
+{
+    "query": {
+        "match" : {
+              "name" : {
+                  "query" : "frank norris",
+                  "operator" : "and"
+               }        
+        }
+    }
+}
+'
+
+curl -XGET 'localhost:9200/customers/_search?pretty' -H 'Content-Type: application/json' -d'
+{
+    "query": {
+        "match" : {
+              "name" : {
+                  "query" : "Jeannine Norris",
+                  "operator" : "and"
+               }        
+        }
+    }
+}
+'
+----DEFAUL OPERATOR IS or
+curl -XGET 'localhost:9200/customers/_search?pretty' -H 'Content-Type: application/json' -d'
+{
+    "query": {
+        "match" : {
+            "street" : "tompkins place"
+        }
+    }
+}
+'
+=======================================================================================
+The match_phrase keyword
+=======================================================================================
+curl -XGET 'localhost:9200/customers/_search?pretty' -H 'Content-Type: application/json' -d'
+{
+    "query": {
+        "match_phrase" : {
+            "street" : "tompkins place"
+        }
+    }
+}
+'
+
+curl -XGET 'localhost:9200/customers/_search?pretty' -H 'Content-Type: application/json' -d'
+{
+    "query": {
+        "match_phrase" : {
+            "state" : "puerto rico"
+        }
+    }
+}
+'
+=======================================================================================
+The match_phrase_prefix
+=======================================================================================
+curl -XGET 'localhost:9200/customers/_search?pretty' -H 'Content-Type: application/json' -d'
+{
+    "query": {
+        "match_phrase_prefix" : {
+            "name" : "ma"
+        }
+    }
+}
+'
+
+curl -XGET 'localhost:9200/customers/_search?pretty' -H 'Content-Type: application/json' -d'
+{
+    "query": {
+        "match_phrase_prefix" : {
+            "street" : "clymer st"
+        }
+    }
+}
+'
+
+
+
+

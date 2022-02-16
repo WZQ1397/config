@@ -1,0 +1,164 @@
+Returns search hits that match the query defined in the request.
+=======================
+Request
+GET /<index>/_search
+POST /<index>/_search
+
+GET /_search
+POST /_search
+
+
+
+
+
+QUERY TERM SPECIFICATION - 2 WAYS
+1. QUERY PARAMETERS (Search terms as URL query parameters)
+	CURL
+	FULL URL ON BROWSERS
+2. REQUEST BODY (Search terms within the URL request body)
+=======================================================================================
+Search terms as URL query parameters
+=======================================================================================
+curl -XGET 'localhost:9200/customers/_search?q=wyoming&pretty'
+
+localhost:9200/customers/_search?q=wyoming&pretty
+
+curl -XGET 'localhost:9200/customers/_search?q=wyoming&sort=age:desc&pretty'
+curl -XGET 'localhost:9200/customers/_search?q=wyoming&sort=age:asc&pretty'
+
+curl -XGET 'localhost:9200/customers/_search?q=state:kentucky&pretty'
+curl -XGET 'localhost:9200/customers/_search?q=state:kentucky&sort=age:asc&pretty'
+
+curl -XGET 'localhost:9200/customers/_search?q=state:kentucky&from=10&size=2&pretty'
+
+curl -XGET 'localhost:9200/customers/_search?q=state:kentucky&pretty'
+
+????
+curl -XGET 'localhost:9200/customers/_search?q=wyoming&explain&pretty'
+curl -XGET 'localhost:9200/customers/_search?q=state:kentucky&explain&pretty'
+
+
+=======================================================================================
+Searching using the request body
+=======================================================================================
+
+curl -XGET 'localhost:9200/customers/_search?pretty' -H 'Content-Type: application/json' -d'
+{
+  "query": { "match_all": {} }
+}
+' 
+
+
+curl -XGET 'localhost:9200/customers/_search?pretty' -H 'Content-Type: application/json' -d'
+{
+  "query": {}
+}
+'
+
+curl -XGET 'localhost:9200/customers/_search?pretty=true&q=*:*'
+
+
+curl -XGET 'localhost:9200/customers/_search?pretty' -H 'Content-Type: application/json' -d'
+{
+  "query": { "match_all": {} },
+  "size": 3
+}
+'
+
+
+curl -XGET 'localhost:9200/customers/_search?pretty' -H 'Content-Type: application/json' -d'
+{
+  "query": { "match_all": {} },
+  "size": 2
+}
+'
+
+
+curl -XGET 'localhost:9200/customers/_search?pretty' -H 'Content-Type: application/json' -d'
+{
+  "query": { "match_all": {} },
+  "from": 5, 
+  "size": 3
+}
+'
+curl -XGET 'localhost:9200/customers/_search?pretty' -H 'Content-Type: application/json' -d'
+{
+  "query": { "match_all": {} },
+  "sort": { "age": { "order": "desc" } },
+  "size": 20
+}
+'
+
+=======================================================================================
+Search Multiple Indices
+=======================================================================================
+curl -XGET 'localhost:9200/customers,products/_search?pretty'
+
+=======================================================================================
+Search Multiple Doc Types
+=======================================================================================
+curl -XGET 'localhost:9200/products/shoes,laptops/_search?pretty'
+
+=======================================================================================
+ACTUAL SEARCH - Query terms and source filtering
+=======================================================================================
+
+
+curl -XGET 'localhost:9200/customers/_search?pretty' -H 'Content-Type: application/json' -d'
+{
+    "query" : {
+        "term" : { "name" : "gates" }
+    }
+}
+'
+
+curl -XGET 'localhost:9200/customers/_search?pretty' -H 'Content-Type: application/json' -d'
+{
+    "query" : {
+        "term" : { "street" : "chestnut" }
+    }
+}
+'
+=======================================================================================
+Source filtering
+=======================================================================================
+curl -XGET 'localhost:9200/customers/_search?pretty'  -H 'Content-Type: application/json' -d'
+{
+    "_source" : false,
+    "query" : {
+        "term" : { "street" : "chestnut" }
+    }
+}
+'
+
+curl -XGET 'localhost:9200/customers/_search?pretty' -H 'Content-Type: application/json' -d'
+{
+    "_source" : "st*",
+    "query" : {
+        "term" : { "state" : "washington" }
+    }
+}
+'
+
+curl -XGET 'localhost:9200/customers/_search?pretty' -H 'Content-Type: application/json' -d'
+{
+    "_source" : ["st*", "*n*"],
+    "query" : {
+        "term" : { "state" : "washington" }
+    }
+}
+'
+
+curl -XGET 'localhost:9200/customers/_search?pretty' -H 'Content-Type: application/json' -d'
+{
+     "_source": {
+        "includes": ["st*", "*n*"],
+        "excludes": [ "*der" ]
+     },
+    "query" : {
+        "term" : { "state" : "washington" }
+    }
+}
+'
+
+
