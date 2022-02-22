@@ -1,0 +1,99 @@
+Terraform Environment Variables Exaplained!
+
+
+Terraform has many environment variables which can be used to customize various aspects of its behavior of terraform. However all are optional, i.e None of these environment variables are required. But these can be used to change some of Terraform's default behaviors of Terraform, or to increase output verbosity for debugging.
+
+TF_LOG
+
+Terraform has detailed logs which can be enabled by setting the TF_LOG environment variable to any value. This will cause detailed logs to appear on stderr. If set to any value, enables detailed logs to appear on stderr which is useful for debugging. TRACE is the most verbose and it is the default. For example:
+export TF_LOG=TRACE
+export TF_LOG=DEBUG
+export TF_LOG=INFO
+export TF_LOG=WARN
+export TF_LOG=ERROR
+
+TF_LOG_PATH
+
+This specifies where the log should persist its output to. Note that even when TF_LOG_PATH is set, TF_LOG must be set in order for any logging to be enabled. For example, to always write the log to the directory you're currently running terraform from:
+export TF_LOG_PATH=./terraform.log
+
+TF_INPUT
+
+If set to "false" or "0", causes terraform commands to behave as if the -input=false flag was specified. This is used when you want to disable prompts for variables that haven't had their values specified. For example:
+export TF_INPUT=0
+
+TF_VAR_name
+
+Environment variables can be used to set variables. The environment variables must be in the format TF_VAR_name and this will be checked last for a value. For example:
+export TF_VAR_region=us-west-1
+export TF_VAR_ami=ami-049d8641
+export TF_VAR_alist='[1,2,3]'
+export TF_VAR_amap='{ foo = "bar", baz = "qux" }'
+
+TF_CLI_ARGS and TF_CLI_ARGS_name
+
+The value of TF_CLI_ARGS will specify additional arguments to the command-line. These arguments are inserted directly after the subcommand (such as plan) and before any flags specified directly on the command-line. This behavior ensures that flags on the command-line take precedence over environment variables. The flag TF_CLI_ARGS affects all Terraform commands.
+
+For example, the following command: TF_CLI_ARGS="-input=false" terraform apply -force is the equivalent to manually typing: terraform apply -input=false -force.
+
+export TF_CLI_ARGS="-var-file=../../global.tfvars -var-file=../../dev.tfvars"
+terraform apply
+
+To get around this issue without changing all commands or to disable colors when an external program runs terraform use
+TF_CLI_ARGS = "-no-color"
+
+If you specify a named command in the form of TF_CLI_ARGS_name then it will only affect that command. 
+As an example, to specify that only plans never refresh, you can set TF_CLI_ARGS_plan="-refresh=false".
+
+$ export TF_CLI_ARGS_init='-backend=s3 -backend-config="..."'
+$ export TF_CLI_ARGS_init='-backend-config="bucket=((aws_bucket))" -backend-config="key=((aws_bucket_key))" -backend-config="region=((aws_region))"'
+$ TF_CLI_ARGS_init=-backend-config=bucket=example
+$ terraform init
+
+TF_DATA_DIR
+
+By default this data is written into a .terraform subdirectory of the current directory, but the path given in TF_DATA_DIR will be used instead if non-empty.
+
+TF_DATA_DIR changes the location where Terraform keeps its per-working-directory data, such as the current remote backend configuration.
+
+Where can i use this? It may be useful to do so if e.g. the working directory is not writable.
+
+TF_IN_AUTOMATION
+
+When you run terraform sub commands, it display many output along with suggesting specific commands to run next. When you run terraform sub commands through CI or automation, you dont need these suggestions thus it is best to avoid to be printed to CI servers logs.  
+
+If TF_IN_AUTOMATION is set to any non-empty value, Terraform adjusts its output to avoid suggesting specific commands to run next. This is a purely cosmetic change to Terraform's human-readable output, and the exact output differences can change between minor Terraform versions.
+
+TF_CLI_CONFIG_FILE
+
+The CLI configuration file configures per-user settings for CLI behaviors, which apply across all Terraform working directories. These files are CLI Configuration File (.terraformrc or terraform.rc)
+
+The configuration is placed in a single file whose location depends on the host operating system:
+On Windows - 
+- The file must be named named terraform.rc
+- Placed in the relevant user's %APPDATA% directory
+On all other systems - 
+- The file must be named .terraformrc
+- placed directly in the home directory of the relevant user.
+
+The location of the Terraform CLI configuration file can also be specified using the TF_CLI_CONFIG_FILE
+export TF_CLI_CONFIG_FILE="$HOME/.terraformrc-custom"
+
+CLI configuration file has settings such Terraform's CLI needs credentials before it can access Terraform Cloud. 
+
+Example of .terraformrc
+
+plugin_cache_dir   = "$HOME/.terraform.d/plugin-cache"
+disable_checkpoint = true
+disable_checkpoint_signature = true
+ccredentials "app.terraform.io" {
+  token = "xxxxxx.atlasv1.zzzzzzzzzzzzz"
+}
+
+disable_checkpoint — when set to true, disables upgrade and security bulletin checks that require reaching out to HashiCorp-provided network services.
+
+disable_checkpoint_signature — when set to true, allows the upgrade and security bulletin checks described above but disables the use of an anonymous id used to de-duplicate warning messages.
+
+plugin_cache_dir — enables plugin caching and specifies, as a string, the location of the plugin cache directory.
+
+credentials — provides credentials for use with Terraform Cloud. Terraform uses this when performing remote operations or state access with the remote backend and when accessing Terraform Cloud's private module registry.
