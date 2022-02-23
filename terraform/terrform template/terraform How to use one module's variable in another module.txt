@@ -1,0 +1,31 @@
+How to use one module's variable in another module in terraform?
+
+You can use outputs to accomplish this. Such as if there are 2 modules, kafka and cloudwatch.
+
+In your kafka module, you could define an output that looks something like this:
+
+output "instance_ids" {
+  value = ["${aws_instance.kafka.*.id}"]
+}
+
+Case 1 - If you are calling kafka module from cloudwatch module by instantiated the module with something like:
+
+module "kafka" {
+  source = "./modules/kafka"
+}
+
+# You can then access that output as follows:
+instances = ["${module.kafka.instance_ids}"]
+
+Case 2 - If your modules are isolated from each other (i.e. your cloudwatch module doesn't instantiate your kafka module), you can pass the outputs as variables between modules:
+
+module "kafka" {
+  source = "./modules/kafka"
+}
+
+module "cloudwatch" {
+  source = "./modules/cloudwatch"
+  instances = ["${module.kafka.instance_ids}"]
+}
+
+# Of course, your "cloudwatch" module would have to declare the instances variable.
