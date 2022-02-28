@@ -1,0 +1,21 @@
+Terraform variable using terraform.tfvars example
+
+# Content of terraform.tfvars
+reponame = "terraform-var-terraform-tfvars"
+
+# Content of terraform-var-terraform-tfvars.tf
+
+provider "github" {
+  token        = ""
+  organization = "devopsschool-sample-projects"
+}
+
+variable reponame {}
+
+resource "github_repository" "example" {
+  name        = "${var.reponame}"
+  description = "My awesome codebase"
+  private = false
+}
+
+# $ terraform apply
