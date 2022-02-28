@@ -1,0 +1,16 @@
+# Content of terraform-var-commandline.tf
+
+provider "github" {
+  token        = ""
+  organization = "devopsschool-sample-projects"
+}
+
+variable reponame {}
+
+resource "github_repository" "example" {
+  name        = "${var.reponame}"
+  description = "My awesome codebase"
+  private = false
+}
+
+# $ terraform apply -var 'reponame=terraform-var-commandline'
