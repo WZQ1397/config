@@ -1,0 +1,19 @@
+provider "github" {
+  token        = ""
+  organization = "devopsschool-demo-temporary"
+}
+
+
+variable "repo-name" {
+   type = "map"
+  default = {
+      "repo1" = "devops1"
+      "repo2" = "devops2"
+      "repo3" = "devops3"
+}
+}
+
+resource "github_repository" "repogithub" {
+  for_each = var.repo-name
+  name = "${each.value}-devopsschool"
+}
