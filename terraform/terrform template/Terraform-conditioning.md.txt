@@ -1,0 +1,43 @@
+**Terraform conditioning example program**
+```css
+provider "github" {
+  token        = ""
+  organization = "devopsschool-demo-temporary"
+}
+
+variable "github-condition" {
+  type    = "string"
+  default = "java"
+}
+
+
+resource "github_repository" "example" {
+  name        = var.github-condition
+  description = "My awesome codebase"
+
+  private = false
+  count            = "${var.github-condition == "java" ? 1 : 0}"
+
+}
+
+```
+
+```css
+
+variable "give_neo_cloudwatch_full_access" {
+  description = "If true, neo gets full access to CloudWatch"
+  type        = bool
+}
+
+resource "aws_iam_user_policy_attachment" "neo_cloudwatch_full" {
+  count = var.give_neo_cloudwatch_full_access ? 1 : 0
+  user       = aws_iam_user.example[0].name
+  policy_arn = aws_iam_policy.cloudwatch_full_access.arn
+}
+resource "aws_iam_user_policy_attachment" "neo_cloudwatch_read" {
+  count = var.give_neo_cloudwatch_full_access ? 0 : 1
+  user       = aws_iam_user.example[0].name
+  policy_arn = aws_iam_policy.cloudwatch_read_only.arn
+}
+
+```
