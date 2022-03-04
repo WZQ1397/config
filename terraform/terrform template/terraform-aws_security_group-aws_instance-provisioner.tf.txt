@@ -1,0 +1,91 @@
+
+provider "aws" {
+  region     = "ap-south-1"
+  access_key = ""
+  secret_key = ""
+}
+
+
+resource "aws_security_group" "allow_tls" {
+  name        = "devopsscool-sec-group"
+  description = "Allow TLS inbound traffic"
+  tags = {
+    Name = "devopsschool terraform example"
+  }
+  ingress {
+    # TLS (change to whatever ports you need)
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    # Please restrict your ingress to only necessary IPs and ports.
+    # Opening to 0.0.0.0/0 can lead to security vulnerabilities.
+    cidr_blocks = ["0.0.0.0/0"]
+
+  }
+
+    ingress {
+    # TLS (change to whatever ports you need)
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    # Please restrict your ingress to only necessary IPs and ports.
+    # Opening to 0.0.0.0/0 can lead to security vulnerabilities.
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+    ingress {
+    # TLS (change to whatever ports you need)
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    # Please restrict your ingress to only necessary IPs and ports.
+    # Opening to 0.0.0.0/0 can lead to security vulnerabilities.
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port       = 0
+    to_port         = 0
+    protocol        = "-1"
+    cidr_blocks     = ["0.0.0.0/0"]
+  }
+}
+
+resource "aws_instance" "web" {
+  ami           = "ami-5b673c34"
+  instance_type = "t2.micro"
+  key_name = "rajesh-mumbai"
+  vpc_security_group_ids = [aws_security_group.allow_tls.id]
+ tags = {
+    Name = "HelloWorld"
+  }
+	
+  connection {
+      type     = "ssh"
+      user     = "ec2-user"
+      private_key = file("/home/centos/terraform/rajesh-terraform.pem")
+      #host = aws_instance.web.public_ip
+      host = self.public_ip
+  }
+
+  provisioner "local-exec" {
+    command = "touch devopsschool-local"
+  }
+  
+  provisioner "remote-exec" {
+    inline = [
+      "touch /tmp/devopsschool-remote"
+    ]
+  }
+  
+  provisioner "file" {
+    source      = "devopsschool-local"
+    destination = "/tmp/"
+  } 
+  depends_on = [
+    aws_security_group.allow_tls,
+  ]
+
+  }
+
+
