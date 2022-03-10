@@ -1,0 +1,10 @@
+/var/log/yum.log {
+    missingok
+    notifempty
+    size 30k
+    daily
+    create 0600 root root
+    postrotate
+        /usr/bin/setfacl -m u:splunk:r /var/log/yum.log
+    endscript
+}

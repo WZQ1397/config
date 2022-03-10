@@ -1,0 +1,9 @@
+/var/log/marketplace-core/*.log.*[!.gz] {
+        daily
+        missingok
+        rotate 2
+        compress
+        notifempty
+        copytruncate
+        maxsize 2G
+}
