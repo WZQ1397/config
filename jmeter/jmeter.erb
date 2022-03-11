@@ -1,0 +1,68 @@
+#!/bin/sh
+#
+# Startup script for Apache JMeter
+# CONTROLLED BY PUPPET DO NOT MODIFY!
+#
+# chkconfig: - 85 15
+# description: Apache JMeter
+# pidfile: /var/run/$JMETER.pid
+# config:
+#set -x
+# Source function library.
+. /etc/rc.d/init.d/functions
+
+# Source networking configuration.
+. /etc/sysconfig/network
+
+JAVA_HOME=/opt/java
+PATH=/opt/java/bin:$PATH
+JMETER=jmeter
+JMETER_HOME=/opt/jmeter
+JAVA_PID=`/usr/bin/pgrep -f "jar /opt/jmeter/CMDRunner.jar"`
+XMS_MEM='<%= @xms_memory %>'
+XMX_MEM='<%= @xmx_memory %>'
+
+case "$1" in
+start)
+  # Start daemon.
+  [ -n "$JAVA_PID" ] && echo "$JMETER already started" && exit 0
+  echo -n "Starting $JMETER: "
+  /opt/java/bin/java -Xms${XMS_MEM}m -Xmx${XMS_MEM}m -jar /opt/jmeter/CMDRunner.jar --tool PerfMonAgent --tcp-port 3450 &
+  RETVAL=$?
+  echo "$JMETER started."
+  [ $RETVAL = 0 ] && touch /var/lock/subsys/$JMETER
+  ;;
+stop)
+  # Stop daemons.
+  [ -z "$JAVA_PID" ] && echo "$JMETER already stopped" && exit 0
+  echo -n "Shutting down $JMETER: "
+  kill $JAVA_PID
+  RETVAL=$?
+  echo
+  [ $RETVAL = 0 ] && rm -f /var/lock/subsys/$JMETER
+  ;;
+restart)
+  $0 stop
+  $0 start
+  ;;
+condrestart)
+  [ -e /var/lock/subsys/$JMETER ] && $0 restart
+  ;;
+status)
+  if [ -n "$JAVA_PID" ]; then
+    MODE="RUNNING pid $JAVA_PID"
+    echo "$JMETER is $MODE"
+    exit 0
+  else
+    MODE="STOPPED"
+    echo "$JMETER is $MODE"
+    exit 1
+  fi
+  ;;
+*)
+echo "Usage: $0 {start|stop|restart|status}"
+exit 1
+esac
+
+exit 0
+

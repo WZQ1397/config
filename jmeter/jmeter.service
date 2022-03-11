@@ -1,0 +1,10 @@
+[Unit]
+Description=Apache JMeter server daemon
+Documentation=http://jmeter.apache.org/index.html
+After=network.target
+
+[Service]
+Type=simple
+#PIDFile=/var/run/jmeter.pid
+ExecStart=/opt/java/bin/java -jar -Xms256m -Xmx256m /opt/jmeter/CMDRunner.jar --tool PerfMonAgent --tcp-port 3450
+KillMode=process
