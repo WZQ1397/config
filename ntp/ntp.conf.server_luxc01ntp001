@@ -1,0 +1,11 @@
+restrict default nomodify notrap noquery
+restrict 127.0.0.1
+#server 10.80.195.125 burst iburst
+server 10.80.200.26 burst iburst
+server 10.80.200.25 burst iburst
+server 10.122.235.154 burst iburst
+server  127.127.1.0     # local clock
+fudge   127.127.1.0 stratum 10
+driftfile /var/lib/ntp/drift
+broadcastdelay  0.008
+keys            /etc/ntp/keys
