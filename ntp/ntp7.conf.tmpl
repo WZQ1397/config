@@ -1,0 +1,14 @@
+restrict -4 default kod nomodify notrap nopeer noquery
+restrict -6 default kod nomodify notrap nopeer noquery
+restrict -4 127.0.0.1
+restrict -6 ::1
+
+server <%= @ntpserver1 %> burst iburst
+server <%= @ntpserver2 %> burst iburst
+
+driftfile /var/lib/ntp/drift
+broadcastdelay	0.008
+
+keys		/etc/ntp/keys
+
+disable monitor
