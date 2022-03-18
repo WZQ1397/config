@@ -1,0 +1,35 @@
+
+# This file is managed by Puppet.
+# Do not modify or your changes may be reverted.
+#
+<% @ldap_servers.each do |ldap_server| -%>
+uri ldaps://<%= ldap_server %>/
+<% end -%>
+scope sub
+bind_timelimit 30
+base <%= @base %>
+
+referrals off
+filter passwd (&(objectClass=user)(!(objectClass=computer))(uidNumber=*)(unixHomeDirectory=*)<%= @memberOf %>)
+map    passwd uid              sAMAccountName
+map    passwd homeDirectory    unixHomeDirectory
+map    passwd gecos            displayName
+filter shadow (&(objectClass=user)(!(objectClass=computer))(uidNumber=*)(unixHomeDirectory=*))
+map    shadow uid              sAMAccountName
+map    shadow shadowLastChange pwdLastSet
+filter group  (&(objectClass=group)(gidNumber=*))
+
+uid nslcd
+gid ldap
+
+binddn <%= @binddn %>
+bindpw <%= @bindpw %>
+
+ssl on
+tls_cacertfile /etc/ssl/certs/StubHubCA.cer.pem
+tls_reqcert demand
+tls_ciphers HIGH:+TLSv12
+
+ignorecase yes
+nss_nested_groups yes
+
