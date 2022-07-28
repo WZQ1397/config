@@ -1,0 +1,1 @@
+for host in `cat connect.list | grep -v 50 | sort | awk -F '.' '{print $1}' | uniq `; do  nc -zw 2 $host 22 ; echo $host" => "$?; done >> result

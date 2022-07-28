@@ -1,0 +1,2 @@
+sshpass -f keyfile ssh  -o ConnectTimeout=3 -o ConnectionAttempts=5 -o StrictHostKeyChecking=no uswp00bpe001.stubprod.com "hostname -A && ps -ef" > filter-us-2022-02-10-res/uswp00bpe001.stubprod.com
+sshpass -f keyfile ssh  -o ConnectTimeout=3 -o ConnectionAttempts=5 -o StrictHostKeyChecking=no uswp00bpe002.stubprod.com "hostname -A && ps -ef" > filter-us-2022-02-10-res/uswp00bpe002.stubprod.com
